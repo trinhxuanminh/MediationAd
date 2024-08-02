@@ -12,13 +12,13 @@ target 'MediationAd' do
   use_frameworks!
   
   # Pods for MediationAd
-  pod 'Google-Mobile-Ads-SDK', '11.4.0'
-  pod 'Firebase', '10.25.0'
-  pod 'FirebaseRemoteConfig', '10.25.0'
-  pod 'AppsFlyerFramework', '6.14.3'
-  pod 'AppsFlyer-AdRevenue', '6.14.3'
-  pod 'PurchaseConnector', '6.14.3'
-  pod 'SwiftJWT', '3.6.200'
+#  pod 'Google-Mobile-Ads-SDK', '11.4.0'
+#  pod 'Firebase', '10.25.0'
+#  pod 'FirebaseRemoteConfig', '10.25.0'
+#  pod 'AppsFlyerFramework', '6.14.3'
+#  pod 'AppsFlyer-AdRevenue', '6.14.3'
+#  pod 'PurchaseConnector', '6.14.3'
+#  pod 'SwiftJWT', '3.6.200'
 end
 
 target 'MediationAdExamples' do

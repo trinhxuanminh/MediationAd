@@ -36,19 +36,8 @@
 		966313E02C5CD5E300D69BBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 966313DF2C5CD5E300D69BBA /* Assets.xcassets */; };
 		966313E32C5CD5E300D69BBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966313E12C5CD5E300D69BBA /* LaunchScreen.storyboard */; };
 		966313E92C5CD66700D69BBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 966313E82C5CD66600D69BBA /* GoogleService-Info.plist */; };
-		966313EA2C5CD9E000D69BBA /* MediationAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 963702DD2C5C8B38005B52CA /* MediationAd.framework */; };
-		F2C7989E4A785B7FF5A64BB4 /* Pods_MediationAdExamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B195A8B1DDF64459FAF7848 /* Pods_MediationAdExamples.framework */; };
+		C1CBBC8C27CDFF9284680303 /* Pods_MediationAdExamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B195A8B1DDF64459FAF7848 /* Pods_MediationAdExamples.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		966313EC2C5CD9E000D69BBA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 963702D42C5C8B38005B52CA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 963702DC2C5C8B38005B52CA;
-			remoteInfo = MediationAd;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0B195A8B1DDF64459FAF7848 /* Pods_MediationAdExamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAdExamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,8 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				966313EA2C5CD9E000D69BBA /* MediationAd.framework in Frameworks */,
-				F2C7989E4A785B7FF5A64BB4 /* Pods_MediationAdExamples.framework in Frameworks */,
+				C1CBBC8C27CDFF9284680303 /* Pods_MediationAdExamples.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +244,6 @@
 				963702D92C5C8B38005B52CA /* Sources */,
 				963702DA2C5C8B38005B52CA /* Frameworks */,
 				963702DB2C5C8B38005B52CA /* Resources */,
-				63B6292F10242AF9583E751F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -279,7 +266,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				966313ED2C5CD9E000D69BBA /* PBXTargetDependency */,
 			);
 			name = MediationAdExamples;
 			productName = MediationAdExamples;
@@ -346,23 +332,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		63B6292F10242AF9583E751F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MediationAd/Pods-MediationAd-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MediationAd/Pods-MediationAd-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MediationAd/Pods-MediationAd-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		834894D0381F8BB2CE51833A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -449,14 +418,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		966313ED2C5CD9E000D69BBA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 963702DC2C5C8B38005B52CA /* MediationAd */;
-			targetProxy = 966313EC2C5CD9E000D69BBA /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		966313DC2C5CD5E200D69BBA /* Main.storyboard */ = {
@@ -697,6 +658,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -732,6 +694,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

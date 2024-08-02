@@ -6,6 +6,6 @@
 //
 
 import Foundation
-import FirebaseRemoteConfig
-
-public typealias RemoteHandler = ((RemoteManager.State, RemoteConfig) -> Void)
+//import FirebaseRemoteConfig
+//
+//public typealias RemoteHandler = ((RemoteManager.State, RemoteConfig) -> Void)

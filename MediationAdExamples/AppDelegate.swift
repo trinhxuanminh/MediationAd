@@ -24,15 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     -----END PRIVATE KEY-----
     """
     
-    AppManager.shared.initialize(appID: appID,
-                                 devKey: devKey,
-                                 trackingTimeout: 45.0,
-                                 issuerID: issuerID,
-                                 keyID: keyID,
-                                 privateKey: privateKey
-    ) { remoteState, remoteConfig in
-      print(remoteState)
-    }
+//    AppManager.shared.initialize(appID: appID,
+//                                 devKey: devKey,
+//                                 trackingTimeout: 45.0,
+//                                 issuerID: issuerID,
+//                                 keyID: keyID,
+//                                 privateKey: privateKey
+//    ) { remoteState, remoteConfig in
+//      print(remoteState)
+//    }
+//    AppManager.shared.test()
     return true
   }
 }
