@@ -7,24 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		66CAC55F0E7176AE502CA342 /* Pods_MediationAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B577D03DF97963CAAE73C2 /* Pods_MediationAd.framework */; };
-		963702E12C5C8B38005B52CA /* MediationAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 963702E02C5C8B38005B52CA /* MediationAd.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B7E7595A3ABE866D096BA7B /* Pods_MediationAdExamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 994C79FF4E43E48D485ACC1F /* Pods_MediationAdExamples.framework */; };
 		963702EE2C5C8BB9005B52CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963702ED2C5C8BB9005B52CA /* AppDelegate.swift */; };
 		963702F02C5C8BB9005B52CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963702EF2C5C8BB9005B52CA /* SceneDelegate.swift */; };
 		963702F22C5C8BB9005B52CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963702F12C5C8BB9005B52CA /* ViewController.swift */; };
 		963702F52C5C8BB9005B52CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963702F32C5C8BB9005B52CA /* Main.storyboard */; };
 		963702F72C5C8BBA005B52CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963702F62C5C8BBA005B52CA /* Assets.xcassets */; };
 		963702FA2C5C8BBA005B52CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963702F82C5C8BBA005B52CA /* LaunchScreen.storyboard */; };
-		D2EE6C3AE3ABDE7EA0F5144F /* Pods_MediationAdExamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DC44992BC20DC5FC362816 /* Pods_MediationAdExamples.framework */; };
+		963703012C5C9061005B52CA /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703002C5C9061005B52CA /* AppManager.swift */; };
+		963703032C5C9916005B52CA /* ConsentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703022C5C9916005B52CA /* ConsentManager.swift */; };
+		963703062C5C993E005B52CA /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703052C5C993E005B52CA /* APIError.swift */; };
+		963703082C5C9953005B52CA /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703072C5C9953005B52CA /* APIService.swift */; };
+		9637030A2C5C996A005B52CA /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703092C5C996A005B52CA /* EndPoint.swift */; };
+		9637030D2C5C99BC005B52CA /* RemoteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637030C2C5C99BC005B52CA /* RemoteHandler.swift */; };
+		9637030F2C5C99E7005B52CA /* ConsentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637030E2C5C99E7005B52CA /* ConsentHandler.swift */; };
+		963703112C5C99FB005B52CA /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703102C5C99FB005B52CA /* Handler.swift */; };
+		963703142C5C9A56005B52CA /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703132C5C9A56005B52CA /* UIApplicationExtension.swift */; };
+		9637031D2C5C9A94005B52CA /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703162C5C9A93005B52CA /* Attributes.swift */; };
+		9637031E2C5C9A94005B52CA /* AppStoreConnectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703172C5C9A93005B52CA /* AppStoreConnectResponse.swift */; };
+		9637031F2C5C9A94005B52CA /* ItunesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703182C5C9A94005B52CA /* ItunesResponse.swift */; };
+		963703202C5C9A94005B52CA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703192C5C9A94005B52CA /* Result.swift */; };
+		963703212C5C9A94005B52CA /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637031A2C5C9A94005B52CA /* Version.swift */; };
+		963703222C5C9A94005B52CA /* ConsentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637031B2C5C9A94005B52CA /* ConsentConfig.swift */; };
+		963703232C5C9A94005B52CA /* TokenClaims.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637031C2C5C9A94005B52CA /* TokenClaims.swift */; };
+		963703252C5C9ADB005B52CA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703242C5C9ADB005B52CA /* NetworkManager.swift */; };
+		963703272C5C9AF4005B52CA /* LogEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703262C5C9AF4005B52CA /* LogEventManager.swift */; };
+		963703292C5C9B13005B52CA /* TrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703282C5C9B13005B52CA /* TrackingManager.swift */; };
+		9637032B2C5C9B4D005B52CA /* ReleaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637032A2C5C9B4D005B52CA /* ReleaseManager.swift */; };
+		9637032D2C5C9B66005B52CA /* RemoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637032C2C5C9B66005B52CA /* RemoteManager.swift */; };
+		963703312C5CA2F9005B52CA /* MediationAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 963703302C5CA2F9005B52CA /* MediationAd.h */; };
+		E36F46B919A1BFCBD8665539 /* Pods_MediationAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CFB253DD8F08DE3792D3FB /* Pods_MediationAd.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		33DC44992BC20DC5FC362816 /* Pods_MediationAdExamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAdExamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		34B8225761EFED8C9EB590E9 /* Pods-MediationAdExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.release.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.release.xcconfig"; sourceTree = "<group>"; };
-		67B577D03DF97963CAAE73C2 /* Pods_MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7944D19D754189649FD07170 /* Pods-MediationAd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.debug.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.debug.xcconfig"; sourceTree = "<group>"; };
+		06CFB253DD8F08DE3792D3FB /* Pods_MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14A8FE35A1A77874A6843480 /* Pods-MediationAd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.debug.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.debug.xcconfig"; sourceTree = "<group>"; };
+		31E706B9B33D0DA620129194 /* Pods-MediationAdExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.release.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.release.xcconfig"; sourceTree = "<group>"; };
+		57DD5009319EC039841898A2 /* Pods-MediationAd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.release.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.release.xcconfig"; sourceTree = "<group>"; };
 		963702DD2C5C8B38005B52CA /* MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		963702E02C5C8B38005B52CA /* MediationAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediationAd.h; sourceTree = "<group>"; };
 		963702EB2C5C8BB9005B52CA /* MediationAdExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediationAdExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963702ED2C5C8BB9005B52CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		963702EF2C5C8BB9005B52CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,8 +53,30 @@
 		963702F62C5C8BBA005B52CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		963702F92C5C8BBA005B52CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		963702FB2C5C8BBA005B52CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED99A3ACFF97E24B77D01C04 /* Pods-MediationAdExamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.debug.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.debug.xcconfig"; sourceTree = "<group>"; };
-		F4747CAD961DFA0AC3F01D07 /* Pods-MediationAd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.release.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.release.xcconfig"; sourceTree = "<group>"; };
+		963703002C5C9061005B52CA /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		963703022C5C9916005B52CA /* ConsentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentManager.swift; sourceTree = "<group>"; };
+		963703052C5C993E005B52CA /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		963703072C5C9953005B52CA /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		963703092C5C996A005B52CA /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		9637030C2C5C99BC005B52CA /* RemoteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteHandler.swift; sourceTree = "<group>"; };
+		9637030E2C5C99E7005B52CA /* ConsentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentHandler.swift; sourceTree = "<group>"; };
+		963703102C5C99FB005B52CA /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
+		963703132C5C9A56005B52CA /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
+		963703162C5C9A93005B52CA /* Attributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attributes.swift; sourceTree = "<group>"; };
+		963703172C5C9A93005B52CA /* AppStoreConnectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreConnectResponse.swift; sourceTree = "<group>"; };
+		963703182C5C9A94005B52CA /* ItunesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItunesResponse.swift; sourceTree = "<group>"; };
+		963703192C5C9A94005B52CA /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		9637031A2C5C9A94005B52CA /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		9637031B2C5C9A94005B52CA /* ConsentConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentConfig.swift; sourceTree = "<group>"; };
+		9637031C2C5C9A94005B52CA /* TokenClaims.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenClaims.swift; sourceTree = "<group>"; };
+		963703242C5C9ADB005B52CA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		963703262C5C9AF4005B52CA /* LogEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEventManager.swift; sourceTree = "<group>"; };
+		963703282C5C9B13005B52CA /* TrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingManager.swift; sourceTree = "<group>"; };
+		9637032A2C5C9B4D005B52CA /* ReleaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseManager.swift; sourceTree = "<group>"; };
+		9637032C2C5C9B66005B52CA /* RemoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteManager.swift; sourceTree = "<group>"; };
+		963703302C5CA2F9005B52CA /* MediationAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediationAd.h; sourceTree = "<group>"; };
+		994C79FF4E43E48D485ACC1F /* Pods_MediationAdExamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAdExamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8E077294728DD3545AF6874 /* Pods-MediationAdExamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.debug.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66CAC55F0E7176AE502CA342 /* Pods_MediationAd.framework in Frameworks */,
+				E36F46B919A1BFCBD8665539 /* Pods_MediationAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2EE6C3AE3ABDE7EA0F5144F /* Pods_MediationAdExamples.framework in Frameworks */,
+				3B7E7595A3ABE866D096BA7B /* Pods_MediationAdExamples.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +106,7 @@
 				963702EC2C5C8BB9005B52CA /* MediationAdExamples */,
 				963702DE2C5C8B38005B52CA /* Products */,
 				BC88C66C1231F3E5BF7AB97C /* Pods */,
-				D434AA01CF720A02AAA2D40D /* Frameworks */,
+				ABF3DD0B3FD727860DF50881 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,7 +122,12 @@
 		963702DF2C5C8B38005B52CA /* MediationAd */ = {
 			isa = PBXGroup;
 			children = (
-				963702E02C5C8B38005B52CA /* MediationAd.h */,
+				963703302C5CA2F9005B52CA /* MediationAd.h */,
+				9637030B2C5C9989005B52CA /* Base */,
+				963703122C5C9A42005B52CA /* Extensions */,
+				963703152C5C9A77005B52CA /* Models */,
+				963703042C5C992E005B52CA /* API */,
+				963702FF2C5C9042005B52CA /* Managers */,
 			);
 			path = MediationAd;
 			sourceTree = "<group>";
@@ -99,25 +146,80 @@
 			path = MediationAdExamples;
 			sourceTree = "<group>";
 		};
+		963702FF2C5C9042005B52CA /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				963703002C5C9061005B52CA /* AppManager.swift */,
+				9637032C2C5C9B66005B52CA /* RemoteManager.swift */,
+				9637032A2C5C9B4D005B52CA /* ReleaseManager.swift */,
+				963703022C5C9916005B52CA /* ConsentManager.swift */,
+				963703282C5C9B13005B52CA /* TrackingManager.swift */,
+				963703242C5C9ADB005B52CA /* NetworkManager.swift */,
+				963703262C5C9AF4005B52CA /* LogEventManager.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		963703042C5C992E005B52CA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				963703092C5C996A005B52CA /* EndPoint.swift */,
+				963703072C5C9953005B52CA /* APIService.swift */,
+				963703052C5C993E005B52CA /* APIError.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		9637030B2C5C9989005B52CA /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				963703102C5C99FB005B52CA /* Handler.swift */,
+				9637030C2C5C99BC005B52CA /* RemoteHandler.swift */,
+				9637030E2C5C99E7005B52CA /* ConsentHandler.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		963703122C5C9A42005B52CA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				963703132C5C9A56005B52CA /* UIApplicationExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		963703152C5C9A77005B52CA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				963703172C5C9A93005B52CA /* AppStoreConnectResponse.swift */,
+				963703162C5C9A93005B52CA /* Attributes.swift */,
+				9637031B2C5C9A94005B52CA /* ConsentConfig.swift */,
+				963703182C5C9A94005B52CA /* ItunesResponse.swift */,
+				963703192C5C9A94005B52CA /* Result.swift */,
+				9637031C2C5C9A94005B52CA /* TokenClaims.swift */,
+				9637031A2C5C9A94005B52CA /* Version.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		ABF3DD0B3FD727860DF50881 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06CFB253DD8F08DE3792D3FB /* Pods_MediationAd.framework */,
+				994C79FF4E43E48D485ACC1F /* Pods_MediationAdExamples.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BC88C66C1231F3E5BF7AB97C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7944D19D754189649FD07170 /* Pods-MediationAd.debug.xcconfig */,
-				F4747CAD961DFA0AC3F01D07 /* Pods-MediationAd.release.xcconfig */,
-				ED99A3ACFF97E24B77D01C04 /* Pods-MediationAdExamples.debug.xcconfig */,
-				34B8225761EFED8C9EB590E9 /* Pods-MediationAdExamples.release.xcconfig */,
+				14A8FE35A1A77874A6843480 /* Pods-MediationAd.debug.xcconfig */,
+				57DD5009319EC039841898A2 /* Pods-MediationAd.release.xcconfig */,
+				B8E077294728DD3545AF6874 /* Pods-MediationAdExamples.debug.xcconfig */,
+				31E706B9B33D0DA620129194 /* Pods-MediationAdExamples.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		D434AA01CF720A02AAA2D40D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				67B577D03DF97963CAAE73C2 /* Pods_MediationAd.framework */,
-				33DC44992BC20DC5FC362816 /* Pods_MediationAdExamples.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +229,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				963702E12C5C8B38005B52CA /* MediationAd.h in Headers */,
+				963703312C5CA2F9005B52CA /* MediationAd.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,11 +240,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 963702E42C5C8B38005B52CA /* Build configuration list for PBXNativeTarget "MediationAd" */;
 			buildPhases = (
-				7F59262451AD85CB38973D21 /* [CP] Check Pods Manifest.lock */,
+				7CCEC78C4401D74C734E3C4F /* [CP] Check Pods Manifest.lock */,
 				963702D82C5C8B38005B52CA /* Headers */,
 				963702D92C5C8B38005B52CA /* Sources */,
 				963702DA2C5C8B38005B52CA /* Frameworks */,
 				963702DB2C5C8B38005B52CA /* Resources */,
+				BB8225566A61CE3A9B530003 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -157,7 +260,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 963702FC2C5C8BBA005B52CA /* Build configuration list for PBXNativeTarget "MediationAdExamples" */;
 			buildPhases = (
-				E26C28685AB8943BB04A40A4 /* [CP] Check Pods Manifest.lock */,
+				F17FCF34E008E6131A9AB868 /* [CP] Check Pods Manifest.lock */,
 				963702E72C5C8BB9005B52CA /* Sources */,
 				963702E82C5C8BB9005B52CA /* Frameworks */,
 				963702E92C5C8BB9005B52CA /* Resources */,
@@ -183,6 +286,7 @@
 				TargetAttributes = {
 					963702DC2C5C8B38005B52CA = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1520;
 					};
 					963702EA2C5C8BB9005B52CA = {
 						CreatedOnToolsVersion = 15.2;
@@ -229,7 +333,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7F59262451AD85CB38973D21 /* [CP] Check Pods Manifest.lock */ = {
+		7CCEC78C4401D74C734E3C4F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -251,7 +355,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E26C28685AB8943BB04A40A4 /* [CP] Check Pods Manifest.lock */ = {
+		BB8225566A61CE3A9B530003 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MediationAd/Pods-MediationAd-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MediationAd/Pods-MediationAd-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MediationAd/Pods-MediationAd-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F17FCF34E008E6131A9AB868 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -280,6 +401,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9637030F2C5C99E7005B52CA /* ConsentHandler.swift in Sources */,
+				963703202C5C9A94005B52CA /* Result.swift in Sources */,
+				963703032C5C9916005B52CA /* ConsentManager.swift in Sources */,
+				963703222C5C9A94005B52CA /* ConsentConfig.swift in Sources */,
+				963703012C5C9061005B52CA /* AppManager.swift in Sources */,
+				963703212C5C9A94005B52CA /* Version.swift in Sources */,
+				9637032D2C5C9B66005B52CA /* RemoteManager.swift in Sources */,
+				963703232C5C9A94005B52CA /* TokenClaims.swift in Sources */,
+				963703292C5C9B13005B52CA /* TrackingManager.swift in Sources */,
+				9637030D2C5C99BC005B52CA /* RemoteHandler.swift in Sources */,
+				9637031E2C5C9A94005B52CA /* AppStoreConnectResponse.swift in Sources */,
+				9637030A2C5C996A005B52CA /* EndPoint.swift in Sources */,
+				9637032B2C5C9B4D005B52CA /* ReleaseManager.swift in Sources */,
+				963703252C5C9ADB005B52CA /* NetworkManager.swift in Sources */,
+				963703082C5C9953005B52CA /* APIService.swift in Sources */,
+				963703142C5C9A56005B52CA /* UIApplicationExtension.swift in Sources */,
+				963703272C5C9AF4005B52CA /* LogEventManager.swift in Sources */,
+				963703112C5C99FB005B52CA /* Handler.swift in Sources */,
+				9637031D2C5C9A94005B52CA /* Attributes.swift in Sources */,
+				9637031F2C5C9A94005B52CA /* ItunesResponse.swift in Sources */,
+				963703062C5C993E005B52CA /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,7 +495,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -419,7 +561,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -442,8 +584,9 @@
 		};
 		963702E52C5C8B38005B52CA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7944D19D754189649FD07170 /* Pods-MediationAd.debug.xcconfig */;
+			baseConfigurationReference = 14A8FE35A1A77874A6843480 /* Pods-MediationAd.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -455,6 +598,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -470,6 +614,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -477,8 +622,9 @@
 		};
 		963702E62C5C8B38005B52CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4747CAD961DFA0AC3F01D07 /* Pods-MediationAd.release.xcconfig */;
+			baseConfigurationReference = 57DD5009319EC039841898A2 /* Pods-MediationAd.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -490,6 +636,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -512,7 +659,7 @@
 		};
 		963702FD2C5C8BBA005B52CA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED99A3ACFF97E24B77D01C04 /* Pods-MediationAdExamples.debug.xcconfig */;
+			baseConfigurationReference = B8E077294728DD3545AF6874 /* Pods-MediationAdExamples.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -543,7 +690,7 @@
 		};
 		963702FE2C5C8BBA005B52CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 34B8225761EFED8C9EB590E9 /* Pods-MediationAdExamples.release.xcconfig */;
+			baseConfigurationReference = 31E706B9B33D0DA620129194 /* Pods-MediationAdExamples.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
