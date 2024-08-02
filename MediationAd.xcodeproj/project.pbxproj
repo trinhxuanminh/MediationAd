@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8ACE6640CC2B2AF92DDE505B /* Pods_MediationAdExamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86487EFEBA8E2882AC6173C9 /* Pods_MediationAdExamples.framework */; };
-		963702EE2C5C8BB9005B52CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963702ED2C5C8BB9005B52CA /* AppDelegate.swift */; };
-		963702F02C5C8BB9005B52CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963702EF2C5C8BB9005B52CA /* SceneDelegate.swift */; };
-		963702F22C5C8BB9005B52CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963702F12C5C8BB9005B52CA /* ViewController.swift */; };
-		963702F52C5C8BB9005B52CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963702F32C5C8BB9005B52CA /* Main.storyboard */; };
-		963702F72C5C8BBA005B52CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963702F62C5C8BBA005B52CA /* Assets.xcassets */; };
-		963702FA2C5C8BBA005B52CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963702F82C5C8BBA005B52CA /* LaunchScreen.storyboard */; };
 		963703012C5C9061005B52CA /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703002C5C9061005B52CA /* AppManager.swift */; };
 		963703032C5C9916005B52CA /* ConsentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703022C5C9916005B52CA /* ConsentManager.swift */; };
 		963703062C5C993E005B52CA /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703052C5C993E005B52CA /* APIError.swift */; };
@@ -35,24 +28,34 @@
 		963703292C5C9B13005B52CA /* TrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703282C5C9B13005B52CA /* TrackingManager.swift */; };
 		9637032B2C5C9B4D005B52CA /* ReleaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637032A2C5C9B4D005B52CA /* ReleaseManager.swift */; };
 		9637032D2C5C9B66005B52CA /* RemoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637032C2C5C9B66005B52CA /* RemoteManager.swift */; };
-		98E623CAEAC6475A0EFD0BAC /* Pods_MediationAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20270008799DBD3B25341E4 /* Pods_MediationAd.framework */; };
+		966313B22C5CCA6E00D69BBA /* Pods_MediationAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D50539B1BFC398F976161B /* Pods_MediationAd.framework */; };
+		966313D72C5CD5E200D69BBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313D62C5CD5E200D69BBA /* AppDelegate.swift */; };
+		966313D92C5CD5E200D69BBA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313D82C5CD5E200D69BBA /* SceneDelegate.swift */; };
+		966313DB2C5CD5E200D69BBA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313DA2C5CD5E200D69BBA /* ViewController.swift */; };
+		966313DE2C5CD5E200D69BBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966313DC2C5CD5E200D69BBA /* Main.storyboard */; };
+		966313E02C5CD5E300D69BBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 966313DF2C5CD5E300D69BBA /* Assets.xcassets */; };
+		966313E32C5CD5E300D69BBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966313E12C5CD5E300D69BBA /* LaunchScreen.storyboard */; };
+		966313E92C5CD66700D69BBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 966313E82C5CD66600D69BBA /* GoogleService-Info.plist */; };
+		966313EA2C5CD9E000D69BBA /* MediationAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 963702DD2C5C8B38005B52CA /* MediationAd.framework */; };
+		F2C7989E4A785B7FF5A64BB4 /* Pods_MediationAdExamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B195A8B1DDF64459FAF7848 /* Pods_MediationAdExamples.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		966313EC2C5CD9E000D69BBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 963702D42C5C8B38005B52CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 963702DC2C5C8B38005B52CA;
+			remoteInfo = MediationAd;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		4EDE9C7A225C1A36E705073D /* Pods-MediationAd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.debug.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.debug.xcconfig"; sourceTree = "<group>"; };
-		55F18D7FD164C16AD659607F /* Pods-MediationAdExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.release.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.release.xcconfig"; sourceTree = "<group>"; };
-		6208AD34656C7E871C36338D /* Pods-MediationAdExamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.debug.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.debug.xcconfig"; sourceTree = "<group>"; };
-		625F0AF8C78E8717D9CCB741 /* Pods-MediationAd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.release.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.release.xcconfig"; sourceTree = "<group>"; };
-		86487EFEBA8E2882AC6173C9 /* Pods_MediationAdExamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAdExamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B195A8B1DDF64459FAF7848 /* Pods_MediationAdExamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAdExamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		23D50539B1BFC398F976161B /* Pods_MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31AF96317D9A7C09FFCC191E /* Pods-MediationAd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.release.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.release.xcconfig"; sourceTree = "<group>"; };
+		84BA8036303233F5D7EAEFAE /* Pods-MediationAdExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.release.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.release.xcconfig"; sourceTree = "<group>"; };
 		963702DD2C5C8B38005B52CA /* MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		963702EB2C5C8BB9005B52CA /* MediationAdExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediationAdExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		963702ED2C5C8BB9005B52CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		963702EF2C5C8BB9005B52CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		963702F12C5C8BB9005B52CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		963702F42C5C8BB9005B52CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		963702F62C5C8BBA005B52CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		963702F92C5C8BBA005B52CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		963702FB2C5C8BBA005B52CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		963703002C5C9061005B52CA /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		963703022C5C9916005B52CA /* ConsentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentManager.swift; sourceTree = "<group>"; };
 		963703052C5C993E005B52CA /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -74,7 +77,17 @@
 		963703282C5C9B13005B52CA /* TrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingManager.swift; sourceTree = "<group>"; };
 		9637032A2C5C9B4D005B52CA /* ReleaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseManager.swift; sourceTree = "<group>"; };
 		9637032C2C5C9B66005B52CA /* RemoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteManager.swift; sourceTree = "<group>"; };
-		A20270008799DBD3B25341E4 /* Pods_MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		966313D42C5CD5E200D69BBA /* MediationAdExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediationAdExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		966313D62C5CD5E200D69BBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		966313D82C5CD5E200D69BBA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		966313DA2C5CD5E200D69BBA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		966313DD2C5CD5E200D69BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		966313DF2C5CD5E300D69BBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		966313E22C5CD5E300D69BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		966313E42C5CD5E300D69BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		966313E82C5CD66600D69BBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B7D60FCE1C485F127C4FA569 /* Pods-MediationAd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.debug.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.debug.xcconfig"; sourceTree = "<group>"; };
+		EC141476B84295D640EC089B /* Pods-MediationAdExamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.debug.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,38 +95,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98E623CAEAC6475A0EFD0BAC /* Pods_MediationAd.framework in Frameworks */,
+				966313B22C5CCA6E00D69BBA /* Pods_MediationAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		963702E82C5C8BB9005B52CA /* Frameworks */ = {
+		966313D12C5CD5E200D69BBA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8ACE6640CC2B2AF92DDE505B /* Pods_MediationAdExamples.framework in Frameworks */,
+				966313EA2C5CD9E000D69BBA /* MediationAd.framework in Frameworks */,
+				F2C7989E4A785B7FF5A64BB4 /* Pods_MediationAdExamples.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		83BB6B61EA8A6782D080752B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A20270008799DBD3B25341E4 /* Pods_MediationAd.framework */,
-				86487EFEBA8E2882AC6173C9 /* Pods_MediationAdExamples.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		963702D32C5C8B38005B52CA = {
 			isa = PBXGroup;
 			children = (
 				963702DF2C5C8B38005B52CA /* MediationAd */,
-				963702EC2C5C8BB9005B52CA /* MediationAdExamples */,
+				966313D52C5CD5E200D69BBA /* MediationAdExamples */,
 				963702DE2C5C8B38005B52CA /* Products */,
 				BC88C66C1231F3E5BF7AB97C /* Pods */,
-				83BB6B61EA8A6782D080752B /* Frameworks */,
+				C3B7B0F9955EAE1B43BAE433 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,7 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				963702DD2C5C8B38005B52CA /* MediationAd.framework */,
-				963702EB2C5C8BB9005B52CA /* MediationAdExamples.app */,
+				966313D42C5CD5E200D69BBA /* MediationAdExamples.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,20 +141,6 @@
 				963702FF2C5C9042005B52CA /* Managers */,
 			);
 			path = MediationAd;
-			sourceTree = "<group>";
-		};
-		963702EC2C5C8BB9005B52CA /* MediationAdExamples */ = {
-			isa = PBXGroup;
-			children = (
-				963702ED2C5C8BB9005B52CA /* AppDelegate.swift */,
-				963702EF2C5C8BB9005B52CA /* SceneDelegate.swift */,
-				963702F12C5C8BB9005B52CA /* ViewController.swift */,
-				963702F32C5C8BB9005B52CA /* Main.storyboard */,
-				963702F62C5C8BBA005B52CA /* Assets.xcassets */,
-				963702F82C5C8BBA005B52CA /* LaunchScreen.storyboard */,
-				963702FB2C5C8BBA005B52CA /* Info.plist */,
-			);
-			path = MediationAdExamples;
 			sourceTree = "<group>";
 		};
 		963702FF2C5C9042005B52CA /* Managers */ = {
@@ -208,15 +199,39 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		966313D52C5CD5E200D69BBA /* MediationAdExamples */ = {
+			isa = PBXGroup;
+			children = (
+				966313E82C5CD66600D69BBA /* GoogleService-Info.plist */,
+				966313E42C5CD5E300D69BBA /* Info.plist */,
+				966313D62C5CD5E200D69BBA /* AppDelegate.swift */,
+				966313D82C5CD5E200D69BBA /* SceneDelegate.swift */,
+				966313E12C5CD5E300D69BBA /* LaunchScreen.storyboard */,
+				966313DC2C5CD5E200D69BBA /* Main.storyboard */,
+				966313DF2C5CD5E300D69BBA /* Assets.xcassets */,
+				966313DA2C5CD5E200D69BBA /* ViewController.swift */,
+			);
+			path = MediationAdExamples;
+			sourceTree = "<group>";
+		};
 		BC88C66C1231F3E5BF7AB97C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4EDE9C7A225C1A36E705073D /* Pods-MediationAd.debug.xcconfig */,
-				625F0AF8C78E8717D9CCB741 /* Pods-MediationAd.release.xcconfig */,
-				6208AD34656C7E871C36338D /* Pods-MediationAdExamples.debug.xcconfig */,
-				55F18D7FD164C16AD659607F /* Pods-MediationAdExamples.release.xcconfig */,
+				B7D60FCE1C485F127C4FA569 /* Pods-MediationAd.debug.xcconfig */,
+				31AF96317D9A7C09FFCC191E /* Pods-MediationAd.release.xcconfig */,
+				EC141476B84295D640EC089B /* Pods-MediationAdExamples.debug.xcconfig */,
+				84BA8036303233F5D7EAEFAE /* Pods-MediationAdExamples.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C3B7B0F9955EAE1B43BAE433 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				23D50539B1BFC398F976161B /* Pods_MediationAd.framework */,
+				0B195A8B1DDF64459FAF7848 /* Pods_MediationAdExamples.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,12 +251,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 963702E42C5C8B38005B52CA /* Build configuration list for PBXNativeTarget "MediationAd" */;
 			buildPhases = (
-				2BF44FB8CBC319ECD208C29F /* [CP] Check Pods Manifest.lock */,
+				834894D0381F8BB2CE51833A /* [CP] Check Pods Manifest.lock */,
 				963702D82C5C8B38005B52CA /* Headers */,
 				963702D92C5C8B38005B52CA /* Sources */,
 				963702DA2C5C8B38005B52CA /* Frameworks */,
 				963702DB2C5C8B38005B52CA /* Resources */,
-				605E83D0ABF3BBB2B76A0B49 /* [CP] Copy Pods Resources */,
+				63B6292F10242AF9583E751F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -252,22 +267,23 @@
 			productReference = 963702DD2C5C8B38005B52CA /* MediationAd.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		963702EA2C5C8BB9005B52CA /* MediationAdExamples */ = {
+		966313D32C5CD5E200D69BBA /* MediationAdExamples */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 963702FC2C5C8BBA005B52CA /* Build configuration list for PBXNativeTarget "MediationAdExamples" */;
+			buildConfigurationList = 966313E52C5CD5E300D69BBA /* Build configuration list for PBXNativeTarget "MediationAdExamples" */;
 			buildPhases = (
-				61E8CD49BDCDE5715C42EE68 /* [CP] Check Pods Manifest.lock */,
-				963702E72C5C8BB9005B52CA /* Sources */,
-				963702E82C5C8BB9005B52CA /* Frameworks */,
-				963702E92C5C8BB9005B52CA /* Resources */,
+				9DD07A9AC88D73155E2994E9 /* [CP] Check Pods Manifest.lock */,
+				966313D02C5CD5E200D69BBA /* Sources */,
+				966313D12C5CD5E200D69BBA /* Frameworks */,
+				966313D22C5CD5E200D69BBA /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				966313ED2C5CD9E000D69BBA /* PBXTargetDependency */,
 			);
 			name = MediationAdExamples;
 			productName = MediationAdExamples;
-			productReference = 963702EB2C5C8BB9005B52CA /* MediationAdExamples.app */;
+			productReference = 966313D42C5CD5E200D69BBA /* MediationAdExamples.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -284,7 +300,7 @@
 						CreatedOnToolsVersion = 15.2;
 						LastSwiftMigration = 1520;
 					};
-					963702EA2C5C8BB9005B52CA = {
+					966313D32C5CD5E200D69BBA = {
 						CreatedOnToolsVersion = 15.2;
 					};
 				};
@@ -303,7 +319,7 @@
 			projectRoot = "";
 			targets = (
 				963702DC2C5C8B38005B52CA /* MediationAd */,
-				963702EA2C5C8BB9005B52CA /* MediationAdExamples */,
+				966313D32C5CD5E200D69BBA /* MediationAdExamples */,
 			);
 		};
 /* End PBXProject section */
@@ -316,20 +332,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		963702E92C5C8BB9005B52CA /* Resources */ = {
+		966313D22C5CD5E200D69BBA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				963702FA2C5C8BBA005B52CA /* LaunchScreen.storyboard in Resources */,
-				963702F72C5C8BBA005B52CA /* Assets.xcassets in Resources */,
-				963702F52C5C8BB9005B52CA /* Main.storyboard in Resources */,
+				966313E32C5CD5E300D69BBA /* LaunchScreen.storyboard in Resources */,
+				966313E92C5CD66700D69BBA /* GoogleService-Info.plist in Resources */,
+				966313E02C5CD5E300D69BBA /* Assets.xcassets in Resources */,
+				966313DE2C5CD5E200D69BBA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2BF44FB8CBC319ECD208C29F /* [CP] Check Pods Manifest.lock */ = {
+		63B6292F10242AF9583E751F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MediationAd/Pods-MediationAd-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MediationAd/Pods-MediationAd-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MediationAd/Pods-MediationAd-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		834894D0381F8BB2CE51833A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -351,24 +385,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		605E83D0ABF3BBB2B76A0B49 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MediationAd/Pods-MediationAd-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MediationAd/Pods-MediationAd-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MediationAd/Pods-MediationAd-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		61E8CD49BDCDE5715C42EE68 /* [CP] Check Pods Manifest.lock */ = {
+		9DD07A9AC88D73155E2994E9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -421,31 +438,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		963702E72C5C8BB9005B52CA /* Sources */ = {
+		966313D02C5CD5E200D69BBA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				963702F22C5C8BB9005B52CA /* ViewController.swift in Sources */,
-				963702EE2C5C8BB9005B52CA /* AppDelegate.swift in Sources */,
-				963702F02C5C8BB9005B52CA /* SceneDelegate.swift in Sources */,
+				966313DB2C5CD5E200D69BBA /* ViewController.swift in Sources */,
+				966313D72C5CD5E200D69BBA /* AppDelegate.swift in Sources */,
+				966313D92C5CD5E200D69BBA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		966313ED2C5CD9E000D69BBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 963702DC2C5C8B38005B52CA /* MediationAd */;
+			targetProxy = 966313EC2C5CD9E000D69BBA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
-		963702F32C5C8BB9005B52CA /* Main.storyboard */ = {
+		966313DC2C5CD5E200D69BBA /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				963702F42C5C8BB9005B52CA /* Base */,
+				966313DD2C5CD5E200D69BBA /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		963702F82C5C8BBA005B52CA /* LaunchScreen.storyboard */ = {
+		966313E12C5CD5E300D69BBA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				963702F92C5C8BBA005B52CA /* Base */,
+				966313E22C5CD5E300D69BBA /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -456,6 +481,7 @@
 		963702E22C5C8B38005B52CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -522,6 +548,7 @@
 		963702E32C5C8B38005B52CA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -580,7 +607,7 @@
 		};
 		963702E52C5C8B38005B52CA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4EDE9C7A225C1A36E705073D /* Pods-MediationAd.debug.xcconfig */;
+			baseConfigurationReference = B7D60FCE1C485F127C4FA569 /* Pods-MediationAd.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -618,7 +645,7 @@
 		};
 		963702E62C5C8B38005B52CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 625F0AF8C78E8717D9CCB741 /* Pods-MediationAd.release.xcconfig */;
+			baseConfigurationReference = 31AF96317D9A7C09FFCC191E /* Pods-MediationAd.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -653,15 +680,16 @@
 			};
 			name = Release;
 		};
-		963702FD2C5C8BBA005B52CA /* Debug */ = {
+		966313E62C5CD5E300D69BBA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6208AD34656C7E871C36338D /* Pods-MediationAdExamples.debug.xcconfig */;
+			baseConfigurationReference = EC141476B84295D640EC089B /* Pods-MediationAdExamples.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T852J6UR43;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MediationAdExamples/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MediationAdExamples;
@@ -678,21 +706,25 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.proxglobal.MediationAdExamples;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		963702FE2C5C8BBA005B52CA /* Release */ = {
+		966313E72C5CD5E300D69BBA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 55F18D7FD164C16AD659607F /* Pods-MediationAdExamples.release.xcconfig */;
+			baseConfigurationReference = 84BA8036303233F5D7EAEFAE /* Pods-MediationAdExamples.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T852J6UR43;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MediationAdExamples/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MediationAdExamples;
@@ -709,6 +741,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.proxglobal.MediationAdExamples;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -736,11 +771,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		963702FC2C5C8BBA005B52CA /* Build configuration list for PBXNativeTarget "MediationAdExamples" */ = {
+		966313E52C5CD5E300D69BBA /* Build configuration list for PBXNativeTarget "MediationAdExamples" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				963702FD2C5C8BBA005B52CA /* Debug */,
-				963702FE2C5C8BBA005B52CA /* Release */,
+				966313E62C5CD5E300D69BBA /* Debug */,
+				966313E72C5CD5E300D69BBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

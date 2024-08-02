@@ -6,31 +6,34 @@
 //
 
 import UIKit
+import MediationAd
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    let appID = "6599836028"
+    let devKey = ""
+    let issuerID = "90feb1ef-b49e-466f-bdf0-6c854e6042e2"
+    let keyID = "6U7525RU8W"
+    let privateKey = """
+    -----BEGIN PRIVATE KEY-----
+    MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgPIQil7g03C5nf0Cr
+    UO78c9YuqPRO11jV7/UN3frXe6ugCgYIKoZIzj0DAQehRANCAAQYWA+t6rSkTz+9
+    WxVKpmxLLqEc2O9sPCA7Lhq0/nI1mHSHPi9Lge5ZBEzqisiEgVvZ5OuX7JlfUC4r
+    Gu7+MCYD
+    -----END PRIVATE KEY-----
+    """
+    
+    AppManager.shared.initialize(appID: appID,
+                                 devKey: devKey,
+                                 trackingTimeout: 45.0,
+                                 issuerID: issuerID,
+                                 keyID: keyID,
+                                 privateKey: privateKey
+    ) { remoteState, remoteConfig in
+      print(remoteState)
+    }
     return true
   }
-
-  // MARK: UISceneSession Lifecycle
-
-  func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-    // Called when a new scene session is being created.
-    // Use this method to select a configuration to create the new scene with.
-    return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-  }
-
-  func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-    // Called when the user discards a scene session.
-    // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-    // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-  }
-
-
 }
 

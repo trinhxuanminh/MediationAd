@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-import SwiftJWT
+//import SwiftJWT
 
 public class ReleaseManager {
   public static let shared = ReleaseManager()
@@ -134,46 +134,46 @@ extension ReleaseManager {
   }
   
   private func appStoreConnectReleaseState() async -> State {
-    do {
-      guard let privateData = privateKey.data(using: .utf8) else {
-        return .error
-      }
-      let jwtSigner = JWTSigner.es256(privateKey: privateData)
-      
-      let limitTime = 300.0
-      let claims = TokenClaims(iss: issuerID,
-                               exp: Date(timeIntervalSinceNow: limitTime),
-                               aud: "appstoreconnect-v1")
-      let header = Header(kid: keyID)
-      var jwt = JWT(header: header, claims: claims)
-      
-      let token = try jwt.sign(using: jwtSigner)
-      
-      let endPoint = EndPoint.appStoreConnectVersion(appID: appID, token: token)
-      let appStoreConnectResponse: AppStoreConnectResponse = try await APIService().request(from: endPoint)
-      guard let version = appStoreConnectResponse.versions.first(where: { $0.attributes.state == Keys.readyForSale }) else {
-        // Hiện tại chưa có version nào release.
-        return .waitReview
-      }
-      let releaseVersionString = version.attributes.version
-      guard let releaseVersion = Double(releaseVersionString) else {
-        // Không convert được sang dạng số thập phân.
-        return .error
-      }
-
-      if nowVersion <= releaseVersion {
-        // Version hiện tại đã release. Cache version.
-        update(releaseVersion)
-        return .live
-      } else {
-        // Version hiện tại chưa release.
-        return .waitReview
-      }
-    } catch let error {
-      // Lỗi không load được version release, mặc định trạng thái bật.
-      print("[AppManager] [ReleaseManager] error: \(error)")
+//    do {
+//      guard let privateData = privateKey.data(using: .utf8) else {
+//        return .error
+//      }
+//      let jwtSigner = JWTSigner.es256(privateKey: privateData)
+//      
+//      let limitTime = 300.0
+//      let claims = TokenClaims(iss: issuerID,
+//                               exp: Date(timeIntervalSinceNow: limitTime),
+//                               aud: "appstoreconnect-v1")
+//      let header = Header(kid: keyID)
+//      var jwt = JWT(header: header, claims: claims)
+//      
+//      let token = try jwt.sign(using: jwtSigner)
+//      
+//      let endPoint = EndPoint.appStoreConnectVersion(appID: appID, token: token)
+//      let appStoreConnectResponse: AppStoreConnectResponse = try await APIService().request(from: endPoint)
+//      guard let version = appStoreConnectResponse.versions.first(where: { $0.attributes.state == Keys.readyForSale }) else {
+//        // Hiện tại chưa có version nào release.
+//        return .waitReview
+//      }
+//      let releaseVersionString = version.attributes.version
+//      guard let releaseVersion = Double(releaseVersionString) else {
+//        // Không convert được sang dạng số thập phân.
+//        return .error
+//      }
+//
+//      if nowVersion <= releaseVersion {
+//        // Version hiện tại đã release. Cache version.
+//        update(releaseVersion)
+//        return .live
+//      } else {
+//        // Version hiện tại chưa release.
+//        return .waitReview
+//      }
+//    } catch let error {
+//      // Lỗi không load được version release, mặc định trạng thái bật.
+//      print("[AppManager] [ReleaseManager] error: \(error)")
       return .error
-    }
+//    }
   }
   
   private func change(state: State) {

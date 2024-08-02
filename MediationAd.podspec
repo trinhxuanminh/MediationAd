@@ -19,4 +19,12 @@ This CocoaPods library helps you do ad handling.
   spec.source_files  = "MediationAd/**/*.{h,m,swift}"
   
   spec.static_framework = true
+  
+  spec.dependency 'Google-Mobile-Ads-SDK', '11.4.0'
+  spec.dependency 'Firebase', '10.25.0'
+  spec.dependency 'FirebaseRemoteConfig', '10.25.0'
+  spec.dependency 'AppsFlyerFramework', '6.14.3'
+  spec.dependency 'AppsFlyer-AdRevenue', '6.14.3'
+  spec.dependency 'PurchaseConnector', '6.14.3'
+  spec.dependency 'SwiftJWT', '3.6.200'
 end

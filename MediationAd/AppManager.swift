@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import FirebaseCore
 import FirebaseRemoteConfig
 
 public class AppManager {
@@ -23,6 +24,7 @@ public class AppManager {
                          privateKey: String,
                          completed: @escaping RemoteHandler
   ) {
+    FirebaseApp.configure()
     NetworkManager.shared.$isConnected
       .sink { [weak self] isConnected in
         guard let self else {
