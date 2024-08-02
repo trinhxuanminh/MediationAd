@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66CAC55F0E7176AE502CA342 /* Pods_MediationAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B577D03DF97963CAAE73C2 /* Pods_MediationAd.framework */; };
 		963702E12C5C8B38005B52CA /* MediationAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 963702E02C5C8B38005B52CA /* MediationAd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		963702EE2C5C8BB9005B52CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963702ED2C5C8BB9005B52CA /* AppDelegate.swift */; };
 		963702F02C5C8BB9005B52CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963702EF2C5C8BB9005B52CA /* SceneDelegate.swift */; };
@@ -14,9 +15,14 @@
 		963702F52C5C8BB9005B52CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963702F32C5C8BB9005B52CA /* Main.storyboard */; };
 		963702F72C5C8BBA005B52CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963702F62C5C8BBA005B52CA /* Assets.xcassets */; };
 		963702FA2C5C8BBA005B52CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963702F82C5C8BBA005B52CA /* LaunchScreen.storyboard */; };
+		D2EE6C3AE3ABDE7EA0F5144F /* Pods_MediationAdExamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DC44992BC20DC5FC362816 /* Pods_MediationAdExamples.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33DC44992BC20DC5FC362816 /* Pods_MediationAdExamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAdExamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		34B8225761EFED8C9EB590E9 /* Pods-MediationAdExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.release.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.release.xcconfig"; sourceTree = "<group>"; };
+		67B577D03DF97963CAAE73C2 /* Pods_MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7944D19D754189649FD07170 /* Pods-MediationAd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.debug.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.debug.xcconfig"; sourceTree = "<group>"; };
 		963702DD2C5C8B38005B52CA /* MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		963702E02C5C8B38005B52CA /* MediationAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediationAd.h; sourceTree = "<group>"; };
 		963702EB2C5C8BB9005B52CA /* MediationAdExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediationAdExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -27,6 +33,8 @@
 		963702F62C5C8BBA005B52CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		963702F92C5C8BBA005B52CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		963702FB2C5C8BBA005B52CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED99A3ACFF97E24B77D01C04 /* Pods-MediationAdExamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.debug.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.debug.xcconfig"; sourceTree = "<group>"; };
+		F4747CAD961DFA0AC3F01D07 /* Pods-MediationAd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.release.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66CAC55F0E7176AE502CA342 /* Pods_MediationAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2EE6C3AE3ABDE7EA0F5144F /* Pods_MediationAdExamples.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +63,8 @@
 				963702DF2C5C8B38005B52CA /* MediationAd */,
 				963702EC2C5C8BB9005B52CA /* MediationAdExamples */,
 				963702DE2C5C8B38005B52CA /* Products */,
+				BC88C66C1231F3E5BF7AB97C /* Pods */,
+				D434AA01CF720A02AAA2D40D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +99,27 @@
 			path = MediationAdExamples;
 			sourceTree = "<group>";
 		};
+		BC88C66C1231F3E5BF7AB97C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7944D19D754189649FD07170 /* Pods-MediationAd.debug.xcconfig */,
+				F4747CAD961DFA0AC3F01D07 /* Pods-MediationAd.release.xcconfig */,
+				ED99A3ACFF97E24B77D01C04 /* Pods-MediationAdExamples.debug.xcconfig */,
+				34B8225761EFED8C9EB590E9 /* Pods-MediationAdExamples.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D434AA01CF720A02AAA2D40D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67B577D03DF97963CAAE73C2 /* Pods_MediationAd.framework */,
+				33DC44992BC20DC5FC362816 /* Pods_MediationAdExamples.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -105,6 +138,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 963702E42C5C8B38005B52CA /* Build configuration list for PBXNativeTarget "MediationAd" */;
 			buildPhases = (
+				7F59262451AD85CB38973D21 /* [CP] Check Pods Manifest.lock */,
 				963702D82C5C8B38005B52CA /* Headers */,
 				963702D92C5C8B38005B52CA /* Sources */,
 				963702DA2C5C8B38005B52CA /* Frameworks */,
@@ -123,6 +157,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 963702FC2C5C8BBA005B52CA /* Build configuration list for PBXNativeTarget "MediationAdExamples" */;
 			buildPhases = (
+				E26C28685AB8943BB04A40A4 /* [CP] Check Pods Manifest.lock */,
 				963702E72C5C8BB9005B52CA /* Sources */,
 				963702E82C5C8BB9005B52CA /* Frameworks */,
 				963702E92C5C8BB9005B52CA /* Resources */,
@@ -192,6 +227,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7F59262451AD85CB38973D21 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MediationAd-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E26C28685AB8943BB04A40A4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MediationAdExamples-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		963702D92C5C8B38005B52CA /* Sources */ = {
@@ -360,6 +442,7 @@
 		};
 		963702E52C5C8B38005B52CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7944D19D754189649FD07170 /* Pods-MediationAd.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -394,6 +477,7 @@
 		};
 		963702E62C5C8B38005B52CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4747CAD961DFA0AC3F01D07 /* Pods-MediationAd.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -428,6 +512,7 @@
 		};
 		963702FD2C5C8BBA005B52CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED99A3ACFF97E24B77D01C04 /* Pods-MediationAdExamples.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -458,6 +543,7 @@
 		};
 		963702FE2C5C8BBA005B52CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34B8225761EFED8C9EB590E9 /* Pods-MediationAdExamples.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
