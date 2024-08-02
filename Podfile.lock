@@ -122,12 +122,12 @@ PODS:
     - LoggerAPI (~> 1.7)
 
 DEPENDENCIES:
-  - AppsFlyer-AdRevenue
+  - AppsFlyer-AdRevenue (= 6.14.3)
   - AppsFlyerFramework (= 6.14.3)
   - FirebaseAnalytics (= 10.25.0)
   - FirebaseRemoteConfig (= 10.25.0)
   - Google-Mobile-Ads-SDK (= 11.4.0)
-  - PurchaseConnector
+  - PurchaseConnector (= 6.14.3)
   - SwiftJWT (= 3.6.200)
 
 SPEC REPOS:
@@ -183,6 +183,6 @@ SPEC CHECKSUMS:
   PurchaseConnector: 728d0322e43eabaa6af982c4a71cb9f4d18a6755
   SwiftJWT: 88c412708f58c169d431d344c87bc79a87c830ae
 
-PODFILE CHECKSUM: f2747758225e1e0e206d0f2c492bd94fc1c56bae
+PODFILE CHECKSUM: 03c09ee8f1cc3827640f76597163ceacec36e215
 
 COCOAPODS: 1.15.2

@@ -13,7 +13,7 @@ This CocoaPods library helps you do ad handling.
   spec.author       = { "trinhxuanminh" => "trinhxuanminh2000@gmail.com" }
 
   spec.ios.deployment_target = "13.0"
-  spec.swift_version = "5.0"
+  spec.swift_version = "5.2"
 
   spec.source       = { :git => "https://github.com/trinhxuanminh/MediationAd.git", :tag => "#{spec.version}" }
   spec.source_files  = "MediationAd/**/*.{h,m,swift}"

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B7E7595A3ABE866D096BA7B /* Pods_MediationAdExamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 994C79FF4E43E48D485ACC1F /* Pods_MediationAdExamples.framework */; };
+		8ACE6640CC2B2AF92DDE505B /* Pods_MediationAdExamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86487EFEBA8E2882AC6173C9 /* Pods_MediationAdExamples.framework */; };
 		963702EE2C5C8BB9005B52CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963702ED2C5C8BB9005B52CA /* AppDelegate.swift */; };
 		963702F02C5C8BB9005B52CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963702EF2C5C8BB9005B52CA /* SceneDelegate.swift */; };
 		963702F22C5C8BB9005B52CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963702F12C5C8BB9005B52CA /* ViewController.swift */; };
@@ -35,15 +35,15 @@
 		963703292C5C9B13005B52CA /* TrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703282C5C9B13005B52CA /* TrackingManager.swift */; };
 		9637032B2C5C9B4D005B52CA /* ReleaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637032A2C5C9B4D005B52CA /* ReleaseManager.swift */; };
 		9637032D2C5C9B66005B52CA /* RemoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637032C2C5C9B66005B52CA /* RemoteManager.swift */; };
-		963703312C5CA2F9005B52CA /* MediationAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 963703302C5CA2F9005B52CA /* MediationAd.h */; };
-		E36F46B919A1BFCBD8665539 /* Pods_MediationAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CFB253DD8F08DE3792D3FB /* Pods_MediationAd.framework */; };
+		98E623CAEAC6475A0EFD0BAC /* Pods_MediationAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20270008799DBD3B25341E4 /* Pods_MediationAd.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		06CFB253DD8F08DE3792D3FB /* Pods_MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		14A8FE35A1A77874A6843480 /* Pods-MediationAd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.debug.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.debug.xcconfig"; sourceTree = "<group>"; };
-		31E706B9B33D0DA620129194 /* Pods-MediationAdExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.release.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.release.xcconfig"; sourceTree = "<group>"; };
-		57DD5009319EC039841898A2 /* Pods-MediationAd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.release.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.release.xcconfig"; sourceTree = "<group>"; };
+		4EDE9C7A225C1A36E705073D /* Pods-MediationAd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.debug.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.debug.xcconfig"; sourceTree = "<group>"; };
+		55F18D7FD164C16AD659607F /* Pods-MediationAdExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.release.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.release.xcconfig"; sourceTree = "<group>"; };
+		6208AD34656C7E871C36338D /* Pods-MediationAdExamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.debug.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.debug.xcconfig"; sourceTree = "<group>"; };
+		625F0AF8C78E8717D9CCB741 /* Pods-MediationAd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.release.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.release.xcconfig"; sourceTree = "<group>"; };
+		86487EFEBA8E2882AC6173C9 /* Pods_MediationAdExamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAdExamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		963702DD2C5C8B38005B52CA /* MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		963702EB2C5C8BB9005B52CA /* MediationAdExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediationAdExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963702ED2C5C8BB9005B52CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,9 +74,7 @@
 		963703282C5C9B13005B52CA /* TrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingManager.swift; sourceTree = "<group>"; };
 		9637032A2C5C9B4D005B52CA /* ReleaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseManager.swift; sourceTree = "<group>"; };
 		9637032C2C5C9B66005B52CA /* RemoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteManager.swift; sourceTree = "<group>"; };
-		963703302C5CA2F9005B52CA /* MediationAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediationAd.h; sourceTree = "<group>"; };
-		994C79FF4E43E48D485ACC1F /* Pods_MediationAdExamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAdExamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8E077294728DD3545AF6874 /* Pods-MediationAdExamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.debug.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.debug.xcconfig"; sourceTree = "<group>"; };
+		A20270008799DBD3B25341E4 /* Pods_MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E36F46B919A1BFCBD8665539 /* Pods_MediationAd.framework in Frameworks */,
+				98E623CAEAC6475A0EFD0BAC /* Pods_MediationAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,13 +90,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B7E7595A3ABE866D096BA7B /* Pods_MediationAdExamples.framework in Frameworks */,
+				8ACE6640CC2B2AF92DDE505B /* Pods_MediationAdExamples.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83BB6B61EA8A6782D080752B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A20270008799DBD3B25341E4 /* Pods_MediationAd.framework */,
+				86487EFEBA8E2882AC6173C9 /* Pods_MediationAdExamples.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		963702D32C5C8B38005B52CA = {
 			isa = PBXGroup;
 			children = (
@@ -106,7 +113,7 @@
 				963702EC2C5C8BB9005B52CA /* MediationAdExamples */,
 				963702DE2C5C8B38005B52CA /* Products */,
 				BC88C66C1231F3E5BF7AB97C /* Pods */,
-				ABF3DD0B3FD727860DF50881 /* Frameworks */,
+				83BB6B61EA8A6782D080752B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,7 +129,6 @@
 		963702DF2C5C8B38005B52CA /* MediationAd */ = {
 			isa = PBXGroup;
 			children = (
-				963703302C5CA2F9005B52CA /* MediationAd.h */,
 				9637030B2C5C9989005B52CA /* Base */,
 				963703122C5C9A42005B52CA /* Extensions */,
 				963703152C5C9A77005B52CA /* Models */,
@@ -202,22 +208,13 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		ABF3DD0B3FD727860DF50881 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				06CFB253DD8F08DE3792D3FB /* Pods_MediationAd.framework */,
-				994C79FF4E43E48D485ACC1F /* Pods_MediationAdExamples.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		BC88C66C1231F3E5BF7AB97C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				14A8FE35A1A77874A6843480 /* Pods-MediationAd.debug.xcconfig */,
-				57DD5009319EC039841898A2 /* Pods-MediationAd.release.xcconfig */,
-				B8E077294728DD3545AF6874 /* Pods-MediationAdExamples.debug.xcconfig */,
-				31E706B9B33D0DA620129194 /* Pods-MediationAdExamples.release.xcconfig */,
+				4EDE9C7A225C1A36E705073D /* Pods-MediationAd.debug.xcconfig */,
+				625F0AF8C78E8717D9CCB741 /* Pods-MediationAd.release.xcconfig */,
+				6208AD34656C7E871C36338D /* Pods-MediationAdExamples.debug.xcconfig */,
+				55F18D7FD164C16AD659607F /* Pods-MediationAdExamples.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -229,7 +226,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				963703312C5CA2F9005B52CA /* MediationAd.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,12 +236,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 963702E42C5C8B38005B52CA /* Build configuration list for PBXNativeTarget "MediationAd" */;
 			buildPhases = (
-				7CCEC78C4401D74C734E3C4F /* [CP] Check Pods Manifest.lock */,
+				2BF44FB8CBC319ECD208C29F /* [CP] Check Pods Manifest.lock */,
 				963702D82C5C8B38005B52CA /* Headers */,
 				963702D92C5C8B38005B52CA /* Sources */,
 				963702DA2C5C8B38005B52CA /* Frameworks */,
 				963702DB2C5C8B38005B52CA /* Resources */,
-				BB8225566A61CE3A9B530003 /* [CP] Copy Pods Resources */,
+				605E83D0ABF3BBB2B76A0B49 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,7 +256,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 963702FC2C5C8BBA005B52CA /* Build configuration list for PBXNativeTarget "MediationAdExamples" */;
 			buildPhases = (
-				F17FCF34E008E6131A9AB868 /* [CP] Check Pods Manifest.lock */,
+				61E8CD49BDCDE5715C42EE68 /* [CP] Check Pods Manifest.lock */,
 				963702E72C5C8BB9005B52CA /* Sources */,
 				963702E82C5C8BB9005B52CA /* Frameworks */,
 				963702E92C5C8BB9005B52CA /* Resources */,
@@ -333,7 +329,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7CCEC78C4401D74C734E3C4F /* [CP] Check Pods Manifest.lock */ = {
+		2BF44FB8CBC319ECD208C29F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -355,7 +351,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BB8225566A61CE3A9B530003 /* [CP] Copy Pods Resources */ = {
+		605E83D0ABF3BBB2B76A0B49 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -372,7 +368,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MediationAd/Pods-MediationAd-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F17FCF34E008E6131A9AB868 /* [CP] Check Pods Manifest.lock */ = {
+		61E8CD49BDCDE5715C42EE68 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -584,7 +580,7 @@
 		};
 		963702E52C5C8B38005B52CA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14A8FE35A1A77874A6843480 /* Pods-MediationAd.debug.xcconfig */;
+			baseConfigurationReference = 4EDE9C7A225C1A36E705073D /* Pods-MediationAd.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -622,7 +618,7 @@
 		};
 		963702E62C5C8B38005B52CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57DD5009319EC039841898A2 /* Pods-MediationAd.release.xcconfig */;
+			baseConfigurationReference = 625F0AF8C78E8717D9CCB741 /* Pods-MediationAd.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -659,7 +655,7 @@
 		};
 		963702FD2C5C8BBA005B52CA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8E077294728DD3545AF6874 /* Pods-MediationAdExamples.debug.xcconfig */;
+			baseConfigurationReference = 6208AD34656C7E871C36338D /* Pods-MediationAdExamples.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -690,7 +686,7 @@
 		};
 		963702FE2C5C8BBA005B52CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31E706B9B33D0DA620129194 /* Pods-MediationAdExamples.release.xcconfig */;
+			baseConfigurationReference = 55F18D7FD164C16AD659607F /* Pods-MediationAdExamples.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

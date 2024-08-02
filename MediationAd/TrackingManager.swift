@@ -64,10 +64,10 @@ extension TrackingManager {
   func initialize(devKey: String, appID: String, timeout: Double) {
     AppsFlyerLib.shared().appsFlyerDevKey = devKey
     AppsFlyerLib.shared().appleAppID = appID
-    AppsFlyerLib.shared().delegate = self
+//    AppsFlyerLib.shared().delegate = self
     
-    PurchaseConnector.shared().purchaseRevenueDelegate = self
-    PurchaseConnector.shared().purchaseRevenueDataSource = self
+//    PurchaseConnector.shared().purchaseRevenueDelegate = self
+//    PurchaseConnector.shared().purchaseRevenueDataSource = self
     PurchaseConnector.shared().autoLogPurchaseRevenue = [.autoRenewableSubscriptions, .inAppPurchases]
     
     AppsFlyerLib.shared().waitForATTUserAuthorization(timeoutInterval: timeout)
@@ -103,44 +103,44 @@ extension TrackingManager {
   }
 }
 
-extension TrackingManager: PurchaseRevenueDataSource, PurchaseRevenueDelegate {
-  public func didReceivePurchaseRevenueValidationInfo(_ validationInfo: [AnyHashable : Any]?,
-                                                      error: Error?
-  ) {
-    print("[AppManager] [TrackingManager] PurchaseRevenueDelegate: \(String(describing: validationInfo))")
-    print("[AppManager] [TrackingManager] PurchaseRevenueDelegate: \(String(describing: error))")
-  }
-  
-  public func purchaseRevenueAdditionalParameters(for products: Set<SKProduct>,
-                                                  transactions: Set<SKPaymentTransaction>?
-  ) -> [AnyHashable : Any]? {
-    return [
-      "additionalParameters": [
-        "param1": "value1",
-        "param2": "value2"
-      ]
-    ]
-  }
-}
+//extension TrackingManager: PurchaseRevenueDataSource, PurchaseRevenueDelegate {
+//  public func didReceivePurchaseRevenueValidationInfo(_ validationInfo: [AnyHashable : Any]?,
+//                                                      error: Error?
+//  ) {
+//    print("[AppManager] [TrackingManager] PurchaseRevenueDelegate: \(String(describing: validationInfo))")
+//    print("[AppManager] [TrackingManager] PurchaseRevenueDelegate: \(String(describing: error))")
+//  }
+//  
+//  public func purchaseRevenueAdditionalParameters(for products: Set<SKProduct>,
+//                                                  transactions: Set<SKPaymentTransaction>?
+//  ) -> [AnyHashable : Any]? {
+//    return [
+//      "additionalParameters": [
+//        "param1": "value1",
+//        "param2": "value2"
+//      ]
+//    ]
+//  }
+//}
 
-extension TrackingManager: AppsFlyerLibDelegate {
-  public func onConversionDataSuccess(_ installData: [AnyHashable: Any]) {
-    guard let status = installData["af_status"] as? String else {
-      return
-    }
-    if status == "Non-organic" {
-      // Business logic for Non-organic install scenario is invoked
-      if let sourceID = installData["media_source"],
-         let campaign = installData["campaign"] {
-        print("[AppManager] [TrackingManager] This is a Non-organic install. Media source: \(sourceID)  Campaign: \(campaign)")
-      }
-    } else {
-      // Business logic for organic install scenario is invoked
-    }
-  }
-  
-  public func onConversionDataFail(_ error: Error) {
-    // Logic for when conversion data resolution fails
-    print("[AppManager] [TrackingManager] Error: \(error)")
-  }
-}
+//extension TrackingManager: AppsFlyerLibDelegate {
+//  public func onConversionDataSuccess(_ installData: [AnyHashable: Any]) {
+//    guard let status = installData["af_status"] as? String else {
+//      return
+//    }
+//    if status == "Non-organic" {
+//      // Business logic for Non-organic install scenario is invoked
+//      if let sourceID = installData["media_source"],
+//         let campaign = installData["campaign"] {
+//        print("[AppManager] [TrackingManager] This is a Non-organic install. Media source: \(sourceID)  Campaign: \(campaign)")
+//      }
+//    } else {
+//      // Business logic for organic install scenario is invoked
+//    }
+//  }
+//  
+//  public func onConversionDataFail(_ error: Error) {
+//    // Logic for when conversion data resolution fails
+//    print("[AppManager] [TrackingManager] Error: \(error)")
+//  }
+//}
