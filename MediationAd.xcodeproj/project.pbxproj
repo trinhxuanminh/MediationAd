@@ -8,15 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		963702E12C5C8B38005B52CA /* MediationAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 963702E02C5C8B38005B52CA /* MediationAd.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		963702EE2C5C8BB9005B52CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963702ED2C5C8BB9005B52CA /* AppDelegate.swift */; };
+		963702F02C5C8BB9005B52CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963702EF2C5C8BB9005B52CA /* SceneDelegate.swift */; };
+		963702F22C5C8BB9005B52CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963702F12C5C8BB9005B52CA /* ViewController.swift */; };
+		963702F52C5C8BB9005B52CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963702F32C5C8BB9005B52CA /* Main.storyboard */; };
+		963702F72C5C8BBA005B52CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963702F62C5C8BBA005B52CA /* Assets.xcassets */; };
+		963702FA2C5C8BBA005B52CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963702F82C5C8BBA005B52CA /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		963702DD2C5C8B38005B52CA /* MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		963702E02C5C8B38005B52CA /* MediationAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediationAd.h; sourceTree = "<group>"; };
+		963702EB2C5C8BB9005B52CA /* MediationAdExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediationAdExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		963702ED2C5C8BB9005B52CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		963702EF2C5C8BB9005B52CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		963702F12C5C8BB9005B52CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		963702F42C5C8BB9005B52CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		963702F62C5C8BBA005B52CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		963702F92C5C8BBA005B52CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		963702FB2C5C8BBA005B52CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		963702DA2C5C8B38005B52CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		963702E82C5C8BB9005B52CA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -30,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				963702DF2C5C8B38005B52CA /* MediationAd */,
+				963702EC2C5C8BB9005B52CA /* MediationAdExamples */,
 				963702DE2C5C8B38005B52CA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -38,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				963702DD2C5C8B38005B52CA /* MediationAd.framework */,
+				963702EB2C5C8BB9005B52CA /* MediationAdExamples.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +71,20 @@
 				963702E02C5C8B38005B52CA /* MediationAd.h */,
 			);
 			path = MediationAd;
+			sourceTree = "<group>";
+		};
+		963702EC2C5C8BB9005B52CA /* MediationAdExamples */ = {
+			isa = PBXGroup;
+			children = (
+				963702ED2C5C8BB9005B52CA /* AppDelegate.swift */,
+				963702EF2C5C8BB9005B52CA /* SceneDelegate.swift */,
+				963702F12C5C8BB9005B52CA /* ViewController.swift */,
+				963702F32C5C8BB9005B52CA /* Main.storyboard */,
+				963702F62C5C8BBA005B52CA /* Assets.xcassets */,
+				963702F82C5C8BBA005B52CA /* LaunchScreen.storyboard */,
+				963702FB2C5C8BBA005B52CA /* Info.plist */,
+			);
+			path = MediationAdExamples;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +119,23 @@
 			productReference = 963702DD2C5C8B38005B52CA /* MediationAd.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		963702EA2C5C8BB9005B52CA /* MediationAdExamples */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 963702FC2C5C8BBA005B52CA /* Build configuration list for PBXNativeTarget "MediationAdExamples" */;
+			buildPhases = (
+				963702E72C5C8BB9005B52CA /* Sources */,
+				963702E82C5C8BB9005B52CA /* Frameworks */,
+				963702E92C5C8BB9005B52CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MediationAdExamples;
+			productName = MediationAdExamples;
+			productReference = 963702EB2C5C8BB9005B52CA /* MediationAdExamples.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -89,9 +143,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					963702DC2C5C8B38005B52CA = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					963702EA2C5C8BB9005B52CA = {
 						CreatedOnToolsVersion = 15.2;
 					};
 				};
@@ -110,6 +168,7 @@
 			projectRoot = "";
 			targets = (
 				963702DC2C5C8B38005B52CA /* MediationAd */,
+				963702EA2C5C8BB9005B52CA /* MediationAdExamples */,
 			);
 		};
 /* End PBXProject section */
@@ -119,6 +178,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		963702E92C5C8BB9005B52CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				963702FA2C5C8BBA005B52CA /* LaunchScreen.storyboard in Resources */,
+				963702F72C5C8BBA005B52CA /* Assets.xcassets in Resources */,
+				963702F52C5C8BB9005B52CA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,7 +201,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		963702E72C5C8BB9005B52CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				963702F22C5C8BB9005B52CA /* ViewController.swift in Sources */,
+				963702EE2C5C8BB9005B52CA /* AppDelegate.swift in Sources */,
+				963702F02C5C8BB9005B52CA /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		963702F32C5C8BB9005B52CA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				963702F42C5C8BB9005B52CA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		963702F82C5C8BBA005B52CA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				963702F92C5C8BBA005B52CA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		963702E22C5C8B38005B52CA /* Debug */ = {
@@ -188,7 +286,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -248,7 +346,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -285,6 +383,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.proxglobal.MediationAd;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -316,6 +417,69 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.proxglobal.MediationAd;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		963702FD2C5C8BBA005B52CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T852J6UR43;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MediationAdExamples/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MediationAdExamples;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.proxglobal.MediationAdExamples;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		963702FE2C5C8BBA005B52CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T852J6UR43;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MediationAdExamples/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MediationAdExamples;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.proxglobal.MediationAdExamples;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -339,6 +503,15 @@
 			buildConfigurations = (
 				963702E52C5C8B38005B52CA /* Debug */,
 				963702E62C5C8B38005B52CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		963702FC2C5C8BBA005B52CA /* Build configuration list for PBXNativeTarget "MediationAdExamples" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				963702FD2C5C8BBA005B52CA /* Debug */,
+				963702FE2C5C8BBA005B52CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
