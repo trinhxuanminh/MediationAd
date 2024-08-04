@@ -6,10 +6,10 @@
 //
 
 import Foundation
-//import SwiftJWT
-//
-//struct TokenClaims: Claims {
-//  let iss: String
-//  let exp: Date
-//  let aud: String
-//}
+import SwiftJWT
+
+struct TokenClaims: Claims {
+  let iss: String
+  let exp: Date
+  let aud: String
+}

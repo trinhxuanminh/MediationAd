@@ -7,4 +7,4 @@
 
 import Foundation
 
-//public typealias ConsentHandler = ((ConsentManager.State) -> Void)
+public typealias ConsentHandler = ((ConsentManager.State) -> Void)
