@@ -128,7 +128,7 @@ extension ReleaseManager {
       }
     } catch let error {
       // Lỗi không load được version release, mặc định trạng thái bật.
-      print("[AppManager] [ReleaseManager] error: \(error)")
+      print("[MediationAd] [ReleaseManager] error: \(error)")
       return .error
     }
   }
@@ -171,7 +171,7 @@ extension ReleaseManager {
       }
     } catch let error {
       // Lỗi không load được version release, mặc định trạng thái bật.
-      print("[AppManager] [ReleaseManager] error: \(error)")
+      print("[MediationAd] [ReleaseManager] error: \(error)")
       return .error
     }
   }
@@ -183,7 +183,7 @@ extension ReleaseManager {
     self.releaseState = state
     releaseSubject.send(state)
     
-    print("[AppManager] [ReleaseManager] state: \(state)")
+    print("[MediationAd] [ReleaseManager] state: \(state)")
   }
   
   private func fetch() {

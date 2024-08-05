@@ -9,7 +9,7 @@ import UIKit
 import GoogleMobileAds
 import AppsFlyerAdRevenue
 
-open class AdMobBannerView: UIView {
+open class AdMobBannerAdView: UIView {
   enum State {
     case wait
     case loading
@@ -84,7 +84,7 @@ open class AdMobBannerView: UIView {
     }
     switch AdManager.shared.status(type: .onceUsed(.banner), name: name) {
     case false:
-      print("[AdManager] [BannerAd] Ads are not allowed to show! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [BannerAd] Ads are not allowed to show! (\(String(describing: adUnitID)))")
       errored()
       return
     case true:
@@ -107,17 +107,17 @@ open class AdMobBannerView: UIView {
   }
 }
 
-extension AdMobBannerView: GADBannerViewDelegate {
+extension AdMobBannerAdView: GADBannerViewDelegate {
   public func bannerView(_ bannerView: GADBannerView,
                          didFailToReceiveAdWithError error: Error
   ) {
-    print("[AdManager] [BannerAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+    print("[MediationAd] [AdManager] [BannerAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
     self.state = .error
     errored()
   }
   
   public func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-    print("[AdManager] [BannerAd] Did load! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [BannerAd] Did load! (\(String(describing: adUnitID)))")
     self.state = .receive
     self.bringSubviewToFront(self.bannerAdView)
     didReceive?()
@@ -142,7 +142,7 @@ extension AdMobBannerView: GADBannerViewDelegate {
   }
 }
 
-extension AdMobBannerView {
+extension AdMobBannerAdView {
   private func errored() {
     didError?()
   }
@@ -153,11 +153,11 @@ extension AdMobBannerView {
     }
     
     guard let adUnitID = adUnitID else {
-      print("[AdManager] [BannerAd] Failed to load - not initialized yet! Please install ID.")
+      print("[MediationAd] [AdManager] [BannerAd] Failed to load - not initialized yet! Please install ID.")
       return
     }
     
-    print("[AdManager] [BannerAd] Start load! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [BannerAd] Start load! (\(String(describing: adUnitID)))")
     self.state = .loading
     DispatchQueue.main.async { [weak self] in
       guard let self = self else {

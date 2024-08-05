@@ -22,7 +22,6 @@ public class RemoteManager {
   @Published public private(set) var remoteState: State = .wait
   let remoteSubject = PassthroughSubject<State, Never>()
   let remoteConfig = RemoteConfig.remoteConfig()
-  private let consentKey = "CMP"
   private let remoteTimeout = 10.0
 }
 
@@ -37,7 +36,7 @@ extension RemoteManager {
     guard remoteState == .wait else {
       return
     }
-    print("[AppManager] [RemoteManager] Start load!")
+    print("[MediationAd] [RemoteManager] Start load!")
     LogEventManager.shared.log(event: .remoteConfigStartLoad)
     
     DispatchQueue.main.asyncAfter(deadline: .now() + remoteTimeout, execute: timeoutRemote)
@@ -55,10 +54,8 @@ extension RemoteManager {
         return
       }
       self.remoteConfig.activate()
-      let consentData = remoteConfig.configValue(forKey: consentKey).dataValue
-      ConsentManager.shared.update(consentData: consentData)
       
-      print("[AppManager] [RemoteManager] Success!")
+      print("[MediationAd] [RemoteManager] Success!")
       LogEventManager.shared.log(event: .remoteConfigSuccess)
       
       change(state: .success)
@@ -69,7 +66,7 @@ extension RemoteManager {
     guard remoteState == .wait else {
       return
     }
-    print("[AppManager] [RemoteManager] First load error!")
+    print("[MediationAd] [RemoteManager] First load error!")
     LogEventManager.shared.log(event: .remoteConfigLoadFail)
     
     change(state: .error)
@@ -79,7 +76,7 @@ extension RemoteManager {
     guard remoteState == .wait else {
       return
     }
-    print("[AppManager] [RemoteManager] First load timeout!")
+    print("[MediationAd] [RemoteManager] First load timeout!")
     LogEventManager.shared.log(event: .remoteConfigTimeout)
     
     change(state: .timeout)

@@ -78,13 +78,13 @@ public class AdManager {
     self.isConsent = isConsent
     
     guard !isPremium else {
-      print("[AdManager] Premium!")
+      print("[MediationAd] [AdManager] Premium!")
       change(state: .premium)
       return
     }
     
-    print("[AdManager] Start register!")
-    LogEventManager.shared.log(event: .register)
+    print("[MediationAd] [AdManager] Start register!")
+    LogEventManager.shared.log(event: .startRegister)
     
     decoding(data: remoteData)
     fetchCache()
@@ -93,22 +93,22 @@ public class AdManager {
   
   public func status(type: AdType, name: String) -> Bool? {
     guard !isPremium else {
-      print("[AdManager] Premium!")
+      print("[MediationAd] [AdManager] Premium!")
       return nil
     }
     guard let adConfig else {
-      print("[AdManager] Not yet registered!")
+      print("[MediationAd] [AdManager] Not yet registered!")
       return nil
     }
     guard adConfig.status else {
       return false
     }
     guard registerState == .success else {
-      print("[AdManager] Can't Request Ads!")
+      print("[MediationAd] [AdManager] Can't Request Ads!")
       return nil
     }
     guard let adConfig = getAd(type: type, name: name) as? AdConfigProtocol else {
-      print("[AdManager] Ads don't exist! (\(name))")
+      print("[MediationAd] [AdManager] Ads don't exist! (\(name))")
       return nil
     }
     if !isRelease, adConfig.isAuto == true {
@@ -124,7 +124,7 @@ public class AdManager {
   ) {
     switch status(type: .reuse(type), name: name) {
     case false:
-      print("[AdManager] Ads are not allowed to show! (\(name))")
+      print("[MediationAd] [AdManager] Ads are not allowed to show! (\(name))")
       fail?()
       return
     case true:
@@ -134,7 +134,7 @@ public class AdManager {
       return
     }
     guard let adConfig = getAd(type: .reuse(type), name: name) as? AdConfigProtocol else {
-      print("[AdManager] Ads don't exist! (\(name))")
+      print("[MediationAd] [AdManager] Ads don't exist! (\(name))")
       fail?()
       return
     }
@@ -150,7 +150,7 @@ public class AdManager {
       switch type {
       case .splash:
         guard let splash = adConfig as? Splash else {
-          print("[AdManager] Format conversion error! (\(name))")
+          print("[MediationAd] [AdManager] Format conversion error! (\(name))")
           fail?()
           return
         }
@@ -181,7 +181,7 @@ public class AdManager {
   ) {
     switch status(type: .onceUsed(.native), name: name) {
     case false:
-      print("[AdManager] Ads are not allowed to show! (\(name))")
+      print("[MediationAd] [AdManager] Ads are not allowed to show! (\(name))")
       fail?()
       return
     case true:
@@ -191,12 +191,12 @@ public class AdManager {
       return
     }
     guard let native = getAd(type: .onceUsed(.native), name: name) as? Native else {
-      print("[AdManager] Ads don't exist! (\(name))")
+      print("[MediationAd] [AdManager] Ads don't exist! (\(name))")
       fail?()
       return
     }
     guard native.isPreload == true else {
-      print("[AdManager] Ads are not preloaded! (\(name))")
+      print("[MediationAd] [AdManager] Ads are not preloaded! (\(name))")
       fail?()
       return
     }
@@ -229,7 +229,7 @@ public class AdManager {
   ) {
     switch status(type: .reuse(type), name: name) {
     case false:
-      print("[AdManager] Ads are not allowed to show! (\(name))")
+      print("[MediationAd] [AdManager] Ads are not allowed to show! (\(name))")
       didFail?()
       return
     case true:
@@ -239,22 +239,22 @@ public class AdManager {
       return
     }
     guard let adConfig = getAd(type: .reuse(type), name: name) as? AdConfigProtocol else {
-      print("[AdManager] Ads don't exist! (\(name))")
+      print("[MediationAd] [AdManager] Ads don't exist! (\(name))")
       didFail?()
       return
     }
     guard let ad = listReuseAd[type.rawValue + adConfig.id] else {
-      print("[AdManager] Ads do not exist! (\(name))")
+      print("[MediationAd] [AdManager] Ads do not exist! (\(name))")
       didFail?()
       return
     }
     guard !checkIsPresent() else {
-      print("[AdManager] Ads display failure - other ads is showing! (\(name))")
+      print("[MediationAd] [AdManager] Ads display failure - other ads is showing! (\(name))")
       didFail?()
       return
     }
     guard checkFrequency(adConfig: adConfig, ad: ad) else {
-      print("[AdManager] Ads hasn't been displayed yet! (\(name))")
+      print("[MediationAd] [AdManager] Ads hasn't been displayed yet! (\(name))")
       didFail?()
       return
     }
@@ -329,7 +329,7 @@ extension AdManager {
       return
     }
     guard let adConfig = try? JSONDecoder().decode(AdConfig.self, from: data) else {
-      print("[AdManager] Invalid (AdMobConfig) format!")
+      print("[MediationAd] [AdManager] Invalid (AdMobConfig) format!")
       return
     }
     self.adConfig = adConfig

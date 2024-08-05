@@ -8,7 +8,7 @@
 import UIKit
 import GoogleMobileAds
 
-open class AdMobNativeView: UIView, AdViewProtocol {
+open class AdMobNativeAdView: UIView, AdViewProtocol {
   enum State {
     case wait
     case loading
@@ -69,7 +69,7 @@ open class AdMobNativeView: UIView, AdViewProtocol {
     
     switch AdManager.shared.status(type: .onceUsed(.native), name: name) {
     case false:
-      print("[AdManager] [NativeAd] Ads are not allowed to show! (\(name))")
+      print("[MediationAd] [AdManager] [NativeAd] Ads are not allowed to show! (\(name))")
       errored()
       return
     case true:
@@ -121,7 +121,7 @@ open class AdMobNativeView: UIView, AdViewProtocol {
   }
 }
 
-extension AdMobNativeView {
+extension AdMobNativeAdView {
   private func errored() {
     didError?()
   }

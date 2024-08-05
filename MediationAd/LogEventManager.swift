@@ -37,7 +37,7 @@ enum Event {
   case agreeTracking
   case noTracking
   
-  case register
+  case startRegister
   
   var name: String {
     switch self {
@@ -75,8 +75,8 @@ enum Event {
       return "Agree_Tracking"
     case .noTracking:
       return "No_Tracking"
-    case .register:
-      return "Register"
+    case .startRegister:
+      return "Start register"
     }
   }
   

@@ -47,16 +47,16 @@ class AdMobInterstitialAd: NSObject, ReuseAdProtocol {
             didHide: Handler?
   ) {
     guard isReady() else {
-      print("[AdManager] [InterstitialAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [InterstitialAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
     guard !presentState else {
-      print("[AdManager] [InterstitialAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [InterstitialAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
-    print("[AdManager] [InterstitialAd] Requested to show! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [InterstitialAd] Requested to show! (\(String(describing: adUnitID)))")
     self.didShowFail = didFail
     self.willPresent = willPresent
     self.didHide = didHide
@@ -69,20 +69,20 @@ extension AdMobInterstitialAd: GADFullScreenContentDelegate {
   func ad(_ ad: GADFullScreenPresentingAd,
           didFailToPresentFullScreenContentWithError error: Error
   ) {
-    print("[AdManager] [InterstitialAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [InterstitialAd] Did fail to show content! (\(String(describing: adUnitID)))")
     didShowFail?()
     self.interstitialAd = nil
     load()
   }
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[AdManager] [InterstitialAd] Will display! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [InterstitialAd] Will display! (\(String(describing: adUnitID)))")
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[AdManager] [InterstitialAd] Did hide! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [InterstitialAd] Did hide! (\(String(describing: adUnitID)))")
     didHide?()
     self.interstitialAd = nil
     self.presentState = false
@@ -108,7 +108,7 @@ extension AdMobInterstitialAd {
     }
     
     guard let adUnitID = adUnitID else {
-      print("[AdManager] [InterstitialAd] Failed to load - not initialized yet! Please install ID.")
+      print("[MediationAd] [AdManager] [InterstitialAd] Failed to load - not initialized yet! Please install ID.")
       return
     }
     
@@ -118,7 +118,7 @@ extension AdMobInterstitialAd {
       }
       
       self.isLoading = true
-      print("[AdManager] [InterstitialAd] Start load! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [InterstitialAd] Start load! (\(String(describing: adUnitID)))")
       
       let request = GADRequest()
       GADInterstitialAd.load(
@@ -136,11 +136,11 @@ extension AdMobInterstitialAd {
             return
           }
           let delaySec = 5.0
-          print("[AdManager] [InterstitialAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
+          print("[MediationAd] [AdManager] [InterstitialAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
           DispatchQueue.global().asyncAfter(deadline: .now() + delaySec, execute: self.load)
           return
         }
-        print("[AdManager] [InterstitialAd] Did load! (\(String(describing: adUnitID)))")
+        print("[MediationAd] [AdManager] [InterstitialAd] Did load! (\(String(describing: adUnitID)))")
         self.retryAttempt = 0
         self.interstitialAd = ad
         self.interstitialAd?.fullScreenContentDelegate = self

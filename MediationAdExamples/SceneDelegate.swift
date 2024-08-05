@@ -6,12 +6,20 @@
 //
 
 import UIKit
+import MediationAd
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?
   
   func sceneDidBecomeActive(_ scene: UIScene) {
-    
+    guard let topVC = UIApplication.topStackViewController() else {
+      return
+    }
+    AdManager.shared.show(type: .appOpen,
+                          name: "App_Open",
+                          rootViewController: topVC,
+                          didFail: nil,
+                          didHide: nil)
   }
 }
 

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="MediationAdExamples" customModuleProvider="target">
+            <connections>
+                <outlet property="updateConsentButton" destination="he4-Gq-28U" id="Zcb-Qs-Oxq"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGy-0y-ZMi">
+                    <rect key="frame" x="16" y="48" width="110.5" height="48"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNb-Zm-BrO">
+                    <rect key="frame" x="0.0" y="126" width="414" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="Oy4-3J-IR7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Show InterstitialAd">
+                        <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="touchShowInterstitialAd:" destination="-1" eventType="touchUpInside" id="d0t-w5-EXU"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aS-J7-CFt">
+                    <rect key="frame" x="0.0" y="321" width="414" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="HuA-k4-WwO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Native">
+                        <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="touchInterfaceBuilder:" destination="-1" eventType="touchUpInside" id="vFP-s8-5GN"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3p-5B-jGN">
+                    <rect key="frame" x="0.0" y="191" width="414" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="aiL-Bi-9gn"/>
+                        <constraint firstAttribute="height" constant="35" id="gbW-01-c6i"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Show RewardAd">
+                        <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="touchShowRewardAd:" destination="-1" eventType="touchUpInside" id="1ts-Yz-fQP"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUq-88-qch">
+                    <rect key="frame" x="0.0" y="256" width="414" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="EOg-2h-Nmg"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Show RewardInterstitialAd">
+                        <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="showRewardInterstitialAd:" destination="-1" eventType="touchUpInside" id="FoC-zc-FcT"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqy-ZG-RsW">
+                    <rect key="frame" x="0.0" y="386" width="414" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="Ewc-MX-F6h"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Banner">
+                        <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="touchBanner:" destination="-1" eventType="touchUpInside" id="pIg-8p-ju2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="he4-Gq-28U">
+                    <rect key="frame" x="0.0" y="827" width="414" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="EHg-bW-oPT"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Setting privacy">
+                        <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="touchSettingPrivacy:" destination="-1" eventType="touchUpInside" id="eyz-HP-Vwd"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="6aS-J7-CFt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0Qj-TF-Y9W"/>
+                <constraint firstItem="b3p-5B-jGN" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="3G5-r9-hs0"/>
+                <constraint firstItem="he4-Gq-28U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4YA-kx-nMM"/>
+                <constraint firstItem="hqy-ZG-RsW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8C3-Vk-tIs"/>
+                <constraint firstAttribute="trailing" secondItem="GNb-Zm-BrO" secondAttribute="trailing" id="FDZ-2x-KsN"/>
+                <constraint firstItem="6aS-J7-CFt" firstAttribute="top" secondItem="RUq-88-qch" secondAttribute="bottom" constant="30" id="FOJ-Li-n2S"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rGy-0y-ZMi" secondAttribute="trailing" id="KSY-zn-pru"/>
+                <constraint firstItem="GNb-Zm-BrO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pey-9o-yF8"/>
+                <constraint firstItem="b3p-5B-jGN" firstAttribute="top" secondItem="GNb-Zm-BrO" secondAttribute="bottom" constant="30" id="Rc3-Pk-Sul"/>
+                <constraint firstItem="hqy-ZG-RsW" firstAttribute="top" secondItem="6aS-J7-CFt" secondAttribute="bottom" constant="30" id="Yrj-Ja-Nob"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="he4-Gq-28U" secondAttribute="bottom" id="ZKg-Iv-nUl"/>
+                <constraint firstItem="b3p-5B-jGN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ZUa-pJ-ofS"/>
+                <constraint firstItem="RUq-88-qch" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="aVa-8l-jCX"/>
+                <constraint firstItem="GNb-Zm-BrO" firstAttribute="top" secondItem="rGy-0y-ZMi" secondAttribute="bottom" constant="30" id="d0P-ze-IUI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="he4-Gq-28U" secondAttribute="trailing" id="gxT-Bl-Owk"/>
+                <constraint firstAttribute="trailing" secondItem="hqy-ZG-RsW" secondAttribute="trailing" id="jl5-TV-VxY"/>
+                <constraint firstItem="RUq-88-qch" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kHB-83-FxB"/>
+                <constraint firstItem="RUq-88-qch" firstAttribute="top" secondItem="b3p-5B-jGN" secondAttribute="bottom" constant="30" id="lUh-l4-gqj"/>
+                <constraint firstAttribute="trailing" secondItem="6aS-J7-CFt" secondAttribute="trailing" id="o6K-Cl-aaY"/>
+                <constraint firstItem="rGy-0y-ZMi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ra4-8Z-GeN"/>
+                <constraint firstItem="rGy-0y-ZMi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="y2I-4L-8IF"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="130"/>
+        </view>
+    </objects>
+</document>

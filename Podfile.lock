@@ -116,11 +116,15 @@ PODS:
     - nanopb/encode (= 2.30910.0)
   - nanopb/decode (2.30910.0)
   - nanopb/encode (2.30910.0)
+  - NVActivityIndicatorView (5.1.1):
+    - NVActivityIndicatorView/Base (= 5.1.1)
+  - NVActivityIndicatorView/Base (5.1.1)
   - PromisesObjC (2.4.0)
   - PurchaseConnector (6.14.3):
     - PurchaseConnector/Main (= 6.14.3)
   - PurchaseConnector/Main (6.14.3):
     - AppsFlyerFramework (= 6.14.3)
+  - SnapKit (5.6.0)
   - SwiftJWT (3.6.200):
     - BlueCryptor (~> 1.0)
     - BlueECC (~> 1.1)
@@ -134,7 +138,9 @@ DEPENDENCIES:
   - Firebase (= 10.25.0)
   - FirebaseRemoteConfig (= 10.25.0)
   - Google-Mobile-Ads-SDK (= 11.4.0)
+  - NVActivityIndicatorView (= 5.1.1)
   - PurchaseConnector (= 6.14.3)
+  - SnapKit (= 5.6.0)
   - SwiftJWT (= 3.6.200)
 
 SPEC REPOS:
@@ -161,8 +167,10 @@ SPEC REPOS:
     - LoggerAPI
     - Logging
     - nanopb
+    - NVActivityIndicatorView
     - PromisesObjC
     - PurchaseConnector
+    - SnapKit
     - SwiftJWT
 
 SPEC CHECKSUMS:
@@ -188,10 +196,12 @@ SPEC CHECKSUMS:
   LoggerAPI: ad9c4a6f1e32f518fdb43a1347ac14d765ab5e3d
   Logging: beeb016c9c80cf77042d62e83495816847ef108b
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
+  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PurchaseConnector: 728d0322e43eabaa6af982c4a71cb9f4d18a6755
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftJWT: 88c412708f58c169d431d344c87bc79a87c830ae
 
-PODFILE CHECKSUM: 804d229c8d920e2568a5e544178a7ff02310a4fb
+PODFILE CHECKSUM: 99eb3e68061a356a0fdbbb7a446dcddc6c6f7a5a
 
 COCOAPODS: 1.15.2

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32A392931564CC4F346EC4C9 /* Pods_MediationAdExamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC94DB317CEF72949DA1B54E /* Pods_MediationAdExamples.framework */; };
 		963703012C5C9061005B52CA /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703002C5C9061005B52CA /* AppManager.swift */; };
 		963703032C5C9916005B52CA /* ConsentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703022C5C9916005B52CA /* ConsentManager.swift */; };
 		963703062C5C993E005B52CA /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703052C5C993E005B52CA /* APIError.swift */; };
@@ -46,7 +47,7 @@
 		966172702C5F78B20007C760 /* FrequencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661726E2C5F78B20007C760 /* FrequencyManager.swift */; };
 		966172732C5F790A0007C760 /* Icon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 966172712C5F790A0007C760 /* Icon.xcassets */; };
 		966172742C5F790A0007C760 /* AdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172722C5F790A0007C760 /* AdManager.swift */; };
-		966172782C5F796B0007C760 /* CustomNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 966172762C5F796B0007C760 /* CustomNativeAdView.xib */; };
+		966172782C5F796B0007C760 /* CustomAdMobNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 966172762C5F796B0007C760 /* CustomAdMobNativeAdView.xib */; };
 		966172792C5F796B0007C760 /* RegistrationStructure.json in Resources */ = {isa = PBXBuildFile; fileRef = 966172772C5F796B0007C760 /* RegistrationStructure.json */; };
 		966172842C5F7A070007C760 /* AdMobSplashAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661727E2C5F7A060007C760 /* AdMobSplashAd.swift */; };
 		966172852C5F7A070007C760 /* AdMobNativeAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661727F2C5F7A060007C760 /* AdMobNativeAd.swift */; };
@@ -54,8 +55,8 @@
 		966172872C5F7A070007C760 /* AdMobRewardedAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172812C5F7A070007C760 /* AdMobRewardedAd.swift */; };
 		966172882C5F7A070007C760 /* AdMobInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172822C5F7A070007C760 /* AdMobInterstitialAd.swift */; };
 		966172892C5F7A070007C760 /* AdMobAppOpenAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172832C5F7A070007C760 /* AdMobAppOpenAd.swift */; };
-		9661728D2C5F7A2D0007C760 /* AdMobBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661728B2C5F7A2D0007C760 /* AdMobBannerView.swift */; };
-		9661728E2C5F7A2D0007C760 /* AdMobNativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661728C2C5F7A2D0007C760 /* AdMobNativeView.swift */; };
+		9661728D2C5F7A2D0007C760 /* AdMobBannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661728B2C5F7A2D0007C760 /* AdMobBannerAdView.swift */; };
+		9661728E2C5F7A2D0007C760 /* AdMobNativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661728C2C5F7A2D0007C760 /* AdMobNativeAdView.swift */; };
 		966172922C60771F0007C760 /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966172912C60771F0007C760 /* GoogleMobileAds.xcframework */; };
 		966172932C60771F0007C760 /* GoogleMobileAds.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966172912C60771F0007C760 /* GoogleMobileAds.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		966172962C60776B0007C760 /* AppsFlyerLib.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966172952C60776B0007C760 /* AppsFlyerLib.xcframework */; };
@@ -67,9 +68,22 @@
 		9661729F2C607F100007C760 /* MonetizationNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661729E2C607F100007C760 /* MonetizationNetwork.swift */; };
 		966172A12C6086060007C760 /* AdDefaultValue.json in Resources */ = {isa = PBXBuildFile; fileRef = 966172A02C6086060007C760 /* AdDefaultValue.json */; };
 		966172A32C608BB50007C760 /* OnceUsedAdProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172A22C608BB50007C760 /* OnceUsedAdProtocol.swift */; };
+		966172A82C60B5D80007C760 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172A52C60B5D80007C760 /* UIViewControllerExtension.swift */; };
+		966172A92C60B5D80007C760 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172A62C60B5D80007C760 /* UIApplicationExtension.swift */; };
+		966172AA2C60B5D80007C760 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172A72C60B5D80007C760 /* UIColorExtension.swift */; };
+		966172AF2C60B6B40007C760 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172AD2C60B6B40007C760 /* ViewProtocol.swift */; };
+		966172B02C60B6B40007C760 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172AE2C60B6B40007C760 /* BaseViewController.swift */; };
+		966172BA2C60B8810007C760 /* CustomAdMobNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 966172B82C60B8810007C760 /* CustomAdMobNativeAdView.xib */; };
+		966172BB2C60B8810007C760 /* CustomAdMobNativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172B92C60B8810007C760 /* CustomAdMobNativeAdView.swift */; };
+		966172BD2C60BA0E0007C760 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172BC2C60BA0D0007C760 /* SplashViewController.swift */; };
+		966172C02C60BAA50007C760 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172BE2C60BAA50007C760 /* HomeViewController.swift */; };
+		966172C12C60BAA50007C760 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 966172BF2C60BAA50007C760 /* HomeViewController.xib */; };
+		966172C42C60BB800007C760 /* NativeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 966172C22C60BB800007C760 /* NativeViewController.xib */; };
+		966172C52C60BB800007C760 /* NativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172C32C60BB800007C760 /* NativeViewController.swift */; };
+		966172C82C60BBF70007C760 /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172C62C60BBF70007C760 /* BannerViewController.swift */; };
+		966172C92C60BBF70007C760 /* BannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 966172C72C60BBF70007C760 /* BannerViewController.xib */; };
 		966313D72C5CD5E200D69BBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313D62C5CD5E200D69BBA /* AppDelegate.swift */; };
 		966313D92C5CD5E200D69BBA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313D82C5CD5E200D69BBA /* SceneDelegate.swift */; };
-		966313DB2C5CD5E200D69BBA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313DA2C5CD5E200D69BBA /* ViewController.swift */; };
 		966313DE2C5CD5E200D69BBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966313DC2C5CD5E200D69BBA /* Main.storyboard */; };
 		966313E02C5CD5E300D69BBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 966313DF2C5CD5E300D69BBA /* Assets.xcassets */; };
 		966313E32C5CD5E300D69BBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966313E12C5CD5E300D69BBA /* LaunchScreen.storyboard */; };
@@ -95,6 +109,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		534F5ACBE194F2B28CE6A6D4 /* Pods-MediationAdExamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.debug.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.debug.xcconfig"; sourceTree = "<group>"; };
 		963702DD2C5C8B38005B52CA /* MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		963703002C5C9061005B52CA /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		963703022C5C9916005B52CA /* ConsentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentManager.swift; sourceTree = "<group>"; };
@@ -135,7 +150,7 @@
 		9661726E2C5F78B20007C760 /* FrequencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequencyManager.swift; sourceTree = "<group>"; };
 		966172712C5F790A0007C760 /* Icon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icon.xcassets; sourceTree = "<group>"; };
 		966172722C5F790A0007C760 /* AdManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdManager.swift; sourceTree = "<group>"; };
-		966172762C5F796B0007C760 /* CustomNativeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomNativeAdView.xib; sourceTree = "<group>"; };
+		966172762C5F796B0007C760 /* CustomAdMobNativeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAdMobNativeAdView.xib; sourceTree = "<group>"; };
 		966172772C5F796B0007C760 /* RegistrationStructure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RegistrationStructure.json; sourceTree = "<group>"; };
 		9661727E2C5F7A060007C760 /* AdMobSplashAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobSplashAd.swift; sourceTree = "<group>"; };
 		9661727F2C5F7A060007C760 /* AdMobNativeAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobNativeAd.swift; sourceTree = "<group>"; };
@@ -143,8 +158,8 @@
 		966172812C5F7A070007C760 /* AdMobRewardedAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobRewardedAd.swift; sourceTree = "<group>"; };
 		966172822C5F7A070007C760 /* AdMobInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobInterstitialAd.swift; sourceTree = "<group>"; };
 		966172832C5F7A070007C760 /* AdMobAppOpenAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobAppOpenAd.swift; sourceTree = "<group>"; };
-		9661728B2C5F7A2D0007C760 /* AdMobBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobBannerView.swift; sourceTree = "<group>"; };
-		9661728C2C5F7A2D0007C760 /* AdMobNativeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobNativeView.swift; sourceTree = "<group>"; };
+		9661728B2C5F7A2D0007C760 /* AdMobBannerAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobBannerAdView.swift; sourceTree = "<group>"; };
+		9661728C2C5F7A2D0007C760 /* AdMobNativeAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobNativeAdView.swift; sourceTree = "<group>"; };
 		966172912C60771F0007C760 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
 		966172952C60776B0007C760 /* AppsFlyerLib.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:6UQAD4B3U2:APPSFLYER LTD"; lastKnownFileType = wrapper.xcframework; name = AppsFlyerLib.xcframework; path = Pods/AppsFlyerFramework/binaries/xcframework/full/AppsFlyerLib.xcframework; sourceTree = "<group>"; };
 		966172982C6077950007C760 /* AppsFlyerAdRevenue.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:6UQAD4B3U2:APPSFLYER LTD"; lastKnownFileType = wrapper.xcframework; name = AppsFlyerAdRevenue.xcframework; path = "Pods/AppsFlyer-AdRevenue/iOS/AppsFlyerAdRevenue.xcframework"; sourceTree = "<group>"; };
@@ -152,10 +167,23 @@
 		9661729E2C607F100007C760 /* MonetizationNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonetizationNetwork.swift; sourceTree = "<group>"; };
 		966172A02C6086060007C760 /* AdDefaultValue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AdDefaultValue.json; sourceTree = "<group>"; };
 		966172A22C608BB50007C760 /* OnceUsedAdProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnceUsedAdProtocol.swift; sourceTree = "<group>"; };
+		966172A52C60B5D80007C760 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		966172A62C60B5D80007C760 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
+		966172A72C60B5D80007C760 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		966172AD2C60B6B40007C760 /* ViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
+		966172AE2C60B6B40007C760 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		966172B82C60B8810007C760 /* CustomAdMobNativeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAdMobNativeAdView.xib; sourceTree = "<group>"; };
+		966172B92C60B8810007C760 /* CustomAdMobNativeAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAdMobNativeAdView.swift; sourceTree = "<group>"; };
+		966172BC2C60BA0D0007C760 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		966172BE2C60BAA50007C760 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		966172BF2C60BAA50007C760 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		966172C22C60BB800007C760 /* NativeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NativeViewController.xib; sourceTree = "<group>"; };
+		966172C32C60BB800007C760 /* NativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeViewController.swift; sourceTree = "<group>"; };
+		966172C62C60BBF70007C760 /* BannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
+		966172C72C60BBF70007C760 /* BannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BannerViewController.xib; sourceTree = "<group>"; };
 		966313D42C5CD5E200D69BBA /* MediationAdExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediationAdExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		966313D62C5CD5E200D69BBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		966313D82C5CD5E200D69BBA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		966313DA2C5CD5E200D69BBA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		966313DD2C5CD5E200D69BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		966313DF2C5CD5E300D69BBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		966313E22C5CD5E300D69BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -164,6 +192,8 @@
 		BC1AC247DFA8DD5E326E9334 /* Pods_MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C53D6A249CD0132BE52619C4 /* Pods-MediationAd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.debug.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.debug.xcconfig"; sourceTree = "<group>"; };
 		CBB5D8E7E17923239AA744D0 /* Pods-MediationAd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.release.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.release.xcconfig"; sourceTree = "<group>"; };
+		CC94DB317CEF72949DA1B54E /* Pods_MediationAdExamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAdExamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFFE30E4348B1C7621C9EB2F /* Pods-MediationAdExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAdExamples.release.xcconfig"; path = "Target Support Files/Pods-MediationAdExamples/Pods-MediationAdExamples.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +213,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32A392931564CC4F346EC4C9 /* Pods_MediationAdExamples.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +373,7 @@
 		966172752C5F79540007C760 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
-				966172762C5F796B0007C760 /* CustomNativeAdView.xib */,
+				966172762C5F796B0007C760 /* CustomAdMobNativeAdView.xib */,
 				966172772C5F796B0007C760 /* RegistrationStructure.json */,
 			);
 			path = Templates;
@@ -381,10 +412,103 @@
 		9661728A2C5F7A0C0007C760 /* AdView */ = {
 			isa = PBXGroup;
 			children = (
-				9661728B2C5F7A2D0007C760 /* AdMobBannerView.swift */,
-				9661728C2C5F7A2D0007C760 /* AdMobNativeView.swift */,
+				9661728B2C5F7A2D0007C760 /* AdMobBannerAdView.swift */,
+				9661728C2C5F7A2D0007C760 /* AdMobNativeAdView.swift */,
 			);
 			name = AdView;
+			sourceTree = "<group>";
+		};
+		966172A42C60B5C80007C760 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				966172A62C60B5D80007C760 /* UIApplicationExtension.swift */,
+				966172A72C60B5D80007C760 /* UIColorExtension.swift */,
+				966172A52C60B5D80007C760 /* UIViewControllerExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		966172AB2C60B6460007C760 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				966313E12C5CD5E300D69BBA /* LaunchScreen.storyboard */,
+				966313DC2C5CD5E200D69BBA /* Main.storyboard */,
+				966172B52C60B73E0007C760 /* Views */,
+				966172B12C60B6F30007C760 /* ViewControllers */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		966172AC2C60B68B0007C760 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				966172AD2C60B6B40007C760 /* ViewProtocol.swift */,
+				966172AE2C60B6B40007C760 /* BaseViewController.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		966172B12C60B6F30007C760 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				966172B22C60B70D0007C760 /* Splash */,
+				966172B32C60B71F0007C760 /* Home */,
+				966172B42C60B7330007C760 /* Native */,
+				966172B72C60B7720007C760 /* Banner */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		966172B22C60B70D0007C760 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				966172BC2C60BA0D0007C760 /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		966172B32C60B71F0007C760 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				966172BE2C60BAA50007C760 /* HomeViewController.swift */,
+				966172BF2C60BAA50007C760 /* HomeViewController.xib */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		966172B42C60B7330007C760 /* Native */ = {
+			isa = PBXGroup;
+			children = (
+				966172C32C60BB800007C760 /* NativeViewController.swift */,
+				966172C22C60BB800007C760 /* NativeViewController.xib */,
+			);
+			name = Native;
+			sourceTree = "<group>";
+		};
+		966172B52C60B73E0007C760 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				966172B62C60B7500007C760 /* Native */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		966172B62C60B7500007C760 /* Native */ = {
+			isa = PBXGroup;
+			children = (
+				966172B92C60B8810007C760 /* CustomAdMobNativeAdView.swift */,
+				966172B82C60B8810007C760 /* CustomAdMobNativeAdView.xib */,
+			);
+			name = Native;
+			sourceTree = "<group>";
+		};
+		966172B72C60B7720007C760 /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				966172C62C60BBF70007C760 /* BannerViewController.swift */,
+				966172C72C60BBF70007C760 /* BannerViewController.xib */,
+			);
+			path = Banner;
 			sourceTree = "<group>";
 		};
 		966313D52C5CD5E200D69BBA /* MediationAdExamples */ = {
@@ -395,10 +519,10 @@
 				966313E42C5CD5E300D69BBA /* Info.plist */,
 				966313D62C5CD5E200D69BBA /* AppDelegate.swift */,
 				966313D82C5CD5E200D69BBA /* SceneDelegate.swift */,
-				966313E12C5CD5E300D69BBA /* LaunchScreen.storyboard */,
-				966313DC2C5CD5E200D69BBA /* Main.storyboard */,
 				966313DF2C5CD5E300D69BBA /* Assets.xcassets */,
-				966313DA2C5CD5E200D69BBA /* ViewController.swift */,
+				966172A42C60B5C80007C760 /* Extensions */,
+				966172AC2C60B68B0007C760 /* Base */,
+				966172AB2C60B6460007C760 /* Scenes */,
 			);
 			path = MediationAdExamples;
 			sourceTree = "<group>";
@@ -408,6 +532,8 @@
 			children = (
 				C53D6A249CD0132BE52619C4 /* Pods-MediationAd.debug.xcconfig */,
 				CBB5D8E7E17923239AA744D0 /* Pods-MediationAd.release.xcconfig */,
+				534F5ACBE194F2B28CE6A6D4 /* Pods-MediationAdExamples.debug.xcconfig */,
+				EFFE30E4348B1C7621C9EB2F /* Pods-MediationAdExamples.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -420,6 +546,7 @@
 				966172952C60776B0007C760 /* AppsFlyerLib.xcframework */,
 				966172912C60771F0007C760 /* GoogleMobileAds.xcframework */,
 				BC1AC247DFA8DD5E326E9334 /* Pods_MediationAd.framework */,
+				CC94DB317CEF72949DA1B54E /* Pods_MediationAdExamples.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -462,6 +589,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 966313E52C5CD5E300D69BBA /* Build configuration list for PBXNativeTarget "MediationAdExamples" */;
 			buildPhases = (
+				66497606DE1D7221888A1DF5 /* [CP] Check Pods Manifest.lock */,
 				966313D02C5CD5E200D69BBA /* Sources */,
 				966313D12C5CD5E200D69BBA /* Frameworks */,
 				966313D22C5CD5E200D69BBA /* Resources */,
@@ -519,7 +647,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				966172732C5F790A0007C760 /* Icon.xcassets in Resources */,
-				966172782C5F796B0007C760 /* CustomNativeAdView.xib in Resources */,
+				966172782C5F796B0007C760 /* CustomAdMobNativeAdView.xib in Resources */,
 				966172792C5F796B0007C760 /* RegistrationStructure.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,6 +657,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				966313E32C5CD5E300D69BBA /* LaunchScreen.storyboard in Resources */,
+				966172C92C60BBF70007C760 /* BannerViewController.xib in Resources */,
+				966172C12C60BAA50007C760 /* HomeViewController.xib in Resources */,
+				966172C42C60BB800007C760 /* NativeViewController.xib in Resources */,
+				966172BA2C60B8810007C760 /* CustomAdMobNativeAdView.xib in Resources */,
 				966172A12C6086060007C760 /* AdDefaultValue.json in Resources */,
 				966313E92C5CD66700D69BBA /* GoogleService-Info.plist in Resources */,
 				966313E02C5CD5E300D69BBA /* Assets.xcassets in Resources */,
@@ -555,6 +687,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-MediationAd-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66497606DE1D7221888A1DF5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MediationAdExamples-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -606,7 +760,7 @@
 				963703232C5C9A94005B52CA /* TokenClaims.swift in Sources */,
 				963703292C5C9B13005B52CA /* TrackingManager.swift in Sources */,
 				966172882C5F7A070007C760 /* AdMobInterstitialAd.swift in Sources */,
-				9661728D2C5F7A2D0007C760 /* AdMobBannerView.swift in Sources */,
+				9661728D2C5F7A2D0007C760 /* AdMobBannerAdView.swift in Sources */,
 				9637030D2C5C99BC005B52CA /* RemoteHandler.swift in Sources */,
 				9661729F2C607F100007C760 /* MonetizationNetwork.swift in Sources */,
 				966172872C5F7A070007C760 /* AdMobRewardedAd.swift in Sources */,
@@ -614,7 +768,7 @@
 				966172552C5F775F0007C760 /* AdMobViewProtocol.swift in Sources */,
 				966172682C5F780F0007C760 /* Splash.swift in Sources */,
 				966172852C5F7A070007C760 /* AdMobNativeAd.swift in Sources */,
-				9661728E2C5F7A2D0007C760 /* AdMobNativeView.swift in Sources */,
+				9661728E2C5F7A2D0007C760 /* AdMobNativeAdView.swift in Sources */,
 				9637031E2C5C9A94005B52CA /* AppStoreConnectResponse.swift in Sources */,
 				9637030A2C5C996A005B52CA /* EndPoint.swift in Sources */,
 				9637032B2C5C9B4D005B52CA /* ReleaseManager.swift in Sources */,
@@ -640,9 +794,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				966313DB2C5CD5E200D69BBA /* ViewController.swift in Sources */,
+				966172A82C60B5D80007C760 /* UIViewControllerExtension.swift in Sources */,
+				966172A92C60B5D80007C760 /* UIApplicationExtension.swift in Sources */,
 				966313D72C5CD5E200D69BBA /* AppDelegate.swift in Sources */,
+				966172BD2C60BA0E0007C760 /* SplashViewController.swift in Sources */,
+				966172C82C60BBF70007C760 /* BannerViewController.swift in Sources */,
+				966172AF2C60B6B40007C760 /* ViewProtocol.swift in Sources */,
+				966172B02C60B6B40007C760 /* BaseViewController.swift in Sources */,
+				966172BB2C60B8810007C760 /* CustomAdMobNativeAdView.swift in Sources */,
+				966172C52C60BB800007C760 /* NativeViewController.swift in Sources */,
 				966313D92C5CD5E200D69BBA /* SceneDelegate.swift in Sources */,
+				966172C02C60BAA50007C760 /* HomeViewController.swift in Sources */,
+				966172AA2C60B5D80007C760 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -996,9 +1159,11 @@
 		};
 		966313E62C5CD5E300D69BBA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 534F5ACBE194F2B28CE6A6D4 /* Pods-MediationAdExamples.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T852J6UR43;
@@ -1031,9 +1196,11 @@
 		};
 		966313E72C5CD5E300D69BBA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFFE30E4348B1C7621C9EB2F /* Pods-MediationAdExamples.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T852J6UR43;

@@ -4,6 +4,7 @@
     {
       "name": "Splash_1",
       "status": true,
+      "network": "admob",
       "id": "ca-app-pub-3940256099942544/4411468910",
       "isAuto": true,
       "description": "",
@@ -13,13 +14,16 @@
   "appOpen": {
     "name": "App_Open",
     "status": true,
+    "network": "admob",
     "id": "ca-app-pub-3940256099942544/5575463023",
+    "isAuto": true,
     "description": ""
   },
   "rewardeds": [
     {
       "name": "Rewarded",
       "status": true,
+      "network": "admob",
       "id": "ca-app-pub-3940256099942544/1712485313"
     }
   ],
@@ -27,6 +31,7 @@
     {
       "name": "Rewarded_Interstitial",
       "status": true,
+      "network": "admob",
       "id": "ca-app-pub-3940256099942544/6978759866",
       "description": ""
     }
@@ -35,15 +40,17 @@
     {
       "name": "Interstitial_1",
       "status": true,
+      "network": "admob",
       "id": "ca-app-pub-3940256099942544/4411468910",
       "isAuto": true,
       "description": "",
-      "start": 2,
+      "start": 1,
       "frequency": 2
     },
     {
       "name": "Interstitial_2",
       "status": true,
+      "network": "admob",
       "id": "ca-app-pub-3940256099942544/4411468910",
       "isAuto": true,
       "description": ""
@@ -53,17 +60,20 @@
     {
       "name": "Banner_1",
       "status": true,
+      "network": "admob",
       "id": "ca-app-pub-3940256099942544/2934735716"
     },
     {
       "name": "Banner_2",
       "status": true,
+      "network": "admob",
       "id": "ca-app-pub-3940256099942544/2934735716",
       "anchored": "top"
     },
     {
       "name": "Banner_3",
       "status": true,
+      "network": "admob",
       "id": "ca-app-pub-3940256099942544/2934735716",
       "description": "",
       "anchored": "bottom"
@@ -73,6 +83,7 @@
     {
       "name": "Native",
       "status": true,
+      "network": "admob",
       "id": "ca-app-pub-3940256099942544/3986624511",
       "description": "",
       "isPreload": true

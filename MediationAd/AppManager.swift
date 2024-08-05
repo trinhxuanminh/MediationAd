@@ -13,6 +13,10 @@ import FirebaseRemoteConfig
 public class AppManager {
   public static let shared = AppManager()
   
+  enum Keys {
+    static let consentKey = "CMP"
+  }
+  
   private var subscriptions = Set<AnyCancellable>()
   private var didSetup = false
   
@@ -27,6 +31,7 @@ public class AppManager {
                          completed: @escaping RemoteHandler
   ) {
     FirebaseApp.configure()
+    print("[MediationAd] [AppManager] Start config!")
     NetworkManager.shared.$isConnected
       .sink { [weak self] isConnected in
         guard let self else {
@@ -39,17 +44,26 @@ public class AppManager {
           return
         }
         self.didSetup = true
+        print("[MediationAd] [AppManager] Did setup!")
         
         RemoteManager.shared.remoteSubject
           .sink { state in
             completed(state, RemoteManager.shared.remoteConfig)
+            
+            switch state {
+            case .success:
+              let consentData = RemoteManager.shared.remoteConfig.configValue(forKey: Keys.consentKey).dataValue
+              ConsentManager.shared.update(consentData: consentData)
+            default:
+              break
+            }
           }.store(in: &subscriptions)
         
         Publishers.Zip3(ReleaseManager.shared.releaseSubject,
                         ConsentManager.shared.consentSubject,
                         RemoteManager.shared.remoteSubject)
         .sink { releaseState, consentState, remoteState in
-          print("[AppManager] (Release: \(releaseState)) - (Consent: \(consentState)) - (Remote: \(remoteState))")
+          print("[MediationAd] [AppManager] (Release: \(releaseState)) - (Consent: \(consentState)) - (Remote: \(remoteState))")
           
           let adConfigData = RemoteManager.shared.remoteConfig.configValue(forKey: adConfigKey).dataValue
           AdManager.shared.register(isRelease: releaseState == .live || releaseState == .error,

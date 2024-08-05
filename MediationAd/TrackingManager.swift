@@ -46,12 +46,12 @@ public class TrackingManager: NSObject {
     ATTrackingManager.requestTrackingAuthorization { status in
       switch status {
       case .authorized:
-        print("[AppManager] [TrackingManager] Enable!")
-        print("[AppManager] [TrackingManager] \(ASIdentifierManager.shared().advertisingIdentifier)")
+        print("[MediationAd] [TrackingManager] Enable!")
+        print("[MediationAd] [TrackingManager] \(ASIdentifierManager.shared().advertisingIdentifier)")
         Analytics.setAnalyticsCollectionEnabled(true)
         LogEventManager.shared.log(event: .agreeTracking)
       default:
-        print("[AppManager] [TrackingManager] Disable!")
+        print("[MediationAd] [TrackingManager] Disable!")
         Analytics.setAnalyticsCollectionEnabled(false)
         LogEventManager.shared.log(event: .noTracking)
       }
@@ -92,11 +92,11 @@ extension TrackingManager {
   @objc private func sendLaunch() {
     AppsFlyerLib.shared().start(completionHandler: { (dictionary, error) in
       guard error == nil else {
-        print("[AppManager] [TrackingManager] \(String(describing: error))!")
+        print("[MediationAd] [TrackingManager] \(String(describing: error))!")
         LogEventManager.shared.log(event: .noConnectAppsFlyer)
         return
       }
-      print("[AppManager] [TrackingManager] \(String(describing: dictionary))")
+      print("[MediationAd] [TrackingManager] \(String(describing: dictionary))")
       LogEventManager.shared.log(event: .connectedAppsFlyer)
     })
     PurchaseConnector.shared().startObservingTransactions()
@@ -107,8 +107,8 @@ extension TrackingManager: PurchaseRevenueDataSource, PurchaseRevenueDelegate {
   public func didReceivePurchaseRevenueValidationInfo(_ validationInfo: [AnyHashable : Any]?,
                                                       error: Error?
   ) {
-    print("[AppManager] [TrackingManager] PurchaseRevenueDelegate: \(String(describing: validationInfo))")
-    print("[AppManager] [TrackingManager] PurchaseRevenueDelegate: \(String(describing: error))")
+    print("[MediationAd] [TrackingManager] PurchaseRevenueDelegate: \(String(describing: validationInfo))")
+    print("[MediationAd] [TrackingManager] PurchaseRevenueDelegate: \(String(describing: error))")
   }
   
   public func purchaseRevenueAdditionalParameters(for products: Set<SKProduct>,
@@ -132,7 +132,7 @@ extension TrackingManager: AppsFlyerLibDelegate {
       // Business logic for Non-organic install scenario is invoked
       if let sourceID = installData["media_source"],
          let campaign = installData["campaign"] {
-        print("[AppManager] [TrackingManager] This is a Non-organic install. Media source: \(sourceID)  Campaign: \(campaign)")
+        print("[MediationAd] [TrackingManager] This is a Non-organic install. Media source: \(sourceID)  Campaign: \(campaign)")
       }
     } else {
       // Business logic for organic install scenario is invoked
@@ -141,6 +141,6 @@ extension TrackingManager: AppsFlyerLibDelegate {
   
   public func onConversionDataFail(_ error: Error) {
     // Logic for when conversion data resolution fails
-    print("[AppManager] [TrackingManager] Error: \(error)")
+    print("[MediationAd] [TrackingManager] Error: \(error)")
   }
 }

@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     -----END PRIVATE KEY-----
     """
     let adConfigKey = "AdConfig_1_0"
+    
+    ConsentManager.shared.activeDebug(testDeviceIdentifiers: [],
+                                      reset: true)
     if let url = Bundle.main.url(forResource: "AdDefaultValue", withExtension: "json"),
        let defaultData = try? Data(contentsOf: url) {
       AppManager.shared.initialize(appID: appID,
@@ -35,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                    devKey: devKey,
                                    trackingTimeout: 45.0
       ) { remoteState, remoteConfig in
-        print(remoteState)
+        print("[MediationAdExamples]", remoteState)
       }
     }
     
