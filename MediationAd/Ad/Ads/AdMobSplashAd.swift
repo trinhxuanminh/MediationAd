@@ -9,7 +9,7 @@ import UIKit
 import GoogleMobileAds
 import AppsFlyerAdRevenue
 
-class SplashAd: NSObject, AdProtocol {
+class AdMobSplashAd: NSObject, ReuseAdProtocol {
   private var splashAd: GADInterstitialAd?
   private var adUnitID: String?
   private var presentState = false
@@ -54,16 +54,16 @@ class SplashAd: NSObject, AdProtocol {
             didHide: Handler?
   ) {
     guard isExist() else {
-      print("[AdMobManager] [SplashAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      print("[AdManager] [SplashAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
     guard !presentState else {
-      print("[AdMobManager] [SplashAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
+      print("[AdManager] [SplashAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
-    print("[AdMobManager] [SplashAd] Requested to show! (\(String(describing: adUnitID)))")
+    print("[AdManager] [SplashAd] Requested to show! (\(String(describing: adUnitID)))")
     self.didFail = didFail
     self.willPresent = willPresent
     self.didHide = didHide
@@ -72,37 +72,37 @@ class SplashAd: NSObject, AdProtocol {
   }
 }
 
-extension SplashAd: GADFullScreenContentDelegate {
+extension AdMobSplashAd: GADFullScreenContentDelegate {
   func ad(_ ad: GADFullScreenPresentingAd,
           didFailToPresentFullScreenContentWithError error: Error
   ) {
-    print("[AdMobManager] [SplashAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    print("[AdManager] [SplashAd] Did fail to show content! (\(String(describing: adUnitID)))")
     didFail?()
     self.splashAd = nil
   }
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[AdMobManager] [SplashAd] Will display! (\(String(describing: adUnitID)))")
+    print("[AdManager] [SplashAd] Will display! (\(String(describing: adUnitID)))")
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[AdMobManager] [SplashAd] Did hide! (\(String(describing: adUnitID)))")
+    print("[AdManager] [SplashAd] Did hide! (\(String(describing: adUnitID)))")
     didHide?()
     self.presentState = false
     self.splashAd = nil
   }
 }
 
-extension SplashAd {
+extension AdMobSplashAd {
   private func load() {
     guard !isLoading else {
       return
     }
     
     guard let adUnitID = adUnitID else {
-      print("[AdMobManager] [SplashAd] Failed to load - not initialized yet! Please install ID.")
+      print("[AdManager] [SplashAd] Failed to load - not initialized yet! Please install ID.")
       didLoadFail?()
       return
     }
@@ -114,7 +114,7 @@ extension SplashAd {
       
       self.isLoading = true
       self.fire()
-      print("[AdMobManager] [SplashAd] Start load! (\(String(describing: adUnitID)))")
+      print("[AdManager] [SplashAd] Start load! (\(String(describing: adUnitID)))")
       
       let request = GADRequest()
       GADInterstitialAd.load(
@@ -129,11 +129,11 @@ extension SplashAd {
         }
         self.invalidate()
         guard error == nil, let ad = ad else {
-          print("[AdMobManager] [SplashAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+          print("[AdManager] [SplashAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
           self.didLoadFail?()
           return
         }
-        print("[AdMobManager] [SplashAd] Did load! (\(String(describing: adUnitID)))")
+        print("[AdManager] [SplashAd] Did load! (\(String(describing: adUnitID)))")
         self.splashAd = ad
         self.splashAd?.fullScreenContentDelegate = self
         self.didLoadSuccess?()

@@ -23,16 +23,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Gu7+MCYD
     -----END PRIVATE KEY-----
     """
-    
-    AppManager.shared.initialize(appID: appID,
-                                 devKey: devKey,
-                                 trackingTimeout: 45.0,
-                                 issuerID: issuerID,
-                                 keyID: keyID,
-                                 privateKey: privateKey
-    ) { remoteState, remoteConfig in
-      print(remoteState)
+    let adConfigKey = "AdConfig_1_0"
+    if let url = Bundle.main.url(forResource: "AdDefaultValue", withExtension: "json"),
+       let defaultData = try? Data(contentsOf: url) {
+      AppManager.shared.initialize(appID: appID,
+                                   issuerID: issuerID,
+                                   keyID: keyID,
+                                   privateKey: privateKey,
+                                   adConfigKey: adConfigKey,
+                                   defaultData: defaultData,
+                                   devKey: devKey,
+                                   trackingTimeout: 45.0
+      ) { remoteState, remoteConfig in
+        print(remoteState)
+      }
     }
+    
     return true
   }
 }

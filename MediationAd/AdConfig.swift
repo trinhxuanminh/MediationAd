@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  AdConfig.swift
 //  
 //
 //  Created by Trịnh Xuân Minh on 23/08/2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AdMobConfig: Codable {
+struct AdConfig: Codable {
   let status: Bool
   var splashs: [Splash]?
   var appOpen: AppOpen?

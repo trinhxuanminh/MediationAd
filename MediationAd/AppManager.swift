@@ -17,11 +17,13 @@ public class AppManager {
   private var didSetup = false
   
   public func initialize(appID: String,
-                         devKey: String,
-                         trackingTimeout: Double,
                          issuerID: String,
                          keyID: String,
                          privateKey: String,
+                         adConfigKey: String,
+                         defaultData: Data,
+                         devKey: String? = nil,
+                         trackingTimeout: Double? = nil,
                          completed: @escaping RemoteHandler
   ) {
     FirebaseApp.configure()
@@ -48,17 +50,26 @@ public class AppManager {
                         RemoteManager.shared.remoteSubject)
         .sink { releaseState, consentState, remoteState in
           print("[AppManager] (Release: \(releaseState)) - (Consent: \(consentState)) - (Remote: \(remoteState))")
+          
+          let adConfigData = RemoteManager.shared.remoteConfig.configValue(forKey: adConfigKey).dataValue
+          AdManager.shared.register(isRelease: releaseState == .live || releaseState == .error,
+                                    isConsent: consentState == .allow || consentState == .error,
+                                    defaultData: defaultData,
+                                    remoteData: adConfigData)
         }.store(in: &subscriptions)
         
-        TrackingManager.shared.initialize(devKey: devKey,
-                                          appID: appID,
-                                          timeout: trackingTimeout)
         ReleaseManager.shared.initialize(appID: appID,
                                          keyID: keyID,
                                          issuerID: issuerID,
                                          privateKey: privateKey)
         ConsentManager.shared.initialize()
         RemoteManager.shared.initialize()
+        
+        if let devKey {
+          TrackingManager.shared.initialize(devKey: devKey,
+                                            appID: appID,
+                                            timeout: trackingTimeout)
+        }
       }.store(in: &subscriptions)
   }
 }

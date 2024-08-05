@@ -1,6 +1,6 @@
 //
-//  BannerAdMobView.swift
-//  AdMobManager
+//  AdMobBannerView.swift
+//  AdManager
 //
 //  Created by Trịnh Xuân Minh on 25/03/2022.
 //
@@ -9,13 +9,7 @@ import UIKit
 import GoogleMobileAds
 import AppsFlyerAdRevenue
 
-/// This class returns a UIView displaying BannerAd.
-/// ```
-/// import AdMobManager
-/// ```
-/// Ad display is automatic.
-/// - Warning: Ad will not be displayed without adding ID.
-open class BannerAdMobView: UIView {
+open class AdMobBannerView: UIView {
   enum State {
     case wait
     case loading
@@ -88,9 +82,9 @@ open class BannerAdMobView: UIView {
     guard adUnitID == nil else {
       return
     }
-    switch AdMobManager.shared.status(type: .onceUsed(.banner), name: name) {
+    switch AdManager.shared.status(type: .onceUsed(.banner), name: name) {
     case false:
-      print("[AdMobManager] [BannerAd] Ads are not allowed to show! (\(String(describing: adUnitID)))")
+      print("[AdManager] [BannerAd] Ads are not allowed to show! (\(String(describing: adUnitID)))")
       errored()
       return
     case true:
@@ -99,7 +93,7 @@ open class BannerAdMobView: UIView {
       errored()
       return
     }
-    guard let ad = AdMobManager.shared.getAd(type: .onceUsed(.banner), name: name) as? Banner else {
+    guard let ad = AdManager.shared.getAd(type: .onceUsed(.banner), name: name) as? Banner else {
       return
     }
     guard ad.status else {
@@ -113,17 +107,17 @@ open class BannerAdMobView: UIView {
   }
 }
 
-extension BannerAdMobView: GADBannerViewDelegate {
+extension AdMobBannerView: GADBannerViewDelegate {
   public func bannerView(_ bannerView: GADBannerView,
                          didFailToReceiveAdWithError error: Error
   ) {
-    print("[AdMobManager] [BannerAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+    print("[AdManager] [BannerAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
     self.state = .error
     errored()
   }
   
   public func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-    print("[AdMobManager] [BannerAd] Did load! (\(String(describing: adUnitID)))")
+    print("[AdManager] [BannerAd] Did load! (\(String(describing: adUnitID)))")
     self.state = .receive
     self.bringSubviewToFront(self.bannerAdView)
     didReceive?()
@@ -148,7 +142,7 @@ extension BannerAdMobView: GADBannerViewDelegate {
   }
 }
 
-extension BannerAdMobView {
+extension AdMobBannerView {
   private func errored() {
     didError?()
   }
@@ -159,11 +153,11 @@ extension BannerAdMobView {
     }
     
     guard let adUnitID = adUnitID else {
-      print("[AdMobManager] [BannerAd] Failed to load - not initialized yet! Please install ID.")
+      print("[AdManager] [BannerAd] Failed to load - not initialized yet! Please install ID.")
       return
     }
     
-    print("[AdMobManager] [BannerAd] Start load! (\(String(describing: adUnitID)))")
+    print("[AdManager] [BannerAd] Start load! (\(String(describing: adUnitID)))")
     self.state = .loading
     DispatchQueue.main.async { [weak self] in
       guard let self = self else {

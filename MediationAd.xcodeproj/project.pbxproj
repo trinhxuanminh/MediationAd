@@ -31,7 +31,7 @@
 		9661724F2C5F75720007C760 /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661724C2C5F75710007C760 /* UICollectionViewExtension.swift */; };
 		966172502C5F75720007C760 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661724D2C5F75710007C760 /* UIColorExtension.swift */; };
 		966172512C5F75720007C760 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661724E2C5F75720007C760 /* UITableViewExtension.swift */; };
-		966172542C5F775F0007C760 /* AdProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172522C5F775F0007C760 /* AdProtocol.swift */; };
+		966172542C5F775F0007C760 /* ReuseAdProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172522C5F775F0007C760 /* ReuseAdProtocol.swift */; };
 		966172552C5F775F0007C760 /* AdMobViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172532C5F775F0007C760 /* AdMobViewProtocol.swift */; };
 		966172632C5F780F0007C760 /* AppOpen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661725A2C5F780F0007C760 /* AppOpen.swift */; };
 		966172642C5F780F0007C760 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661725B2C5F780F0007C760 /* Banner.swift */; };
@@ -40,22 +40,22 @@
 		966172672C5F780F0007C760 /* Native.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661725E2C5F780F0007C760 /* Native.swift */; };
 		966172682C5F780F0007C760 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661725F2C5F780F0007C760 /* Splash.swift */; };
 		966172692C5F780F0007C760 /* Rewarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172602C5F780F0007C760 /* Rewarded.swift */; };
-		9661726A2C5F780F0007C760 /* AdMobConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172612C5F780F0007C760 /* AdMobConfig.swift */; };
+		9661726A2C5F780F0007C760 /* AdConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172612C5F780F0007C760 /* AdConfig.swift */; };
 		9661726B2C5F780F0007C760 /* AdConfigProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172622C5F780F0007C760 /* AdConfigProtocol.swift */; };
 		9661726F2C5F78B20007C760 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661726D2C5F78B20007C760 /* Icon.swift */; };
 		966172702C5F78B20007C760 /* FrequencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661726E2C5F78B20007C760 /* FrequencyManager.swift */; };
 		966172732C5F790A0007C760 /* Icon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 966172712C5F790A0007C760 /* Icon.xcassets */; };
-		966172742C5F790A0007C760 /* AdMobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172722C5F790A0007C760 /* AdMobManager.swift */; };
+		966172742C5F790A0007C760 /* AdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172722C5F790A0007C760 /* AdManager.swift */; };
 		966172782C5F796B0007C760 /* CustomNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 966172762C5F796B0007C760 /* CustomNativeAdView.xib */; };
 		966172792C5F796B0007C760 /* RegistrationStructure.json in Resources */ = {isa = PBXBuildFile; fileRef = 966172772C5F796B0007C760 /* RegistrationStructure.json */; };
-		966172842C5F7A070007C760 /* SplashAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661727E2C5F7A060007C760 /* SplashAd.swift */; };
-		966172852C5F7A070007C760 /* NativeAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661727F2C5F7A060007C760 /* NativeAd.swift */; };
-		966172862C5F7A070007C760 /* RewardedInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172802C5F7A060007C760 /* RewardedInterstitialAd.swift */; };
-		966172872C5F7A070007C760 /* RewardedAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172812C5F7A070007C760 /* RewardedAd.swift */; };
-		966172882C5F7A070007C760 /* InterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172822C5F7A070007C760 /* InterstitialAd.swift */; };
-		966172892C5F7A070007C760 /* AppOpenAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172832C5F7A070007C760 /* AppOpenAd.swift */; };
-		9661728D2C5F7A2D0007C760 /* BannerAdMobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661728B2C5F7A2D0007C760 /* BannerAdMobView.swift */; };
-		9661728E2C5F7A2D0007C760 /* NativeAdMobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661728C2C5F7A2D0007C760 /* NativeAdMobView.swift */; };
+		966172842C5F7A070007C760 /* AdMobSplashAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661727E2C5F7A060007C760 /* AdMobSplashAd.swift */; };
+		966172852C5F7A070007C760 /* AdMobNativeAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661727F2C5F7A060007C760 /* AdMobNativeAd.swift */; };
+		966172862C5F7A070007C760 /* AdMobRewardedInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172802C5F7A060007C760 /* AdMobRewardedInterstitialAd.swift */; };
+		966172872C5F7A070007C760 /* AdMobRewardedAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172812C5F7A070007C760 /* AdMobRewardedAd.swift */; };
+		966172882C5F7A070007C760 /* AdMobInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172822C5F7A070007C760 /* AdMobInterstitialAd.swift */; };
+		966172892C5F7A070007C760 /* AdMobAppOpenAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172832C5F7A070007C760 /* AdMobAppOpenAd.swift */; };
+		9661728D2C5F7A2D0007C760 /* AdMobBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661728B2C5F7A2D0007C760 /* AdMobBannerView.swift */; };
+		9661728E2C5F7A2D0007C760 /* AdMobNativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661728C2C5F7A2D0007C760 /* AdMobNativeView.swift */; };
 		966172922C60771F0007C760 /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966172912C60771F0007C760 /* GoogleMobileAds.xcframework */; };
 		966172932C60771F0007C760 /* GoogleMobileAds.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966172912C60771F0007C760 /* GoogleMobileAds.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		966172962C60776B0007C760 /* AppsFlyerLib.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966172952C60776B0007C760 /* AppsFlyerLib.xcframework */; };
@@ -64,6 +64,9 @@
 		9661729A2C6077950007C760 /* AppsFlyerAdRevenue.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966172982C6077950007C760 /* AppsFlyerAdRevenue.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9661729C2C60779C0007C760 /* PurchaseConnector.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9661729B2C60779C0007C760 /* PurchaseConnector.xcframework */; };
 		9661729D2C60779C0007C760 /* PurchaseConnector.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9661729B2C60779C0007C760 /* PurchaseConnector.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9661729F2C607F100007C760 /* MonetizationNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661729E2C607F100007C760 /* MonetizationNetwork.swift */; };
+		966172A12C6086060007C760 /* AdDefaultValue.json in Resources */ = {isa = PBXBuildFile; fileRef = 966172A02C6086060007C760 /* AdDefaultValue.json */; };
+		966172A32C608BB50007C760 /* OnceUsedAdProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172A22C608BB50007C760 /* OnceUsedAdProtocol.swift */; };
 		966313D72C5CD5E200D69BBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313D62C5CD5E200D69BBA /* AppDelegate.swift */; };
 		966313D92C5CD5E200D69BBA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313D82C5CD5E200D69BBA /* SceneDelegate.swift */; };
 		966313DB2C5CD5E200D69BBA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313DA2C5CD5E200D69BBA /* ViewController.swift */; };
@@ -117,7 +120,7 @@
 		9661724C2C5F75710007C760 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		9661724D2C5F75710007C760 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9661724E2C5F75720007C760 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
-		966172522C5F775F0007C760 /* AdProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdProtocol.swift; sourceTree = "<group>"; };
+		966172522C5F775F0007C760 /* ReuseAdProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseAdProtocol.swift; sourceTree = "<group>"; };
 		966172532C5F775F0007C760 /* AdMobViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobViewProtocol.swift; sourceTree = "<group>"; };
 		9661725A2C5F780F0007C760 /* AppOpen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppOpen.swift; sourceTree = "<group>"; };
 		9661725B2C5F780F0007C760 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
@@ -126,26 +129,29 @@
 		9661725E2C5F780F0007C760 /* Native.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Native.swift; sourceTree = "<group>"; };
 		9661725F2C5F780F0007C760 /* Splash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
 		966172602C5F780F0007C760 /* Rewarded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rewarded.swift; sourceTree = "<group>"; };
-		966172612C5F780F0007C760 /* AdMobConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobConfig.swift; sourceTree = "<group>"; };
+		966172612C5F780F0007C760 /* AdConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdConfig.swift; sourceTree = "<group>"; };
 		966172622C5F780F0007C760 /* AdConfigProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdConfigProtocol.swift; sourceTree = "<group>"; };
 		9661726D2C5F78B20007C760 /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		9661726E2C5F78B20007C760 /* FrequencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequencyManager.swift; sourceTree = "<group>"; };
 		966172712C5F790A0007C760 /* Icon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icon.xcassets; sourceTree = "<group>"; };
-		966172722C5F790A0007C760 /* AdMobManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobManager.swift; sourceTree = "<group>"; };
+		966172722C5F790A0007C760 /* AdManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdManager.swift; sourceTree = "<group>"; };
 		966172762C5F796B0007C760 /* CustomNativeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomNativeAdView.xib; sourceTree = "<group>"; };
 		966172772C5F796B0007C760 /* RegistrationStructure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RegistrationStructure.json; sourceTree = "<group>"; };
-		9661727E2C5F7A060007C760 /* SplashAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashAd.swift; sourceTree = "<group>"; };
-		9661727F2C5F7A060007C760 /* NativeAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAd.swift; sourceTree = "<group>"; };
-		966172802C5F7A060007C760 /* RewardedInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardedInterstitialAd.swift; sourceTree = "<group>"; };
-		966172812C5F7A070007C760 /* RewardedAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardedAd.swift; sourceTree = "<group>"; };
-		966172822C5F7A070007C760 /* InterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterstitialAd.swift; sourceTree = "<group>"; };
-		966172832C5F7A070007C760 /* AppOpenAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppOpenAd.swift; sourceTree = "<group>"; };
-		9661728B2C5F7A2D0007C760 /* BannerAdMobView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerAdMobView.swift; sourceTree = "<group>"; };
-		9661728C2C5F7A2D0007C760 /* NativeAdMobView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdMobView.swift; sourceTree = "<group>"; };
+		9661727E2C5F7A060007C760 /* AdMobSplashAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobSplashAd.swift; sourceTree = "<group>"; };
+		9661727F2C5F7A060007C760 /* AdMobNativeAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobNativeAd.swift; sourceTree = "<group>"; };
+		966172802C5F7A060007C760 /* AdMobRewardedInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobRewardedInterstitialAd.swift; sourceTree = "<group>"; };
+		966172812C5F7A070007C760 /* AdMobRewardedAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobRewardedAd.swift; sourceTree = "<group>"; };
+		966172822C5F7A070007C760 /* AdMobInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobInterstitialAd.swift; sourceTree = "<group>"; };
+		966172832C5F7A070007C760 /* AdMobAppOpenAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobAppOpenAd.swift; sourceTree = "<group>"; };
+		9661728B2C5F7A2D0007C760 /* AdMobBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobBannerView.swift; sourceTree = "<group>"; };
+		9661728C2C5F7A2D0007C760 /* AdMobNativeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobNativeView.swift; sourceTree = "<group>"; };
 		966172912C60771F0007C760 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
 		966172952C60776B0007C760 /* AppsFlyerLib.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:6UQAD4B3U2:APPSFLYER LTD"; lastKnownFileType = wrapper.xcframework; name = AppsFlyerLib.xcframework; path = Pods/AppsFlyerFramework/binaries/xcframework/full/AppsFlyerLib.xcframework; sourceTree = "<group>"; };
 		966172982C6077950007C760 /* AppsFlyerAdRevenue.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:6UQAD4B3U2:APPSFLYER LTD"; lastKnownFileType = wrapper.xcframework; name = AppsFlyerAdRevenue.xcframework; path = "Pods/AppsFlyer-AdRevenue/iOS/AppsFlyerAdRevenue.xcframework"; sourceTree = "<group>"; };
 		9661729B2C60779C0007C760 /* PurchaseConnector.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PurchaseConnector.xcframework; path = Pods/PurchaseConnector/PurchaseConnector.xcframework; sourceTree = "<group>"; };
+		9661729E2C607F100007C760 /* MonetizationNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonetizationNetwork.swift; sourceTree = "<group>"; };
+		966172A02C6086060007C760 /* AdDefaultValue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AdDefaultValue.json; sourceTree = "<group>"; };
+		966172A22C608BB50007C760 /* OnceUsedAdProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnceUsedAdProtocol.swift; sourceTree = "<group>"; };
 		966313D42C5CD5E200D69BBA /* MediationAdExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediationAdExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		966313D62C5CD5E200D69BBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		966313D82C5CD5E200D69BBA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -226,7 +232,7 @@
 				9637032A2C5C9B4D005B52CA /* ReleaseManager.swift */,
 				963703022C5C9916005B52CA /* ConsentManager.swift */,
 				963703282C5C9B13005B52CA /* TrackingManager.swift */,
-				966172722C5F790A0007C760 /* AdMobManager.swift */,
+				966172722C5F790A0007C760 /* AdManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -245,7 +251,8 @@
 			isa = PBXGroup;
 			children = (
 				966172532C5F775F0007C760 /* AdMobViewProtocol.swift */,
-				966172522C5F775F0007C760 /* AdProtocol.swift */,
+				966172A22C608BB50007C760 /* OnceUsedAdProtocol.swift */,
+				966172522C5F775F0007C760 /* ReuseAdProtocol.swift */,
 				963703102C5C99FB005B52CA /* Handler.swift */,
 				9637030C2C5C99BC005B52CA /* RemoteHandler.swift */,
 				9637030E2C5C99E7005B52CA /* ConsentHandler.swift */,
@@ -308,7 +315,8 @@
 			isa = PBXGroup;
 			children = (
 				966172622C5F780F0007C760 /* AdConfigProtocol.swift */,
-				966172612C5F780F0007C760 /* AdMobConfig.swift */,
+				9661729E2C607F100007C760 /* MonetizationNetwork.swift */,
+				966172612C5F780F0007C760 /* AdConfig.swift */,
 				9661725A2C5F780F0007C760 /* AppOpen.swift */,
 				9661725B2C5F780F0007C760 /* Banner.swift */,
 				9661725D2C5F780F0007C760 /* Interstitial.swift */,
@@ -360,12 +368,12 @@
 		9661727C2C5F79C20007C760 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
-				966172832C5F7A070007C760 /* AppOpenAd.swift */,
-				966172822C5F7A070007C760 /* InterstitialAd.swift */,
-				9661727F2C5F7A060007C760 /* NativeAd.swift */,
-				966172812C5F7A070007C760 /* RewardedAd.swift */,
-				966172802C5F7A060007C760 /* RewardedInterstitialAd.swift */,
-				9661727E2C5F7A060007C760 /* SplashAd.swift */,
+				966172832C5F7A070007C760 /* AdMobAppOpenAd.swift */,
+				966172822C5F7A070007C760 /* AdMobInterstitialAd.swift */,
+				9661727F2C5F7A060007C760 /* AdMobNativeAd.swift */,
+				966172812C5F7A070007C760 /* AdMobRewardedAd.swift */,
+				966172802C5F7A060007C760 /* AdMobRewardedInterstitialAd.swift */,
+				9661727E2C5F7A060007C760 /* AdMobSplashAd.swift */,
 			);
 			path = Ads;
 			sourceTree = "<group>";
@@ -373,8 +381,8 @@
 		9661728A2C5F7A0C0007C760 /* AdView */ = {
 			isa = PBXGroup;
 			children = (
-				9661728B2C5F7A2D0007C760 /* BannerAdMobView.swift */,
-				9661728C2C5F7A2D0007C760 /* NativeAdMobView.swift */,
+				9661728B2C5F7A2D0007C760 /* AdMobBannerView.swift */,
+				9661728C2C5F7A2D0007C760 /* AdMobNativeView.swift */,
 			);
 			name = AdView;
 			sourceTree = "<group>";
@@ -382,6 +390,7 @@
 		966313D52C5CD5E200D69BBA /* MediationAdExamples */ = {
 			isa = PBXGroup;
 			children = (
+				966172A02C6086060007C760 /* AdDefaultValue.json */,
 				966313E82C5CD66600D69BBA /* GoogleService-Info.plist */,
 				966313E42C5CD5E300D69BBA /* Info.plist */,
 				966313D62C5CD5E200D69BBA /* AppDelegate.swift */,
@@ -520,6 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				966313E32C5CD5E300D69BBA /* LaunchScreen.storyboard in Resources */,
+				966172A12C6086060007C760 /* AdDefaultValue.json in Resources */,
 				966313E92C5CD66700D69BBA /* GoogleService-Info.plist in Resources */,
 				966313E02C5CD5E300D69BBA /* Assets.xcassets in Resources */,
 				966313DE2C5CD5E200D69BBA /* Main.storyboard in Resources */,
@@ -576,41 +586,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				966172672C5F780F0007C760 /* Native.swift in Sources */,
-				966172862C5F7A070007C760 /* RewardedInterstitialAd.swift in Sources */,
+				966172862C5F7A070007C760 /* AdMobRewardedInterstitialAd.swift in Sources */,
 				966172652C5F780F0007C760 /* RewardedInterstitial.swift in Sources */,
-				966172542C5F775F0007C760 /* AdProtocol.swift in Sources */,
+				966172542C5F775F0007C760 /* ReuseAdProtocol.swift in Sources */,
 				9661724F2C5F75720007C760 /* UICollectionViewExtension.swift in Sources */,
 				9637030F2C5C99E7005B52CA /* ConsentHandler.swift in Sources */,
 				963703202C5C9A94005B52CA /* Result.swift in Sources */,
 				966172512C5F75720007C760 /* UITableViewExtension.swift in Sources */,
 				963703032C5C9916005B52CA /* ConsentManager.swift in Sources */,
-				966172842C5F7A070007C760 /* SplashAd.swift in Sources */,
+				966172842C5F7A070007C760 /* AdMobSplashAd.swift in Sources */,
 				966172692C5F780F0007C760 /* Rewarded.swift in Sources */,
 				966172502C5F75720007C760 /* UIColorExtension.swift in Sources */,
 				963703222C5C9A94005B52CA /* ConsentConfig.swift in Sources */,
 				963703012C5C9061005B52CA /* AppManager.swift in Sources */,
 				963703212C5C9A94005B52CA /* Version.swift in Sources */,
 				966172662C5F780F0007C760 /* Interstitial.swift in Sources */,
+				966172A32C608BB50007C760 /* OnceUsedAdProtocol.swift in Sources */,
 				9637032D2C5C9B66005B52CA /* RemoteManager.swift in Sources */,
 				963703232C5C9A94005B52CA /* TokenClaims.swift in Sources */,
 				963703292C5C9B13005B52CA /* TrackingManager.swift in Sources */,
-				966172882C5F7A070007C760 /* InterstitialAd.swift in Sources */,
-				9661728D2C5F7A2D0007C760 /* BannerAdMobView.swift in Sources */,
+				966172882C5F7A070007C760 /* AdMobInterstitialAd.swift in Sources */,
+				9661728D2C5F7A2D0007C760 /* AdMobBannerView.swift in Sources */,
 				9637030D2C5C99BC005B52CA /* RemoteHandler.swift in Sources */,
-				966172872C5F7A070007C760 /* RewardedAd.swift in Sources */,
-				966172892C5F7A070007C760 /* AppOpenAd.swift in Sources */,
+				9661729F2C607F100007C760 /* MonetizationNetwork.swift in Sources */,
+				966172872C5F7A070007C760 /* AdMobRewardedAd.swift in Sources */,
+				966172892C5F7A070007C760 /* AdMobAppOpenAd.swift in Sources */,
 				966172552C5F775F0007C760 /* AdMobViewProtocol.swift in Sources */,
 				966172682C5F780F0007C760 /* Splash.swift in Sources */,
-				966172852C5F7A070007C760 /* NativeAd.swift in Sources */,
-				9661728E2C5F7A2D0007C760 /* NativeAdMobView.swift in Sources */,
+				966172852C5F7A070007C760 /* AdMobNativeAd.swift in Sources */,
+				9661728E2C5F7A2D0007C760 /* AdMobNativeView.swift in Sources */,
 				9637031E2C5C9A94005B52CA /* AppStoreConnectResponse.swift in Sources */,
 				9637030A2C5C996A005B52CA /* EndPoint.swift in Sources */,
 				9637032B2C5C9B4D005B52CA /* ReleaseManager.swift in Sources */,
 				963703252C5C9ADB005B52CA /* NetworkManager.swift in Sources */,
 				963703082C5C9953005B52CA /* APIService.swift in Sources */,
-				966172742C5F790A0007C760 /* AdMobManager.swift in Sources */,
+				966172742C5F790A0007C760 /* AdManager.swift in Sources */,
 				9661726B2C5F780F0007C760 /* AdConfigProtocol.swift in Sources */,
-				9661726A2C5F780F0007C760 /* AdMobConfig.swift in Sources */,
+				9661726A2C5F780F0007C760 /* AdConfig.swift in Sources */,
 				963703142C5C9A56005B52CA /* UIApplicationExtension.swift in Sources */,
 				963703272C5C9AF4005B52CA /* LogEventManager.swift in Sources */,
 				966172632C5F780F0007C760 /* AppOpen.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-@objc protocol AdProtocol {
+@objc protocol ReuseAdProtocol {
   func config(didFail: Handler?, didSuccess: Handler?)
   func config(id: String)
   func isPresent() -> Bool
@@ -19,6 +19,6 @@ import UIKit
             didHide: Handler?)
 }
 
-extension AdProtocol {
+extension ReuseAdProtocol {
   func config(timeout: Double) {}
 }

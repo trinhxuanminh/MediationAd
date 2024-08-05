@@ -1,16 +1,16 @@
 //
-//  RewardedInterstitialAd.swift
-//  
+//  InterstitialAd.swift
+//  AdManager
 //
-//  Created by Trịnh Xuân Minh on 05/12/2022.
+//  Created by Trịnh Xuân Minh on 25/03/2022.
 //
 
 import UIKit
 import GoogleMobileAds
 import AppsFlyerAdRevenue
 
-class RewardedInterstitialAd: NSObject, AdProtocol {
-  private var rewardedInterstitialAd: GADRewardedInterstitialAd?
+class AdMobInterstitialAd: NSObject, ReuseAdProtocol {
+  private var interstitialAd: GADInterstitialAd?
   private var adUnitID: String?
   private var presentState = false
   private var isLoading = false
@@ -37,7 +37,7 @@ class RewardedInterstitialAd: NSObject, AdProtocol {
   }
   
   func isExist() -> Bool {
-    return rewardedInterstitialAd != nil
+    return interstitialAd != nil
   }
   
   func show(rootViewController: UIViewController,
@@ -47,55 +47,50 @@ class RewardedInterstitialAd: NSObject, AdProtocol {
             didHide: Handler?
   ) {
     guard isReady() else {
-      print("[AdMobManager] [RewardedInterstitialAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      print("[AdManager] [InterstitialAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
     guard !presentState else {
-      print("[AdMobManager] [RewardedInterstitialAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
+      print("[AdManager] [InterstitialAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
-    print("[AdMobManager] [RewardedInterstitialAd] Requested to show! (\(String(describing: adUnitID)))")
+    print("[AdManager] [InterstitialAd] Requested to show! (\(String(describing: adUnitID)))")
     self.didShowFail = didFail
     self.willPresent = willPresent
     self.didHide = didHide
     self.didEarnReward = didEarnReward
-    rewardedInterstitialAd?.present(fromRootViewController: rootViewController, userDidEarnRewardHandler: { [weak self] in
-      guard let self else {
-        return
-      }
-      self.didEarnReward?()
-    })
+    interstitialAd?.present(fromRootViewController: rootViewController)
   }
 }
 
-extension RewardedInterstitialAd: GADFullScreenContentDelegate {
+extension AdMobInterstitialAd: GADFullScreenContentDelegate {
   func ad(_ ad: GADFullScreenPresentingAd,
           didFailToPresentFullScreenContentWithError error: Error
   ) {
-    print("[AdMobManager] [RewardedInterstitialAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    print("[AdManager] [InterstitialAd] Did fail to show content! (\(String(describing: adUnitID)))")
     didShowFail?()
-    self.rewardedInterstitialAd = nil
+    self.interstitialAd = nil
     load()
   }
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[AdMobManager] [RewardedInterstitialAd] Will display! (\(String(describing: adUnitID)))")
+    print("[AdManager] [InterstitialAd] Will display! (\(String(describing: adUnitID)))")
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[AdMobManager] [RewardedInterstitialAd] Did hide! (\(String(describing: adUnitID)))")
+    print("[AdManager] [InterstitialAd] Did hide! (\(String(describing: adUnitID)))")
     didHide?()
-    self.rewardedInterstitialAd = nil
+    self.interstitialAd = nil
     self.presentState = false
     load()
   }
 }
 
-extension RewardedInterstitialAd {
+extension AdMobInterstitialAd {
   private func isReady() -> Bool {
     if !isExist(), retryAttempt >= 2 {
       load()
@@ -113,7 +108,7 @@ extension RewardedInterstitialAd {
     }
     
     guard let adUnitID = adUnitID else {
-      print("[AdMobManager] [RewardedInterstitialAd] Failed to load - not initialized yet! Please install ID.")
+      print("[AdManager] [InterstitialAd] Failed to load - not initialized yet! Please install ID.")
       return
     }
     
@@ -123,10 +118,10 @@ extension RewardedInterstitialAd {
       }
       
       self.isLoading = true
-      print("[AdMobManager] [RewardedInterstitialAd] Start load! (\(String(describing: adUnitID)))")
+      print("[AdManager] [InterstitialAd] Start load! (\(String(describing: adUnitID)))")
       
       let request = GADRequest()
-      GADRewardedInterstitialAd.load(
+      GADInterstitialAd.load(
         withAdUnitID: adUnitID,
         request: request
       ) { [weak self] (ad, error) in
@@ -141,21 +136,21 @@ extension RewardedInterstitialAd {
             return
           }
           let delaySec = 5.0
-          print("[AdMobManager] [RewardedInterstitialAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
+          print("[AdManager] [InterstitialAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
           DispatchQueue.global().asyncAfter(deadline: .now() + delaySec, execute: self.load)
           return
         }
-        print("[AdMobManager] [RewardedInterstitialAd] Did load! (\(String(describing: adUnitID)))")
+        print("[AdManager] [InterstitialAd] Did load! (\(String(describing: adUnitID)))")
         self.retryAttempt = 0
-        self.rewardedInterstitialAd = ad
-        self.rewardedInterstitialAd?.fullScreenContentDelegate = self
+        self.interstitialAd = ad
+        self.interstitialAd?.fullScreenContentDelegate = self
         self.didLoadSuccess?()
         
         ad.paidEventHandler = { adValue in
           let adRevenueParams: [AnyHashable: Any] = [
             kAppsFlyerAdRevenueCountry: "US",
             kAppsFlyerAdRevenueAdUnit: adUnitID as Any,
-            kAppsFlyerAdRevenueAdType: "RewardedInterstitial"
+            kAppsFlyerAdRevenueAdType: "Interstitial"
           ]
           
           AppsFlyerAdRevenue.shared().logAdRevenue(

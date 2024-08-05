@@ -1,6 +1,6 @@
 //
-//  NativeAdMobView.swift
-//  
+//  AdMobNativeView.swift
+//
 //
 //  Created by Trịnh Xuân Minh on 11/07/2023.
 //
@@ -8,14 +8,7 @@
 import UIKit
 import GoogleMobileAds
 
-/// This class returns a UIView that loads NativeAd.
-/// ```
-/// import AdMobManager
-/// ```
-/// Inherit this class with custom layout
-/// Loading ads is automatic.
-/// - Warning: NativeAd will not load without adding ID.
-open class NativeAdMobView: UIView, AdMobViewProtocol {
+open class AdMobNativeView: UIView, AdViewProtocol {
   enum State {
     case wait
     case loading
@@ -24,7 +17,7 @@ open class NativeAdMobView: UIView, AdMobViewProtocol {
   }
   
   private var nativeAdView: GADNativeAdView?
-  private var nativeAd: NativeAd?
+  private var nativeAd: AdMobNativeAd?
   private var didReceive: Handler?
   private var didError: Handler?
   
@@ -74,9 +67,9 @@ open class NativeAdMobView: UIView, AdMobViewProtocol {
     self.didReceive = didReceive
     self.didError = didError
     
-    switch AdMobManager.shared.status(type: .onceUsed(.native), name: name) {
+    switch AdManager.shared.status(type: .onceUsed(.native), name: name) {
     case false:
-      print("[AdMobManager] [NativeAd] Ads are not allowed to show! (\(name))")
+      print("[AdManager] [NativeAd] Ads are not allowed to show! (\(name))")
       errored()
       return
     case true:
@@ -87,17 +80,17 @@ open class NativeAdMobView: UIView, AdMobViewProtocol {
     }
     
     if nativeAd == nil {
-      guard let native = AdMobManager.shared.getAd(type: .onceUsed(.native), name: name) as? Native else {
+      guard let native = AdManager.shared.getAd(type: .onceUsed(.native), name: name) as? Native else {
         return
       }
       guard native.status else {
         return
       }
       
-      if let nativeAd = AdMobManager.shared.getNativePreload(name: name) {
-        self.nativeAd = nativeAd
+      if let nativeAd = AdManager.shared.getNativePreload(name: name) {
+        self.nativeAd = nativeAd as? AdMobNativeAd
       } else {
-        self.nativeAd = NativeAd()
+        self.nativeAd = AdMobNativeAd()
         nativeAd?.config(ad: native, rootViewController: rootViewController)
       }
     }
@@ -128,7 +121,7 @@ open class NativeAdMobView: UIView, AdMobViewProtocol {
   }
 }
 
-extension NativeAdMobView {
+extension AdMobNativeView {
   private func errored() {
     didError?()
   }

@@ -61,7 +61,7 @@ public class TrackingManager: NSObject {
 }
 
 extension TrackingManager {
-  func initialize(devKey: String, appID: String, timeout: Double) {
+  func initialize(devKey: String, appID: String, timeout: Double?) {
     AppsFlyerLib.shared().appsFlyerDevKey = devKey
     AppsFlyerLib.shared().appleAppID = appID
     AppsFlyerLib.shared().delegate = self
@@ -70,7 +70,7 @@ extension TrackingManager {
     PurchaseConnector.shared().purchaseRevenueDataSource = self
     PurchaseConnector.shared().autoLogPurchaseRevenue = [.autoRenewableSubscriptions, .inAppPurchases]
     
-    AppsFlyerLib.shared().waitForATTUserAuthorization(timeoutInterval: timeout)
+    AppsFlyerLib.shared().waitForATTUserAuthorization(timeoutInterval: timeout ?? 45.0)
     
     NotificationCenter
       .default

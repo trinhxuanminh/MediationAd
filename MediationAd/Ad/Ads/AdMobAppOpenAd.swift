@@ -1,6 +1,6 @@
 //
-//  InterstitialAd.swift
-//  AdMobManager
+//  AppOpenAd.swift
+//  AdManager
 //
 //  Created by Trịnh Xuân Minh on 25/03/2022.
 //
@@ -9,8 +9,8 @@ import UIKit
 import GoogleMobileAds
 import AppsFlyerAdRevenue
 
-class InterstitialAd: NSObject, AdProtocol {
-  private var interstitialAd: GADInterstitialAd?
+class AdMobAppOpenAd: NSObject, ReuseAdProtocol {
+  private var appOpenAd: GADAppOpenAd?
   private var adUnitID: String?
   private var presentState = false
   private var isLoading = false
@@ -37,7 +37,7 @@ class InterstitialAd: NSObject, AdProtocol {
   }
   
   func isExist() -> Bool {
-    return interstitialAd != nil
+    return appOpenAd != nil
   }
   
   func show(rootViewController: UIViewController,
@@ -47,52 +47,52 @@ class InterstitialAd: NSObject, AdProtocol {
             didHide: Handler?
   ) {
     guard isReady() else {
-      print("[AdMobManager] [InterstitialAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      print("[AdManager] [AppOpenAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
     guard !presentState else {
-      print("[AdMobManager] [InterstitialAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
+      print("[AdManager] [AppOpenAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
-    print("[AdMobManager] [InterstitialAd] Requested to show! (\(String(describing: adUnitID)))")
+    print("[AdManager] [AppOpenAd] Requested to show! (\(String(describing: adUnitID)))")
     self.didShowFail = didFail
     self.willPresent = willPresent
     self.didHide = didHide
     self.didEarnReward = didEarnReward
-    interstitialAd?.present(fromRootViewController: rootViewController)
+    appOpenAd?.present(fromRootViewController: rootViewController)
   }
 }
 
-extension InterstitialAd: GADFullScreenContentDelegate {
+extension AdMobAppOpenAd: GADFullScreenContentDelegate {
   func ad(_ ad: GADFullScreenPresentingAd,
           didFailToPresentFullScreenContentWithError error: Error
   ) {
-    print("[AdMobManager] [InterstitialAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    print("[AdManager] [AppOpenAd] Did fail to show content! (\(String(describing: adUnitID)))")
     didShowFail?()
-    self.interstitialAd = nil
+    self.appOpenAd = nil
     load()
   }
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[AdMobManager] [InterstitialAd] Will display! (\(String(describing: adUnitID)))")
+    print("[AdManager] [AppOpenAd] Will display! (\(String(describing: adUnitID)))")
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[AdMobManager] [InterstitialAd] Did hide! (\(String(describing: adUnitID)))")
+    print("[AdManager] [AppOpenAd] Did hide! (\(String(describing: adUnitID)))")
     didHide?()
-    self.interstitialAd = nil
+    self.appOpenAd = nil
     self.presentState = false
     load()
   }
 }
 
-extension InterstitialAd {
+extension AdMobAppOpenAd {
   private func isReady() -> Bool {
-    if !isExist(), retryAttempt >= 2 {
+    if !isExist(), retryAttempt >= 1 {
       load()
     }
     return isExist()
@@ -108,7 +108,7 @@ extension InterstitialAd {
     }
     
     guard let adUnitID = adUnitID else {
-      print("[AdMobManager] [InterstitialAd] Failed to load - not initialized yet! Please install ID.")
+      print("[AdManager] [AppOpenAd] Failed to load - not initialized yet! Please install ID.")
       return
     }
     
@@ -118,10 +118,10 @@ extension InterstitialAd {
       }
       
       self.isLoading = true
-      print("[AdMobManager] [InterstitialAd] Start load! (\(String(describing: adUnitID)))")
+      print("[AdManager] [AppOpenAd] Start load! (\(String(describing: adUnitID)))")
       
       let request = GADRequest()
-      GADInterstitialAd.load(
+      GADAppOpenAd.load(
         withAdUnitID: adUnitID,
         request: request
       ) { [weak self] (ad, error) in
@@ -131,28 +131,23 @@ extension InterstitialAd {
         self.isLoading = false
         guard error == nil, let ad = ad else {
           self.retryAttempt += 1
-          guard self.retryAttempt == 1 else {
-            self.didLoadFail?()
-            return
-          }
-          let delaySec = 5.0
-          print("[AdMobManager] [InterstitialAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
-          DispatchQueue.global().asyncAfter(deadline: .now() + delaySec, execute: self.load)
+          self.didLoadFail?()
+          print("[AdManager] [AppOpenAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
           return
         }
-        print("[AdMobManager] [InterstitialAd] Did load! (\(String(describing: adUnitID)))")
+        print("[AdManager] [AppOpenAd] Did load! (\(String(describing: adUnitID)))")
         self.retryAttempt = 0
-        self.interstitialAd = ad
-        self.interstitialAd?.fullScreenContentDelegate = self
+        self.appOpenAd = ad
+        self.appOpenAd?.fullScreenContentDelegate = self
         self.didLoadSuccess?()
         
         ad.paidEventHandler = { adValue in
           let adRevenueParams: [AnyHashable: Any] = [
             kAppsFlyerAdRevenueCountry: "US",
             kAppsFlyerAdRevenueAdUnit: adUnitID as Any,
-            kAppsFlyerAdRevenueAdType: "Interstitial"
+            kAppsFlyerAdRevenueAdType: "AppOpen"
           ]
-          
+  
           AppsFlyerAdRevenue.shared().logAdRevenue(
             monetizationNetwork: "admob",
             mediationNetwork: MediationNetworkType.googleAdMob,

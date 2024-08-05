@@ -10,6 +10,7 @@ import Foundation
 struct Interstitial: AdConfigProtocol {
   let name: String
   let status: Bool
+  let network: MonetizationNetwork
   let id: String
   let isAuto: Bool?
   let description: String?

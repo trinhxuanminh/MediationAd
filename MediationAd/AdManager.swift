@@ -1,6 +1,6 @@
 //
-//  AdMobManager.swift
-//  AdMobManager
+//  AdManager.swift
+//  AdManager
 //
 //  Created by Trịnh Xuân Minh on 25/03/2022.
 //
@@ -11,16 +11,11 @@ import GoogleMobileAds
 import Combine
 import UserMessagingPlatform
 
-/// An ad management structure. It supports setting InterstitialAd, RewardedAd, RewardedInterstitialAd, AppOpenAd, NativeAd, BannerAd.
-/// ```
-/// import AdMobManager
-/// ```
-/// - Warning: Available for Swift 5.3, Xcode 12.5 (macOS Big Sur). Support from iOS 13.0 or newer.
-public class AdMobManager {
-  public static var shared = AdMobManager()
+public class AdManager {
+  public static var shared = AdManager()
   
   enum Keys {
-    static let cache = "ADMOB_CACHE"
+    static let cache = "AD_CACHE"
   }
   
   public enum State {
@@ -54,9 +49,9 @@ public class AdMobManager {
   private var isRelease = true
   private var isConsent = true
   private var defaultData: Data?
-  private var adMobConfig: AdMobConfig?
-  private var listReuseAd: [String: AdProtocol] = [:]
-  private var listNativeAd: [String: NativeAd] = [:]
+  private var adConfig: AdConfig?
+  private var listReuseAd: [String: ReuseAdProtocol] = [:]
+  private var listNativeAd: [String: OnceUsedAdProtocol] = [:]
   
   public func upgradePremium() {
     guard !isPremium else {
@@ -76,46 +71,44 @@ public class AdMobManager {
   public func register(isRelease: Bool,
                        isConsent: Bool,
                        defaultData: Data,
-                       remoteData: Data?
+                       remoteData: Data
   ) {
     self.defaultData = defaultData
     self.isRelease = isRelease
     self.isConsent = isConsent
     
     guard !isPremium else {
-      print("[AdMobManager] Premium!")
+      print("[AdManager] Premium!")
       change(state: .premium)
       return
     }
     
-    print("[AdMobManager] Start register!")
+    print("[AdManager] Start register!")
     LogEventManager.shared.log(event: .register)
     
-    if let remoteData {
-      decoding(data: remoteData)
-    }
+    decoding(data: remoteData)
     fetchCache()
     fetchDefault()
   }
   
   public func status(type: AdType, name: String) -> Bool? {
     guard !isPremium else {
-      print("[AdMobManager] Premium!")
+      print("[AdManager] Premium!")
       return nil
     }
-    guard let adMobConfig else {
-      print("[AdMobManager] Not yet registered!")
+    guard let adConfig else {
+      print("[AdManager] Not yet registered!")
       return nil
     }
-    guard adMobConfig.status else {
+    guard adConfig.status else {
       return false
     }
     guard registerState == .success else {
-      print("[AdMobManager] Can't Request Ads!")
+      print("[AdManager] Can't Request Ads!")
       return nil
     }
     guard let adConfig = getAd(type: type, name: name) as? AdConfigProtocol else {
-      print("[AdMobManager] Ads don't exist! (\(name))")
+      print("[AdManager] Ads don't exist! (\(name))")
       return nil
     }
     if !isRelease, adConfig.isAuto == true {
@@ -131,7 +124,7 @@ public class AdMobManager {
   ) {
     switch status(type: .reuse(type), name: name) {
     case false:
-      print("[AdMobManager] Ads are not allowed to show! (\(name))")
+      print("[AdManager] Ads are not allowed to show! (\(name))")
       fail?()
       return
     case true:
@@ -141,7 +134,7 @@ public class AdMobManager {
       return
     }
     guard let adConfig = getAd(type: .reuse(type), name: name) as? AdConfigProtocol else {
-      print("[AdMobManager] Ads don't exist! (\(name))")
+      print("[AdManager] Ads don't exist! (\(name))")
       fail?()
       return
     }
@@ -150,26 +143,33 @@ public class AdMobManager {
       return
     }
     
-    let adProtocol: AdProtocol!
-    switch type {
-    case .splash:
-      guard let splash = adConfig as? Splash else {
-        print("[AdMobManager] Format conversion error! (\(name))")
-        fail?()
-        return
+    let adProtocol: ReuseAdProtocol!
+    
+    switch adConfig.network {
+    case .admob:
+      switch type {
+      case .splash:
+        guard let splash = adConfig as? Splash else {
+          print("[AdManager] Format conversion error! (\(name))")
+          fail?()
+          return
+        }
+        let splashAd = AdMobSplashAd()
+        splashAd.config(timeout: splash.timeout)
+        adProtocol = splashAd
+      case .appOpen:
+        adProtocol = AdMobAppOpenAd()
+      case .interstitial:
+        adProtocol = AdMobInterstitialAd()
+      case .rewarded:
+        adProtocol = AdMobRewardedAd()
+      case .rewardedInterstitial:
+        adProtocol = AdMobRewardedInterstitialAd()
       }
-      let splashAd = SplashAd()
-      splashAd.config(timeout: splash.timeout)
-      adProtocol = splashAd
-    case .appOpen:
-      adProtocol = AppOpenAd()
-    case .interstitial:
-      adProtocol = InterstitialAd()
-    case .rewarded:
-      adProtocol = RewardedAd()
-    case .rewardedInterstitial:
-      adProtocol = RewardedInterstitialAd()
+    case .max:
+      return
     }
+    
     adProtocol.config(didFail: fail, didSuccess: success)
     adProtocol.config(id: adConfig.id)
     self.listReuseAd[type.rawValue + adConfig.id] = adProtocol
@@ -181,7 +181,7 @@ public class AdMobManager {
   ) {
     switch status(type: .onceUsed(.native), name: name) {
     case false:
-      print("[AdMobManager] Ads are not allowed to show! (\(name))")
+      print("[AdManager] Ads are not allowed to show! (\(name))")
       fail?()
       return
     case true:
@@ -191,12 +191,12 @@ public class AdMobManager {
       return
     }
     guard let native = getAd(type: .onceUsed(.native), name: name) as? Native else {
-      print("[AdMobManager] Ads don't exist! (\(name))")
+      print("[AdManager] Ads don't exist! (\(name))")
       fail?()
       return
     }
     guard native.isPreload == true else {
-      print("[AdMobManager] Ads are not preloaded! (\(name))")
+      print("[AdManager] Ads are not preloaded! (\(name))")
       fail?()
       return
     }
@@ -204,9 +204,18 @@ public class AdMobManager {
       fail?()
       return
     }
-    let nativeAd = NativeAd()
+    let nativeAd: OnceUsedAdProtocol!
+    
+    switch native.network {
+    case .admob:
+      nativeAd = AdMobNativeAd()
+    case .max:
+      return
+    }
+    
     nativeAd.bind(didReceive: success, didError: fail)
     nativeAd.config(ad: native, rootViewController: nil)
+    
     self.listNativeAd[name] = nativeAd
   }
   
@@ -220,7 +229,7 @@ public class AdMobManager {
   ) {
     switch status(type: .reuse(type), name: name) {
     case false:
-      print("[AdMobManager] Ads are not allowed to show! (\(name))")
+      print("[AdManager] Ads are not allowed to show! (\(name))")
       didFail?()
       return
     case true:
@@ -230,22 +239,22 @@ public class AdMobManager {
       return
     }
     guard let adConfig = getAd(type: .reuse(type), name: name) as? AdConfigProtocol else {
-      print("[AdMobManager] Ads don't exist! (\(name))")
+      print("[AdManager] Ads don't exist! (\(name))")
       didFail?()
       return
     }
     guard let ad = listReuseAd[type.rawValue + adConfig.id] else {
-      print("[AdMobManager] Ads do not exist! (\(name))")
+      print("[AdManager] Ads do not exist! (\(name))")
       didFail?()
       return
     }
     guard !checkIsPresent() else {
-      print("[AdMobManager] Ads display failure - other ads is showing! (\(name))")
+      print("[AdManager] Ads display failure - other ads is showing! (\(name))")
       didFail?()
       return
     }
     guard checkFrequency(adConfig: adConfig, ad: ad) else {
-      print("[AdMobManager] Ads hasn't been displayed yet! (\(name))")
+      print("[AdManager] Ads hasn't been displayed yet! (\(name))")
       didFail?()
       return
     }
@@ -257,47 +266,47 @@ public class AdMobManager {
   }
 }
 
-extension AdMobManager {
+extension AdManager {
   func getAd(type: AdType, name: String) -> Any? {
-    guard let adMobConfig else {
+    guard let adConfig else {
       return nil
     }
     switch type {
     case .onceUsed(let type):
       switch type {
       case .banner:
-        return adMobConfig.banners?.first(where: { $0.name == name })
+        return adConfig.banners?.first(where: { $0.name == name })
       case .native:
-        return adMobConfig.natives?.first(where: { $0.name == name })
+        return adConfig.natives?.first(where: { $0.name == name })
       }
     case .reuse(let type):
       switch type {
       case .splash:
-        return adMobConfig.splashs?.first(where: { $0.name == name })
+        return adConfig.splashs?.first(where: { $0.name == name })
       case .appOpen:
         guard
-          let appOpen = adMobConfig.appOpen,
+          let appOpen = adConfig.appOpen,
           appOpen.name == name
         else {
           return nil
         }
-        return adMobConfig.appOpen
+        return adConfig.appOpen
       case .interstitial:
-        return adMobConfig.interstitials?.first(where: { $0.name == name })
+        return adConfig.interstitials?.first(where: { $0.name == name })
       case .rewarded:
-        return adMobConfig.rewardeds?.first(where: { $0.name == name })
+        return adConfig.rewardeds?.first(where: { $0.name == name })
       case .rewardedInterstitial:
-        return adMobConfig.rewardedInterstitials?.first(where: { $0.name == name })
+        return adConfig.rewardedInterstitials?.first(where: { $0.name == name })
       }
     }
   }
   
-  func getNativePreload(name: String) -> NativeAd? {
+  func getNativePreload(name: String) -> OnceUsedAdProtocol? {
     return listNativeAd[name]
   }
 }
 
-extension AdMobManager {
+extension AdManager {
   private func checkIsPresent() -> Bool {
     for ad in listReuseAd where ad.value.isPresent() {
       return true
@@ -306,10 +315,10 @@ extension AdMobManager {
   }
   
   private func updateCache() {
-    guard let adMobConfig else {
+    guard let adConfig else {
       return
     }
-    guard let data = try? JSONEncoder().encode(adMobConfig) else {
+    guard let data = try? JSONEncoder().encode(adConfig) else {
       return
     }
     UserDefaults.standard.set(data, forKey: Keys.cache)
@@ -319,11 +328,11 @@ extension AdMobManager {
     guard registerState == .wait else {
       return
     }
-    guard let adMobConfig = try? JSONDecoder().decode(AdMobConfig.self, from: data) else {
-      print("[AdMobManager] Invalid (AdMobConfig) format!")
+    guard let adConfig = try? JSONDecoder().decode(AdConfig.self, from: data) else {
+      print("[AdManager] Invalid (AdMobConfig) format!")
       return
     }
-    self.adMobConfig = adMobConfig
+    self.adConfig = adConfig
     updateCache()
     
     if isConsent {
@@ -348,7 +357,7 @@ extension AdMobManager {
     change(state: .error)
   }
   
-  private func checkFrequency(adConfig: AdConfigProtocol, ad: AdProtocol) -> Bool {
+  private func checkFrequency(adConfig: AdConfigProtocol, ad: ReuseAdProtocol) -> Bool {
     guard
       let interstitial = adConfig as? Interstitial,
       let start = interstitial.start,

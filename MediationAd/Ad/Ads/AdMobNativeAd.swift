@@ -1,6 +1,6 @@
 //
 //  NativeAd.swift
-//  AdMobManager
+//  AdManager
 //
 //  Created by Trịnh Xuân Minh on 25/03/2022.
 //
@@ -9,7 +9,7 @@ import UIKit
 import GoogleMobileAds
 import AppsFlyerAdRevenue
 
-class NativeAd: NSObject {
+class AdMobNativeAd: NSObject, OnceUsedAdProtocol {
   enum State {
     case wait
     case loading
@@ -57,13 +57,13 @@ class NativeAd: NSObject {
   }
 }
 
-extension NativeAd: GADNativeAdLoaderDelegate {
+extension AdMobNativeAd: GADNativeAdLoaderDelegate {
   func adLoader(_ adLoader: GADAdLoader,
                 didFailToReceiveAdWithError error: Error) {
     guard state == .loading else {
       return
     }
-    print("[AdMobManager] [NativeAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+    print("[AdManager] [NativeAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
     self.state = .error
     didError?()
   }
@@ -72,7 +72,7 @@ extension NativeAd: GADNativeAdLoaderDelegate {
     guard state == .loading else {
       return
     }
-    print("[AdMobManager] [NativeAd] Did load! (\(String(describing: adUnitID)))")
+    print("[AdManager] [NativeAd] Did load! (\(String(describing: adUnitID)))")
     self.state = .receive
     self.nativeAd = nativeAd
     didReceive?()
@@ -97,18 +97,18 @@ extension NativeAd: GADNativeAdLoaderDelegate {
   }
 }
 
-extension NativeAd {
+extension AdMobNativeAd {
   private func load() {
     guard state == .wait else {
       return
     }
     
     guard let adUnitID = adUnitID else {
-      print("[AdMobManager] [NativeAd] Failed to load - not initialized yet! Please install ID.")
+      print("[AdManager] [NativeAd] Failed to load - not initialized yet! Please install ID.")
       return
     }
     
-    print("[AdMobManager] [NativeAd] Start load! (\(String(describing: adUnitID)))")
+    print("[AdManager] [NativeAd] Start load! (\(String(describing: adUnitID)))")
     self.state = .loading
     DispatchQueue.main.async { [weak self] in
       guard let self = self else {
@@ -137,7 +137,7 @@ extension NativeAd {
         guard state == .loading else {
           return
         }
-        print("[AdMobManager] [NativeAd] Load fail (\(String(describing: adUnitID))) - time out!")
+        print("[AdManager] [NativeAd] Load fail (\(String(describing: adUnitID))) - time out!")
         self.state = .error
         didError?()
       }
