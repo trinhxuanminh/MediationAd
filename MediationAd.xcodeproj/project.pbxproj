@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,6 +28,42 @@
 		963703292C5C9B13005B52CA /* TrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703282C5C9B13005B52CA /* TrackingManager.swift */; };
 		9637032B2C5C9B4D005B52CA /* ReleaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637032A2C5C9B4D005B52CA /* ReleaseManager.swift */; };
 		9637032D2C5C9B66005B52CA /* RemoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637032C2C5C9B66005B52CA /* RemoteManager.swift */; };
+		9661724F2C5F75720007C760 /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661724C2C5F75710007C760 /* UICollectionViewExtension.swift */; };
+		966172502C5F75720007C760 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661724D2C5F75710007C760 /* UIColorExtension.swift */; };
+		966172512C5F75720007C760 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661724E2C5F75720007C760 /* UITableViewExtension.swift */; };
+		966172542C5F775F0007C760 /* AdProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172522C5F775F0007C760 /* AdProtocol.swift */; };
+		966172552C5F775F0007C760 /* AdMobViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172532C5F775F0007C760 /* AdMobViewProtocol.swift */; };
+		966172632C5F780F0007C760 /* AppOpen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661725A2C5F780F0007C760 /* AppOpen.swift */; };
+		966172642C5F780F0007C760 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661725B2C5F780F0007C760 /* Banner.swift */; };
+		966172652C5F780F0007C760 /* RewardedInterstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661725C2C5F780F0007C760 /* RewardedInterstitial.swift */; };
+		966172662C5F780F0007C760 /* Interstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661725D2C5F780F0007C760 /* Interstitial.swift */; };
+		966172672C5F780F0007C760 /* Native.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661725E2C5F780F0007C760 /* Native.swift */; };
+		966172682C5F780F0007C760 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661725F2C5F780F0007C760 /* Splash.swift */; };
+		966172692C5F780F0007C760 /* Rewarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172602C5F780F0007C760 /* Rewarded.swift */; };
+		9661726A2C5F780F0007C760 /* AdMobConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172612C5F780F0007C760 /* AdMobConfig.swift */; };
+		9661726B2C5F780F0007C760 /* AdConfigProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172622C5F780F0007C760 /* AdConfigProtocol.swift */; };
+		9661726F2C5F78B20007C760 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661726D2C5F78B20007C760 /* Icon.swift */; };
+		966172702C5F78B20007C760 /* FrequencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661726E2C5F78B20007C760 /* FrequencyManager.swift */; };
+		966172732C5F790A0007C760 /* Icon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 966172712C5F790A0007C760 /* Icon.xcassets */; };
+		966172742C5F790A0007C760 /* AdMobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172722C5F790A0007C760 /* AdMobManager.swift */; };
+		966172782C5F796B0007C760 /* CustomNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 966172762C5F796B0007C760 /* CustomNativeAdView.xib */; };
+		966172792C5F796B0007C760 /* RegistrationStructure.json in Resources */ = {isa = PBXBuildFile; fileRef = 966172772C5F796B0007C760 /* RegistrationStructure.json */; };
+		966172842C5F7A070007C760 /* SplashAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661727E2C5F7A060007C760 /* SplashAd.swift */; };
+		966172852C5F7A070007C760 /* NativeAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661727F2C5F7A060007C760 /* NativeAd.swift */; };
+		966172862C5F7A070007C760 /* RewardedInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172802C5F7A060007C760 /* RewardedInterstitialAd.swift */; };
+		966172872C5F7A070007C760 /* RewardedAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172812C5F7A070007C760 /* RewardedAd.swift */; };
+		966172882C5F7A070007C760 /* InterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172822C5F7A070007C760 /* InterstitialAd.swift */; };
+		966172892C5F7A070007C760 /* AppOpenAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172832C5F7A070007C760 /* AppOpenAd.swift */; };
+		9661728D2C5F7A2D0007C760 /* BannerAdMobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661728B2C5F7A2D0007C760 /* BannerAdMobView.swift */; };
+		9661728E2C5F7A2D0007C760 /* NativeAdMobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661728C2C5F7A2D0007C760 /* NativeAdMobView.swift */; };
+		966172922C60771F0007C760 /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966172912C60771F0007C760 /* GoogleMobileAds.xcframework */; };
+		966172932C60771F0007C760 /* GoogleMobileAds.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966172912C60771F0007C760 /* GoogleMobileAds.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		966172962C60776B0007C760 /* AppsFlyerLib.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966172952C60776B0007C760 /* AppsFlyerLib.xcframework */; };
+		966172972C60776B0007C760 /* AppsFlyerLib.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966172952C60776B0007C760 /* AppsFlyerLib.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		966172992C6077950007C760 /* AppsFlyerAdRevenue.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966172982C6077950007C760 /* AppsFlyerAdRevenue.xcframework */; };
+		9661729A2C6077950007C760 /* AppsFlyerAdRevenue.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966172982C6077950007C760 /* AppsFlyerAdRevenue.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9661729C2C60779C0007C760 /* PurchaseConnector.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9661729B2C60779C0007C760 /* PurchaseConnector.xcframework */; };
+		9661729D2C60779C0007C760 /* PurchaseConnector.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9661729B2C60779C0007C760 /* PurchaseConnector.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		966313D72C5CD5E200D69BBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313D62C5CD5E200D69BBA /* AppDelegate.swift */; };
 		966313D92C5CD5E200D69BBA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313D82C5CD5E200D69BBA /* SceneDelegate.swift */; };
 		966313DB2C5CD5E200D69BBA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313DA2C5CD5E200D69BBA /* ViewController.swift */; };
@@ -37,6 +73,23 @@
 		966313E92C5CD66700D69BBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 966313E82C5CD66600D69BBA /* GoogleService-Info.plist */; };
 		E470D43A7C603F7EB512D6C4 /* Pods_MediationAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1AC247DFA8DD5E326E9334 /* Pods_MediationAd.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		966172942C60771F0007C760 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				966172972C60776B0007C760 /* AppsFlyerLib.xcframework in Embed Frameworks */,
+				9661729A2C6077950007C760 /* AppsFlyerAdRevenue.xcframework in Embed Frameworks */,
+				9661729D2C60779C0007C760 /* PurchaseConnector.xcframework in Embed Frameworks */,
+				966172932C60771F0007C760 /* GoogleMobileAds.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		963702DD2C5C8B38005B52CA /* MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +114,38 @@
 		963703282C5C9B13005B52CA /* TrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingManager.swift; sourceTree = "<group>"; };
 		9637032A2C5C9B4D005B52CA /* ReleaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseManager.swift; sourceTree = "<group>"; };
 		9637032C2C5C9B66005B52CA /* RemoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteManager.swift; sourceTree = "<group>"; };
+		9661724C2C5F75710007C760 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
+		9661724D2C5F75710007C760 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		9661724E2C5F75720007C760 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		966172522C5F775F0007C760 /* AdProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdProtocol.swift; sourceTree = "<group>"; };
+		966172532C5F775F0007C760 /* AdMobViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobViewProtocol.swift; sourceTree = "<group>"; };
+		9661725A2C5F780F0007C760 /* AppOpen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppOpen.swift; sourceTree = "<group>"; };
+		9661725B2C5F780F0007C760 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		9661725C2C5F780F0007C760 /* RewardedInterstitial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardedInterstitial.swift; sourceTree = "<group>"; };
+		9661725D2C5F780F0007C760 /* Interstitial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interstitial.swift; sourceTree = "<group>"; };
+		9661725E2C5F780F0007C760 /* Native.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Native.swift; sourceTree = "<group>"; };
+		9661725F2C5F780F0007C760 /* Splash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
+		966172602C5F780F0007C760 /* Rewarded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rewarded.swift; sourceTree = "<group>"; };
+		966172612C5F780F0007C760 /* AdMobConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobConfig.swift; sourceTree = "<group>"; };
+		966172622C5F780F0007C760 /* AdConfigProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdConfigProtocol.swift; sourceTree = "<group>"; };
+		9661726D2C5F78B20007C760 /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		9661726E2C5F78B20007C760 /* FrequencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequencyManager.swift; sourceTree = "<group>"; };
+		966172712C5F790A0007C760 /* Icon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icon.xcassets; sourceTree = "<group>"; };
+		966172722C5F790A0007C760 /* AdMobManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobManager.swift; sourceTree = "<group>"; };
+		966172762C5F796B0007C760 /* CustomNativeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomNativeAdView.xib; sourceTree = "<group>"; };
+		966172772C5F796B0007C760 /* RegistrationStructure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RegistrationStructure.json; sourceTree = "<group>"; };
+		9661727E2C5F7A060007C760 /* SplashAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashAd.swift; sourceTree = "<group>"; };
+		9661727F2C5F7A060007C760 /* NativeAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAd.swift; sourceTree = "<group>"; };
+		966172802C5F7A060007C760 /* RewardedInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardedInterstitialAd.swift; sourceTree = "<group>"; };
+		966172812C5F7A070007C760 /* RewardedAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardedAd.swift; sourceTree = "<group>"; };
+		966172822C5F7A070007C760 /* InterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterstitialAd.swift; sourceTree = "<group>"; };
+		966172832C5F7A070007C760 /* AppOpenAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppOpenAd.swift; sourceTree = "<group>"; };
+		9661728B2C5F7A2D0007C760 /* BannerAdMobView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerAdMobView.swift; sourceTree = "<group>"; };
+		9661728C2C5F7A2D0007C760 /* NativeAdMobView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdMobView.swift; sourceTree = "<group>"; };
+		966172912C60771F0007C760 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
+		966172952C60776B0007C760 /* AppsFlyerLib.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:6UQAD4B3U2:APPSFLYER LTD"; lastKnownFileType = wrapper.xcframework; name = AppsFlyerLib.xcframework; path = Pods/AppsFlyerFramework/binaries/xcframework/full/AppsFlyerLib.xcframework; sourceTree = "<group>"; };
+		966172982C6077950007C760 /* AppsFlyerAdRevenue.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:6UQAD4B3U2:APPSFLYER LTD"; lastKnownFileType = wrapper.xcframework; name = AppsFlyerAdRevenue.xcframework; path = "Pods/AppsFlyer-AdRevenue/iOS/AppsFlyerAdRevenue.xcframework"; sourceTree = "<group>"; };
+		9661729B2C60779C0007C760 /* PurchaseConnector.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PurchaseConnector.xcframework; path = Pods/PurchaseConnector/PurchaseConnector.xcframework; sourceTree = "<group>"; };
 		966313D42C5CD5E200D69BBA /* MediationAdExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediationAdExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		966313D62C5CD5E200D69BBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		966313D82C5CD5E200D69BBA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +166,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E470D43A7C603F7EB512D6C4 /* Pods_MediationAd.framework in Frameworks */,
+				966172962C60776B0007C760 /* AppsFlyerLib.xcframework in Frameworks */,
+				966172992C6077950007C760 /* AppsFlyerAdRevenue.xcframework in Frameworks */,
+				9661729C2C60779C0007C760 /* PurchaseConnector.xcframework in Frameworks */,
+				966172922C60771F0007C760 /* GoogleMobileAds.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,8 +208,11 @@
 			children = (
 				9637030B2C5C9989005B52CA /* Base */,
 				963703122C5C9A42005B52CA /* Extensions */,
+				966172752C5F79540007C760 /* Templates */,
+				966172562C5F778B0007C760 /* Ultis */,
 				963703152C5C9A77005B52CA /* Models */,
 				963703042C5C992E005B52CA /* API */,
+				9661726C2C5F787D0007C760 /* Supports */,
 				963702FF2C5C9042005B52CA /* Managers */,
 			);
 			path = MediationAd;
@@ -134,8 +226,7 @@
 				9637032A2C5C9B4D005B52CA /* ReleaseManager.swift */,
 				963703022C5C9916005B52CA /* ConsentManager.swift */,
 				963703282C5C9B13005B52CA /* TrackingManager.swift */,
-				963703242C5C9ADB005B52CA /* NetworkManager.swift */,
-				963703262C5C9AF4005B52CA /* LogEventManager.swift */,
+				966172722C5F790A0007C760 /* AdMobManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -153,6 +244,8 @@
 		9637030B2C5C9989005B52CA /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				966172532C5F775F0007C760 /* AdMobViewProtocol.swift */,
+				966172522C5F775F0007C760 /* AdProtocol.swift */,
 				963703102C5C99FB005B52CA /* Handler.swift */,
 				9637030C2C5C99BC005B52CA /* RemoteHandler.swift */,
 				9637030E2C5C99E7005B52CA /* ConsentHandler.swift */,
@@ -163,6 +256,9 @@
 		963703122C5C9A42005B52CA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9661724C2C5F75710007C760 /* UICollectionViewExtension.swift */,
+				9661724D2C5F75710007C760 /* UIColorExtension.swift */,
+				9661724E2C5F75720007C760 /* UITableViewExtension.swift */,
 				963703132C5C9A56005B52CA /* UIApplicationExtension.swift */,
 			);
 			path = Extensions;
@@ -171,15 +267,116 @@
 		963703152C5C9A77005B52CA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				966172592C5F77FD0007C760 /* Ad */,
+				966172582C5F77F30007C760 /* Consent */,
+				966172572C5F77D50007C760 /* Release */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		966172562C5F778B0007C760 /* Ultis */ = {
+			isa = PBXGroup;
+			children = (
+				9661726D2C5F78B20007C760 /* Icon.swift */,
+				966172712C5F790A0007C760 /* Icon.xcassets */,
+			);
+			path = Ultis;
+			sourceTree = "<group>";
+		};
+		966172572C5F77D50007C760 /* Release */ = {
+			isa = PBXGroup;
+			children = (
 				963703172C5C9A93005B52CA /* AppStoreConnectResponse.swift */,
 				963703162C5C9A93005B52CA /* Attributes.swift */,
-				9637031B2C5C9A94005B52CA /* ConsentConfig.swift */,
 				963703182C5C9A94005B52CA /* ItunesResponse.swift */,
 				963703192C5C9A94005B52CA /* Result.swift */,
 				9637031C2C5C9A94005B52CA /* TokenClaims.swift */,
 				9637031A2C5C9A94005B52CA /* Version.swift */,
 			);
-			name = Models;
+			path = Release;
+			sourceTree = "<group>";
+		};
+		966172582C5F77F30007C760 /* Consent */ = {
+			isa = PBXGroup;
+			children = (
+				9637031B2C5C9A94005B52CA /* ConsentConfig.swift */,
+			);
+			name = Consent;
+			sourceTree = "<group>";
+		};
+		966172592C5F77FD0007C760 /* Ad */ = {
+			isa = PBXGroup;
+			children = (
+				966172622C5F780F0007C760 /* AdConfigProtocol.swift */,
+				966172612C5F780F0007C760 /* AdMobConfig.swift */,
+				9661725A2C5F780F0007C760 /* AppOpen.swift */,
+				9661725B2C5F780F0007C760 /* Banner.swift */,
+				9661725D2C5F780F0007C760 /* Interstitial.swift */,
+				9661725E2C5F780F0007C760 /* Native.swift */,
+				966172602C5F780F0007C760 /* Rewarded.swift */,
+				9661725C2C5F780F0007C760 /* RewardedInterstitial.swift */,
+				9661725F2C5F780F0007C760 /* Splash.swift */,
+			);
+			name = Ad;
+			sourceTree = "<group>";
+		};
+		9661726C2C5F787D0007C760 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				9661726E2C5F78B20007C760 /* FrequencyManager.swift */,
+				963703242C5C9ADB005B52CA /* NetworkManager.swift */,
+				963703262C5C9AF4005B52CA /* LogEventManager.swift */,
+				9661727A2C5F79AA0007C760 /* Ad */,
+			);
+			name = Supports;
+			sourceTree = "<group>";
+		};
+		966172752C5F79540007C760 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				966172762C5F796B0007C760 /* CustomNativeAdView.xib */,
+				966172772C5F796B0007C760 /* RegistrationStructure.json */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		9661727A2C5F79AA0007C760 /* Ad */ = {
+			isa = PBXGroup;
+			children = (
+				9661727B2C5F79BB0007C760 /* AdMob */,
+			);
+			path = Ad;
+			sourceTree = "<group>";
+		};
+		9661727B2C5F79BB0007C760 /* AdMob */ = {
+			isa = PBXGroup;
+			children = (
+				9661727C2C5F79C20007C760 /* Ads */,
+				9661728A2C5F7A0C0007C760 /* AdView */,
+			);
+			name = AdMob;
+			sourceTree = "<group>";
+		};
+		9661727C2C5F79C20007C760 /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				966172832C5F7A070007C760 /* AppOpenAd.swift */,
+				966172822C5F7A070007C760 /* InterstitialAd.swift */,
+				9661727F2C5F7A060007C760 /* NativeAd.swift */,
+				966172812C5F7A070007C760 /* RewardedAd.swift */,
+				966172802C5F7A060007C760 /* RewardedInterstitialAd.swift */,
+				9661727E2C5F7A060007C760 /* SplashAd.swift */,
+			);
+			path = Ads;
+			sourceTree = "<group>";
+		};
+		9661728A2C5F7A0C0007C760 /* AdView */ = {
+			isa = PBXGroup;
+			children = (
+				9661728B2C5F7A2D0007C760 /* BannerAdMobView.swift */,
+				9661728C2C5F7A2D0007C760 /* NativeAdMobView.swift */,
+			);
+			name = AdView;
 			sourceTree = "<group>";
 		};
 		966313D52C5CD5E200D69BBA /* MediationAdExamples */ = {
@@ -209,6 +406,10 @@
 		DA690AA92AD1B955EE21AD02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9661729B2C60779C0007C760 /* PurchaseConnector.xcframework */,
+				966172982C6077950007C760 /* AppsFlyerAdRevenue.xcframework */,
+				966172952C60776B0007C760 /* AppsFlyerLib.xcframework */,
+				966172912C60771F0007C760 /* GoogleMobileAds.xcframework */,
 				BC1AC247DFA8DD5E326E9334 /* Pods_MediationAd.framework */,
 			);
 			name = Frameworks;
@@ -237,6 +438,7 @@
 				963702DA2C5C8B38005B52CA /* Frameworks */,
 				963702DB2C5C8B38005B52CA /* Resources */,
 				B4DCBB4283D969D704222F93 /* [CP] Copy Pods Resources */,
+				966172942C60771F0007C760 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -307,6 +509,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966172732C5F790A0007C760 /* Icon.xcassets in Resources */,
+				966172782C5F796B0007C760 /* CustomNativeAdView.xib in Resources */,
+				966172792C5F796B0007C760 /* RegistrationStructure.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,25 +575,50 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966172672C5F780F0007C760 /* Native.swift in Sources */,
+				966172862C5F7A070007C760 /* RewardedInterstitialAd.swift in Sources */,
+				966172652C5F780F0007C760 /* RewardedInterstitial.swift in Sources */,
+				966172542C5F775F0007C760 /* AdProtocol.swift in Sources */,
+				9661724F2C5F75720007C760 /* UICollectionViewExtension.swift in Sources */,
 				9637030F2C5C99E7005B52CA /* ConsentHandler.swift in Sources */,
 				963703202C5C9A94005B52CA /* Result.swift in Sources */,
+				966172512C5F75720007C760 /* UITableViewExtension.swift in Sources */,
 				963703032C5C9916005B52CA /* ConsentManager.swift in Sources */,
+				966172842C5F7A070007C760 /* SplashAd.swift in Sources */,
+				966172692C5F780F0007C760 /* Rewarded.swift in Sources */,
+				966172502C5F75720007C760 /* UIColorExtension.swift in Sources */,
 				963703222C5C9A94005B52CA /* ConsentConfig.swift in Sources */,
 				963703012C5C9061005B52CA /* AppManager.swift in Sources */,
 				963703212C5C9A94005B52CA /* Version.swift in Sources */,
+				966172662C5F780F0007C760 /* Interstitial.swift in Sources */,
 				9637032D2C5C9B66005B52CA /* RemoteManager.swift in Sources */,
 				963703232C5C9A94005B52CA /* TokenClaims.swift in Sources */,
 				963703292C5C9B13005B52CA /* TrackingManager.swift in Sources */,
+				966172882C5F7A070007C760 /* InterstitialAd.swift in Sources */,
+				9661728D2C5F7A2D0007C760 /* BannerAdMobView.swift in Sources */,
 				9637030D2C5C99BC005B52CA /* RemoteHandler.swift in Sources */,
+				966172872C5F7A070007C760 /* RewardedAd.swift in Sources */,
+				966172892C5F7A070007C760 /* AppOpenAd.swift in Sources */,
+				966172552C5F775F0007C760 /* AdMobViewProtocol.swift in Sources */,
+				966172682C5F780F0007C760 /* Splash.swift in Sources */,
+				966172852C5F7A070007C760 /* NativeAd.swift in Sources */,
+				9661728E2C5F7A2D0007C760 /* NativeAdMobView.swift in Sources */,
 				9637031E2C5C9A94005B52CA /* AppStoreConnectResponse.swift in Sources */,
 				9637030A2C5C996A005B52CA /* EndPoint.swift in Sources */,
 				9637032B2C5C9B4D005B52CA /* ReleaseManager.swift in Sources */,
 				963703252C5C9ADB005B52CA /* NetworkManager.swift in Sources */,
 				963703082C5C9953005B52CA /* APIService.swift in Sources */,
+				966172742C5F790A0007C760 /* AdMobManager.swift in Sources */,
+				9661726B2C5F780F0007C760 /* AdConfigProtocol.swift in Sources */,
+				9661726A2C5F780F0007C760 /* AdMobConfig.swift in Sources */,
 				963703142C5C9A56005B52CA /* UIApplicationExtension.swift in Sources */,
 				963703272C5C9AF4005B52CA /* LogEventManager.swift in Sources */,
+				966172632C5F780F0007C760 /* AppOpen.swift in Sources */,
+				9661726F2C5F78B20007C760 /* Icon.swift in Sources */,
+				966172702C5F78B20007C760 /* FrequencyManager.swift in Sources */,
 				963703112C5C99FB005B52CA /* Handler.swift in Sources */,
 				9637031D2C5C9A94005B52CA /* Attributes.swift in Sources */,
+				966172642C5F780F0007C760 /* Banner.swift in Sources */,
 				9637031F2C5C9A94005B52CA /* ItunesResponse.swift in Sources */,
 				963703062C5C993E005B52CA /* APIError.swift in Sources */,
 			);
@@ -432,10 +662,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -499,10 +730,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -557,7 +789,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C53D6A249CD0132BE52619C4 /* Pods-MediationAd.debug.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -566,7 +799,66 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlueCryptor\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlueECC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlueRSA\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseABTesting\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseRemoteConfig\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseRemoteConfigInterop\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseSharedSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/KituraContracts\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LoggerAPI\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Logging\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftJWT\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/AppsFlyer-AdRevenue/iOS\"",
+					"\"${PODS_ROOT}/AppsFlyerFramework/binaries/xcframework/full\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework\"",
+					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleUserMessagingPlatform/Frameworks/Release\"",
+					"\"${PODS_ROOT}/PurchaseConnector\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/AppsFlyer-AdRevenue\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/AppsFlyerFramework/Main\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/FirebaseAnalytics/AdIdSupport\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/Google-Mobile-Ads-SDK\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement/AdIdSupport\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement/WithoutAdIdSupport\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleUserMessagingPlatform\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/PurchaseConnector/Main\"",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)/**",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlueCryptor/Cryptor.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlueECC/CryptorECC.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlueRSA/CryptorRSA.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseABTesting/FirebaseABTesting.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseRemoteConfigInterop/FirebaseRemoteConfigInterop.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseSharedSwift/FirebaseSharedSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/KituraContracts/KituraContracts.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LoggerAPI/LoggerAPI.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Logging/Logging.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftJWT/SwiftJWT.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+				);
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -588,6 +880,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = "$(inherited)";
 			};
 			name = Debug;
 		};
@@ -595,7 +888,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CBB5D8E7E17923239AA744D0 /* Pods-MediationAd.release.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -604,7 +898,66 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlueCryptor\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlueECC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlueRSA\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseABTesting\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseRemoteConfig\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseRemoteConfigInterop\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseSharedSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/KituraContracts\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LoggerAPI\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Logging\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftJWT\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/AppsFlyer-AdRevenue/iOS\"",
+					"\"${PODS_ROOT}/AppsFlyerFramework/binaries/xcframework/full\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework\"",
+					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleUserMessagingPlatform/Frameworks/Release\"",
+					"\"${PODS_ROOT}/PurchaseConnector\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/AppsFlyer-AdRevenue\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/AppsFlyerFramework/Main\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/FirebaseAnalytics/AdIdSupport\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/Google-Mobile-Ads-SDK\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement/AdIdSupport\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement/WithoutAdIdSupport\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleUserMessagingPlatform\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/PurchaseConnector/Main\"",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)/**",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlueCryptor/Cryptor.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlueECC/CryptorECC.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlueRSA/CryptorRSA.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseABTesting/FirebaseABTesting.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseRemoteConfigInterop/FirebaseRemoteConfigInterop.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseSharedSwift/FirebaseSharedSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/KituraContracts/KituraContracts.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LoggerAPI/LoggerAPI.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Logging/Logging.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftJWT/SwiftJWT.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+				);
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -625,6 +978,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = "$(inherited)";
 			};
 			name = Release;
 		};

@@ -37,6 +37,8 @@ enum Event {
   case agreeTracking
   case noTracking
   
+  case register
+  
   var name: String {
     switch self {
     case .remoteConfigLoadFail:
@@ -73,6 +75,8 @@ enum Event {
       return "Agree_Tracking"
     case .noTracking:
       return "No_Tracking"
+    case .register:
+      return "Register"
     }
   }
   
