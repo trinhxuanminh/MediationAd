@@ -9,6 +9,7 @@ import UIKit
 import UserMessagingPlatform
 import GoogleMobileAds
 import Combine
+import AppLovinSDK
 
 public class ConsentManager {
   public static let shared = ConsentManager()
@@ -27,8 +28,9 @@ public class ConsentManager {
   @Published public private(set) var consentState: State = .unknow
   let consentSubject = PassthroughSubject<State, Never>()
   private var didRequestConsent = false
-  private let timeout = 15.0
+  private let timeout = 30.0
   private var isDebug = false
+  private var maxSdkKey: String?
   private var testDeviceIdentifiers = [String]()
   private var consentConfig: ConsentConfig?
   
@@ -52,12 +54,17 @@ public class ConsentManager {
         return
       }
       let canShowAds = canShowAds()
-      if canShowAds {
-        GADMobileAds.sharedInstance().start()
-      }
       let state: State = canShowAds ? .allow : .reject
       self.consentState = state
-      completed(state)
+      
+      switch state {
+      case .allow:
+        startSdk {
+          completed(state)
+        }
+      default:
+        completed(state)
+      }
     }
   }
   
@@ -71,7 +78,9 @@ public class ConsentManager {
 }
 
 extension ConsentManager {
-  func initialize() {
+  func initialize(maxSdkKey: String?) {
+    self.maxSdkKey = maxSdkKey
+    
     fetch()
     DispatchQueue.main.asyncAfter(deadline: .now() + timeout) { [weak self] in
       guard let self else {
@@ -203,13 +212,36 @@ extension ConsentManager {
     else {
       return
     }
+    self.consentState = state
     switch state {
     case .allow, .error:
-      GADMobileAds.sharedInstance().start()
+      startSdk() { [weak self] in
+        guard let self else {
+          return
+        }
+        send(state: state)
+      }
     default:
-      break
+      send(state: state)
     }
-    self.consentState = state
+  }
+  
+  private func startSdk(completed: @escaping Handler) {
+    GADMobileAds.sharedInstance().start()
+    
+    if let maxSdkKey {
+      let maxInitConfig = ALSdkInitializationConfiguration(sdkKey: maxSdkKey) { builder in
+        builder.mediationProvider = ALMediationProviderMAX
+      }
+      ALSdk.shared().initialize(with: maxInitConfig) { sdkConfig in
+        completed()
+      }
+    } else {
+      completed()
+    }
+  }
+  
+  private func send(state: State) {
     consentSubject.send(state)
   }
   

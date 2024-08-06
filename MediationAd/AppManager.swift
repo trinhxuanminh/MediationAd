@@ -26,6 +26,7 @@ public class AppManager {
                          privateKey: String,
                          adConfigKey: String,
                          defaultData: Data,
+                         maxSdkKey: String? = nil,
                          devKey: String? = nil,
                          trackingTimeout: Double? = nil,
                          completed: @escaping RemoteHandler
@@ -76,7 +77,7 @@ public class AppManager {
                                          keyID: keyID,
                                          issuerID: issuerID,
                                          privateKey: privateKey)
-        ConsentManager.shared.initialize()
+        ConsentManager.shared.initialize(maxSdkKey: maxSdkKey)
         RemoteManager.shared.initialize()
         
         if let devKey {

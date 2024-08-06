@@ -54,16 +54,16 @@ class AdMobSplashAd: NSObject, ReuseAdProtocol {
             didHide: Handler?
   ) {
     guard isExist() else {
-      print("[MediationAd] [AdManager] [SplashAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [SplashAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
     guard !presentState else {
-      print("[MediationAd] [AdManager] [SplashAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [SplashAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
-    print("[MediationAd] [AdManager] [SplashAd] Requested to show! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [SplashAd] Requested to show! (\(String(describing: adUnitID)))")
     self.didFail = didFail
     self.willPresent = willPresent
     self.didHide = didHide
@@ -76,19 +76,19 @@ extension AdMobSplashAd: GADFullScreenContentDelegate {
   func ad(_ ad: GADFullScreenPresentingAd,
           didFailToPresentFullScreenContentWithError error: Error
   ) {
-    print("[MediationAd] [AdManager] [SplashAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did fail to show content! (\(String(describing: adUnitID)))")
     didFail?()
     self.splashAd = nil
   }
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[MediationAd] [AdManager] [SplashAd] Will display! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [SplashAd] Will display! (\(String(describing: adUnitID)))")
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[MediationAd] [AdManager] [SplashAd] Did hide! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did hide! (\(String(describing: adUnitID)))")
     didHide?()
     self.presentState = false
     self.splashAd = nil
@@ -102,7 +102,7 @@ extension AdMobSplashAd {
     }
     
     guard let adUnitID = adUnitID else {
-      print("[MediationAd] [AdManager] [SplashAd] Failed to load - not initialized yet! Please install ID.")
+      print("[MediationAd] [AdManager] [AdMob] [SplashAd] Failed to load - not initialized yet! Please install ID.")
       didLoadFail?()
       return
     }
@@ -114,7 +114,7 @@ extension AdMobSplashAd {
       
       self.isLoading = true
       self.fire()
-      print("[MediationAd] [AdManager] [SplashAd] Start load! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [SplashAd] Start load! (\(String(describing: adUnitID)))")
       
       let request = GADRequest()
       GADInterstitialAd.load(
@@ -129,11 +129,11 @@ extension AdMobSplashAd {
         }
         self.invalidate()
         guard error == nil, let ad = ad else {
-          print("[MediationAd] [AdManager] [SplashAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+          print("[MediationAd] [AdManager] [AdMob] [SplashAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
           self.didLoadFail?()
           return
         }
-        print("[MediationAd] [AdManager] [SplashAd] Did load! (\(String(describing: adUnitID)))")
+        print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did load! (\(String(describing: adUnitID)))")
         self.splashAd = ad
         self.splashAd?.fullScreenContentDelegate = self
         self.didLoadSuccess?()
@@ -142,7 +142,7 @@ extension AdMobSplashAd {
           let adRevenueParams: [AnyHashable: Any] = [
             kAppsFlyerAdRevenueCountry: "US",
             kAppsFlyerAdRevenueAdUnit: adUnitID as Any,
-            kAppsFlyerAdRevenueAdType: "Interstitial_Splash"
+            kAppsFlyerAdRevenueAdType: "AdMob_Interstitial_Splash"
           ]
           
           AppsFlyerAdRevenue.shared().logAdRevenue(

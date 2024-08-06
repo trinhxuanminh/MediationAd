@@ -11,6 +11,12 @@ import MediationAd
 class HomeViewController: BaseViewController {
   @IBOutlet weak var updateConsentButton: UIButton!
   
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    // Active sau khi register ads success
+//    AdManager.shared.activeDebug()
+  }
+  
   override func viewDidAppear(_ animated: Bool) {
     self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
   }
@@ -68,6 +74,12 @@ class HomeViewController: BaseViewController {
   @IBAction func touchSettingPrivacy(_ sender: Any) {
     ConsentManager.shared.requestConsentUpdate { consentState in
       print("[MediationAdExamples]", consentState)
+      switch consentState {
+      case .allow, .error:
+        AdManager.shared.upgradeConsent()
+      default:
+        break
+      }
     }
   }
 }

@@ -23,7 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Gu7+MCYD
     -----END PRIVATE KEY-----
     """
-    let adConfigKey = "AdConfig_1_0"
+    let maxSdkKey = "hyf3VVXFdwMCaKeA84k0ll1TfmnfTxZ9tEDNlmdNg-ZFJCQSH9T1uUUXEFCiBnt3_4Qlr26V1gmKtAn9KEACkf"
+    let adConfigKey = "AdConfig_1_0_ADMOB"
+//    let adConfigKey = "AdConfig_1_0_MAX"
     
     ConsentManager.shared.activeDebug(testDeviceIdentifiers: [],
                                       reset: true)
@@ -35,13 +37,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                    privateKey: privateKey,
                                    adConfigKey: adConfigKey,
                                    defaultData: defaultData,
+                                   maxSdkKey: maxSdkKey,
                                    devKey: devKey,
                                    trackingTimeout: 45.0
       ) { remoteState, remoteConfig in
         print("[MediationAdExamples]", remoteState)
       }
     }
-    
     return true
   }
 }

@@ -63,7 +63,7 @@ extension AdMobNativeAd: GADNativeAdLoaderDelegate {
     guard state == .loading else {
       return
     }
-    print("[MediationAd] [AdManager] [NativeAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+    print("[MediationAd] [AdManager] [AdMob] [NativeAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
     self.state = .error
     didError?()
   }
@@ -72,7 +72,7 @@ extension AdMobNativeAd: GADNativeAdLoaderDelegate {
     guard state == .loading else {
       return
     }
-    print("[MediationAd] [AdManager] [NativeAd] Did load! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [NativeAd] Did load! (\(String(describing: adUnitID)))")
     self.state = .receive
     self.nativeAd = nativeAd
     didReceive?()
@@ -84,7 +84,7 @@ extension AdMobNativeAd: GADNativeAdLoaderDelegate {
       let adRevenueParams: [AnyHashable: Any] = [
         kAppsFlyerAdRevenueCountry: "US",
         kAppsFlyerAdRevenueAdUnit: adUnitID as Any,
-        kAppsFlyerAdRevenueAdType: "Native"
+        kAppsFlyerAdRevenueAdType: "AdMob_Native"
       ]
       
       AppsFlyerAdRevenue.shared().logAdRevenue(
@@ -104,11 +104,11 @@ extension AdMobNativeAd {
     }
     
     guard let adUnitID = adUnitID else {
-      print("[MediationAd] [AdManager] [NativeAd] Failed to load - not initialized yet! Please install ID.")
+      print("[MediationAd] [AdManager] [AdMob] [NativeAd] Failed to load - not initialized yet! Please install ID.")
       return
     }
     
-    print("[MediationAd] [AdManager] [NativeAd] Start load! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [NativeAd] Start load! (\(String(describing: adUnitID)))")
     self.state = .loading
     DispatchQueue.main.async { [weak self] in
       guard let self = self else {
@@ -137,7 +137,7 @@ extension AdMobNativeAd {
         guard state == .loading else {
           return
         }
-        print("[MediationAd] [AdManager] [NativeAd] Load fail (\(String(describing: adUnitID))) - time out!")
+        print("[MediationAd] [AdManager] [AdMob] [NativeAd] Load fail (\(String(describing: adUnitID))) - time out!")
         self.state = .error
         didError?()
       }

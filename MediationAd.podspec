@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "MediationAd"
-  spec.version      = "0.0.4"
+  spec.version      = "0.0.5"
   spec.summary      = "MediationAd of ProxGlobal"
 
   spec.description  = <<-DESC
@@ -20,11 +20,16 @@ This CocoaPods library helps you do ad handling.
   
   spec.static_framework = true
   
-  spec.dependency 'Google-Mobile-Ads-SDK', '11.4.0'
+  spec.dependency 'Google-Mobile-Ads-SDK', '11.5.0'
   spec.dependency 'Firebase', '10.25.0'
   spec.dependency 'FirebaseRemoteConfig', '10.25.0'
   spec.dependency 'AppsFlyerFramework', '6.14.3'
   spec.dependency 'AppsFlyer-AdRevenue', '6.14.3'
   spec.dependency 'PurchaseConnector', '6.14.3'
   spec.dependency 'SwiftJWT', '3.6.200'
+  spec.dependency 'SnapKit', '5.6.0'
+  spec.dependency 'NVActivityIndicatorView', '5.1.1'
+  spec.dependency 'AppLovinSDK', '12.6.0'
+  spec.dependency 'AppLovinMediationGoogleAdapter', '11.5.0.0'
+  spec.dependency 'AppLovinMediationUnityAdsAdapter', '4.12.1.0'
 end

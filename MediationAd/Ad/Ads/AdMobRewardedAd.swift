@@ -47,16 +47,16 @@ class AdMobRewardedAd: NSObject, ReuseAdProtocol {
             didHide: Handler?
   ) {
     guard isReady() else {
-      print("[MediationAd] [AdManager] [RewardAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [RewardAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
     guard !presentState else {
-      print("[MediationAd] [AdManager] [RewardAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [RewardAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
-    print("[MediationAd] [AdManager] [RewardAd] Requested to show! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [RewardAd] Requested to show! (\(String(describing: adUnitID)))")
     self.didShowFail = didFail
     self.willPresent = willPresent
     self.didHide = didHide
@@ -74,20 +74,20 @@ extension AdMobRewardedAd: GADFullScreenContentDelegate {
   func ad(_ ad: GADFullScreenPresentingAd,
           didFailToPresentFullScreenContentWithError error: Error
   ) {
-    print("[MediationAd] [AdManager] [RewardAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [RewardAd] Did fail to show content! (\(String(describing: adUnitID)))")
     didShowFail?()
     self.rewardedAd = nil
     load()
   }
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[MediationAd] [AdManager] [RewardAd] Will display! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [RewardAd] Will display! (\(String(describing: adUnitID)))")
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[MediationAd] [AdManager] [RewardAd] Did hide! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [RewardAd] Did hide! (\(String(describing: adUnitID)))")
     didHide?()
     self.rewardedAd = nil
     self.presentState = false
@@ -113,7 +113,7 @@ extension AdMobRewardedAd {
     }
     
     guard let adUnitID = adUnitID else {
-      print("[MediationAd] [AdManager] [RewardAd] Failed to load - not initialized yet! Please install ID.")
+      print("[MediationAd] [AdManager] [AdMob] [RewardAd] Failed to load - not initialized yet! Please install ID.")
       return
     }
     
@@ -123,7 +123,7 @@ extension AdMobRewardedAd {
       }
       
       self.isLoading = true
-      print("[MediationAd] [AdManager] [RewardAd] Start load! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [RewardAd] Start load! (\(String(describing: adUnitID)))")
       
       let request = GADRequest()
       GADRewardedAd.load(
@@ -141,11 +141,11 @@ extension AdMobRewardedAd {
             return
           }
           let delaySec = 5.0
-          print("[MediationAd] [AdManager] [RewardAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
+          print("[MediationAd] [AdManager] [AdMob] [RewardAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
           DispatchQueue.global().asyncAfter(deadline: .now() + delaySec, execute: self.load)
           return
         }
-        print("[MediationAd] [AdManager] [RewardAd] Did load! (\(String(describing: adUnitID)))")
+        print("[MediationAd] [AdManager] [AdMob] [RewardAd] Did load! (\(String(describing: adUnitID)))")
         self.retryAttempt = 0
         self.rewardedAd = ad
         self.rewardedAd?.fullScreenContentDelegate = self
@@ -155,7 +155,7 @@ extension AdMobRewardedAd {
           let adRevenueParams: [AnyHashable: Any] = [
             kAppsFlyerAdRevenueCountry: "US",
             kAppsFlyerAdRevenueAdUnit: adUnitID as Any,
-            kAppsFlyerAdRevenueAdType: "Rewarded"
+            kAppsFlyerAdRevenueAdType: "AdMob_Rewarded"
           ]
           
           AppsFlyerAdRevenue.shared().logAdRevenue(

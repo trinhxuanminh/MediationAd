@@ -69,7 +69,7 @@ open class AdMobNativeAdView: UIView, AdViewProtocol {
     
     switch AdManager.shared.status(type: .onceUsed(.native), name: name) {
     case false:
-      print("[MediationAd] [AdManager] [NativeAd] Ads are not allowed to show! (\(name))")
+      print("[MediationAd] [AdManager] [AdMob] [NativeAd] Ads are not allowed to show! (\(name))")
       errored()
       return
     case true:
@@ -181,7 +181,8 @@ extension AdMobNativeAdView {
     guard let rating = starRating?.doubleValue else {
       return nil
     }
-    guard let image = UIImage(named: "\(Int(rating))_star", in: Bundle.main, compatibleWith: nil) else {
+    let bundle = Bundle(for: type(of: self))
+    guard let image = UIImage(named: "\(Int(rating))_star", in: bundle, compatibleWith: nil) else {
       return nil
     }
     return image

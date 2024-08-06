@@ -10,6 +10,7 @@ import FirebaseRemoteConfig
 import GoogleMobileAds
 import Combine
 import UserMessagingPlatform
+import AppLovinSDK
 
 public class AdManager {
   public static var shared = AdManager()
@@ -57,6 +58,7 @@ public class AdManager {
     guard !isPremium else {
       return
     }
+    print("[MediationAd] [AdManager] Upgrade premium!")
     self.isPremium = true
   }
   
@@ -64,8 +66,13 @@ public class AdManager {
     guard !isConsent else {
       return
     }
+    print("[MediationAd] [AdManager] Upgrade consent!")
     self.isConsent = true
     self.registerState = .success
+  }
+  
+  public func activeDebug() {
+    ALSdk.shared().showMediationDebugger()
   }
   
   public func register(isRelease: Bool,
@@ -73,6 +80,9 @@ public class AdManager {
                        defaultData: Data,
                        remoteData: Data
   ) {
+    guard registerState == .wait else {
+      return
+    }
     self.defaultData = defaultData
     self.isRelease = isRelease
     self.isConsent = isConsent
@@ -167,7 +177,27 @@ public class AdManager {
         adProtocol = AdMobRewardedInterstitialAd()
       }
     case .max:
-      return
+      switch type {
+      case .splash:
+        guard let splash = adConfig as? Splash else {
+          print("[MediationAd] [AdManager] Format conversion error! (\(name))")
+          fail?()
+          return
+        }
+        let splashAd = MaxSplashAd()
+        splashAd.config(timeout: splash.timeout)
+        adProtocol = splashAd
+      case .appOpen:
+        adProtocol = MaxAppOpenAd()
+      case .interstitial:
+        adProtocol = MaxInterstitialAd()
+      case .rewarded:
+        adProtocol = MaxRewardedAd()
+      case .rewardedInterstitial:
+        print("[MediationAd] [AdManager] This type of ads is not supported! (\(name))")
+        fail?()
+        return
+      }
     }
     
     adProtocol.config(didFail: fail, didSuccess: success)
@@ -381,6 +411,7 @@ extension AdManager {
     guard registerState == .wait else {
       return
     }
+    print("[MediationAd] [AdManager] register \(state)!")
     self.registerState = state
   }
 }

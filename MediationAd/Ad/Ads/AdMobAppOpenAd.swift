@@ -47,16 +47,16 @@ class AdMobAppOpenAd: NSObject, ReuseAdProtocol {
             didHide: Handler?
   ) {
     guard isReady() else {
-      print("[MediationAd] [AdManager] [AppOpenAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
     guard !presentState else {
-      print("[MediationAd] [AdManager] [AppOpenAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
-    print("[MediationAd] [AdManager] [AppOpenAd] Requested to show! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Requested to show! (\(String(describing: adUnitID)))")
     self.didShowFail = didFail
     self.willPresent = willPresent
     self.didHide = didHide
@@ -69,20 +69,20 @@ extension AdMobAppOpenAd: GADFullScreenContentDelegate {
   func ad(_ ad: GADFullScreenPresentingAd,
           didFailToPresentFullScreenContentWithError error: Error
   ) {
-    print("[MediationAd] [AdManager] [AppOpenAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Did fail to show content! (\(String(describing: adUnitID)))")
     didShowFail?()
     self.appOpenAd = nil
     load()
   }
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[MediationAd] [AdManager] [AppOpenAd] Will display! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Will display! (\(String(describing: adUnitID)))")
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[MediationAd] [AdManager] [AppOpenAd] Did hide! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Did hide! (\(String(describing: adUnitID)))")
     didHide?()
     self.appOpenAd = nil
     self.presentState = false
@@ -108,7 +108,7 @@ extension AdMobAppOpenAd {
     }
     
     guard let adUnitID = adUnitID else {
-      print("[MediationAd] [AdManager] [AppOpenAd] Failed to load - not initialized yet! Please install ID.")
+      print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Failed to load - not initialized yet! Please install ID.")
       return
     }
     
@@ -118,7 +118,7 @@ extension AdMobAppOpenAd {
       }
       
       self.isLoading = true
-      print("[MediationAd] [AdManager] [AppOpenAd] Start load! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Start load! (\(String(describing: adUnitID)))")
       
       let request = GADRequest()
       GADAppOpenAd.load(
@@ -132,10 +132,10 @@ extension AdMobAppOpenAd {
         guard error == nil, let ad = ad else {
           self.retryAttempt += 1
           self.didLoadFail?()
-          print("[MediationAd] [AdManager] [AppOpenAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+          print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
           return
         }
-        print("[MediationAd] [AdManager] [AppOpenAd] Did load! (\(String(describing: adUnitID)))")
+        print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Did load! (\(String(describing: adUnitID)))")
         self.retryAttempt = 0
         self.appOpenAd = ad
         self.appOpenAd?.fullScreenContentDelegate = self
@@ -145,7 +145,7 @@ extension AdMobAppOpenAd {
           let adRevenueParams: [AnyHashable: Any] = [
             kAppsFlyerAdRevenueCountry: "US",
             kAppsFlyerAdRevenueAdUnit: adUnitID as Any,
-            kAppsFlyerAdRevenueAdType: "AppOpen"
+            kAppsFlyerAdRevenueAdType: "AdMob_AppOpen"
           ]
   
           AppsFlyerAdRevenue.shared().logAdRevenue(

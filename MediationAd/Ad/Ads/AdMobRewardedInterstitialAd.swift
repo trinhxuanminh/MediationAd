@@ -47,16 +47,16 @@ class AdMobRewardedInterstitialAd: NSObject, ReuseAdProtocol {
             didHide: Handler?
   ) {
     guard isReady() else {
-      print("[MediationAd] [AdManager] [RewardedInterstitialAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
     guard !presentState else {
-      print("[MediationAd] [AdManager] [RewardedInterstitialAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
-    print("[MediationAd] [AdManager] [RewardedInterstitialAd] Requested to show! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Requested to show! (\(String(describing: adUnitID)))")
     self.didShowFail = didFail
     self.willPresent = willPresent
     self.didHide = didHide
@@ -74,20 +74,20 @@ extension AdMobRewardedInterstitialAd: GADFullScreenContentDelegate {
   func ad(_ ad: GADFullScreenPresentingAd,
           didFailToPresentFullScreenContentWithError error: Error
   ) {
-    print("[MediationAd] [AdManager] [RewardedInterstitialAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did fail to show content! (\(String(describing: adUnitID)))")
     didShowFail?()
     self.rewardedInterstitialAd = nil
     load()
   }
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[MediationAd] [AdManager] [RewardedInterstitialAd] Will display! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Will display! (\(String(describing: adUnitID)))")
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[MediationAd] [AdManager] [RewardedInterstitialAd] Did hide! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did hide! (\(String(describing: adUnitID)))")
     didHide?()
     self.rewardedInterstitialAd = nil
     self.presentState = false
@@ -113,7 +113,7 @@ extension AdMobRewardedInterstitialAd {
     }
     
     guard let adUnitID = adUnitID else {
-      print("[MediationAd] [AdManager] [RewardedInterstitialAd] Failed to load - not initialized yet! Please install ID.")
+      print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Failed to load - not initialized yet! Please install ID.")
       return
     }
     
@@ -123,7 +123,7 @@ extension AdMobRewardedInterstitialAd {
       }
       
       self.isLoading = true
-      print("[MediationAd] [AdManager] [RewardedInterstitialAd] Start load! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Start load! (\(String(describing: adUnitID)))")
       
       let request = GADRequest()
       GADRewardedInterstitialAd.load(
@@ -141,11 +141,11 @@ extension AdMobRewardedInterstitialAd {
             return
           }
           let delaySec = 5.0
-          print("[MediationAd] [AdManager] [RewardedInterstitialAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
+          print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
           DispatchQueue.global().asyncAfter(deadline: .now() + delaySec, execute: self.load)
           return
         }
-        print("[MediationAd] [AdManager] [RewardedInterstitialAd] Did load! (\(String(describing: adUnitID)))")
+        print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did load! (\(String(describing: adUnitID)))")
         self.retryAttempt = 0
         self.rewardedInterstitialAd = ad
         self.rewardedInterstitialAd?.fullScreenContentDelegate = self
@@ -155,7 +155,7 @@ extension AdMobRewardedInterstitialAd {
           let adRevenueParams: [AnyHashable: Any] = [
             kAppsFlyerAdRevenueCountry: "US",
             kAppsFlyerAdRevenueAdUnit: adUnitID as Any,
-            kAppsFlyerAdRevenueAdType: "RewardedInterstitial"
+            kAppsFlyerAdRevenueAdType: "AdMob_RewardedInterstitial"
           ]
           
           AppsFlyerAdRevenue.shared().logAdRevenue(
