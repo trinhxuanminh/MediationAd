@@ -43,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                    trackingTimeout: 45.0
       ) { remoteState, remoteConfig in
         print("[MediationAdExamples]", remoteState)
+      } didError: {
+        print("[MediationAdExamples] Timeout config!")
       }
     }
     return true

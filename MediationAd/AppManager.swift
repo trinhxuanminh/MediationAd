@@ -9,16 +9,25 @@ import Foundation
 import Combine
 import FirebaseCore
 import FirebaseRemoteConfig
+import FBAudienceNetwork
 
 public class AppManager {
   public static let shared = AppManager()
+  
+  public enum State {
+    case wait
+    case success
+    case timeout
+  }
   
   enum Keys {
     static let consentKey = "CMP"
   }
   
+  @Published private(set) var state: State = .wait
+  private let timeout = 5.0
   private var subscriptions = Set<AnyCancellable>()
-  private var didSetup = false
+  private var didError: Handler?
   
   public func initialize(appID: String,
                          issuerID: String,
@@ -29,9 +38,16 @@ public class AppManager {
                          maxSdkKey: String? = nil,
                          devKey: String? = nil,
                          trackingTimeout: Double? = nil,
-                         completed: @escaping RemoteHandler
+                         completed: @escaping RemoteHandler,
+                         didError: Handler? = nil
   ) {
+    self.didError = didError
+    
     FirebaseApp.configure()
+    FBAdSettings.setDataProcessingOptions([])
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + timeout, execute: timeoutConfig)
+    
     print("[MediationAd] [AppManager] Start config!")
     NetworkManager.shared.$isConnected
       .sink { [weak self] isConnected in
@@ -41,10 +57,10 @@ public class AppManager {
         guard isConnected else {
           return
         }
-        guard !didSetup else {
+        guard state != .success else {
           return
         }
-        self.didSetup = true
+        self.state = .success
         print("[MediationAd] [AppManager] Did setup!")
         
         RemoteManager.shared.remoteSubject
@@ -86,5 +102,15 @@ public class AppManager {
                                             timeout: trackingTimeout)
         }
       }.store(in: &subscriptions)
+  }
+}
+
+extension AppManager {
+  private func timeoutConfig() {
+    guard state == .wait else {
+      return
+    }
+    self.state = .timeout
+    didError?()
   }
 }

@@ -45,9 +45,6 @@ class MediationNativeAdView: BaseView {
 
 extension MediationNativeAdView {
   func load(name: String, didError: Handler? = nil) {
-    guard let topVC = UIApplication.topViewController() else {
-      return
-    }
     switch AdManager.shared.network(type: .onceUsed(.native), name: name) {
     case .admob:
       let nativeAdView = CustomAdMobNativeAdView()
