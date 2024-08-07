@@ -25,7 +25,7 @@ public class AppManager {
   }
   
   @Published private(set) var state: State = .wait
-  private let timeout = 5.0
+  private let timeout = 15.0
   private var subscriptions = Set<AnyCancellable>()
   private var didError: Handler?
   

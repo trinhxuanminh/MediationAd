@@ -102,7 +102,6 @@
 		9661730B2C6389510007C760 /* CustomMaxNativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966173092C6389510007C760 /* CustomMaxNativeAdView.swift */; };
 		966173132C638FF00007C760 /* InMobiSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966173122C638FF00007C760 /* InMobiSDK.xcframework */; };
 		966173142C638FF00007C760 /* InMobiSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966173122C638FF00007C760 /* InMobiSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		966173162C6394B70007C760 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 966173152C6394B70007C760 /* PrivacyInfo.xcprivacy */; };
 		9661731B2C63C8F50007C760 /* FBAudienceNetwork.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9661731A2C63C8F50007C760 /* FBAudienceNetwork.xcframework */; };
 		9661731C2C63C8F50007C760 /* FBAudienceNetwork.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9661731A2C63C8F50007C760 /* FBAudienceNetwork.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		966313D72C5CD5E200D69BBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313D62C5CD5E200D69BBA /* AppDelegate.swift */; };
@@ -247,7 +246,6 @@
 		9661730C2C638DEA0007C760 /* IronSource.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = IronSource.xcframework; path = Pods/IronSourceSDK/IronSource/IronSource.xcframework; sourceTree = "<group>"; };
 		9661730F2C638E400007C760 /* AppLovinMediationIronSourceAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppLovinMediationIronSourceAdapter.xcframework; path = "Pods/AppLovinMediationIronSourceAdapter/AppLovinMediationIronSourceAdapter-8.2.0.0.0/AppLovinMediationIronSourceAdapter.xcframework"; sourceTree = "<group>"; };
 		966173122C638FF00007C760 /* InMobiSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = InMobiSDK.xcframework; path = Pods/InMobiSDK/InMobiSDK.xcframework; sourceTree = "<group>"; };
-		966173152C6394B70007C760 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		966173172C63C8BE0007C760 /* AppLovinMediationFacebookAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppLovinMediationFacebookAdapter.xcframework; path = "Pods/AppLovinMediationFacebookAdapter/AppLovinMediationFacebookAdapter-6.15.1.0/AppLovinMediationFacebookAdapter.xcframework"; sourceTree = "<group>"; };
 		9661731A2C63C8F50007C760 /* FBAudienceNetwork.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:V9WTTPBFK9:Meta Platforms, Inc."; lastKnownFileType = wrapper.xcframework; name = FBAudienceNetwork.xcframework; path = Pods/FBAudienceNetwork/Static/FBAudienceNetwork.xcframework; sourceTree = "<group>"; };
 		966313D42C5CD5E200D69BBA /* MediationAdExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediationAdExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -641,7 +639,6 @@
 		966313D52C5CD5E200D69BBA /* MediationAdExamples */ = {
 			isa = PBXGroup;
 			children = (
-				966173152C6394B70007C760 /* PrivacyInfo.xcprivacy */,
 				966172A02C6086060007C760 /* AdDefaultValue.json */,
 				966313E82C5CD66600D69BBA /* GoogleService-Info.plist */,
 				966313E42C5CD5E300D69BBA /* Info.plist */,
@@ -794,7 +791,6 @@
 				966313E32C5CD5E300D69BBA /* LaunchScreen.storyboard in Resources */,
 				966172C92C60BBF70007C760 /* BannerViewController.xib in Resources */,
 				966172C12C60BAA50007C760 /* HomeViewController.xib in Resources */,
-				966173162C6394B70007C760 /* PrivacyInfo.xcprivacy in Resources */,
 				966172C42C60BB800007C760 /* NativeViewController.xib in Resources */,
 				966172BA2C60B8810007C760 /* CustomAdMobNativeAdView.xib in Resources */,
 				966172A12C6086060007C760 /* AdDefaultValue.json in Resources */,

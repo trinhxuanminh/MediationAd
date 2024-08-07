@@ -55,6 +55,7 @@ public class ConsentManager {
       }
       let canShowAds = canShowAds()
       let state: State = canShowAds ? .allow : .reject
+      ALPrivacySettings.setHasUserConsent(canShowAds)
       self.consentState = state
       
       switch state {
@@ -212,6 +213,7 @@ extension ConsentManager {
     else {
       return
     }
+    ALPrivacySettings.setHasUserConsent(state == .allow || state == .error)
     self.consentState = state
     switch state {
     case .allow, .error:
