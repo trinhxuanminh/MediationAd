@@ -16,9 +16,16 @@ target 'MediationAd' do
   pod 'SwiftJWT', '3.6.200'
   pod 'Google-Mobile-Ads-SDK', '11.5.0'
   pod 'AppLovinSDK', '12.6.0'
-  pod 'AppLovinMediationGoogleAdManagerAdapter', '11.5.0.0'
-  pod 'AppLovinMediationGoogleAdapter', '11.5.0.0'
-  pod 'AppLovinMediationUnityAdsAdapter', '4.12.1.0'
+  pod 'AppLovinMediationGoogleAdManagerAdapter', '11.5.0.0' # Google Ad Manager
+  pod 'AppLovinMediationGoogleAdapter', '11.5.0.0' # Google Bidding and Google AdMob
+  pod 'AppLovinMediationUnityAdsAdapter', '4.12.1.0' # Unity Ads
+  pod 'AppLovinMediationByteDanceAdapter', '6.1.0.6.0' # Pangle
+  pod 'AppLovinMediationFyberAdapter', '8.3.1.0' # DT Exchange
+  pod 'AppLovinMediationInMobiAdapter', '10.7.5.0' # InMobi
+  pod 'AppLovinMediationIronSourceAdapter', '8.1.0.0.1' # ironSource
+  pod 'AppLovinMediationVungleAdapter', '7.4.0.0' # Liftoff Monetize
+  pod 'AppLovinMediationMintegralAdapter', '7.6.9.0.0' # Mintegral
+  # pod 'AppLovinMediationYandexAdapter', '7.0.1.0' # Yandex
 end
 
 target 'MediationAdExamples' do

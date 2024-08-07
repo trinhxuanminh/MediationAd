@@ -10,6 +10,8 @@ import MediationAd
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+  var window: UIWindow?
+  
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     let appID = "6599836028"
     let devKey = ""

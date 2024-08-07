@@ -30,7 +30,14 @@ This CocoaPods library helps you do ad handling.
   spec.dependency 'SnapKit', '5.6.0'
   spec.dependency 'NVActivityIndicatorView', '5.1.1'
   spec.dependency 'AppLovinSDK', '12.6.0'
-  spec.dependency 'AppLovinMediationGoogleAdManagerAdapter', '11.5.0.0'
-  spec.dependency 'AppLovinMediationGoogleAdapter', '11.5.0.0'
-  spec.dependency 'AppLovinMediationUnityAdsAdapter', '4.12.1.0'
+  
+  spec.dependency 'AppLovinMediationGoogleAdManagerAdapter', '11.5.0.0' # Google Ad Manager
+  spec.dependency 'AppLovinMediationGoogleAdapter', '11.5.0.0' # Google Bidding and Google AdMob
+  spec.dependency 'AppLovinMediationUnityAdsAdapter', '4.12.1.0' # Unity Ads
+  spec.dependency 'AppLovinMediationByteDanceAdapter', '6.1.0.6.0' # Pangle
+  spec.dependency 'AppLovinMediationFyberAdapter', '8.3.1.0' # DT Exchange
+  spec.dependency 'AppLovinMediationInMobiAdapter', '10.7.5.0' # InMobi
+  spec.dependency 'AppLovinMediationIronSourceAdapter', '8.1.0.0.1' # ironSource
+  spec.dependency 'AppLovinMediationVungleAdapter', '7.4.0.0' # Liftoff Monetize
+  spec.dependency 'AppLovinMediationMintegralAdapter', '7.6.9.0.0' # Mintegral
 end

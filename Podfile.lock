@@ -1,13 +1,36 @@
 PODS:
+  - Ads-Global/BUAdSDK_Compatible (6.1.0.6):
+    - Ads-Global/Dep_Compatible
+  - Ads-Global/Dep_Compatible (6.1.0.6):
+    - BURelyFoundation_Global/Pangle (~> 1.0.0.0)
+  - AppLovinMediationByteDanceAdapter (6.1.0.6.0):
+    - Ads-Global/BUAdSDK_Compatible (= 6.1.0.6)
+    - AppLovinSDK
+  - AppLovinMediationFyberAdapter (8.3.1.0):
+    - AppLovinSDK
+    - Fyber_Marketplace_SDK (= 8.3.1)
   - AppLovinMediationGoogleAdapter (11.5.0.0):
     - AppLovinSDK
     - Google-Mobile-Ads-SDK (= 11.5.0)
   - AppLovinMediationGoogleAdManagerAdapter (11.5.0.0):
     - AppLovinSDK
     - Google-Mobile-Ads-SDK (= 11.5.0)
+  - AppLovinMediationInMobiAdapter (10.7.5.0):
+    - AppLovinSDK
+    - InMobiSDK (= 10.7.5)
+  - AppLovinMediationIronSourceAdapter (8.1.0.0.1):
+    - AppLovinSDK
+    - IronSourceSDK (= 8.1.0.0)
+  - AppLovinMediationMintegralAdapter (7.6.9.0.0):
+    - AppLovinSDK
+    - MintegralAdSDK (= 7.6.9)
+    - MintegralAdSDK/BidSplashAd (= 7.6.9)
   - AppLovinMediationUnityAdsAdapter (4.12.1.0):
     - AppLovinSDK
     - UnityAds (= 4.12.1)
+  - AppLovinMediationVungleAdapter (7.4.0.0):
+    - AppLovinSDK
+    - VungleAds (= 7.4.0)
   - AppLovinSDK (12.6.0)
   - AppsFlyer-AdRevenue (6.14.3):
     - AppsFlyerFramework (= 6.14.3)
@@ -17,6 +40,34 @@ PODS:
   - BlueCryptor (1.0.32)
   - BlueECC (1.2.5)
   - BlueRSA (1.0.200)
+  - BURelyFoundation_Global/AFNetworking (1.0.0.6)
+  - BURelyFoundation_Global/APM (1.0.0.6)
+  - BURelyFoundation_Global/Foundation (1.0.0.6):
+    - BURelyFoundation_Global/NETWork
+  - BURelyFoundation_Global/Gecko (1.0.0.6):
+    - BURelyFoundation_Global/Foundation
+  - BURelyFoundation_Global/Header (1.0.0.6)
+  - BURelyFoundation_Global/NETWork (1.0.0.6):
+    - BURelyFoundation_Global/AFNetworking
+  - BURelyFoundation_Global/Pangle (1.0.0.6):
+    - BURelyFoundation_Global/AFNetworking
+    - BURelyFoundation_Global/APM
+    - BURelyFoundation_Global/Foundation
+    - BURelyFoundation_Global/Gecko
+    - BURelyFoundation_Global/Header
+    - BURelyFoundation_Global/NETWork
+    - BURelyFoundation_Global/SDWebImage
+    - BURelyFoundation_Global/YYModel
+    - BURelyFoundation_Global/ZFPlayer
+    - BURelyFoundation_Global/Zip
+  - BURelyFoundation_Global/SDWebImage (1.0.0.6):
+    - BURelyFoundation_Global/Foundation
+  - BURelyFoundation_Global/YYModel (1.0.0.6)
+  - BURelyFoundation_Global/ZFPlayer (1.0.0.6):
+    - BURelyFoundation_Global/Foundation
+    - BURelyFoundation_Global/Zip
+  - BURelyFoundation_Global/Zip (1.0.0.6):
+    - BURelyFoundation_Global/Foundation
   - Firebase (10.25.0):
     - Firebase/Core (= 10.25.0)
   - Firebase/Core (10.25.0):
@@ -65,6 +116,7 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 7.8)"
   - FirebaseRemoteConfigInterop (10.29.0)
   - FirebaseSharedSwift (10.29.0)
+  - Fyber_Marketplace_SDK (8.3.1)
   - Google-Mobile-Ads-SDK (11.5.0):
     - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleAppMeasurement (10.25.0):
@@ -116,11 +168,53 @@ PODS:
   - GoogleUtilities/UserDefaults (7.13.3):
     - GoogleUtilities/Logger
     - GoogleUtilities/Privacy
+  - InMobiSDK (10.7.5)
+  - IronSourceSDK (8.1.0.0)
   - KituraContracts (1.2.1):
     - LoggerAPI (~> 1.7)
   - LoggerAPI (1.9.200):
     - Logging (~> 1.1)
   - Logging (1.4.0)
+  - MintegralAdSDK (7.6.9):
+    - MintegralAdSDK/BannerAd (= 7.6.9)
+    - MintegralAdSDK/BidBannerAd (= 7.6.9)
+    - MintegralAdSDK/BidInterstitialVideoAd (= 7.6.9)
+    - MintegralAdSDK/BidNativeAd (= 7.6.9)
+    - MintegralAdSDK/BidNewInterstitialAd (= 7.6.9)
+    - MintegralAdSDK/BidRewardVideoAd (= 7.6.9)
+    - MintegralAdSDK/InterstitialVideoAd (= 7.6.9)
+    - MintegralAdSDK/NativeAd (= 7.6.9)
+    - MintegralAdSDK/NewInterstitialAd (= 7.6.9)
+    - MintegralAdSDK/RewardVideoAd (= 7.6.9)
+  - MintegralAdSDK/BannerAd (7.6.9):
+    - MintegralAdSDK/NativeAd
+  - MintegralAdSDK/BidBannerAd (7.6.9):
+    - MintegralAdSDK/BannerAd
+    - MintegralAdSDK/BidNativeAd
+  - MintegralAdSDK/BidInterstitialVideoAd (7.6.9):
+    - MintegralAdSDK/BidNativeAd
+    - MintegralAdSDK/InterstitialVideoAd
+  - MintegralAdSDK/BidNativeAd (7.6.9):
+    - MintegralAdSDK/NativeAd
+  - MintegralAdSDK/BidNewInterstitialAd (7.6.9):
+    - MintegralAdSDK/BidNativeAd
+    - MintegralAdSDK/NewInterstitialAd
+  - MintegralAdSDK/BidRewardVideoAd (7.6.9):
+    - MintegralAdSDK/BidNativeAd
+    - MintegralAdSDK/RewardVideoAd
+  - MintegralAdSDK/BidSplashAd (7.6.9):
+    - MintegralAdSDK/BidNativeAd
+    - MintegralAdSDK/SplashAd
+  - MintegralAdSDK/InterstitialVideoAd (7.6.9):
+    - MintegralAdSDK/NativeAd
+  - MintegralAdSDK/NativeAd (7.6.9)
+  - MintegralAdSDK/NewInterstitialAd (7.6.9):
+    - MintegralAdSDK/InterstitialVideoAd
+    - MintegralAdSDK/NativeAd
+  - MintegralAdSDK/RewardVideoAd (7.6.9):
+    - MintegralAdSDK/NativeAd
+  - MintegralAdSDK/SplashAd (7.6.9):
+    - MintegralAdSDK/NativeAd
   - nanopb (2.30910.0):
     - nanopb/decode (= 2.30910.0)
     - nanopb/encode (= 2.30910.0)
@@ -142,11 +236,18 @@ PODS:
     - KituraContracts (~> 1.2)
     - LoggerAPI (~> 1.7)
   - UnityAds (4.12.1)
+  - VungleAds (7.4.0)
 
 DEPENDENCIES:
+  - AppLovinMediationByteDanceAdapter (= 6.1.0.6.0)
+  - AppLovinMediationFyberAdapter (= 8.3.1.0)
   - AppLovinMediationGoogleAdapter (= 11.5.0.0)
   - AppLovinMediationGoogleAdManagerAdapter (= 11.5.0.0)
+  - AppLovinMediationInMobiAdapter (= 10.7.5.0)
+  - AppLovinMediationIronSourceAdapter (= 8.1.0.0.1)
+  - AppLovinMediationMintegralAdapter (= 7.6.9.0.0)
   - AppLovinMediationUnityAdsAdapter (= 4.12.1.0)
+  - AppLovinMediationVungleAdapter (= 7.4.0.0)
   - AppLovinSDK (= 12.6.0)
   - AppsFlyer-AdRevenue (= 6.14.3)
   - AppsFlyerFramework (= 6.14.3)
@@ -160,15 +261,23 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Ads-Global
+    - AppLovinMediationByteDanceAdapter
+    - AppLovinMediationFyberAdapter
     - AppLovinMediationGoogleAdapter
     - AppLovinMediationGoogleAdManagerAdapter
+    - AppLovinMediationInMobiAdapter
+    - AppLovinMediationIronSourceAdapter
+    - AppLovinMediationMintegralAdapter
     - AppLovinMediationUnityAdsAdapter
+    - AppLovinMediationVungleAdapter
     - AppLovinSDK
     - AppsFlyer-AdRevenue
     - AppsFlyerFramework
     - BlueCryptor
     - BlueECC
     - BlueRSA
+    - BURelyFoundation_Global
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -178,13 +287,17 @@ SPEC REPOS:
     - FirebaseRemoteConfig
     - FirebaseRemoteConfigInterop
     - FirebaseSharedSwift
+    - Fyber_Marketplace_SDK
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleUserMessagingPlatform
     - GoogleUtilities
+    - InMobiSDK
+    - IronSourceSDK
     - KituraContracts
     - LoggerAPI
     - Logging
+    - MintegralAdSDK
     - nanopb
     - NVActivityIndicatorView
     - PromisesObjC
@@ -192,17 +305,26 @@ SPEC REPOS:
     - SnapKit
     - SwiftJWT
     - UnityAds
+    - VungleAds
 
 SPEC CHECKSUMS:
+  Ads-Global: 907f4b2b94d722b33ef58e8b5a8d522718117273
+  AppLovinMediationByteDanceAdapter: f220f03ac3c44542021eb3ea588e2266daf77fe5
+  AppLovinMediationFyberAdapter: 2e4e734c6dbcd37f4454d73c2313d98fc8a6c085
   AppLovinMediationGoogleAdapter: d6edc1d9176be45cac0811c76e8fd3eea470bd71
   AppLovinMediationGoogleAdManagerAdapter: 8902d8bd20ba7fca78526c86d091497a1b563f93
+  AppLovinMediationInMobiAdapter: 243dfe62770bda5925167f100fb81c4a3414c035
+  AppLovinMediationIronSourceAdapter: 1bde6ead7f3099e4c6da8142ef05d25eb8d7d0b8
+  AppLovinMediationMintegralAdapter: f90ef46a2846f5424085801e34835dbe5364fa8a
   AppLovinMediationUnityAdsAdapter: d87f42ab2f8df395b03f06a5dd53addecaaf1c8b
+  AppLovinMediationVungleAdapter: 2995d47cd08686cbb6502ccc1029bf36dcc31f36
   AppLovinSDK: 76c1f378b8492110a197c288ea4907930d703829
   AppsFlyer-AdRevenue: ca11e2152446eb45e32c606fb0948f7e7f49ceaa
   AppsFlyerFramework: 0a68f5b72bbbadfa71d4ae3eaf040e82d62e8518
   BlueCryptor: b0aee3d9b8f367b49b30de11cda90e1735571c24
   BlueECC: 0d18e93347d3ec6d41416de21c1ffa4d4cd3c2cc
   BlueRSA: dfeef51db96bcc4edec654956c1581adbda4e6a3
+  BURelyFoundation_Global: 17faee76affe097bd20b422fe829f9f90ed10e25
   Firebase: 0312a2352584f782ea56f66d91606891d4607f06
   FirebaseABTesting: d87f56707159bae64e269757a6e963d490f2eebe
   FirebaseAnalytics: ec00fe8b93b41dc6fe4a28784b8e51da0647a248
@@ -212,13 +334,17 @@ SPEC CHECKSUMS:
   FirebaseRemoteConfig: 9f3935cefecd85d5b312192117f444957de24a75
   FirebaseRemoteConfigInterop: 6efda51fb5e2f15b16585197e26eaa09574e8a4d
   FirebaseSharedSwift: 20530f495084b8d840f78a100d8c5ee613375f6e
+  Fyber_Marketplace_SDK: 23285d363d7a56d77e97a9699685885069deb3f7
   Google-Mobile-Ads-SDK: 7db2098033ad3bfcd72a11e7503b49700a93029e
   GoogleAppMeasurement: 9abf64b682732fed36da827aa2a68f0221fd2356
   GoogleUserMessagingPlatform: 6b4f48a370e77ce121d034c908cc6ee4fdafaf13
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
+  InMobiSDK: 728c861e41cd738eaf0a26b87f0e3f945e8c5602
+  IronSourceSDK: f4380fe08a2bfa1cd37c26948fcfd2585a0493a2
   KituraContracts: e845e60dc8627ad0a76fa55ef20a45451d8f830b
   LoggerAPI: ad9c4a6f1e32f518fdb43a1347ac14d765ab5e3d
   Logging: beeb016c9c80cf77042d62e83495816847ef108b
+  MintegralAdSDK: 229e75c801be1302fb1aeac4249923234bfc480a
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
@@ -226,7 +352,8 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftJWT: 88c412708f58c169d431d344c87bc79a87c830ae
   UnityAds: f89ac1e717f5d566a58479a5b7cb9ed3a744cae3
+  VungleAds: 4823f53e691ba140ff21e3a3a6897af789832a36
 
-PODFILE CHECKSUM: 773287f91049d95a15bc4834dc645778a2532f3f
+PODFILE CHECKSUM: 6bfa5d4d66454f100602dc5cacd4e3dc97cfaee1
 
 COCOAPODS: 1.15.2
