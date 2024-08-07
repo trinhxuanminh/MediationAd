@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MonetizationNetwork: String, Codable {
+public enum MonetizationNetwork: String, Codable {
   case admob
   case max
 }

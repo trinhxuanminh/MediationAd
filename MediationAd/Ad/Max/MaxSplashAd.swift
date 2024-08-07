@@ -74,7 +74,7 @@ class MaxSplashAd: NSObject, ReuseAdProtocol {
 
 extension MaxSplashAd: MAAdDelegate, MAAdRevenueDelegate {
   func didLoad(_ ad: MAAd) {
-    guard let timeout = self.timeout, self.time < timeout else {
+    guard let timeout, self.time < timeout else {
       return
     }
     print("[MediationAd] [AdManager] [Max] [SplashAd] Did load! (\(String(describing: adUnitID)))")
@@ -83,7 +83,7 @@ extension MaxSplashAd: MAAdDelegate, MAAdRevenueDelegate {
   }
   
   func didFailToLoadAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {
-    guard let timeout = self.timeout, self.time < timeout else {
+    guard let timeout, self.time < timeout else {
       return
     }
     print("[MediationAd] [AdManager] [Max] [SplashAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
@@ -137,14 +137,14 @@ extension MaxSplashAd {
       return
     }
     
-    guard let adUnitID = adUnitID else {
+    guard let adUnitID else {
       print("[MediationAd] [AdManager] [Max] [SplashAd] Failed to load - not initialized yet! Please install ID.")
       didLoadFail?()
       return
     }
     
     DispatchQueue.main.async { [weak self] in
-      guard let self = self else {
+      guard let self else {
         return
       }
       
@@ -161,7 +161,7 @@ extension MaxSplashAd {
   
   private func fire() {
     DispatchQueue.main.async { [weak self] in
-      guard let self = self else {
+      guard let self else {
         return
       }
       self.timer = Timer.scheduledTimer(timeInterval: self.timeInterval,

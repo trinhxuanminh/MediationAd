@@ -34,7 +34,7 @@ extension NetworkManager {
   private func startMonitoring() {
     monitor.start(queue: queue)
     monitor.pathUpdateHandler = { [weak self] path in
-      guard let self = self else {
+      guard let self else {
         return
       }
       self.isConnected = path.status == .satisfied

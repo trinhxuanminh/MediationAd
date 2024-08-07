@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     -----END PRIVATE KEY-----
     """
     let maxSdkKey = "hyf3VVXFdwMCaKeA84k0ll1TfmnfTxZ9tEDNlmdNg-ZFJCQSH9T1uUUXEFCiBnt3_4Qlr26V1gmKtAn9KEACkf"
-    let adConfigKey = "AdConfig_1_0_ADMOB"
-//    let adConfigKey = "AdConfig_1_0_MAX"
+//    let adConfigKey = "AdConfig_1_0_ADMOB"
+    let adConfigKey = "AdConfig_1_0_MAX"
     
     ConsentManager.shared.activeDebug(testDeviceIdentifiers: [],
                                       reset: true)

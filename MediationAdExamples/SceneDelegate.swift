@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?
   
   func sceneDidBecomeActive(_ scene: UIScene) {
-    guard let topVC = UIApplication.topStackViewController() else {
+    guard let topVC = UIApplication.topViewController() else {
       return
     }
     AdManager.shared.show(type: .appOpen,

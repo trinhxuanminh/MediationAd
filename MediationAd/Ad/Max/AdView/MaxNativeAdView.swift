@@ -1,14 +1,14 @@
 //
-//  AdMobNativeView.swift
+//  MaxNativeAdView.swift
+//  MediationAd
 //
-//
-//  Created by Trịnh Xuân Minh on 11/07/2023.
+//  Created by Trịnh Xuân Minh on 07/08/2024.
 //
 
 import UIKit
-import GoogleMobileAds
+import AppLovinSDK
 
-open class AdMobNativeAdView: UIView, AdViewProtocol {
+open class MaxNativeAdView: UIView, AdViewProtocol {
   enum State {
     case wait
     case loading
@@ -16,8 +16,8 @@ open class AdMobNativeAdView: UIView, AdViewProtocol {
     case error
   }
   
-  private var nativeAdView: GADNativeAdView?
-  private var nativeAd: AdMobNativeAd?
+  private var nativeAdView: MANativeAdView?
+  private var nativeAd: MaxNativeAd?
   private var didReceive: Handler?
   private var didError: Handler?
   
@@ -58,7 +58,7 @@ open class AdMobNativeAdView: UIView, AdViewProtocol {
   open func setColor() {}
   
   public func load(name: String,
-                   nativeAdView: GADNativeAdView,
+                   nativeAdView: MANativeAdView,
                    rootViewController: UIViewController,
                    didReceive: Handler?,
                    didError: Handler?
@@ -88,9 +88,9 @@ open class AdMobNativeAdView: UIView, AdViewProtocol {
       }
       
       if let nativeAd = AdManager.shared.getNativePreload(name: name) {
-        self.nativeAd = nativeAd as? AdMobNativeAd
+        self.nativeAd = nativeAd as? MaxNativeAd
       } else {
-        self.nativeAd = AdMobNativeAd()
+        self.nativeAd = MaxNativeAd()
         nativeAd?.config(ad: native, rootViewController: rootViewController)
       }
     }
@@ -121,49 +121,57 @@ open class AdMobNativeAdView: UIView, AdViewProtocol {
   }
 }
 
-extension AdMobNativeAdView {
+extension MaxNativeAdView {
   private func errored() {
     didError?()
   }
   
-  private func config(ad: GADNativeAd?) {
+  private func config(ad: MANativeAd?) {
     guard
       let nativeAd = ad,
       let nativeAdView = nativeAdView
     else {
       return
     }
+    
+    let adViewBinder = MANativeAdViewBinder(builderBlock: { builder in
+      builder.titleLabelTag = 100
+      builder.bodyLabelTag = 101
+      builder.callToActionButtonTag = 102
+      builder.iconImageViewTag = 103
+      builder.mediaContentViewTag = 104
+      builder.advertiserLabelTag = 105
+    })
+    nativeAdView.bindViews(with: adViewBinder)
 
-    (nativeAdView.headlineView as? UILabel)?.text = nativeAd.headline
+    nativeAdView.titleLabel?.text = nativeAd.title
     
-    nativeAdView.mediaView?.mediaContent = nativeAd.mediaContent
+    nativeAdView.mediaContentView = nativeAd.mediaView
     
-    if let mediaView = nativeAdView.mediaView, nativeAd.mediaContent.aspectRatio > 0 {
+    if let mediaContentView = nativeAdView.mediaContentView, nativeAd.mediaContentAspectRatio > 0 {
       let heightConstraint = NSLayoutConstraint(
-        item: mediaView,
+        item: mediaContentView,
         attribute: .height,
         relatedBy: .equal,
-        toItem: mediaView,
+        toItem: mediaContentView,
         attribute: .width,
-        multiplier: CGFloat(1 / nativeAd.mediaContent.aspectRatio),
+        multiplier: CGFloat(1 / nativeAd.mediaContentAspectRatio),
         constant: 0)
       heightConstraint.isActive = true
     }
     
-    (nativeAdView.bodyView as? UILabel)?.text = nativeAd.body
-    nativeAdView.bodyView?.isHidden = nativeAd.body == nil
+    nativeAdView.bodyLabel?.text = nativeAd.body
+    nativeAdView.bodyLabel?.isHidden = nativeAd.body == nil
     
-    (nativeAdView.callToActionView as? UIButton)?.setTitle(nativeAd.callToAction, for: .normal)
-    nativeAdView.callToActionView?.isHidden = nativeAd.callToAction == nil
-    nativeAdView.callToActionView?.isUserInteractionEnabled = false
+    nativeAdView.callToActionButton?.setTitle(nativeAd.callToAction, for: .normal)
+    nativeAdView.callToActionButton?.isHidden = nativeAd.callToAction == nil
+    nativeAdView.callToActionButton?.isUserInteractionEnabled = false
     
-    (nativeAdView.iconView as? UIImageView)?.image = nativeAd.icon?.image
-    nativeAdView.iconView?.isHidden = nativeAd.icon == nil
+    nativeAdView.iconImageView?.image = nativeAd.icon?.image
+    nativeAdView.iconImageView?.isHidden = nativeAd.icon == nil
     
-    (nativeAdView.advertiserView as? UILabel)?.text = nativeAd.advertiser
-    nativeAdView.advertiserView?.isHidden = nativeAd.advertiser == nil
-    
-    nativeAdView.nativeAd = nativeAd
+    nativeAdView.advertiserLabel?.text = nativeAd.advertiser
+    nativeAdView.advertiserLabel?.isHidden = nativeAd.advertiser == nil
     
     didReceive?()
   }

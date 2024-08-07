@@ -56,20 +56,6 @@ open class AdMobBannerAdView: UIView {
     super.removeFromSuperview()
   }
   
-  func addComponents() {
-    addSubview(bannerAdView)
-  }
-  
-  func setConstraints() {
-    let constraints = [
-      bannerAdView.topAnchor.constraint(equalTo: self.topAnchor),
-      bannerAdView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-      bannerAdView.leftAnchor.constraint(equalTo: self.leftAnchor),
-      bannerAdView.rightAnchor.constraint(equalTo: self.rightAnchor)
-    ]
-    NSLayoutConstraint.activate(constraints)
-  }
-  
   public func load(name: String,
                    rootViewController: UIViewController,
                    didReceive: Handler?,
@@ -143,6 +129,20 @@ extension AdMobBannerAdView: GADBannerViewDelegate {
 }
 
 extension AdMobBannerAdView {
+  private func addComponents() {
+    addSubview(bannerAdView)
+  }
+  
+  private func setConstraints() {
+    let constraints = [
+      bannerAdView.topAnchor.constraint(equalTo: self.topAnchor),
+      bannerAdView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+      bannerAdView.leftAnchor.constraint(equalTo: self.leftAnchor),
+      bannerAdView.rightAnchor.constraint(equalTo: self.rightAnchor)
+    ]
+    NSLayoutConstraint.activate(constraints)
+  }
+  
   private func errored() {
     didError?()
   }
@@ -152,7 +152,7 @@ extension AdMobBannerAdView {
       return
     }
     
-    guard let adUnitID = adUnitID else {
+    guard let adUnitID else {
       print("[MediationAd] [AdManager] [AdMob] [BannerAd] Failed to load - not initialized yet! Please install ID.")
       return
     }
@@ -160,7 +160,7 @@ extension AdMobBannerAdView {
     print("[MediationAd] [AdManager] [AdMob] [BannerAd] Start load! (\(String(describing: adUnitID)))")
     self.state = .loading
     DispatchQueue.main.async { [weak self] in
-      guard let self = self else {
+      guard let self else {
         return
       }
       self.bannerAdView?.adUnitID = adUnitID

@@ -18,7 +18,8 @@ class HomeViewController: BaseViewController {
   }
   
   override func viewDidAppear(_ animated: Bool) {
-    self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    super.viewDidAppear(animated)
+    removeInteractivePopGestureRecognizer()
   }
   
   override func binding() {

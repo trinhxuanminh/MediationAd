@@ -8,15 +8,15 @@
 import UIKit
 
 extension UIApplication {
-  class func topStackViewController(viewController: UIViewController? = UIApplication.shared.windows.first?.rootViewController) -> UIViewController? {
+  class func topViewController(viewController: UIViewController? = UIApplication.shared.windows.first?.rootViewController) -> UIViewController? {
     if let navigationController = viewController as? UINavigationController {
-      return topStackViewController(viewController: navigationController.visibleViewController)
+      return topViewController(viewController: navigationController.visibleViewController)
     }
     if let tabBarController = viewController as? UINavigationController {
-      return topStackViewController(viewController: tabBarController)
+      return topViewController(viewController: tabBarController)
     }
     if let presented = viewController?.presentedViewController {
-      return topStackViewController(viewController: presented)
+      return topViewController(viewController: presented)
     }
     return viewController
   }

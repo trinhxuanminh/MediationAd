@@ -103,7 +103,7 @@ extension AdMobNativeAd {
       return
     }
     
-    guard let adUnitID = adUnitID else {
+    guard let adUnitID else {
       print("[MediationAd] [AdManager] [AdMob] [NativeAd] Failed to load - not initialized yet! Please install ID.")
       return
     }
@@ -111,7 +111,7 @@ extension AdMobNativeAd {
     print("[MediationAd] [AdManager] [AdMob] [NativeAd] Start load! (\(String(describing: adUnitID)))")
     self.state = .loading
     DispatchQueue.main.async { [weak self] in
-      guard let self = self else {
+      guard let self else {
         return
       }
       var options: [GADAdLoaderOptions]? = nil
@@ -131,7 +131,7 @@ extension AdMobNativeAd {
     
     if let timeout {
       DispatchQueue.main.asyncAfter(deadline: .now() + timeout) { [weak self] in
-        guard let self = self else {
+        guard let self else {
           return
         }
         guard state == .loading else {

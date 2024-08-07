@@ -101,14 +101,14 @@ extension AdMobSplashAd {
       return
     }
     
-    guard let adUnitID = adUnitID else {
+    guard let adUnitID else {
       print("[MediationAd] [AdManager] [AdMob] [SplashAd] Failed to load - not initialized yet! Please install ID.")
       didLoadFail?()
       return
     }
     
     DispatchQueue.main.async { [weak self] in
-      guard let self = self else {
+      guard let self else {
         return
       }
       
@@ -121,10 +121,10 @@ extension AdMobSplashAd {
         withAdUnitID: adUnitID,
         request: request
       ) { [weak self] (ad, error) in
-        guard let self = self else {
+        guard let self else {
           return
         }
-        guard let timeout = self.timeout, self.time < timeout else {
+        guard let timeout, self.time < timeout else {
           return
         }
         self.invalidate()
@@ -158,7 +158,7 @@ extension AdMobSplashAd {
   
   private func fire() {
     DispatchQueue.main.async { [weak self] in
-      guard let self = self else {
+      guard let self else {
         return
       }
       self.timer = Timer.scheduledTimer(timeInterval: self.timeInterval,

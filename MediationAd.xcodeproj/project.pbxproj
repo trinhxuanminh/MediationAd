@@ -47,8 +47,6 @@
 		966172702C5F78B20007C760 /* FrequencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661726E2C5F78B20007C760 /* FrequencyManager.swift */; };
 		966172732C5F790A0007C760 /* Icon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 966172712C5F790A0007C760 /* Icon.xcassets */; };
 		966172742C5F790A0007C760 /* AdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172722C5F790A0007C760 /* AdManager.swift */; };
-		966172782C5F796B0007C760 /* CustomAdMobNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 966172762C5F796B0007C760 /* CustomAdMobNativeAdView.xib */; };
-		966172792C5F796B0007C760 /* RegistrationStructure.json in Resources */ = {isa = PBXBuildFile; fileRef = 966172772C5F796B0007C760 /* RegistrationStructure.json */; };
 		966172842C5F7A070007C760 /* AdMobSplashAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661727E2C5F7A060007C760 /* AdMobSplashAd.swift */; };
 		966172852C5F7A070007C760 /* AdMobNativeAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661727F2C5F7A060007C760 /* AdMobNativeAd.swift */; };
 		966172862C5F7A070007C760 /* AdMobRewardedInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172802C5F7A060007C760 /* AdMobRewardedInterstitialAd.swift */; };
@@ -90,6 +88,18 @@
 		966172DF2C621F940007C760 /* MaxInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172DE2C621F940007C760 /* MaxInterstitialAd.swift */; };
 		966172E12C62263D0007C760 /* MaxSplashAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172E02C62263D0007C760 /* MaxSplashAd.swift */; };
 		966172E32C6229AC0007C760 /* MaxRewardedAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172E22C6229AC0007C760 /* MaxRewardedAd.swift */; };
+		966172E62C6242170007C760 /* MaxBannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172E52C6242170007C760 /* MaxBannerAdView.swift */; };
+		966172ED2C6330530007C760 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172EC2C6330530007C760 /* BaseView.swift */; };
+		966172F22C63311B0007C760 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172EE2C6330CC0007C760 /* UIViewExtension.swift */; };
+		966172F32C63311B0007C760 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172F02C6330F40007C760 /* NSObjectExtension.swift */; };
+		966172F52C6353470007C760 /* MaxNativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172F42C6353470007C760 /* MaxNativeAdView.swift */; };
+		966172F72C6353D90007C760 /* MaxNativeAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172F62C6353D90007C760 /* MaxNativeAd.swift */; };
+		966172FC2C6367E90007C760 /* MediationBannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966172FA2C6367E90007C760 /* MediationBannerAdView.swift */; };
+		966172FD2C6367E90007C760 /* MediationBannerAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 966172FB2C6367E90007C760 /* MediationBannerAdView.xib */; };
+		966173002C6370A70007C760 /* CustomMaxNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 966172FF2C6370A70007C760 /* CustomMaxNativeAdView.xib */; };
+		966173022C6370D20007C760 /* CustomMaxNativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966173012C6370D20007C760 /* CustomMaxNativeAdView.swift */; };
+		966173062C6373A90007C760 /* MediationNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 966173042C6373A90007C760 /* MediationNativeAdView.xib */; };
+		966173072C6373A90007C760 /* MediationNativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966173052C6373A90007C760 /* MediationNativeAdView.swift */; };
 		966313D72C5CD5E200D69BBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313D62C5CD5E200D69BBA /* AppDelegate.swift */; };
 		966313D92C5CD5E200D69BBA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313D82C5CD5E200D69BBA /* SceneDelegate.swift */; };
 		966313DE2C5CD5E200D69BBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966313DC2C5CD5E200D69BBA /* Main.storyboard */; };
@@ -180,8 +190,6 @@
 		9661726E2C5F78B20007C760 /* FrequencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequencyManager.swift; sourceTree = "<group>"; };
 		966172712C5F790A0007C760 /* Icon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icon.xcassets; sourceTree = "<group>"; };
 		966172722C5F790A0007C760 /* AdManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdManager.swift; sourceTree = "<group>"; };
-		966172762C5F796B0007C760 /* CustomAdMobNativeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAdMobNativeAdView.xib; sourceTree = "<group>"; };
-		966172772C5F796B0007C760 /* RegistrationStructure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RegistrationStructure.json; sourceTree = "<group>"; };
 		9661727E2C5F7A060007C760 /* AdMobSplashAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobSplashAd.swift; sourceTree = "<group>"; };
 		9661727F2C5F7A060007C760 /* AdMobNativeAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobNativeAd.swift; sourceTree = "<group>"; };
 		966172802C5F7A060007C760 /* AdMobRewardedInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobRewardedInterstitialAd.swift; sourceTree = "<group>"; };
@@ -217,6 +225,18 @@
 		966172DE2C621F940007C760 /* MaxInterstitialAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxInterstitialAd.swift; sourceTree = "<group>"; };
 		966172E02C62263D0007C760 /* MaxSplashAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxSplashAd.swift; sourceTree = "<group>"; };
 		966172E22C6229AC0007C760 /* MaxRewardedAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxRewardedAd.swift; sourceTree = "<group>"; };
+		966172E52C6242170007C760 /* MaxBannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxBannerAdView.swift; sourceTree = "<group>"; };
+		966172EC2C6330530007C760 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		966172EE2C6330CC0007C760 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		966172F02C6330F40007C760 /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
+		966172F42C6353470007C760 /* MaxNativeAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxNativeAdView.swift; sourceTree = "<group>"; };
+		966172F62C6353D90007C760 /* MaxNativeAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxNativeAd.swift; sourceTree = "<group>"; };
+		966172FA2C6367E90007C760 /* MediationBannerAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediationBannerAdView.swift; sourceTree = "<group>"; };
+		966172FB2C6367E90007C760 /* MediationBannerAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediationBannerAdView.xib; sourceTree = "<group>"; };
+		966172FF2C6370A70007C760 /* CustomMaxNativeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomMaxNativeAdView.xib; path = ../../../../../../../../Downloads/CustomMaxNativeAdView.xib; sourceTree = "<group>"; };
+		966173012C6370D20007C760 /* CustomMaxNativeAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomMaxNativeAdView.swift; path = ../../../../../../../../Downloads/CustomMaxNativeAdView.swift; sourceTree = "<group>"; };
+		966173042C6373A90007C760 /* MediationNativeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediationNativeAdView.xib; sourceTree = "<group>"; };
+		966173052C6373A90007C760 /* MediationNativeAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediationNativeAdView.swift; sourceTree = "<group>"; };
 		966313D42C5CD5E200D69BBA /* MediationAdExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediationAdExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		966313D62C5CD5E200D69BBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		966313D82C5CD5E200D69BBA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -283,7 +303,6 @@
 			children = (
 				9637030B2C5C9989005B52CA /* Base */,
 				963703122C5C9A42005B52CA /* Extensions */,
-				966172752C5F79540007C760 /* Templates */,
 				966172562C5F778B0007C760 /* Ultis */,
 				963703152C5C9A77005B52CA /* Models */,
 				963703042C5C992E005B52CA /* API */,
@@ -408,15 +427,6 @@
 			name = Supports;
 			sourceTree = "<group>";
 		};
-		966172752C5F79540007C760 /* Templates */ = {
-			isa = PBXGroup;
-			children = (
-				966172762C5F796B0007C760 /* CustomAdMobNativeAdView.xib */,
-				966172772C5F796B0007C760 /* RegistrationStructure.json */,
-			);
-			path = Templates;
-			sourceTree = "<group>";
-		};
 		9661727A2C5F79AA0007C760 /* Ad */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +473,8 @@
 				966172A62C60B5D80007C760 /* UIApplicationExtension.swift */,
 				966172A72C60B5D80007C760 /* UIColorExtension.swift */,
 				966172A52C60B5D80007C760 /* UIViewControllerExtension.swift */,
+				966172EE2C6330CC0007C760 /* UIViewExtension.swift */,
+				966172F02C6330F40007C760 /* NSObjectExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -483,6 +495,7 @@
 			children = (
 				966172AD2C60B6B40007C760 /* ViewProtocol.swift */,
 				966172AE2C60B6B40007C760 /* BaseViewController.swift */,
+				966172EC2C6330530007C760 /* BaseView.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -527,18 +540,21 @@
 		966172B52C60B73E0007C760 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				966172B62C60B7500007C760 /* Native */,
+				966172F92C6367D50007C760 /* MediationBanner */,
+				966173032C63736E0007C760 /* MediationNative */,
+				966172B62C60B7500007C760 /* AdMobNative */,
+				966172FE2C6370190007C760 /* MaxNative */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		966172B62C60B7500007C760 /* Native */ = {
+		966172B62C60B7500007C760 /* AdMobNative */ = {
 			isa = PBXGroup;
 			children = (
 				966172B92C60B8810007C760 /* CustomAdMobNativeAdView.swift */,
 				966172B82C60B8810007C760 /* CustomAdMobNativeAdView.xib */,
 			);
-			name = Native;
+			name = AdMobNative;
 			sourceTree = "<group>";
 		};
 		966172B72C60B7720007C760 /* Banner */ = {
@@ -566,6 +582,7 @@
 				966172DE2C621F940007C760 /* MaxInterstitialAd.swift */,
 				966172D42C61DE6F0007C760 /* MaxAppOpenAd.swift */,
 				966172E22C6229AC0007C760 /* MaxRewardedAd.swift */,
+				966172F62C6353D90007C760 /* MaxNativeAd.swift */,
 			);
 			name = Ads;
 			sourceTree = "<group>";
@@ -573,8 +590,37 @@
 		966172D32C61D8DD0007C760 /* AdView */ = {
 			isa = PBXGroup;
 			children = (
+				966172E52C6242170007C760 /* MaxBannerAdView.swift */,
+				966172F42C6353470007C760 /* MaxNativeAdView.swift */,
 			);
 			path = AdView;
+			sourceTree = "<group>";
+		};
+		966172F92C6367D50007C760 /* MediationBanner */ = {
+			isa = PBXGroup;
+			children = (
+				966172FA2C6367E90007C760 /* MediationBannerAdView.swift */,
+				966172FB2C6367E90007C760 /* MediationBannerAdView.xib */,
+			);
+			path = MediationBanner;
+			sourceTree = "<group>";
+		};
+		966172FE2C6370190007C760 /* MaxNative */ = {
+			isa = PBXGroup;
+			children = (
+				966173012C6370D20007C760 /* CustomMaxNativeAdView.swift */,
+				966172FF2C6370A70007C760 /* CustomMaxNativeAdView.xib */,
+			);
+			name = MaxNative;
+			sourceTree = "<group>";
+		};
+		966173032C63736E0007C760 /* MediationNative */ = {
+			isa = PBXGroup;
+			children = (
+				966173052C6373A90007C760 /* MediationNativeAdView.swift */,
+				966173042C6373A90007C760 /* MediationNativeAdView.xib */,
+			);
+			path = MediationNative;
 			sourceTree = "<group>";
 		};
 		966313D52C5CD5E200D69BBA /* MediationAdExamples */ = {
@@ -717,8 +763,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				966172732C5F790A0007C760 /* Icon.xcassets in Resources */,
-				966172782C5F796B0007C760 /* CustomAdMobNativeAdView.xib in Resources */,
-				966172792C5F796B0007C760 /* RegistrationStructure.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,10 +774,13 @@
 				966172C92C60BBF70007C760 /* BannerViewController.xib in Resources */,
 				966172C12C60BAA50007C760 /* HomeViewController.xib in Resources */,
 				966172C42C60BB800007C760 /* NativeViewController.xib in Resources */,
+				966173002C6370A70007C760 /* CustomMaxNativeAdView.xib in Resources */,
 				966172BA2C60B8810007C760 /* CustomAdMobNativeAdView.xib in Resources */,
 				966172A12C6086060007C760 /* AdDefaultValue.json in Resources */,
+				966172FD2C6367E90007C760 /* MediationBannerAdView.xib in Resources */,
 				966313E92C5CD66700D69BBA /* GoogleService-Info.plist in Resources */,
 				966313E02C5CD5E300D69BBA /* Assets.xcassets in Resources */,
+				966173062C6373A90007C760 /* MediationNativeAdView.xib in Resources */,
 				966313DE2C5CD5E200D69BBA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -809,6 +856,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966172F72C6353D90007C760 /* MaxNativeAd.swift in Sources */,
 				966172672C5F780F0007C760 /* Native.swift in Sources */,
 				966172D52C61DE6F0007C760 /* MaxAppOpenAd.swift in Sources */,
 				966172862C5F7A070007C760 /* AdMobRewardedInterstitialAd.swift in Sources */,
@@ -828,6 +876,7 @@
 				966172662C5F780F0007C760 /* Interstitial.swift in Sources */,
 				966172A32C608BB50007C760 /* OnceUsedAdProtocol.swift in Sources */,
 				9637032D2C5C9B66005B52CA /* RemoteManager.swift in Sources */,
+				966172E62C6242170007C760 /* MaxBannerAdView.swift in Sources */,
 				963703232C5C9A94005B52CA /* TokenClaims.swift in Sources */,
 				963703292C5C9B13005B52CA /* TrackingManager.swift in Sources */,
 				966172882C5F7A070007C760 /* AdMobInterstitialAd.swift in Sources */,
@@ -861,6 +910,7 @@
 				9637031F2C5C9A94005B52CA /* ItunesResponse.swift in Sources */,
 				963703062C5C993E005B52CA /* APIError.swift in Sources */,
 				966172E32C6229AC0007C760 /* MaxRewardedAd.swift in Sources */,
+				966172F52C6353470007C760 /* MaxNativeAdView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -868,16 +918,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966172F22C63311B0007C760 /* UIViewExtension.swift in Sources */,
 				966172A82C60B5D80007C760 /* UIViewControllerExtension.swift in Sources */,
 				966172A92C60B5D80007C760 /* UIApplicationExtension.swift in Sources */,
+				966173022C6370D20007C760 /* CustomMaxNativeAdView.swift in Sources */,
+				966173072C6373A90007C760 /* MediationNativeAdView.swift in Sources */,
 				966313D72C5CD5E200D69BBA /* AppDelegate.swift in Sources */,
 				966172BD2C60BA0E0007C760 /* SplashViewController.swift in Sources */,
 				966172C82C60BBF70007C760 /* BannerViewController.swift in Sources */,
+				966172FC2C6367E90007C760 /* MediationBannerAdView.swift in Sources */,
 				966172AF2C60B6B40007C760 /* ViewProtocol.swift in Sources */,
+				966172F32C63311B0007C760 /* NSObjectExtension.swift in Sources */,
 				966172B02C60B6B40007C760 /* BaseViewController.swift in Sources */,
 				966172BB2C60B8810007C760 /* CustomAdMobNativeAdView.swift in Sources */,
 				966172C52C60BB800007C760 /* NativeViewController.swift in Sources */,
 				966313D92C5CD5E200D69BBA /* SceneDelegate.swift in Sources */,
+				966172ED2C6330530007C760 /* BaseView.swift in Sources */,
 				966172C02C60BAA50007C760 /* HomeViewController.swift in Sources */,
 				966172AA2C60B5D80007C760 /* UIColorExtension.swift in Sources */,
 			);

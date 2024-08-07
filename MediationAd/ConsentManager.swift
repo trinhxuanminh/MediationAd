@@ -35,7 +35,7 @@ public class ConsentManager {
   private var consentConfig: ConsentConfig?
   
   public func requestConsentUpdate(completed: @escaping ConsentHandler) {
-    guard let viewController = UIApplication.topStackViewController() else {
+    guard let viewController = UIApplication.topViewController() else {
       completed(.error)
       return
     }
@@ -163,7 +163,7 @@ extension ConsentManager {
         return
       }
       
-      guard let viewController = UIApplication.topStackViewController() else {
+      guard let viewController = UIApplication.topViewController() else {
         change(state: .error)
         return
       }

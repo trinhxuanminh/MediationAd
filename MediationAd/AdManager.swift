@@ -127,6 +127,14 @@ public class AdManager {
     return adConfig.status
   }
   
+  public func network(type: AdType, name: String) -> MonetizationNetwork? {
+    guard let adConfig = getAd(type: type, name: name) as? AdConfigProtocol else {
+      print("[MediationAd] [AdManager] Ads don't exist! (\(name))")
+      return nil
+    }
+    return adConfig.network
+  }
+  
   public func load(type: Reuse,
                    name: String,
                    success: Handler? = nil,
@@ -240,7 +248,7 @@ public class AdManager {
     case .admob:
       nativeAd = AdMobNativeAd()
     case .max:
-      return
+      nativeAd = MaxNativeAd()
     }
     
     nativeAd.bind(didReceive: success, didError: fail)

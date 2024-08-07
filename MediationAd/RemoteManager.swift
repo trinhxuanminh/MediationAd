@@ -42,7 +42,7 @@ extension RemoteManager {
     DispatchQueue.main.asyncAfter(deadline: .now() + remoteTimeout, execute: timeoutRemote)
     
     remoteConfig.fetch(withExpirationDuration: 0) { [weak self] _, error in
-      guard let self = self else {
+      guard let self else {
         return
       }
       guard error == nil else {

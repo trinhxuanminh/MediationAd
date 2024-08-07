@@ -54,4 +54,8 @@ extension BaseViewController {
     navigationController?.interactivePopGestureRecognizer?.delegate = self
     navigationController?.interactivePopGestureRecognizer?.isEnabled = true
   }
+  
+  func removeInteractivePopGestureRecognizer() {
+    navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+  }
 }

@@ -107,13 +107,13 @@ extension AdMobInterstitialAd {
       return
     }
     
-    guard let adUnitID = adUnitID else {
+    guard let adUnitID else {
       print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Failed to load - not initialized yet! Please install ID.")
       return
     }
     
     DispatchQueue.main.async { [weak self] in
-      guard let self = self else {
+      guard let self else {
         return
       }
       
@@ -125,7 +125,7 @@ extension AdMobInterstitialAd {
         withAdUnitID: adUnitID,
         request: request
       ) { [weak self] (ad, error) in
-        guard let self = self else {
+        guard let self else {
           return
         }
         self.isLoading = false

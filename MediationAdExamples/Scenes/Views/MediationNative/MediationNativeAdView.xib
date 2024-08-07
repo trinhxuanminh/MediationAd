@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MediationNativeAdView" customModule="MediationAdExamples" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="Pjr-Ph-6g0" id="pbS-5P-63D"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="LeK-e0-rhs"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="603" height="118"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pjr-Ph-6g0">
+                    <rect key="frame" x="0.0" y="0.0" width="603" height="118"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Pjr-Ph-6g0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AmZ-YW-Pjh"/>
+                <constraint firstAttribute="trailing" secondItem="Pjr-Ph-6g0" secondAttribute="trailing" id="Ca0-AS-yHP"/>
+                <constraint firstAttribute="bottom" secondItem="Pjr-Ph-6g0" secondAttribute="bottom" id="Tmg-0M-0lI"/>
+                <constraint firstItem="Pjr-Ph-6g0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xgR-Yd-8c3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="132.06106870229007" y="-238.02816901408451"/>
+        </view>
+    </objects>
+</document>

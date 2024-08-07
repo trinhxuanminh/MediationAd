@@ -144,13 +144,13 @@ extension MaxInterstitialAd {
       return
     }
     
-    guard let adUnitID = adUnitID else {
+    guard let adUnitID else {
       print("[MediationAd] [AdManager] [Max] [InterstitialAd] Failed to load - not initialized yet! Please install ID.")
       return
     }
     
     DispatchQueue.main.async { [weak self] in
-      guard let self = self else {
+      guard let self else {
         return
       }
       
