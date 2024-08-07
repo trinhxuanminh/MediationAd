@@ -16,6 +16,7 @@ target 'MediationAd' do
   pod 'SwiftJWT', '3.6.200'
   pod 'Google-Mobile-Ads-SDK', '11.5.0'
   pod 'AppLovinSDK', '12.6.0'
+  pod 'AppLovinMediationGoogleAdManagerAdapter', '11.5.0.0'
   pod 'AppLovinMediationGoogleAdapter', '11.5.0.0'
   pod 'AppLovinMediationUnityAdsAdapter', '4.12.1.0'
 end

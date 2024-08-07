@@ -2,6 +2,9 @@ PODS:
   - AppLovinMediationGoogleAdapter (11.5.0.0):
     - AppLovinSDK
     - Google-Mobile-Ads-SDK (= 11.5.0)
+  - AppLovinMediationGoogleAdManagerAdapter (11.5.0.0):
+    - AppLovinSDK
+    - Google-Mobile-Ads-SDK (= 11.5.0)
   - AppLovinMediationUnityAdsAdapter (4.12.1.0):
     - AppLovinSDK
     - UnityAds (= 4.12.1)
@@ -142,6 +145,7 @@ PODS:
 
 DEPENDENCIES:
   - AppLovinMediationGoogleAdapter (= 11.5.0.0)
+  - AppLovinMediationGoogleAdManagerAdapter (= 11.5.0.0)
   - AppLovinMediationUnityAdsAdapter (= 4.12.1.0)
   - AppLovinSDK (= 12.6.0)
   - AppsFlyer-AdRevenue (= 6.14.3)
@@ -157,6 +161,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AppLovinMediationGoogleAdapter
+    - AppLovinMediationGoogleAdManagerAdapter
     - AppLovinMediationUnityAdsAdapter
     - AppLovinSDK
     - AppsFlyer-AdRevenue
@@ -190,6 +195,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AppLovinMediationGoogleAdapter: d6edc1d9176be45cac0811c76e8fd3eea470bd71
+  AppLovinMediationGoogleAdManagerAdapter: 8902d8bd20ba7fca78526c86d091497a1b563f93
   AppLovinMediationUnityAdsAdapter: d87f42ab2f8df395b03f06a5dd53addecaaf1c8b
   AppLovinSDK: 76c1f378b8492110a197c288ea4907930d703829
   AppsFlyer-AdRevenue: ca11e2152446eb45e32c606fb0948f7e7f49ceaa
@@ -221,6 +227,6 @@ SPEC CHECKSUMS:
   SwiftJWT: 88c412708f58c169d431d344c87bc79a87c830ae
   UnityAds: f89ac1e717f5d566a58479a5b7cb9ed3a744cae3
 
-PODFILE CHECKSUM: 3ed982985c4e5636ff5202e4d6a31b946def1166
+PODFILE CHECKSUM: 773287f91049d95a15bc4834dc645778a2532f3f
 
 COCOAPODS: 1.15.2
