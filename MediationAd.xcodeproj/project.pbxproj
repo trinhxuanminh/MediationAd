@@ -104,6 +104,8 @@
 		966173142C638FF00007C760 /* InMobiSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966173122C638FF00007C760 /* InMobiSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9661731B2C63C8F50007C760 /* FBAudienceNetwork.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9661731A2C63C8F50007C760 /* FBAudienceNetwork.xcframework */; };
 		9661731C2C63C8F50007C760 /* FBAudienceNetwork.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9661731A2C63C8F50007C760 /* FBAudienceNetwork.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		966173472C64E4070007C760 /* AppLovinSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966172D62C620B860007C760 /* AppLovinSDK.xcframework */; };
+		966173482C64E4070007C760 /* AppLovinSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966172D62C620B860007C760 /* AppLovinSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		966313D72C5CD5E200D69BBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313D62C5CD5E200D69BBA /* AppDelegate.swift */; };
 		966313D92C5CD5E200D69BBA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313D82C5CD5E200D69BBA /* SceneDelegate.swift */; };
 		966313DE2C5CD5E200D69BBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966313DC2C5CD5E200D69BBA /* Main.storyboard */; };
@@ -148,6 +150,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				966172DA2C6217DB0007C760 /* MediationAd.framework in Embed Frameworks */,
+				966173482C64E4070007C760 /* AppLovinSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,6 +251,7 @@
 		966173122C638FF00007C760 /* InMobiSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = InMobiSDK.xcframework; path = Pods/InMobiSDK/InMobiSDK.xcframework; sourceTree = "<group>"; };
 		966173172C63C8BE0007C760 /* AppLovinMediationFacebookAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppLovinMediationFacebookAdapter.xcframework; path = "Pods/AppLovinMediationFacebookAdapter/AppLovinMediationFacebookAdapter-6.15.1.0/AppLovinMediationFacebookAdapter.xcframework"; sourceTree = "<group>"; };
 		9661731A2C63C8F50007C760 /* FBAudienceNetwork.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:V9WTTPBFK9:Meta Platforms, Inc."; lastKnownFileType = wrapper.xcframework; name = FBAudienceNetwork.xcframework; path = Pods/FBAudienceNetwork/Static/FBAudienceNetwork.xcframework; sourceTree = "<group>"; };
+		966173452C64E3060007C760 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		966313D42C5CD5E200D69BBA /* MediationAdExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediationAdExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		966313D62C5CD5E200D69BBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		966313D82C5CD5E200D69BBA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -283,6 +287,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966173472C64E4070007C760 /* AppLovinSDK.xcframework in Frameworks */,
 				966172D92C6217DB0007C760 /* MediationAd.framework in Frameworks */,
 				32A392931564CC4F346EC4C9 /* Pods_MediationAdExamples.framework in Frameworks */,
 			);
@@ -666,6 +671,7 @@
 		DA690AA92AD1B955EE21AD02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				966173452C64E3060007C760 /* AppTrackingTransparency.framework */,
 				9661731A2C63C8F50007C760 /* FBAudienceNetwork.xcframework */,
 				966173172C63C8BE0007C760 /* AppLovinMediationFacebookAdapter.xcframework */,
 				966173122C638FF00007C760 /* InMobiSDK.xcframework */,

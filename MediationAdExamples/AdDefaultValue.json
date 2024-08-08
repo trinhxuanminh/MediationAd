@@ -6,19 +6,21 @@
       "status": true,
       "network": "admob",
       "id": "ca-app-pub-3940256099942544/4411468910",
-      "isAuto": true,
+      "isAuto": false,
       "description": "",
       "timeout": 30
     }
   ],
-  "appOpen": {
-    "name": "App_Open",
-    "status": true,
-    "network": "admob",
-    "id": "ca-app-pub-3940256099942544/5575463023",
-    "isAuto": true,
-    "description": ""
-  },
+  "appOpens": [
+    {
+      "name": "App_Open",
+      "status": true,
+      "network": "max",
+      "id": "91eba1be89f67cce",
+      "isAuto": false,
+      "description": ""
+    }
+  ],
   "rewardeds": [
     {
       "name": "Rewarded",
@@ -42,7 +44,7 @@
       "status": true,
       "network": "admob",
       "id": "ca-app-pub-3940256099942544/4411468910",
-      "isAuto": true,
+      "isAuto": false,
       "description": "",
       "start": 1,
       "frequency": 2
@@ -73,10 +75,9 @@
     {
       "name": "Banner_3",
       "status": true,
-      "network": "admob",
-      "id": "ca-app-pub-3940256099942544/2934735716",
-      "description": "",
-      "anchored": "bottom"
+      "network": "max",
+      "id": "9dffb485e0cc329f",
+      "description": ""
     }
   ],
   "natives": [

@@ -9,13 +9,6 @@ import UIKit
 import GoogleMobileAds
 
 open class AdMobNativeAdView: UIView, AdViewProtocol {
-  enum State {
-    case wait
-    case loading
-    case receive
-    case error
-  }
-  
   private var nativeAdView: GADNativeAdView?
   private var nativeAd: AdMobNativeAd?
   private var didReceive: Handler?
@@ -118,6 +111,15 @@ open class AdMobNativeAdView: UIView, AdViewProtocol {
     default:
       return
     }
+  }
+  
+  public func destroyAd() -> Bool {
+    let state = nativeAd?.getState()
+    guard state == .receive || state == .error else {
+      return false
+    }
+    self.nativeAd = nil
+    return true
   }
 }
 

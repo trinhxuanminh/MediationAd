@@ -322,13 +322,7 @@ extension AdManager {
       case .splash:
         return adConfig.splashs?.first(where: { $0.name == name })
       case .appOpen:
-        guard
-          let appOpen = adConfig.appOpen,
-          appOpen.name == name
-        else {
-          return nil
-        }
-        return adConfig.appOpen
+        return adConfig.appOpens?.first(where: { $0.name == name })
       case .interstitial:
         return adConfig.interstitials?.first(where: { $0.name == name })
       case .rewarded:
