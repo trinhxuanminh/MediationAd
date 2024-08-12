@@ -41,6 +41,10 @@ public class AppManager {
                          completed: @escaping RemoteHandler,
                          didError: Handler? = nil
   ) {
+    guard state != .wait else {
+      return
+    }
+    self.state = .wait
     self.didError = didError
     
     FirebaseApp.configure()
@@ -57,7 +61,7 @@ public class AppManager {
         guard isConnected else {
           return
         }
-        guard state != .success else {
+        guard state == .wait else {
           return
         }
         self.state = .success
