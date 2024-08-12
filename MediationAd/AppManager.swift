@@ -28,6 +28,7 @@ public class AppManager {
   private let timeout = 15.0
   private var subscriptions = Set<AnyCancellable>()
   private var didError: Handler?
+  private var didConfigure = false
   
   public func initialize(appID: String,
                          issuerID: String,
@@ -47,8 +48,11 @@ public class AppManager {
     self.state = .wait
     self.didError = didError
     
-    FirebaseApp.configure()
-    FBAdSettings.setDataProcessingOptions([])
+    if !didConfigure {
+      self.didConfigure = true
+      FirebaseApp.configure()
+      FBAdSettings.setDataProcessingOptions([])
+    }
     
     DispatchQueue.main.asyncAfter(deadline: .now() + timeout, execute: timeoutConfig)
     
