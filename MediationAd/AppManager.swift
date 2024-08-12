@@ -15,7 +15,8 @@ public class AppManager {
   public static let shared = AppManager()
   
   public enum State {
-    case wait
+    case unknow
+    case loading
     case success
     case timeout
   }
@@ -24,7 +25,7 @@ public class AppManager {
     static let consentKey = "CMP"
   }
   
-  @Published private(set) var state: State = .wait
+  @Published private(set) var state: State = .unknow
   private let timeout = 15.0
   private var subscriptions = Set<AnyCancellable>()
   private var didError: Handler?
@@ -42,10 +43,10 @@ public class AppManager {
                          completed: @escaping RemoteHandler,
                          didError: Handler? = nil
   ) {
-    guard state != .wait else {
+    guard state != .loading else {
       return
     }
-    self.state = .wait
+    self.state = .loading
     self.didError = didError
     
     if !didConfigure {
@@ -65,7 +66,7 @@ public class AppManager {
         guard isConnected else {
           return
         }
-        guard state == .wait else {
+        guard state == .loading else {
           return
         }
         self.state = .success
@@ -115,7 +116,7 @@ public class AppManager {
 
 extension AppManager {
   private func timeoutConfig() {
-    guard state == .wait else {
+    guard state == .loading else {
       return
     }
     self.state = .timeout
