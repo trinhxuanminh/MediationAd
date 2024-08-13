@@ -1,61 +1,49 @@
 //
-//  NetworkManager.swift
+//  InternetConnectionMonitor.swift
 //  MediationAd
 //
-//  Created by Trịnh Xuân Minh on 02/08/2024.
+//  Created by Trịnh Xuân Minh on 13/08/2024.
 //
 
-import Foundation
-import Network
 import Combine
+import SystemConfiguration
 
 public class NetworkManager {
   public static let shared = NetworkManager()
   
-  public enum ConnectionType {
-    case wifi
-    case cellular
-    case ethernet
-    case unknown
+  private let networkStatusSubject = PassthroughSubject<Bool, Never>()
+  
+  public var isConnected: AnyPublisher<Bool, Never> {
+    networkStatusSubject.eraseToAnyPublisher()
   }
   
-  @Published public private(set) var isConnected: Bool = false
-  @Published public private(set) var connectionType: ConnectionType = .unknown
-  private let queue = DispatchQueue.global()
-  private let monitor: NWPathMonitor
-  
-  init() {
-    monitor = NWPathMonitor()
+  private init() {
     startMonitoring()
   }
-}
-
-extension NetworkManager {
+  
   private func startMonitoring() {
-    monitor.start(queue: queue)
-    monitor.pathUpdateHandler = { [weak self] path in
-      guard let self else {
+    var context = SCNetworkReachabilityContext(
+      version: 0,
+      info: UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque()),
+      retain: nil,
+      release: nil,
+      copyDescription: nil
+    )
+    
+    guard let reachability = SCNetworkReachabilityCreateWithName(nil, "google.com") else {
+      networkStatusSubject.send(true)
+      return
+    }
+    SCNetworkReachabilitySetCallback(reachability, { (_, flags, info) in
+      let isConnected = flags.contains(.reachable) && !flags.contains(.connectionRequired)
+      
+      guard let info else {
         return
       }
-      self.isConnected = path.status == .satisfied
-      self.setConnectionType(path)
-    }
-  }
-  
-  private func stopMonitoring() {
-    monitor.cancel()
-  }
-  
-  private func setConnectionType(_ path: NWPath) {
-    switch true {
-    case path.usesInterfaceType(.wifi):
-      connectionType = .wifi
-    case path.usesInterfaceType(.cellular):
-      connectionType = .cellular
-    case path.usesInterfaceType(.wiredEthernet):
-      connectionType = .ethernet
-    default:
-      connectionType = .unknown
-    }
+      let monitor = Unmanaged<NetworkManager>.fromOpaque(info).takeUnretainedValue()
+      monitor.networkStatusSubject.send(isConnected)
+    }, &context)
+    
+    SCNetworkReachabilitySetDispatchQueue(reachability, DispatchQueue.global(qos: .background))
   }
 }

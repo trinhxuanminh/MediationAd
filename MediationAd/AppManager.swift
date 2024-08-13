@@ -58,7 +58,7 @@ public class AppManager {
     DispatchQueue.main.asyncAfter(deadline: .now() + timeout, execute: timeoutConfig)
     
     print("[MediationAd] [AppManager] Start config!")
-    NetworkManager.shared.$isConnected
+    NetworkManager.shared.isConnected
       .sink { [weak self] isConnected in
         guard let self else {
           return
