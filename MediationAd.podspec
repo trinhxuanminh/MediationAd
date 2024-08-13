@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "MediationAd"
-  spec.version      = "0.0.10"
+  spec.version      = "0.0.11"
   spec.summary      = "MediationAd of ProxGlobal"
 
   spec.description  = <<-DESC
