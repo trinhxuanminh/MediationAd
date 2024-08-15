@@ -36,11 +36,21 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
-                                <view clipsSubviews="YES" tag="104" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="wqc-FW-nUv">
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqc-FW-nUv">
                                     <rect key="frame" x="10" y="70" width="561" height="120"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <subviews>
+                                        <view tag="104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pwm-bB-gDf">
+                                            <rect key="frame" x="0.0" y="0.0" width="561" height="120"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="pwm-bB-gDf" secondAttribute="trailing" id="DW9-Ca-Riw"/>
+                                        <constraint firstAttribute="bottom" secondItem="pwm-bB-gDf" secondAttribute="bottom" id="Hvo-ft-LWc"/>
+                                        <constraint firstItem="pwm-bB-gDf" firstAttribute="top" secondItem="wqc-FW-nUv" secondAttribute="top" id="Otp-B0-8tm"/>
                                         <constraint firstAttribute="height" constant="120" id="RZo-sj-2aR"/>
+                                        <constraint firstItem="pwm-bB-gDf" firstAttribute="leading" secondItem="wqc-FW-nUv" secondAttribute="leading" id="TbS-a3-6CW"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Body..." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zbd-yH-XAq" userLabel="BodyView">

@@ -21,14 +21,14 @@ open class MaxNativeAdView: UIView, AdViewProtocol {
     setConstraints()
     setProperties()
   }
-
+  
   public override init(frame: CGRect) {
     super.init(frame: frame)
     addComponents()
     setConstraints()
     setProperties()
   }
-
+  
   required public init?(coder: NSCoder) {
     super.init(coder: coder)
   }
@@ -94,15 +94,15 @@ open class MaxNativeAdView: UIView, AdViewProtocol {
     }
     switch nativeAd.getState() {
     case .receive:
-      config(ad: nativeAd.getAdView())
+      config(nativeAd: nativeAd.getAd(), nativeAdView: nativeAd.getAdView())
     case .error:
       errored()
     case .loading:
       nativeAd.bind { [weak self] in
-         guard let self else {
-           return
-         }
-         self.config(ad: nativeAd.getAdView())
+        guard let self else {
+          return
+        }
+        config(nativeAd: nativeAd.getAd(), nativeAdView: nativeAd.getAdView())
       } didError: { [weak self] in
         guard let self else {
           return
@@ -130,8 +130,8 @@ extension MaxNativeAdView {
   }
   
   @MainActor
-  private func config(ad: MANativeAdView?) {
-    guard let nativeAdView = ad else {
+  private func config(nativeAd: MANativeAd?, nativeAdView: MANativeAdView?) {
+    guard let nativeAd, let nativeAdView else {
       return
     }
     self.nativeAdView?.removeFromSuperview()
@@ -139,6 +139,19 @@ extension MaxNativeAdView {
     nativeAdView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
+    
+    if let mediaContentView = nativeAdView.mediaContentView, nativeAd.mediaContentAspectRatio > 0 {
+      let heightConstraint = NSLayoutConstraint(
+        item: mediaContentView,
+        attribute: .height,
+        relatedBy: .equal,
+        toItem: mediaContentView,
+        attribute: .width,
+        multiplier: CGFloat(1.0 / nativeAd.mediaContentAspectRatio),
+        constant: 0)
+      heightConstraint.isActive = true
+    }
+    
     self.nativeAdView = nativeAdView
     didReceive?()
   }

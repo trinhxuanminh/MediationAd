@@ -55,6 +55,10 @@ class MaxNativeAd: NSObject, OnceUsedAdProtocol {
     return state
   }
   
+  func getAd() -> MANativeAd? {
+    return nativeAd?.nativeAd
+  }
+  
   func getAdView() -> MANativeAdView? {
     return nativeAdView
   }

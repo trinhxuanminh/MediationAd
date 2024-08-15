@@ -147,7 +147,7 @@ extension AdMobNativeAdView {
         relatedBy: .equal,
         toItem: mediaView,
         attribute: .width,
-        multiplier: CGFloat(1 / nativeAd.mediaContent.aspectRatio),
+        multiplier: CGFloat(1.0 / nativeAd.mediaContent.aspectRatio),
         constant: 0)
       heightConstraint.isActive = true
     }
