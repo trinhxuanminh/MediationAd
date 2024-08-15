@@ -9,7 +9,7 @@ import UIKit
 import AppLovinSDK
 import AppsFlyerAdRevenue
 
-class MaxNativeAd: NSObject, OnceUsedAdProtocol {
+class MaxNativeAd: NSObject {
   enum State {
     case wait
     case loading
@@ -17,7 +17,8 @@ class MaxNativeAd: NSObject, OnceUsedAdProtocol {
     case error
   }
   
-  private var nativeAd: MANativeAd?
+  private var nativeAd: MAAd?
+  private var nativeAdView: MANativeAdView?
   private var adLoader: MANativeAdLoader?
   private weak var rootViewController: UIViewController?
   private var adUnitID: String?
@@ -26,7 +27,7 @@ class MaxNativeAd: NSObject, OnceUsedAdProtocol {
   private var didReceive: Handler?
   private var didError: Handler?
   
-  func config(ad: Native, rootViewController: UIViewController?) {
+  func config(ad: Native, rootViewController: UIViewController?, into nativeAdView: MANativeAdView) {
     self.rootViewController = rootViewController
     guard ad.status else {
       return
@@ -36,6 +37,7 @@ class MaxNativeAd: NSObject, OnceUsedAdProtocol {
     }
     self.adUnitID = ad.id
     self.timeout = ad.timeout
+    self.nativeAdView = nativeAdView
     self.load()
   }
   
@@ -43,8 +45,8 @@ class MaxNativeAd: NSObject, OnceUsedAdProtocol {
     return state
   }
   
-  func getAd() -> MANativeAd? {
-    return nativeAd
+  func getAdView() -> MANativeAdView? {
+    return nativeAdView
   }
   
   func bind(didReceive: Handler?, didError: Handler?) {
@@ -60,7 +62,17 @@ extension MaxNativeAd: MANativeAdDelegate, MAAdRevenueDelegate {
     }
     print("[MediationAd] [AdManager] [Max] [NativeAd] Did load! (\(String(describing: adUnitID)))")
     self.state = .receive
-    self.nativeAd = ad.nativeAd
+    
+    if let currentNativeAd = nativeAd {
+      adLoader?.destroy(currentNativeAd)
+    }
+    self.nativeAd = ad
+    
+    if let currentNativeAdView = nativeAdView {
+      currentNativeAdView.removeFromSuperview()
+    }
+    self.nativeAdView = nativeAdView
+    
     didReceive?()
   }
   
@@ -111,9 +123,10 @@ extension MaxNativeAd {
         return
       }
       self.adLoader = MANativeAdLoader(adUnitIdentifier: adUnitID)
+      adLoader?.setLocalExtraParameterForKey("google_native_ad_view_tag", value: 99)
       adLoader?.nativeAdDelegate = self
       adLoader?.revenueDelegate = self
-      adLoader?.loadAd()
+      adLoader?.loadAd(into: nativeAdView)
     }
     
     if let timeout {

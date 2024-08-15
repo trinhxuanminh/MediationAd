@@ -8,6 +8,7 @@ use_frameworks! :linkage => :static
 inhibit_all_warnings!
 
 target 'MediationAd' do
+  pod 'SnapKit', '5.6.0'
   pod 'Firebase', '10.25.0'
   pod 'FirebaseRemoteConfig', '10.25.0'
   pod 'AppsFlyerFramework', '6.14.3'

@@ -157,7 +157,6 @@ extension AdMobNativeAdView {
     
     (nativeAdView.callToActionView as? UIButton)?.setTitle(nativeAd.callToAction, for: .normal)
     nativeAdView.callToActionView?.isHidden = nativeAd.callToAction == nil
-    nativeAdView.callToActionView?.isUserInteractionEnabled = false
     
     (nativeAdView.iconView as? UIImageView)?.image = nativeAd.icon?.image
     nativeAdView.iconView?.isHidden = nativeAd.icon == nil

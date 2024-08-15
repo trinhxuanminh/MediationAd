@@ -21,7 +21,7 @@
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hHu-AG-j93" userLabel="NativeAdView" customClass="MANativeAdView">
                     <rect key="frame" x="0.0" y="0.0" width="581" height="554"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Okb-TH-4F2" userLabel="ContainerView">
+                        <view tag="99" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Okb-TH-4F2" userLabel="ContainerView" customClass="GADNativeAdView">
                             <rect key="frame" x="0.0" y="0.0" width="581" height="554"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Headline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmK-ii-3db" userLabel="HeadlineView">
@@ -36,21 +36,11 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
-                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqc-FW-nUv">
+                                <view clipsSubviews="YES" tag="104" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="wqc-FW-nUv">
                                     <rect key="frame" x="10" y="70" width="561" height="120"/>
-                                    <subviews>
-                                        <view tag="104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ynz-6s-5bO" userLabel="MediaView">
-                                            <rect key="frame" x="0.0" y="0.0" width="561" height="120"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="ynz-6s-5bO" firstAttribute="top" secondItem="wqc-FW-nUv" secondAttribute="top" id="5ld-Ug-PPe"/>
-                                        <constraint firstAttribute="bottom" secondItem="ynz-6s-5bO" secondAttribute="bottom" id="Iy4-eG-T4U"/>
-                                        <constraint firstAttribute="trailing" secondItem="ynz-6s-5bO" secondAttribute="trailing" id="KrY-mh-Wi6"/>
                                         <constraint firstAttribute="height" constant="120" id="RZo-sj-2aR"/>
-                                        <constraint firstItem="ynz-6s-5bO" firstAttribute="leading" secondItem="wqc-FW-nUv" secondAttribute="leading" id="tZP-Oz-s5A"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Body..." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zbd-yH-XAq" userLabel="BodyView">

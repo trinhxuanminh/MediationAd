@@ -248,7 +248,9 @@ public class AdManager {
     case .admob:
       nativeAd = AdMobNativeAd()
     case .max:
-      nativeAd = MaxNativeAd()
+      print("[MediationAd] [AdManager] This type of ads is not supported! (\(name))")
+      fail?()
+      return
     }
     
     nativeAd.bind(didReceive: success, didError: fail)
