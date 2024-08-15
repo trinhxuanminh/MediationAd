@@ -12,6 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?
   
   func sceneDidBecomeActive(_ scene: UIScene) {
+    TrackingManager.shared.requestAuthorization(completed: nil)
     guard let topVC = UIApplication.topViewController() else {
       return
     }
