@@ -36,10 +36,10 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
-                                <view clipsSubviews="YES" tag="104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqc-FW-nUv">
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqc-FW-nUv">
                                     <rect key="frame" x="10" y="70" width="561" height="120"/>
                                     <subviews>
-                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ynz-6s-5bO" userLabel="MediaView" customClass="GADMediaView">
+                                        <view tag="104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ynz-6s-5bO" userLabel="MediaView">
                                             <rect key="frame" x="0.0" y="0.0" width="561" height="120"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
