@@ -214,6 +214,7 @@ public class AdManager {
   }
   
   public func preloadNative(name: String,
+                            into nativeAdView: UIView? = nil,
                             success: Handler? = nil,
                             fail: Handler? = nil
   ) {
@@ -248,13 +249,13 @@ public class AdManager {
     case .admob:
       nativeAd = AdMobNativeAd()
     case .max:
-      print("[MediationAd] [AdManager] This type of ads is not supported! (\(name))")
-      fail?()
-      return
+      nativeAd = MaxNativeAd()
     }
     
     nativeAd.bind(didReceive: success, didError: fail)
-    nativeAd.config(ad: native, rootViewController: nil)
+    nativeAd.config(ad: native,
+                    rootViewController: nil,
+                    into: nativeAdView)
     
     self.listNativeAd[name] = nativeAd
   }

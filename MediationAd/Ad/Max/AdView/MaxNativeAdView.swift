@@ -57,22 +57,7 @@ open class MaxNativeAdView: UIView, AdViewProtocol {
                    didReceive: Handler?,
                    didError: Handler?
   ) {
-    guard nativeAd == nil else {
-      didError?()
-      return
-    }
-    
     self.nativeAdView = nativeAdView
-    let adViewBinder = MANativeAdViewBinder(builderBlock: { builder in
-      builder.titleLabelTag = 100
-      builder.bodyLabelTag = 101
-      builder.callToActionButtonTag = 102
-      builder.iconImageViewTag = 103
-      builder.mediaContentViewTag = 104
-      builder.advertiserLabelTag = 105
-    })
-    self.nativeAdView?.bindViews(with: adViewBinder)
-    
     self.didReceive = didReceive
     self.didError = didError
     
@@ -88,22 +73,45 @@ open class MaxNativeAdView: UIView, AdViewProtocol {
       return
     }
     
-    guard let native = AdManager.shared.getAd(type: .onceUsed(.native), name: name) as? Native else {
-      return
-    }
-    
-    self.nativeAd = MaxNativeAd()
-    
-    nativeAd?.bind(didReceive: { [weak self] in
-      guard let self else {
+    if nativeAd == nil {
+      guard let native = AdManager.shared.getAd(type: .onceUsed(.native), name: name) as? Native else {
         return
       }
-      config(ad: nativeAd?.getAdView())
-    }, didError: didError)
+      guard native.status else {
+        return
+      }
+      
+      if let nativeAd = AdManager.shared.getNativePreload(name: name) {
+        self.nativeAd = nativeAd as? MaxNativeAd
+      } else {
+        self.nativeAd = MaxNativeAd()
+        nativeAd?.config(ad: native, rootViewController: rootViewController, into: nativeAdView)
+      }
+    }
     
-    nativeAd?.config(ad: native,
-                     rootViewController: rootViewController,
-                     into: nativeAdView)
+    guard let nativeAd else {
+      return
+    }
+    switch nativeAd.getState() {
+    case .receive:
+      config(ad: nativeAd.getAdView())
+    case .error:
+      errored()
+    case .loading:
+      nativeAd.bind { [weak self] in
+         guard let self else {
+           return
+         }
+         self.config(ad: nativeAd.getAdView())
+      } didError: { [weak self] in
+        guard let self else {
+          return
+        }
+        self.errored()
+      }
+    default:
+      return
+    }
   }
   
   public func destroyAd() -> Bool {
@@ -123,13 +131,15 @@ extension MaxNativeAdView {
   
   @MainActor
   private func config(ad: MANativeAdView?) {
-    guard let nativeAdView = nativeAdView else {
+    guard let nativeAdView = ad else {
       return
     }
+    self.nativeAdView?.removeFromSuperview()
     self.addSubview(nativeAdView)
     nativeAdView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
+    self.nativeAdView = nativeAdView
     didReceive?()
   }
 }

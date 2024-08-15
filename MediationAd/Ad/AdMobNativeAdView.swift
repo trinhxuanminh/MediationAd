@@ -84,7 +84,7 @@ open class AdMobNativeAdView: UIView, AdViewProtocol {
         self.nativeAd = nativeAd as? AdMobNativeAd
       } else {
         self.nativeAd = AdMobNativeAd()
-        nativeAd?.config(ad: native, rootViewController: rootViewController)
+        nativeAd?.config(ad: native, rootViewController: rootViewController, into: nil)
       }
     }
     

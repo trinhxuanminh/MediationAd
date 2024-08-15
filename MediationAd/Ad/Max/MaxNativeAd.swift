@@ -9,7 +9,7 @@ import UIKit
 import AppLovinSDK
 import AppsFlyerAdRevenue
 
-class MaxNativeAd: NSObject {
+class MaxNativeAd: NSObject, OnceUsedAdProtocol {
   enum State {
     case wait
     case loading
@@ -27,7 +27,7 @@ class MaxNativeAd: NSObject {
   private var didReceive: Handler?
   private var didError: Handler?
   
-  func config(ad: Native, rootViewController: UIViewController?, into nativeAdView: MANativeAdView) {
+  func config(ad: Native, rootViewController: UIViewController?, into nativeAdView: UIView?) {
     self.rootViewController = rootViewController
     guard ad.status else {
       return
@@ -37,7 +37,17 @@ class MaxNativeAd: NSObject {
     }
     self.adUnitID = ad.id
     self.timeout = ad.timeout
-    self.nativeAdView = nativeAdView
+    
+    self.nativeAdView = nativeAdView as? MANativeAdView
+    let adViewBinder = MANativeAdViewBinder(builderBlock: { builder in
+      builder.titleLabelTag = 100
+      builder.bodyLabelTag = 101
+      builder.callToActionButtonTag = 102
+      builder.iconImageViewTag = 103
+      builder.mediaContentViewTag = 104
+      builder.advertiserLabelTag = 105
+    })
+    self.nativeAdView?.bindViews(with: adViewBinder)
     self.load()
   }
   

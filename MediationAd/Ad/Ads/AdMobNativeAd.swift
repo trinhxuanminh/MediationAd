@@ -27,7 +27,7 @@ class AdMobNativeAd: NSObject, OnceUsedAdProtocol {
   private var didReceive: Handler?
   private var didError: Handler?
   
-  func config(ad: Native, rootViewController: UIViewController?) {
+  func config(ad: Native, rootViewController: UIViewController?, into nativeAdView: UIView?) {
     self.rootViewController = rootViewController
     guard ad.status else {
       return
