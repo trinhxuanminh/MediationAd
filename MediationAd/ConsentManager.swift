@@ -213,7 +213,11 @@ extension ConsentManager {
     else {
       return
     }
-    ALPrivacySettings.setHasUserConsent(state == .allow || state == .error)
+    let hasConsent = state == .allow || state == .error
+    
+    ALPrivacySettings.setHasUserConsent(hasConsent)
+    ALPrivacySettings.setDoNotSell(true)
+    
     self.consentState = state
     switch state {
     case .allow, .error:

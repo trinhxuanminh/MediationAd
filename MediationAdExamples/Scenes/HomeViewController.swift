@@ -14,7 +14,7 @@ class HomeViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Active sau khi register ads success
-//    AdManager.shared.activeDebug()
+    AdManager.shared.activeDebug()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -42,7 +42,7 @@ class HomeViewController: BaseViewController {
   
   @IBAction func touchShowRewardAd(_ sender: Any) {
     AdManager.shared.show(type: .rewarded,
-                          name: "Rewarded",
+                          name: "Rewarded_1",
                           rootViewController: self, didFail: {
       print("[MediationAdExamples]", "Fail")
     }, didEarnReward: {

@@ -21,9 +21,8 @@ class SplashViewController: BaseViewController {
         case .success, .error:
           AdManager.shared.load(type: .splash, name: "Splash_1", success: showAds, fail: toHome)
           AdManager.shared.load(type: .interstitial, name: "Interstitial_1")
-          AdManager.shared.load(type: .interstitial, name: "Interstitial_2")
-          AdManager.shared.load(type: .appOpen, name: "App_Open")
-          AdManager.shared.load(type: .rewarded, name: "Rewarded")
+          AdManager.shared.load(type: .appOpen, name: "App_Open_2")
+          AdManager.shared.load(type: .rewarded, name: "Rewarded_1")
           AdManager.shared.load(type: .rewardedInterstitial, name: "Rewarded_Interstitial")
           AdManager.shared.preloadNative(name: "Native_2", into: CustomMaxNativeAdView().nativeAdView)
         case .reject, .premium:

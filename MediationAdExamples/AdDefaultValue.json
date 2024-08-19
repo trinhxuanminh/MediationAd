@@ -4,6 +4,15 @@
     {
       "name": "Splash_1",
       "status": true,
+      "network": "admob",
+      "id": "ca-app-pub-3940256099942544/4411468910",
+      "isAuto": false,
+      "description": "",
+      "timeout": 30
+    },
+    {
+      "name": "Splash_2",
+      "status": true,
       "network": "max",
       "id": "02fea5b87358e0e7",
       "isAuto": false,
@@ -13,7 +22,15 @@
   ],
   "appOpens": [
     {
-      "name": "App_Open",
+      "name": "App_Open_1",
+      "status": true,
+      "network": "admob",
+      "id": "ca-app-pub-3940256099942544/5575463023",
+      "isAuto": false,
+      "description": ""
+    },
+    {
+      "name": "App_Open_2",
       "status": true,
       "network": "max",
       "id": "91eba1be89f67cce",
@@ -23,10 +40,16 @@
   ],
   "rewardeds": [
     {
-      "name": "Rewarded",
+      "name": "Rewarded_1",
       "status": true,
       "network": "admob",
       "id": "ca-app-pub-3940256099942544/1712485313"
+    },
+    {
+      "name": "Rewarded_2",
+      "status": true,
+      "network": "max",
+      "id": "4d61820168b71fd0"
     }
   ],
   "rewardedInterstitials": [
@@ -42,20 +65,17 @@
     {
       "name": "Interstitial_1",
       "status": true,
-      "network": "max",
-      "id": "24bb562e46b0a487",
-      "isAuto": false,
-      "description": "",
-      "start": 1,
-      "frequency": 1
-    },
-    {
-      "name": "Interstitial_2",
-      "status": true,
       "network": "admob",
       "id": "ca-app-pub-3940256099942544/4411468910",
       "isAuto": true,
       "description": ""
+    },
+    {
+      "name": "Interstitial_2",
+      "status": true,
+      "network": "max",
+      "id": "24bb562e46b0a487",
+      "isAuto": false
     }
   ],
   "banners": [
@@ -63,17 +83,11 @@
       "name": "Banner_1",
       "status": true,
       "network": "admob",
-      "id": "ca-app-pub-3940256099942544/2934735716"
-    },
-    {
-      "name": "Banner_2",
-      "status": true,
-      "network": "admob",
       "id": "ca-app-pub-3940256099942544/2934735716",
       "anchored": "top"
     },
     {
-      "name": "Banner_3",
+      "name": "Banner_2",
       "status": true,
       "network": "max",
       "id": "9dffb485e0cc329f",
