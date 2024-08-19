@@ -76,7 +76,7 @@ enum Event {
     case .noTracking:
       return "No_Tracking"
     case .startRegister:
-      return "Start register"
+      return "Start_Register"
     }
   }
   

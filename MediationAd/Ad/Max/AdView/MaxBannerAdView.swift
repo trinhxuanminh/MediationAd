@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 import AppLovinSDK
 import AppsFlyerAdRevenue
 
@@ -75,9 +76,6 @@ extension MaxBannerAdView: MAAdViewAdDelegate, MAAdRevenueDelegate {
   public func didLoad(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [BannerAd] Did load! (\(String(describing: adUnitID)))")
     self.state = .receive
-    if let bannerAdView {
-      self.bringSubviewToFront(bannerAdView)
-    }
     didReceive?()
   }
   
@@ -121,29 +119,22 @@ extension MaxBannerAdView: MAAdViewAdDelegate, MAAdRevenueDelegate {
 
 extension MaxBannerAdView {
   func addComponents() {
-    guard 
+    guard
       let adUnitID,
       bannerAdView == nil
     else {
       return
     }
     let bannerAdView = MAAdView(adUnitIdentifier: adUnitID)
-    bannerAdView.translatesAutoresizingMaskIntoConstraints = false
     self.bannerAdView = bannerAdView
+    bannerAdView.frame.size = frame.size
     addSubview(bannerAdView)
   }
   
   func setConstraints() {
-    guard let bannerAdView else {
-      return
-    }
-    let constraints = [
-      bannerAdView.topAnchor.constraint(equalTo: self.topAnchor),
-      bannerAdView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-      bannerAdView.leftAnchor.constraint(equalTo: self.leftAnchor),
-      bannerAdView.rightAnchor.constraint(equalTo: self.rightAnchor)
-    ]
-    NSLayoutConstraint.activate(constraints)
+    bannerAdView?.snp.makeConstraints({ make in
+      make.edges.equalToSuperview()
+    })
   }
   
   private func errored() {
@@ -170,6 +161,7 @@ extension MaxBannerAdView {
       setConstraints()
       bannerAdView?.delegate = self
       bannerAdView?.revenueDelegate = self
+      bannerAdView?.stopAutoRefresh()
       bannerAdView?.loadAd()
     }
   }
