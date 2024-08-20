@@ -64,6 +64,7 @@ extension AdMobNativeAd: GADNativeAdLoaderDelegate {
       return
     }
     print("[MediationAd] [AdManager] [AdMob] [NativeAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+    LogEventManager.shared.log(event: .adLoadFail(.admob, .onceUsed(.native), adUnitID))
     self.state = .error
     didError?()
   }
@@ -73,6 +74,7 @@ extension AdMobNativeAd: GADNativeAdLoaderDelegate {
       return
     }
     print("[MediationAd] [AdManager] [AdMob] [NativeAd] Did load! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adLoadSuccess(.admob, .onceUsed(.native), adUnitID))
     self.state = .receive
     self.nativeAd = nativeAd
     didReceive?()
@@ -80,6 +82,11 @@ extension AdMobNativeAd: GADNativeAdLoaderDelegate {
     nativeAd.paidEventHandler = { [weak self] adValue in
       guard let self else {
         return
+      }
+      print("[MediationAd] [AdManager] [AdMob] [NativeAd] Did pay revenue(\(adValue.value))!")
+      LogEventManager.shared.log(event: .adPayRevenue(.admob, .onceUsed(.native), adUnitID))
+      if adValue.value != 0 {
+        LogEventManager.shared.log(event: .adHadRevenue(.admob, .onceUsed(.native), adUnitID))
       }
       let adRevenueParams: [AnyHashable: Any] = [
         kAppsFlyerAdRevenueCountry: "US",
@@ -120,6 +127,7 @@ extension AdMobNativeAd {
         aspectRatioOption.mediaAspectRatio = .portrait
         options = [aspectRatioOption]
       }
+      LogEventManager.shared.log(event: .adLoadRequest(.admob, .onceUsed(.native), adUnitID))
       self.adLoader = GADAdLoader(
         adUnitID: adUnitID,
         rootViewController: rootViewController,
@@ -138,6 +146,7 @@ extension AdMobNativeAd {
           return
         }
         print("[MediationAd] [AdManager] [AdMob] [NativeAd] Load fail (\(String(describing: adUnitID))) - time out!")
+        LogEventManager.shared.log(event: .adLoadTimeout(.admob, .onceUsed(.native), adUnitID))
         self.state = .error
         didError?()
       }

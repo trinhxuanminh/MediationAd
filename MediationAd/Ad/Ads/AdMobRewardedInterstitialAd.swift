@@ -61,10 +61,12 @@ class AdMobRewardedInterstitialAd: NSObject, ReuseAdProtocol {
     self.willPresent = willPresent
     self.didHide = didHide
     self.didEarnReward = didEarnReward
+    LogEventManager.shared.log(event: .adShowRequest(.admob, .reuse(.rewardedInterstitial), adUnitID))
     rewardedInterstitialAd?.present(fromRootViewController: rootViewController, userDidEarnRewardHandler: { [weak self] in
       guard let self else {
         return
       }
+      LogEventManager.shared.log(event: .adEarnReward(.admob, .reuse(.rewardedInterstitial), adUnitID))
       self.didEarnReward?()
     })
   }
@@ -75,6 +77,7 @@ extension AdMobRewardedInterstitialAd: GADFullScreenContentDelegate {
           didFailToPresentFullScreenContentWithError error: Error
   ) {
     print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowFail(.admob, .reuse(.rewardedInterstitial), adUnitID))
     didShowFail?()
     self.rewardedInterstitialAd = nil
     load()
@@ -82,12 +85,14 @@ extension AdMobRewardedInterstitialAd: GADFullScreenContentDelegate {
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Will display! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowSuccess(.admob, .reuse(.rewardedInterstitial), adUnitID))
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did hide! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowHide(.admob, .reuse(.rewardedInterstitial), adUnitID))
     didHide?()
     self.rewardedInterstitialAd = nil
     self.presentState = false
@@ -124,6 +129,7 @@ extension AdMobRewardedInterstitialAd {
       
       self.isLoading = true
       print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Start load! (\(String(describing: adUnitID)))")
+      LogEventManager.shared.log(event: .adLoadRequest(.admob, .reuse(.rewardedInterstitial), adUnitID))
       
       let request = GADRequest()
       GADRewardedInterstitialAd.load(
@@ -137,21 +143,29 @@ extension AdMobRewardedInterstitialAd {
         guard error == nil, let ad = ad else {
           self.retryAttempt += 1
           guard self.retryAttempt == 1 else {
+            LogEventManager.shared.log(event: .adLoadRetryFail(.admob, .reuse(.rewardedInterstitial), adUnitID))
             self.didLoadFail?()
             return
           }
+          LogEventManager.shared.log(event: .adLoadFail(.admob, .reuse(.rewardedInterstitial), adUnitID))
           let delaySec = 5.0
           print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
           DispatchQueue.global().asyncAfter(deadline: .now() + delaySec, execute: self.load)
           return
         }
         print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did load! (\(String(describing: adUnitID)))")
+        LogEventManager.shared.log(event: .adLoadSuccess(.admob, .reuse(.rewardedInterstitial), adUnitID))
         self.retryAttempt = 0
         self.rewardedInterstitialAd = ad
         self.rewardedInterstitialAd?.fullScreenContentDelegate = self
         self.didLoadSuccess?()
         
         ad.paidEventHandler = { adValue in
+          print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did pay revenue(\(adValue.value))!")
+          LogEventManager.shared.log(event: .adPayRevenue(.admob, .reuse(.rewardedInterstitial), adUnitID))
+          if adValue.value != 0 {
+            LogEventManager.shared.log(event: .adHadRevenue(.admob, .reuse(.rewardedInterstitial), adUnitID))
+          }
           let adRevenueParams: [AnyHashable: Any] = [
             kAppsFlyerAdRevenueCountry: "US",
             kAppsFlyerAdRevenueAdUnit: adUnitID as Any,

@@ -12,7 +12,7 @@ class NativeViewController: BaseViewController {
   
   override func setProperties() {
     nativeAdView.isHidden = false
-    nativeAdView.load(name: "Native_2", didError: { [weak self] in
+    nativeAdView.load(name: AppText.AdName.native, didError: { [weak self] in
       guard let self else {
         return
       }

@@ -98,12 +98,14 @@ extension AdMobBannerAdView: GADBannerViewDelegate {
                          didFailToReceiveAdWithError error: Error
   ) {
     print("[MediationAd] [AdManager] [AdMob] [BannerAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+    LogEventManager.shared.log(event: .adLoadFail(.admob, .onceUsed(.banner), adUnitID))
     self.state = .error
     errored()
   }
   
   public func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
     print("[MediationAd] [AdManager] [AdMob] [BannerAd] Did load! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adLoadSuccess(.admob, .onceUsed(.banner), adUnitID))
     self.state = .receive
     self.bringSubviewToFront(self.bannerAdView)
     didReceive?()
@@ -111,6 +113,11 @@ extension AdMobBannerAdView: GADBannerViewDelegate {
     bannerView.paidEventHandler = { [weak self] adValue in
       guard let self else {
         return
+      }
+      print("[MediationAd] [AdManager] [AdMob] [BannerAd] Did pay revenue(\(adValue.value))!")
+      LogEventManager.shared.log(event: .adPayRevenue(.admob, .onceUsed(.banner), adUnitID))
+      if adValue.value != 0 {
+        LogEventManager.shared.log(event: .adHadRevenue(.admob, .onceUsed(.banner), adUnitID))
       }
       let adRevenueParams: [AnyHashable: Any] = [
         kAppsFlyerAdRevenueCountry: "US",
@@ -175,6 +182,7 @@ extension AdMobBannerAdView {
         request.register(extras)
       }
       
+      LogEventManager.shared.log(event: .adLoadRequest(.admob, .onceUsed(.banner), adUnitID))
       self.bannerAdView?.load(request)
     }
   }

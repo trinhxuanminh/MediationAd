@@ -34,7 +34,7 @@ class HomeViewController: BaseViewController {
   
   @IBAction func touchShowInterstitialAd(_ sender: Any) {
     AdManager.shared.show(type: .interstitial,
-                          name: "Interstitial_1",
+                          name: AppText.AdName.interstitial,
                           rootViewController: self,
                           didFail: nil,
                           didHide: nil)
@@ -42,7 +42,7 @@ class HomeViewController: BaseViewController {
   
   @IBAction func touchShowRewardAd(_ sender: Any) {
     AdManager.shared.show(type: .rewarded,
-                          name: "Rewarded_1",
+                          name: AppText.AdName.rewarded,
                           rootViewController: self, didFail: {
       print("[MediationAdExamples]", "Fail")
     }, didEarnReward: {
@@ -54,7 +54,7 @@ class HomeViewController: BaseViewController {
   
   @IBAction func showRewardInterstitialAd(_ sender: Any) {
     AdManager.shared.show(type: .rewardedInterstitial,
-                          name: "Rewarded_Interstitial",
+                          name: AppText.AdName.rewardedInterstitial,
                           rootViewController: self, didFail: {
       print("[MediationAdExamples]", "Fail")
     }, didEarnReward: {

@@ -18,7 +18,7 @@ public class ConsentManager {
     static let cache = "CONSENT_CACHE"
   }
   
-  public enum State {
+  public enum State: String {
     case unknow
     case allow
     case reject
@@ -35,6 +35,7 @@ public class ConsentManager {
   private var consentConfig: ConsentConfig?
   
   public func requestConsentUpdate(completed: @escaping ConsentHandler) {
+    LogEventManager.shared.log(event: .consentManagerUpdateRequest)
     guard let viewController = UIApplication.topViewController() else {
       completed(.error)
       return
@@ -46,6 +47,7 @@ public class ConsentManager {
       }
       if let formError {
         print("[MediationAd] [ConsentManager] Form error - \(formError.localizedDescription)!")
+        LogEventManager.shared.log(event: .consentManagerFormError)
         completed(.error)
         return
       }
@@ -57,6 +59,7 @@ public class ConsentManager {
       let state: State = canShowAds ? .allow : .reject
       ALPrivacySettings.setHasUserConsent(canShowAds)
       self.consentState = state
+      LogEventManager.shared.log(event: .consentManagerUpdateChange(state))
       
       switch state {
       case .allow:
@@ -87,7 +90,11 @@ extension ConsentManager {
       guard let self else {
         return
       }
+      guard consentState == .unknow else {
+        return
+      }
       // Quá thời gian timeout chưa trả về.
+      LogEventManager.shared.log(event: .consentManagerTimeout)
       change(state: .error)
     }
   }
@@ -111,6 +118,7 @@ extension ConsentManager {
   private func decoding(data: Data) {
     guard let consentConfig = try? JSONDecoder().decode(ConsentConfig.self, from: data) else {
       print("[MediationAd] [ConsentManager] Invalid (ConsentConfig) format!")
+      LogEventManager.shared.log(event: .consentManagerInvalidFormat)
       return
     }
     self.consentConfig = consentConfig
@@ -122,6 +130,7 @@ extension ConsentManager {
     guard let cacheData = UserDefaults.standard.data(forKey: Keys.cache) else {
       return
     }
+    LogEventManager.shared.log(event: .consentManagerUseCache)
     decoding(data: cacheData)
   }
   
@@ -132,7 +141,7 @@ extension ConsentManager {
     self.didRequestConsent = true
     
     print("[MediationAd] [ConsentManager] Check consent!")
-    LogEventManager.shared.log(event: .cmpCheckConsent)
+    LogEventManager.shared.log(event: .consentManagerStartCheck)
     
     let parameters = UMPRequestParameters()
     parameters.tagForUnderAgeOfConsent = false
@@ -145,21 +154,21 @@ extension ConsentManager {
     } else {
       guard let consentConfig, consentConfig.status else {
         print("[MediationAd] [ConsentManager] Not request consent!")
-        LogEventManager.shared.log(event: .cmpNotRequestConsent)
+        LogEventManager.shared.log(event: .consentManagerNotRequest)
         change(state: .allow)
         return
       }
     }
     
     print("[MediationAd] [ConsentManager] Request consent!")
-    LogEventManager.shared.log(event: .cmpRequestConsent)
+    LogEventManager.shared.log(event: .consentManagerRequest)
     UMPConsentInformation.sharedInstance.requestConsentInfoUpdate(with: parameters) { [weak self] requestConsentError in
       guard let self else {
         return
       }
       if let requestConsentError {
         print("[MediationAd] [ConsentManager] Request consent error - \(requestConsentError.localizedDescription)!")
-        LogEventManager.shared.log(event: .cmpConsentInformationError)
+        LogEventManager.shared.log(event: .consentManagerInfoError)
         change(state: .error)
         return
       }
@@ -175,14 +184,14 @@ extension ConsentManager {
         }
         if let loadAndPresentError {
           print("[MediationAd] [ConsentManager] Load and present error - \(loadAndPresentError.localizedDescription)!")
-          LogEventManager.shared.log(event: .cmpConsentFormError)
+          LogEventManager.shared.log(event: .consentManagerFormError)
           change(state: .error)
           return
         }
         
         guard isGDPR() else {
           print("[MediationAd] [ConsentManager] Auto agree consent GDPR!")
-          LogEventManager.shared.log(event: .cmpAutoAgreeConsentGDPR)
+          LogEventManager.shared.log(event: .consentManagerAutoAgreeGDPR)
           change(state: .allow)
           return
         }
@@ -190,10 +199,10 @@ extension ConsentManager {
         let canShowAds = canShowAds()
         if canShowAds {
           print("[MediationAd] [ConsentManager] Agree consent!")
-          LogEventManager.shared.log(event: .cmpAgreeConsent)
+          LogEventManager.shared.log(event: .consentManagerAgree)
         } else {
           print("[MediationAd] [ConsentManager] Reject consent!")
-          LogEventManager.shared.log(event: .cmpRejectConsent)
+          LogEventManager.shared.log(event: .consentManagerReject)
         }
         change(state: canShowAds ? .allow : .reject)
       }
@@ -201,7 +210,7 @@ extension ConsentManager {
     
     if canShowAds() {
       print("[MediationAd] [ConsentManager] Auto agree consent!")
-      LogEventManager.shared.log(event: .cmpAutoAgreeConsent)
+      LogEventManager.shared.log(event: .consentManagerAutoAgree)
       change(state: .allow)
     }
   }
@@ -218,6 +227,7 @@ extension ConsentManager {
     ALPrivacySettings.setHasUserConsent(hasConsent)
     ALPrivacySettings.setDoNotSell(true)
     
+    LogEventManager.shared.log(event: .consentManagerChange(state))
     self.consentState = state
     switch state {
     case .allow, .error:

@@ -49,11 +49,11 @@ public class TrackingManager: NSObject {
         print("[MediationAd] [TrackingManager] Enable!")
         print("[MediationAd] [TrackingManager] \(ASIdentifierManager.shared().advertisingIdentifier)")
         Analytics.setAnalyticsCollectionEnabled(true)
-        LogEventManager.shared.log(event: .agreeTracking)
+        LogEventManager.shared.log(event: .trackingManagerAgree)
       default:
         print("[MediationAd] [TrackingManager] Disable!")
         Analytics.setAnalyticsCollectionEnabled(false)
-        LogEventManager.shared.log(event: .noTracking)
+        LogEventManager.shared.log(event: .trackingManagerReject)
       }
       completed?()
     }
@@ -93,11 +93,11 @@ extension TrackingManager {
     AppsFlyerLib.shared().start(completionHandler: { (dictionary, error) in
       guard error == nil else {
         print("[MediationAd] [TrackingManager] \(String(describing: error))!")
-        LogEventManager.shared.log(event: .noConnectAppsFlyer)
+        LogEventManager.shared.log(event: .trackingManagerNoConnect)
         return
       }
       print("[MediationAd] [TrackingManager] \(String(describing: dictionary))")
-      LogEventManager.shared.log(event: .connectedAppsFlyer)
+      LogEventManager.shared.log(event: .trackingManagerConnected)
     })
     PurchaseConnector.shared().startObservingTransactions()
   }

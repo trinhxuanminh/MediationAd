@@ -61,6 +61,7 @@ class MaxAppOpenAd: NSObject, ReuseAdProtocol {
     self.willPresent = willPresent
     self.didHide = didHide
     self.didEarnReward = didEarnReward
+    LogEventManager.shared.log(event: .adShowRequest(.max, .reuse(.appOpen), adUnitID))
     appOpenAd?.show()
   }
 }
@@ -68,6 +69,7 @@ class MaxAppOpenAd: NSObject, ReuseAdProtocol {
 extension MaxAppOpenAd: MAAdDelegate, MAAdRevenueDelegate {
   func didLoad(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [AppOpenAd] Did load! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adLoadSuccess(.max, .reuse(.appOpen), adUnitID))
     self.isLoading = false
     self.retryAttempt = 0
     self.didLoadSuccess?()
@@ -75,6 +77,7 @@ extension MaxAppOpenAd: MAAdDelegate, MAAdRevenueDelegate {
   
   func didFailToLoadAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {
     print("[MediationAd] [AdManager] [Max] [AppOpenAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+    LogEventManager.shared.log(event: .adLoadFail(.max, .reuse(.appOpen), adUnitID))
     self.isLoading = false
     self.retryAttempt += 1
     self.didLoadFail?()
@@ -82,16 +85,19 @@ extension MaxAppOpenAd: MAAdDelegate, MAAdRevenueDelegate {
   
   func didDisplay(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [AppOpenAd] Will display! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowSuccess(.max, .reuse(.appOpen), adUnitID))
     willPresent?()
     self.presentState = true
   }
   
   func didClick(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [AppOpenAd] Did click! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adClick(.max, .reuse(.appOpen), adUnitID))
   }
   
   func didFail(toDisplay ad: MAAd, withError error: MAError) {
     print("[MediationAd] [AdManager] [Max] [AppOpenAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowFail(.max, .reuse(.appOpen), adUnitID))
     didShowFail?()
     self.appOpenAd = nil
     load()
@@ -99,6 +105,7 @@ extension MaxAppOpenAd: MAAdDelegate, MAAdRevenueDelegate {
   
   func didHide(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [AppOpenAd] Did hide! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowHide(.max, .reuse(.appOpen), adUnitID))
     didHide?()
     self.appOpenAd = nil
     self.presentState = false
@@ -107,6 +114,10 @@ extension MaxAppOpenAd: MAAdDelegate, MAAdRevenueDelegate {
   
   func didPayRevenue(for ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [AppOpenAd] Did pay revenue(\(ad.revenue))!")
+    LogEventManager.shared.log(event: .adPayRevenue(.max, .reuse(.appOpen), adUnitID))
+    if ad.revenue != 0 {
+      LogEventManager.shared.log(event: .adHadRevenue(.max, .reuse(.appOpen), adUnitID))
+    }
     let adRevenueParams: [AnyHashable: Any] = [
       kAppsFlyerAdRevenueCountry: "US",
       kAppsFlyerAdRevenueAdUnit: adUnitID as Any,
@@ -151,6 +162,7 @@ extension MaxAppOpenAd {
       
       self.isLoading = true
       print("[MediationAd] [AdManager] [Max] [AppOpenAd] Start load! (\(String(describing: adUnitID)))")
+      LogEventManager.shared.log(event: .adLoadRequest(.max, .reuse(.appOpen), adUnitID))
       
       self.appOpenAd = MAAppOpenAd(adUnitIdentifier: adUnitID)
       appOpenAd?.delegate = self

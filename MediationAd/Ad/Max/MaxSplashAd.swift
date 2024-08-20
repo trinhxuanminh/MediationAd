@@ -68,6 +68,7 @@ class MaxSplashAd: NSObject, ReuseAdProtocol {
     self.willPresent = willPresent
     self.didHide = didHide
     self.didEarnReward = didEarnReward
+    LogEventManager.shared.log(event: .adShowRequest(.max, .reuse(.splash), adUnitID))
     splashAd?.show()
   }
 }
@@ -78,6 +79,7 @@ extension MaxSplashAd: MAAdDelegate, MAAdRevenueDelegate {
       return
     }
     print("[MediationAd] [AdManager] [Max] [SplashAd] Did load! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adLoadSuccess(.max, .reuse(.splash), adUnitID))
     self.invalidate()
     self.didLoadSuccess?()
   }
@@ -87,28 +89,33 @@ extension MaxSplashAd: MAAdDelegate, MAAdRevenueDelegate {
       return
     }
     print("[MediationAd] [AdManager] [Max] [SplashAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+    LogEventManager.shared.log(event: .adLoadFail(.max, .reuse(.splash), adUnitID))
     self.invalidate()
     self.didLoadFail?()
   }
   
   func didDisplay(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [SplashAd] Will display! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowSuccess(.max, .reuse(.splash), adUnitID))
     willPresent?()
     self.presentState = true
   }
   
   func didClick(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [SplashAd] Did click! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adClick(.max, .reuse(.splash), adUnitID))
   }
   
   func didFail(toDisplay ad: MAAd, withError error: MAError) {
     print("[MediationAd] [AdManager] [Max] [SplashAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowFail(.max, .reuse(.splash), adUnitID))
     didFail?()
     self.splashAd = nil
   }
   
   func didHide(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [SplashAd] Did hide! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowHide(.max, .reuse(.splash), adUnitID))
     didHide?()
     self.presentState = false
     self.splashAd = nil
@@ -116,6 +123,10 @@ extension MaxSplashAd: MAAdDelegate, MAAdRevenueDelegate {
   
   func didPayRevenue(for ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [SplashAd] Did pay revenue(\(ad.revenue))!")
+    LogEventManager.shared.log(event: .adPayRevenue(.max, .reuse(.splash), adUnitID))
+    if ad.revenue != 0 {
+      LogEventManager.shared.log(event: .adHadRevenue(.max, .reuse(.splash), adUnitID))
+    }
     let adRevenueParams: [AnyHashable: Any] = [
       kAppsFlyerAdRevenueCountry: "US",
       kAppsFlyerAdRevenueAdUnit: adUnitID as Any,
@@ -151,6 +162,7 @@ extension MaxSplashAd {
       self.isLoading = true
       self.fire()
       print("[MediationAd] [AdManager] [Max] [SplashAd] Start load! (\(String(describing: adUnitID)))")
+      LogEventManager.shared.log(event: .adLoadRequest(.max, .reuse(.splash), adUnitID))
       
       self.splashAd = MAInterstitialAd(adUnitIdentifier: adUnitID)
       splashAd?.delegate = self
@@ -184,6 +196,7 @@ extension MaxSplashAd {
       return
     }
     print("[MediationAd] [AdManager] [Max] [SplashAd] Load fail (\(String(describing: adUnitID))) - timeout!")
+    LogEventManager.shared.log(event: .adLoadTimeout(.max, .reuse(.splash), adUnitID))
     invalidate()
     didLoadFail?()
   }

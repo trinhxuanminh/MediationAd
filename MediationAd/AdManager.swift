@@ -19,7 +19,7 @@ public class AdManager {
     static let cache = "AD_CACHE"
   }
   
-  public enum State {
+  public enum State: String {
     case wait
     case success
     case premium
@@ -94,7 +94,7 @@ public class AdManager {
     }
     
     print("[MediationAd] [AdManager] Start register!")
-    LogEventManager.shared.log(event: .startRegister)
+    LogEventManager.shared.log(event: .adManagerStartRegister)
     
     decoding(data: remoteData)
     fetchCache()
@@ -365,6 +365,7 @@ extension AdManager {
     }
     guard let adConfig = try? JSONDecoder().decode(AdConfig.self, from: data) else {
       print("[MediationAd] [AdManager] Invalid (AdMobConfig) format!")
+      LogEventManager.shared.log(event: .adManagerInvaidFormat)
       return
     }
     self.adConfig = adConfig
@@ -418,5 +419,6 @@ extension AdManager {
     }
     print("[MediationAd] [AdManager] register \(state)!")
     self.registerState = state
+    LogEventManager.shared.log(event: .adManagerChange(state))
   }
 }

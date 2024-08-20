@@ -75,6 +75,7 @@ extension MaxNativeAd: MANativeAdDelegate, MAAdRevenueDelegate {
       return
     }
     print("[MediationAd] [AdManager] [Max] [NativeAd] Did load! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adLoadSuccess(.max, .onceUsed(.native), adUnitID))
     self.state = .receive
     
     if let currentNativeAd = nativeAd {
@@ -95,15 +96,22 @@ extension MaxNativeAd: MANativeAdDelegate, MAAdRevenueDelegate {
       return
     }
     print("[MediationAd] [AdManager] [Max] [NativeAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+    LogEventManager.shared.log(event: .adLoadFail(.max, .onceUsed(.native), adUnitID))
     self.state = .error
     didError?()
   }
   
   func didClickNativeAd(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [NativeAd] Did click! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adClick(.max, .onceUsed(.native), adUnitID))
   }
   
   func didPayRevenue(for ad: MAAd) {
+    print("[MediationAd] [AdManager] [Max] [NativeAd] Did pay revenue(\(ad.revenue))!")
+    LogEventManager.shared.log(event: .adPayRevenue(.max, .onceUsed(.native), adUnitID))
+    if ad.revenue != 0 {
+      LogEventManager.shared.log(event: .adHadRevenue(.max, .onceUsed(.native), adUnitID))
+    }
     let adRevenueParams: [AnyHashable: Any] = [
       kAppsFlyerAdRevenueCountry: "US",
       kAppsFlyerAdRevenueAdUnit: adUnitID as Any,
@@ -136,6 +144,7 @@ extension MaxNativeAd {
       guard let self else {
         return
       }
+      LogEventManager.shared.log(event: .adLoadRequest(.max, .onceUsed(.native), adUnitID))
       self.adLoader = MANativeAdLoader(adUnitIdentifier: adUnitID)
       adLoader?.setLocalExtraParameterForKey("google_native_ad_view_tag", value: 99)
       adLoader?.nativeAdDelegate = self
@@ -152,6 +161,7 @@ extension MaxNativeAd {
           return
         }
         print("[MediationAd] [AdManager] [Max] [NativeAd] Load fail (\(String(describing: adUnitID))) - time out!")
+        LogEventManager.shared.log(event: .adLoadTimeout(.max, .onceUsed(.native), adUnitID))
         self.state = .error
         didError?()
       }

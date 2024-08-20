@@ -17,7 +17,7 @@ public class ReleaseManager {
     static let readyForSale = "READY_FOR_SALE"
   }
   
-  public enum State {
+  public enum State: String {
     case unknow
     case waitReview
     case live
@@ -53,6 +53,7 @@ extension ReleaseManager {
 
 extension ReleaseManager {
   private func check() {
+    LogEventManager.shared.log(event: .releaseManagerStartCheck)
     guard
       let nowVersionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
       let nowVersion = Double(nowVersionString)
@@ -71,7 +72,11 @@ extension ReleaseManager {
         guard let self else {
           return
         }
+        guard releaseState == .unknow else {
+          return
+        }
         // Quá thời gian timeout chưa trả về, mặc định trạng thái bật.
+        LogEventManager.shared.log(event: .releaseManagerTimeout)
         change(state: .error)
       }
       Task {
@@ -180,6 +185,7 @@ extension ReleaseManager {
     guard releaseState == .unknow else {
       return
     }
+    LogEventManager.shared.log(event: .releaseManagerChange(state))
     self.releaseState = state
     releaseSubject.send(state)
     

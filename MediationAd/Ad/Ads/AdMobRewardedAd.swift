@@ -61,10 +61,12 @@ class AdMobRewardedAd: NSObject, ReuseAdProtocol {
     self.willPresent = willPresent
     self.didHide = didHide
     self.didEarnReward = didEarnReward
+    LogEventManager.shared.log(event: .adShowRequest(.admob, .reuse(.rewarded), adUnitID))
     rewardedAd?.present(fromRootViewController: rootViewController, userDidEarnRewardHandler: { [weak self] in
       guard let self else {
         return
       }
+      LogEventManager.shared.log(event: .adEarnReward(.admob, .reuse(.rewarded), adUnitID))
       self.didEarnReward?()
     })
   }
@@ -75,6 +77,7 @@ extension AdMobRewardedAd: GADFullScreenContentDelegate {
           didFailToPresentFullScreenContentWithError error: Error
   ) {
     print("[MediationAd] [AdManager] [AdMob] [RewardAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowFail(.admob, .reuse(.rewarded), adUnitID))
     didShowFail?()
     self.rewardedAd = nil
     load()
@@ -82,12 +85,14 @@ extension AdMobRewardedAd: GADFullScreenContentDelegate {
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [RewardAd] Will display! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowSuccess(.admob, .reuse(.rewarded), adUnitID))
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [RewardAd] Did hide! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowHide(.admob, .reuse(.rewarded), adUnitID))
     didHide?()
     self.rewardedAd = nil
     self.presentState = false
@@ -124,6 +129,7 @@ extension AdMobRewardedAd {
       
       self.isLoading = true
       print("[MediationAd] [AdManager] [AdMob] [RewardAd] Start load! (\(String(describing: adUnitID)))")
+      LogEventManager.shared.log(event: .adLoadRequest(.admob, .reuse(.rewarded), adUnitID))
       
       let request = GADRequest()
       GADRewardedAd.load(
@@ -137,21 +143,29 @@ extension AdMobRewardedAd {
         guard error == nil, let ad = ad else {
           self.retryAttempt += 1
           guard self.retryAttempt == 1 else {
+            LogEventManager.shared.log(event: .adLoadRetryFail(.admob, .reuse(.rewarded), adUnitID))
             self.didLoadFail?()
             return
           }
+          LogEventManager.shared.log(event: .adLoadFail(.admob, .reuse(.rewarded), adUnitID))
           let delaySec = 5.0
           print("[MediationAd] [AdManager] [AdMob] [RewardAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
           DispatchQueue.global().asyncAfter(deadline: .now() + delaySec, execute: self.load)
           return
         }
         print("[MediationAd] [AdManager] [AdMob] [RewardAd] Did load! (\(String(describing: adUnitID)))")
+        LogEventManager.shared.log(event: .adLoadSuccess(.admob, .reuse(.rewarded), adUnitID))
         self.retryAttempt = 0
         self.rewardedAd = ad
         self.rewardedAd?.fullScreenContentDelegate = self
         self.didLoadSuccess?()
         
         ad.paidEventHandler = { adValue in
+          print("[MediationAd] [AdManager] [AdMob] [RewardAd] Did pay revenue(\(adValue.value))!")
+          LogEventManager.shared.log(event: .adPayRevenue(.admob, .reuse(.rewarded), adUnitID))
+          if adValue.value != 0 {
+            LogEventManager.shared.log(event: .adHadRevenue(.admob, .reuse(.rewarded), adUnitID))
+          }
           let adRevenueParams: [AnyHashable: Any] = [
             kAppsFlyerAdRevenueCountry: "US",
             kAppsFlyerAdRevenueAdUnit: adUnitID as Any,

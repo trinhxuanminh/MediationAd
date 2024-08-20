@@ -61,6 +61,7 @@ class MaxRewardedAd: NSObject, ReuseAdProtocol {
     self.willPresent = willPresent
     self.didHide = didHide
     self.didEarnReward = didEarnReward
+    LogEventManager.shared.log(event: .adShowRequest(.max, .reuse(.rewarded), adUnitID))
     rewardedAd?.show()
   }
 }
@@ -77,9 +78,11 @@ extension MaxRewardedAd: MARewardedAdDelegate, MAAdRevenueDelegate {
     self.isLoading = false
     self.retryAttempt += 1
     guard self.retryAttempt == 1 else {
+      LogEventManager.shared.log(event: .adLoadRetryFail(.max, .reuse(.rewarded), adUnitID))
       self.didLoadFail?()
       return
     }
+    LogEventManager.shared.log(event: .adLoadFail(.max, .reuse(.rewarded), adUnitID))
     let delaySec = 5.0
     print("[MediationAd] [AdManager] [Max] [RewardAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
     DispatchQueue.global().asyncAfter(deadline: .now() + delaySec, execute: self.load)
@@ -87,16 +90,19 @@ extension MaxRewardedAd: MARewardedAdDelegate, MAAdRevenueDelegate {
   
   func didDisplay(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [RewardAd] Will display! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowSuccess(.max, .reuse(.rewarded), adUnitID))
     willPresent?()
     self.presentState = true
   }
   
   func didClick(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [RewardAd] Did click! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adClick(.max, .reuse(.rewarded), adUnitID))
   }
   
   func didFail(toDisplay ad: MAAd, withError error: MAError) {
     print("[MediationAd] [AdManager] [Max] [RewardAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowFail(.max, .reuse(.rewarded), adUnitID))
     didShowFail?()
     self.rewardedAd = nil
     load()
@@ -104,11 +110,13 @@ extension MaxRewardedAd: MARewardedAdDelegate, MAAdRevenueDelegate {
   
   func didRewardUser(for ad: MAAd, with reward: MAReward) {
     print("[MediationAd] [AdManager] [Max] [RewardAd] Did reward user! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adEarnReward(.max, .reuse(.rewarded), adUnitID))
     didEarnReward?()
   }
   
   func didHide(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [RewardAd] Did hide! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowHide(.max, .reuse(.rewarded), adUnitID))
     didHide?()
     self.rewardedAd = nil
     self.presentState = false
@@ -116,6 +124,11 @@ extension MaxRewardedAd: MARewardedAdDelegate, MAAdRevenueDelegate {
   }
   
   func didPayRevenue(for ad: MAAd) {
+    print("[MediationAd] [AdManager] [Max] [RewardAd] Did pay revenue(\(ad.revenue))!")
+    LogEventManager.shared.log(event: .adPayRevenue(.max, .reuse(.rewarded), adUnitID))
+    if ad.revenue != 0 {
+      LogEventManager.shared.log(event: .adHadRevenue(.max, .reuse(.rewarded), adUnitID))
+    }
     let adRevenueParams: [AnyHashable: Any] = [
       kAppsFlyerAdRevenueCountry: "US",
       kAppsFlyerAdRevenueAdUnit: adUnitID as Any,
@@ -160,6 +173,7 @@ extension MaxRewardedAd {
       
       self.isLoading = true
       print("[MediationAd] [AdManager] [Max] [RewardAd] Start load! (\(String(describing: adUnitID)))")
+      LogEventManager.shared.log(event: .adLoadRequest(.max, .reuse(.rewarded), adUnitID))
       
       self.rewardedAd = MARewardedAd.shared(withAdUnitIdentifier: adUnitID)
       rewardedAd?.delegate = self

@@ -61,6 +61,7 @@ class AdMobInterstitialAd: NSObject, ReuseAdProtocol {
     self.willPresent = willPresent
     self.didHide = didHide
     self.didEarnReward = didEarnReward
+    LogEventManager.shared.log(event: .adShowRequest(.admob, .reuse(.interstitial), adUnitID))
     interstitialAd?.present(fromRootViewController: rootViewController)
   }
 }
@@ -70,6 +71,7 @@ extension AdMobInterstitialAd: GADFullScreenContentDelegate {
           didFailToPresentFullScreenContentWithError error: Error
   ) {
     print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowFail(.admob, .reuse(.interstitial), adUnitID))
     didShowFail?()
     self.interstitialAd = nil
     load()
@@ -77,12 +79,14 @@ extension AdMobInterstitialAd: GADFullScreenContentDelegate {
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Will display! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowSuccess(.admob, .reuse(.interstitial), adUnitID))
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Did hide! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowHide(.admob, .reuse(.interstitial), adUnitID))
     didHide?()
     self.interstitialAd = nil
     self.presentState = false
@@ -119,6 +123,7 @@ extension AdMobInterstitialAd {
       
       self.isLoading = true
       print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Start load! (\(String(describing: adUnitID)))")
+      LogEventManager.shared.log(event: .adLoadRequest(.admob, .reuse(.interstitial), adUnitID))
       
       let request = GADRequest()
       GADInterstitialAd.load(
@@ -132,21 +137,29 @@ extension AdMobInterstitialAd {
         guard error == nil, let ad = ad else {
           self.retryAttempt += 1
           guard self.retryAttempt == 1 else {
+            LogEventManager.shared.log(event: .adLoadRetryFail(.admob, .reuse(.interstitial), adUnitID))
             self.didLoadFail?()
             return
           }
+          LogEventManager.shared.log(event: .adLoadFail(.admob, .reuse(.interstitial), adUnitID))
           let delaySec = 5.0
           print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
           DispatchQueue.global().asyncAfter(deadline: .now() + delaySec, execute: self.load)
           return
         }
         print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Did load! (\(String(describing: adUnitID)))")
+        LogEventManager.shared.log(event: .adLoadSuccess(.admob, .reuse(.interstitial), adUnitID))
         self.retryAttempt = 0
         self.interstitialAd = ad
         self.interstitialAd?.fullScreenContentDelegate = self
         self.didLoadSuccess?()
         
         ad.paidEventHandler = { adValue in
+          print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Did pay revenue(\(adValue.value))!")
+          LogEventManager.shared.log(event: .adPayRevenue(.admob, .reuse(.interstitial), adUnitID))
+          if adValue.value != 0 {
+            LogEventManager.shared.log(event: .adHadRevenue(.admob, .reuse(.interstitial), adUnitID))
+          }
           let adRevenueParams: [AnyHashable: Any] = [
             kAppsFlyerAdRevenueCountry: "US",
             kAppsFlyerAdRevenueAdUnit: adUnitID as Any,

@@ -61,6 +61,7 @@ class AdMobAppOpenAd: NSObject, ReuseAdProtocol {
     self.willPresent = willPresent
     self.didHide = didHide
     self.didEarnReward = didEarnReward
+    LogEventManager.shared.log(event: .adShowRequest(.admob, .reuse(.appOpen), adUnitID))
     appOpenAd?.present(fromRootViewController: rootViewController)
   }
 }
@@ -70,6 +71,7 @@ extension AdMobAppOpenAd: GADFullScreenContentDelegate {
           didFailToPresentFullScreenContentWithError error: Error
   ) {
     print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowFail(.admob, .reuse(.appOpen), adUnitID))
     didShowFail?()
     self.appOpenAd = nil
     load()
@@ -77,12 +79,14 @@ extension AdMobAppOpenAd: GADFullScreenContentDelegate {
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Will display! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowSuccess(.admob, .reuse(.appOpen), adUnitID))
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Did hide! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowHide(.admob, .reuse(.appOpen), adUnitID))
     didHide?()
     self.appOpenAd = nil
     self.presentState = false
@@ -119,6 +123,7 @@ extension AdMobAppOpenAd {
       
       self.isLoading = true
       print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Start load! (\(String(describing: adUnitID)))")
+      LogEventManager.shared.log(event: .adLoadRequest(.admob, .reuse(.appOpen), adUnitID))
       
       let request = GADRequest()
       GADAppOpenAd.load(
@@ -133,15 +138,22 @@ extension AdMobAppOpenAd {
           self.retryAttempt += 1
           self.didLoadFail?()
           print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+          LogEventManager.shared.log(event: .adLoadFail(.admob, .reuse(.appOpen), adUnitID))
           return
         }
         print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Did load! (\(String(describing: adUnitID)))")
+        LogEventManager.shared.log(event: .adLoadSuccess(.admob, .reuse(.appOpen), adUnitID))
         self.retryAttempt = 0
         self.appOpenAd = ad
         self.appOpenAd?.fullScreenContentDelegate = self
         self.didLoadSuccess?()
         
         ad.paidEventHandler = { adValue in
+          print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Did pay revenue(\(adValue.value))!")
+          LogEventManager.shared.log(event: .adPayRevenue(.admob, .reuse(.appOpen), adUnitID))
+          if adValue.value != 0 {
+            LogEventManager.shared.log(event: .adHadRevenue(.admob, .reuse(.appOpen), adUnitID))
+          }
           let adRevenueParams: [AnyHashable: Any] = [
             kAppsFlyerAdRevenueCountry: "US",
             kAppsFlyerAdRevenueAdUnit: adUnitID as Any,

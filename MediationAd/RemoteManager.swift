@@ -12,7 +12,7 @@ import FirebaseRemoteConfig
 public class RemoteManager {
   public static let shared = RemoteManager()
   
-  public enum State {
+  public enum State: String {
     case wait
     case success
     case error
@@ -37,7 +37,7 @@ extension RemoteManager {
       return
     }
     print("[MediationAd] [RemoteManager] Start load!")
-    LogEventManager.shared.log(event: .remoteConfigStartLoad)
+    LogEventManager.shared.log(event: .remoteManagerStartLoad)
     
     DispatchQueue.main.asyncAfter(deadline: .now() + remoteTimeout, execute: timeoutRemote)
     
@@ -56,7 +56,7 @@ extension RemoteManager {
       self.remoteConfig.activate()
       
       print("[MediationAd] [RemoteManager] Success!")
-      LogEventManager.shared.log(event: .remoteConfigSuccess)
+      LogEventManager.shared.log(event: .remoteManagerSuccess)
       
       change(state: .success)
     }
@@ -67,7 +67,7 @@ extension RemoteManager {
       return
     }
     print("[MediationAd] [RemoteManager] First load error!")
-    LogEventManager.shared.log(event: .remoteConfigLoadFail)
+    LogEventManager.shared.log(event: .remoteManagerLoadFail)
     
     change(state: .error)
   }
@@ -77,7 +77,7 @@ extension RemoteManager {
       return
     }
     print("[MediationAd] [RemoteManager] First load timeout!")
-    LogEventManager.shared.log(event: .remoteConfigTimeout)
+    LogEventManager.shared.log(event: .remoteManagerTimeout)
     
     change(state: .timeout)
   }

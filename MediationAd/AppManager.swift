@@ -30,6 +30,7 @@ public class AppManager {
   private var subscriptions = Set<AnyCancellable>()
   private var didError: Handler?
   private var didConfigure = false
+  private(set) var debugLogEvent = false
   
   public func initialize(appID: String,
                          issuerID: String,
@@ -50,14 +51,17 @@ public class AppManager {
     self.didError = didError
     
     if !didConfigure {
+      print("[MediationAd] [AppManager] Start session!")
       self.didConfigure = true
       FirebaseApp.configure()
       FBAdSettings.setDataProcessingOptions([])
+      LogEventManager.shared.log(event: .appManagerStartSession)
     }
     
     DispatchQueue.main.asyncAfter(deadline: .now() + timeout, execute: timeoutConfig)
     
     print("[MediationAd] [AppManager] Start config!")
+    LogEventManager.shared.log(event: .appManagerStartConfig)
     NetworkManager.shared.isConnected
       .sink { [weak self] isConnected in
         guard let self else {
@@ -71,6 +75,7 @@ public class AppManager {
         }
         self.state = .success
         print("[MediationAd] [AppManager] Did setup!")
+        LogEventManager.shared.log(event: .appManagerSuccess)
         
         RemoteManager.shared.remoteSubject
           .sink { state in
@@ -112,6 +117,10 @@ public class AppManager {
         }
       }.store(in: &subscriptions)
   }
+  
+  public func activeDebugEvent() {
+    self.debugLogEvent = true
+  }
 }
 
 extension AppManager {
@@ -120,6 +129,8 @@ extension AppManager {
       return
     }
     self.state = .timeout
+    print("[MediationAd] [AppManager] timeout!")
+    LogEventManager.shared.log(event: .appManagerTimeout)
     didError?()
   }
 }

@@ -68,6 +68,7 @@ class AdMobSplashAd: NSObject, ReuseAdProtocol {
     self.willPresent = willPresent
     self.didHide = didHide
     self.didEarnReward = didEarnReward
+    LogEventManager.shared.log(event: .adShowRequest(.admob, .reuse(.splash), adUnitID))
     splashAd?.present(fromRootViewController: rootViewController)
   }
 }
@@ -77,18 +78,21 @@ extension AdMobSplashAd: GADFullScreenContentDelegate {
           didFailToPresentFullScreenContentWithError error: Error
   ) {
     print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowFail(.admob, .reuse(.splash), adUnitID))
     didFail?()
     self.splashAd = nil
   }
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [SplashAd] Will display! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowSuccess(.admob, .reuse(.splash), adUnitID))
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did hide! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowHide(.admob, .reuse(.splash), adUnitID))
     didHide?()
     self.presentState = false
     self.splashAd = nil
@@ -115,6 +119,7 @@ extension AdMobSplashAd {
       self.isLoading = true
       self.fire()
       print("[MediationAd] [AdManager] [AdMob] [SplashAd] Start load! (\(String(describing: adUnitID)))")
+      LogEventManager.shared.log(event: .adLoadRequest(.admob, .reuse(.splash), adUnitID))
       
       let request = GADRequest()
       GADInterstitialAd.load(
@@ -130,15 +135,22 @@ extension AdMobSplashAd {
         self.invalidate()
         guard error == nil, let ad = ad else {
           print("[MediationAd] [AdManager] [AdMob] [SplashAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+          LogEventManager.shared.log(event: .adLoadFail(.admob, .reuse(.splash), adUnitID))
           self.didLoadFail?()
           return
         }
         print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did load! (\(String(describing: adUnitID)))")
+        LogEventManager.shared.log(event: .adLoadSuccess(.admob, .reuse(.splash), adUnitID))
         self.splashAd = ad
         self.splashAd?.fullScreenContentDelegate = self
         self.didLoadSuccess?()
         
         ad.paidEventHandler = { adValue in
+          print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did pay revenue(\(adValue.value))!")
+          LogEventManager.shared.log(event: .adPayRevenue(.admob, .reuse(.splash), adUnitID))
+          if adValue.value != 0 {
+            LogEventManager.shared.log(event: .adHadRevenue(.admob, .reuse(.splash), adUnitID))
+          }
           let adRevenueParams: [AnyHashable: Any] = [
             kAppsFlyerAdRevenueCountry: "US",
             kAppsFlyerAdRevenueAdUnit: adUnitID as Any,
@@ -180,6 +192,7 @@ extension AdMobSplashAd {
     if let timeout = timeout, time < timeout {
       return
     }
+    LogEventManager.shared.log(event: .adLoadTimeout(.admob, .reuse(.splash), adUnitID))
     invalidate()
     didLoadFail?()
   }

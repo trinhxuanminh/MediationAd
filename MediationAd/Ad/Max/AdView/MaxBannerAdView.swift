@@ -75,33 +75,44 @@ extension MaxBannerAdView: MAAdViewAdDelegate, MAAdRevenueDelegate {
   
   public func didLoad(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [BannerAd] Did load! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adLoadSuccess(.max, .onceUsed(.banner), adUnitID))
     self.state = .receive
     didReceive?()
   }
   
   public func didFailToLoadAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {
     print("[MediationAd] [AdManager] [Max] [BannerAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+    LogEventManager.shared.log(event: .adLoadFail(.max, .onceUsed(.banner), adUnitID))
     self.state = .error
     errored()
   }
   
   public func didDisplay(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [BannerAd] Did display! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowSuccess(.max, .onceUsed(.banner), adUnitID))
   }
   
   public func didHide(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [BannerAd] Did hide! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowHide(.max, .onceUsed(.banner), adUnitID))
   }
   
   public func didClick(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [BannerAd] Did click! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adClick(.max, .onceUsed(.banner), adUnitID))
   }
   
   public func didFail(toDisplay ad: MAAd, withError error: MAError) {
     print("[MediationAd] [AdManager] [Max] [BannerAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowFail(.max, .onceUsed(.banner), adUnitID))
   }
   
   public func didPayRevenue(for ad: MAAd) {
+    print("[MediationAd] [AdManager] [Max] [BannerAd] Did pay revenue(\(ad.revenue))!")
+    LogEventManager.shared.log(event: .adPayRevenue(.max, .onceUsed(.banner), adUnitID))
+    if ad.revenue != 0 {
+      LogEventManager.shared.log(event: .adHadRevenue(.max, .onceUsed(.banner), adUnitID))
+    }
     let adRevenueParams: [AnyHashable: Any] = [
       kAppsFlyerAdRevenueCountry: "US",
       kAppsFlyerAdRevenueAdUnit: adUnitID as Any,
@@ -162,6 +173,7 @@ extension MaxBannerAdView {
       bannerAdView?.delegate = self
       bannerAdView?.revenueDelegate = self
       bannerAdView?.stopAutoRefresh()
+      LogEventManager.shared.log(event: .adLoadRequest(.max, .onceUsed(.banner), adUnitID))
       bannerAdView?.loadAd()
     }
   }

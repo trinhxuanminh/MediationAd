@@ -61,6 +61,7 @@ class MaxInterstitialAd: NSObject, ReuseAdProtocol {
     self.willPresent = willPresent
     self.didHide = didHide
     self.didEarnReward = didEarnReward
+    LogEventManager.shared.log(event: .adShowRequest(.max, .reuse(.interstitial), adUnitID))
     interstitialAd?.show()
   }
 }
@@ -68,6 +69,7 @@ class MaxInterstitialAd: NSObject, ReuseAdProtocol {
 extension MaxInterstitialAd: MAAdDelegate, MAAdRevenueDelegate {
   func didLoad(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [InterstitialAd] Did load! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adLoadSuccess(.max, .reuse(.interstitial), adUnitID))
     self.isLoading = false
     self.retryAttempt = 0
     self.didLoadSuccess?()
@@ -77,9 +79,11 @@ extension MaxInterstitialAd: MAAdDelegate, MAAdRevenueDelegate {
     self.isLoading = false
     self.retryAttempt += 1
     guard self.retryAttempt == 1 else {
+      LogEventManager.shared.log(event: .adLoadRetryFail(.max, .reuse(.interstitial), adUnitID))
       self.didLoadFail?()
       return
     }
+    LogEventManager.shared.log(event: .adLoadFail(.max, .reuse(.interstitial), adUnitID))
     let delaySec = 5.0
     print("[MediationAd] [AdManager] [Max] [InterstitialAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
     DispatchQueue.global().asyncAfter(deadline: .now() + delaySec, execute: self.load)
@@ -87,16 +91,19 @@ extension MaxInterstitialAd: MAAdDelegate, MAAdRevenueDelegate {
   
   func didDisplay(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [InterstitialAd] Will display! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowSuccess(.max, .reuse(.interstitial), adUnitID))
     willPresent?()
     self.presentState = true
   }
   
   func didClick(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [AppOpenAd] Did click! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adClick(.max, .reuse(.interstitial), adUnitID))
   }
   
   func didFail(toDisplay ad: MAAd, withError error: MAError) {
     print("[MediationAd] [AdManager] [Max] [InterstitialAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowFail(.max, .reuse(.interstitial), adUnitID))
     didShowFail?()
     self.interstitialAd = nil
     load()
@@ -104,6 +111,7 @@ extension MaxInterstitialAd: MAAdDelegate, MAAdRevenueDelegate {
   
   func didHide(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [InterstitialAd] Did hide! (\(String(describing: adUnitID)))")
+    LogEventManager.shared.log(event: .adShowHide(.max, .reuse(.interstitial), adUnitID))
     didHide?()
     self.interstitialAd = nil
     self.presentState = false
@@ -112,6 +120,10 @@ extension MaxInterstitialAd: MAAdDelegate, MAAdRevenueDelegate {
   
   func didPayRevenue(for ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [InterstitialAd] Did pay revenue(\(ad.revenue))!")
+    LogEventManager.shared.log(event: .adPayRevenue(.max, .reuse(.interstitial), adUnitID))
+    if ad.revenue != 0 {
+      LogEventManager.shared.log(event: .adHadRevenue(.max, .reuse(.interstitial), adUnitID))
+    }
     let adRevenueParams: [AnyHashable: Any] = [
       kAppsFlyerAdRevenueCountry: "US",
       kAppsFlyerAdRevenueAdUnit: adUnitID as Any,
@@ -156,6 +168,7 @@ extension MaxInterstitialAd {
       
       self.isLoading = true
       print("[MediationAd] [AdManager] [Max] [InterstitialAd] Start load! (\(String(describing: adUnitID)))")
+      LogEventManager.shared.log(event: .adLoadRequest(.max, .reuse(.interstitial), adUnitID))
       
       self.interstitialAd = MAInterstitialAd(adUnitIdentifier: adUnitID)
       interstitialAd?.delegate = self

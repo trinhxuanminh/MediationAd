@@ -28,7 +28,6 @@ target 'MediationAd' do
   pod 'AppLovinMediationVungleAdapter', '7.4.0.0' # Liftoff Monetize
   pod 'AppLovinMediationMintegralAdapter', '7.6.9.0.0' # Mintegral
   pod 'AppLovinMediationFacebookAdapter', '6.15.0.0' # Meta Audience Network
-  pod 'AppLovinMediationYandexAdapter', '7.0.1.0' # Yandex
 end
 
 target 'MediationAdExamples' do

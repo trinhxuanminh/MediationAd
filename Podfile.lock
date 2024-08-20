@@ -34,60 +34,7 @@ PODS:
   - AppLovinMediationVungleAdapter (7.4.0.0):
     - AppLovinSDK
     - VungleAds (= 7.4.0)
-  - AppLovinMediationYandexAdapter (7.0.1.0):
-    - AppLovinSDK
-    - YandexMobileAds (= 7.0.1)
   - AppLovinSDK (12.6.0)
-  - AppMetricaCore (5.7.0):
-    - AppMetricaCoreUtils (= 5.7.0)
-    - AppMetricaEncodingUtils (= 5.7.0)
-    - AppMetricaFMDB (= 5.7.0)
-    - AppMetricaHostState (= 5.7.0)
-    - AppMetricaLog (= 5.7.0)
-    - AppMetricaNetwork (= 5.7.0)
-    - AppMetricaPlatform (= 5.7.0)
-    - AppMetricaProtobuf (= 5.7.0)
-    - AppMetricaProtobufUtils (= 5.7.0)
-    - AppMetricaStorageUtils (= 5.7.0)
-  - AppMetricaCoreExtension (5.7.0):
-    - AppMetricaCore (= 5.7.0)
-    - AppMetricaStorageUtils (= 5.7.0)
-  - AppMetricaCoreUtils (5.7.0):
-    - AppMetricaLog (= 5.7.0)
-  - AppMetricaCrashes (5.7.0):
-    - AppMetricaCore (= 5.7.0)
-    - AppMetricaCoreExtension (= 5.7.0)
-    - AppMetricaCoreUtils (= 5.7.0)
-    - AppMetricaEncodingUtils (= 5.7.0)
-    - AppMetricaHostState (= 5.7.0)
-    - AppMetricaLog (= 5.7.0)
-    - AppMetricaPlatform (= 5.7.0)
-    - AppMetricaProtobufUtils (= 5.7.0)
-    - AppMetricaStorageUtils (= 5.7.0)
-    - KSCrash/Recording (~> 1.17.0)
-    - KSCrash/Recording/Tools
-  - AppMetricaEncodingUtils (5.7.0):
-    - AppMetricaCoreUtils (= 5.7.0)
-    - AppMetricaLog (= 5.7.0)
-    - AppMetricaPlatform (= 5.7.0)
-  - AppMetricaFMDB (5.7.0)
-  - AppMetricaHostState (5.7.0):
-    - AppMetricaCoreUtils (= 5.7.0)
-    - AppMetricaLog (= 5.7.0)
-  - AppMetricaLog (5.7.0)
-  - AppMetricaNetwork (5.7.0):
-    - AppMetricaCoreUtils (= 5.7.0)
-    - AppMetricaLog (= 5.7.0)
-    - AppMetricaPlatform (= 5.7.0)
-  - AppMetricaPlatform (5.7.0):
-    - AppMetricaCoreUtils (= 5.7.0)
-    - AppMetricaLog (= 5.7.0)
-  - AppMetricaProtobuf (5.7.0)
-  - AppMetricaProtobufUtils (5.7.0):
-    - AppMetricaProtobuf (= 5.7.0)
-  - AppMetricaStorageUtils (5.7.0):
-    - AppMetricaCoreUtils (= 5.7.0)
-    - AppMetricaLog (= 5.7.0)
   - AppsFlyer-AdRevenue (6.14.3):
     - AppsFlyerFramework (= 6.14.3)
   - AppsFlyerFramework (6.14.3):
@@ -124,20 +71,6 @@ PODS:
     - BURelyFoundation_Global/Zip
   - BURelyFoundation_Global/Zip (1.0.0.0):
     - BURelyFoundation_Global/Foundation
-  - DivKit (28.13.0):
-    - DivKit_LayoutKit (= 28.13.0)
-    - DivKit_Serialization (= 28.13.0)
-    - VGSLCommonCore (~> 2.4)
-    - VGSLNetworking (~> 2.4)
-  - DivKit_LayoutKit (28.13.0):
-    - DivKit_LayoutKitInterface (= 28.13.0)
-    - VGSLCommonCore (~> 2.4)
-  - DivKit_LayoutKitInterface (28.13.0):
-    - VGSLBase (~> 2.4)
-    - VGSLBaseTiny (~> 2.4)
-    - VGSLBaseUI (~> 2.4)
-  - DivKit_Serialization (28.13.0):
-    - VGSLCommonCore (~> 2.4)
   - FBAudienceNetwork (6.15.0)
   - Firebase (10.25.0):
     - Firebase/Core (= 10.25.0)
@@ -243,9 +176,6 @@ PODS:
   - IronSourceSDK (8.1.0.0)
   - KituraContracts (1.2.1):
     - LoggerAPI (~> 1.7)
-  - KSCrash/Recording (1.17.5):
-    - KSCrash/Recording/Tools (= 1.17.5)
-  - KSCrash/Recording/Tools (1.17.5)
   - LoggerAPI (1.9.200):
     - Logging (~> 1.1)
   - Logging (1.4.0)
@@ -310,26 +240,7 @@ PODS:
     - KituraContracts (~> 1.2)
     - LoggerAPI (~> 1.7)
   - UnityAds (4.12.1)
-  - VGSL_Fundamentals (2.4.1):
-    - VGSL_Fundamentals_Tiny (= 2.4.1)
-  - VGSL_Fundamentals_Tiny (2.4.1)
-  - VGSLBase (2.4.1):
-    - VGSL_Fundamentals (= 2.4.1)
-    - VGSLBaseTiny (= 2.4.1)
-    - VGSLBaseUI (= 2.4.1)
-  - VGSLBaseTiny (2.4.1):
-    - VGSL_Fundamentals_Tiny (= 2.4.1)
-  - VGSLBaseUI (2.4.1):
-    - VGSLBaseTiny (= 2.4.1)
-  - VGSLCommonCore (2.4.1):
-    - VGSLBase (= 2.4.1)
-  - VGSLNetworking (2.4.1):
-    - VGSLBase (= 2.4.1)
   - VungleAds (7.4.0)
-  - YandexMobileAds (7.0.1):
-    - AppMetricaCore (< 6.0.0, >= 5.0.0)
-    - AppMetricaCrashes (< 6.0.0, >= 5.0.0)
-    - DivKit (= 28.13.0)
 
 DEPENDENCIES:
   - AppLovinMediationByteDanceAdapter (= 6.1.0.6.0)
@@ -342,7 +253,6 @@ DEPENDENCIES:
   - AppLovinMediationMintegralAdapter (= 7.6.9.0.0)
   - AppLovinMediationUnityAdsAdapter (= 4.12.1.0)
   - AppLovinMediationVungleAdapter (= 7.4.0.0)
-  - AppLovinMediationYandexAdapter (= 7.0.1.0)
   - AppLovinSDK (= 12.6.0)
   - AppsFlyer-AdRevenue (= 6.14.3)
   - AppsFlyerFramework (= 6.14.3)
@@ -367,31 +277,13 @@ SPEC REPOS:
     - AppLovinMediationMintegralAdapter
     - AppLovinMediationUnityAdsAdapter
     - AppLovinMediationVungleAdapter
-    - AppLovinMediationYandexAdapter
     - AppLovinSDK
-    - AppMetricaCore
-    - AppMetricaCoreExtension
-    - AppMetricaCoreUtils
-    - AppMetricaCrashes
-    - AppMetricaEncodingUtils
-    - AppMetricaFMDB
-    - AppMetricaHostState
-    - AppMetricaLog
-    - AppMetricaNetwork
-    - AppMetricaPlatform
-    - AppMetricaProtobuf
-    - AppMetricaProtobufUtils
-    - AppMetricaStorageUtils
     - AppsFlyer-AdRevenue
     - AppsFlyerFramework
     - BlueCryptor
     - BlueECC
     - BlueRSA
     - BURelyFoundation_Global
-    - DivKit
-    - DivKit_LayoutKit
-    - DivKit_LayoutKitInterface
-    - DivKit_Serialization
     - FBAudienceNetwork
     - Firebase
     - FirebaseABTesting
@@ -410,7 +302,6 @@ SPEC REPOS:
     - InMobiSDK
     - IronSourceSDK
     - KituraContracts
-    - KSCrash
     - LoggerAPI
     - Logging
     - MintegralAdSDK
@@ -421,15 +312,7 @@ SPEC REPOS:
     - SnapKit
     - SwiftJWT
     - UnityAds
-    - VGSL_Fundamentals
-    - VGSL_Fundamentals_Tiny
-    - VGSLBase
-    - VGSLBaseTiny
-    - VGSLBaseUI
-    - VGSLCommonCore
-    - VGSLNetworking
     - VungleAds
-    - YandexMobileAds
 
 SPEC CHECKSUMS:
   Ads-Global: 907f4b2b94d722b33ef58e8b5a8d522718117273
@@ -443,31 +326,13 @@ SPEC CHECKSUMS:
   AppLovinMediationMintegralAdapter: f90ef46a2846f5424085801e34835dbe5364fa8a
   AppLovinMediationUnityAdsAdapter: d87f42ab2f8df395b03f06a5dd53addecaaf1c8b
   AppLovinMediationVungleAdapter: 2995d47cd08686cbb6502ccc1029bf36dcc31f36
-  AppLovinMediationYandexAdapter: 08f33eaee1cc8ee1be632e1bfe18e691098abea2
   AppLovinSDK: 76c1f378b8492110a197c288ea4907930d703829
-  AppMetricaCore: 2b88e6d5a5aafd9663bbc6056388ac0e95b6e2f1
-  AppMetricaCoreExtension: 1d7924bb168f7238fffeecaeea0a04a0b29037c5
-  AppMetricaCoreUtils: 9ed2396aa229554bd6b7532b5f52c638275bba67
-  AppMetricaCrashes: 1a9d2e68cfa92425d6ce3a997287db051219263d
-  AppMetricaEncodingUtils: b789fa4c1e65291751d2f2ddf71f63e097abfcc8
-  AppMetricaFMDB: adc2ca20358239db4c246113e2d4f0663779839c
-  AppMetricaHostState: 70a575d9226ae3fcf9adc3f948403e45a8199a60
-  AppMetricaLog: 8903049a47249067f01839f392552e91feb72171
-  AppMetricaNetwork: a738841c6987ca81da92ba721edcda3ebced351a
-  AppMetricaPlatform: 456d620ca7816ae57d9b94c19bddc10f36fab7b3
-  AppMetricaProtobuf: 4d9c8e28bc7ee7f2df7bc0b5882b5b8734add7a5
-  AppMetricaProtobufUtils: 69272f30e19e30d814b7f05cbd1130e888764c8d
-  AppMetricaStorageUtils: d72c866868dce22626441349bcd45eeec43b9e86
   AppsFlyer-AdRevenue: ca11e2152446eb45e32c606fb0948f7e7f49ceaa
   AppsFlyerFramework: 0a68f5b72bbbadfa71d4ae3eaf040e82d62e8518
   BlueCryptor: b0aee3d9b8f367b49b30de11cda90e1735571c24
   BlueECC: 0d18e93347d3ec6d41416de21c1ffa4d4cd3c2cc
   BlueRSA: dfeef51db96bcc4edec654956c1581adbda4e6a3
   BURelyFoundation_Global: d8099571ab7a0767ec0a334052108e33ff6d8a3f
-  DivKit: 65af423ea03c32b6ecaa63a64d4a2ea26c217f3b
-  DivKit_LayoutKit: 3f88fab9edefb4938b9ccb5359ecbce4e1eeba69
-  DivKit_LayoutKitInterface: 90449756ba956a7fbf3b168c01f7a0b7fc6a9de0
-  DivKit_Serialization: 1b536e30c49163548bb62120320097c8ab41936d
   FBAudienceNetwork: 80a035aa69cc3a71c99e44cb5c2874e4cef9909f
   Firebase: 0312a2352584f782ea56f66d91606891d4607f06
   FirebaseABTesting: d87f56707159bae64e269757a6e963d490f2eebe
@@ -486,7 +351,6 @@ SPEC CHECKSUMS:
   InMobiSDK: 728c861e41cd738eaf0a26b87f0e3f945e8c5602
   IronSourceSDK: f4380fe08a2bfa1cd37c26948fcfd2585a0493a2
   KituraContracts: e845e60dc8627ad0a76fa55ef20a45451d8f830b
-  KSCrash: b104a00c75f4c454590ae8d23cc8d8b003dae900
   LoggerAPI: ad9c4a6f1e32f518fdb43a1347ac14d765ab5e3d
   Logging: beeb016c9c80cf77042d62e83495816847ef108b
   MintegralAdSDK: 229e75c801be1302fb1aeac4249923234bfc480a
@@ -497,16 +361,8 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftJWT: 88c412708f58c169d431d344c87bc79a87c830ae
   UnityAds: f89ac1e717f5d566a58479a5b7cb9ed3a744cae3
-  VGSL_Fundamentals: 4a965a687c76a5a435d7aaeb6b7182e82408bf4c
-  VGSL_Fundamentals_Tiny: feab274b20c5838fbe09b887db0f6cfa28e26a1c
-  VGSLBase: 37b95dd4ea137f73e8f9a8bd8ec474d8b4d75a68
-  VGSLBaseTiny: 0a0a4992a348184e8580cf73efa8eb373d750f6b
-  VGSLBaseUI: 62f147155e7b7049a32a30ac87b5bd8b83e636c5
-  VGSLCommonCore: dd33088af6633d1c09f0c9bb8027920b99e2e0c8
-  VGSLNetworking: e12d616b447522bf524c689d28f55cfbb20473cd
   VungleAds: 4823f53e691ba140ff21e3a3a6897af789832a36
-  YandexMobileAds: 30f8aeaa4f608696e28b3b449b636eca76792394
 
-PODFILE CHECKSUM: d6a36adda0cdb083b851d338891ab3dd10ef23d4
+PODFILE CHECKSUM: f8a60b834254c4667f321f480180cff303a2f706
 
 COCOAPODS: 1.15.2
