@@ -15,9 +15,7 @@ class MaxSplashAd: NSObject, ReuseAdProtocol {
   private var presentState = false
   private var isLoading = false
   private var timeout: Double?
-  private var time = 0.0
-  private var timer: Timer?
-  private var timeInterval = 0.1
+  private var didResponse = false
   private var didLoadFail: Handler?
   private var didLoadSuccess: Handler?
   private var didFail: Handler?
@@ -75,22 +73,22 @@ class MaxSplashAd: NSObject, ReuseAdProtocol {
 
 extension MaxSplashAd: MAAdDelegate, MAAdRevenueDelegate {
   func didLoad(_ ad: MAAd) {
-    guard let timeout, self.time < timeout else {
+    guard !didResponse else {
       return
     }
+    self.didResponse = true
     print("[MediationAd] [AdManager] [Max] [SplashAd] Did load! (\(String(describing: adUnitID)))")
     LogEventManager.shared.log(event: .adLoadSuccess(.max, .reuse(.splash), adUnitID))
-    self.invalidate()
     self.didLoadSuccess?()
   }
   
   func didFailToLoadAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {
-    guard let timeout, self.time < timeout else {
+    guard !didResponse else {
       return
     }
+    self.didResponse = true
     print("[MediationAd] [AdManager] [Max] [SplashAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
     LogEventManager.shared.log(event: .adLoadFail(.max, .reuse(.splash), adUnitID))
-    self.invalidate()
     self.didLoadFail?()
   }
   
@@ -160,7 +158,22 @@ extension MaxSplashAd {
       }
       
       self.isLoading = true
-      self.fire()
+      
+      if let timeout {
+        DispatchQueue.main.asyncAfter(deadline: .now() + timeout, execute: { [weak self] in
+          guard let self else {
+            return
+          }
+          guard !didResponse else {
+            return
+          }
+          self.didResponse = true
+          print("[MediationAd] [AdManager] [Max] [SplashAd] Load fail (\(String(describing: adUnitID))) - timeout!")
+          LogEventManager.shared.log(event: .adLoadTimeout(.max, .reuse(.splash), adUnitID))
+          didLoadFail?()
+        })
+      }
+      
       print("[MediationAd] [AdManager] [Max] [SplashAd] Start load! (\(String(describing: adUnitID)))")
       LogEventManager.shared.log(event: .adLoadRequest(.max, .reuse(.splash), adUnitID))
       
@@ -169,35 +182,5 @@ extension MaxSplashAd {
       splashAd?.revenueDelegate = self
       splashAd?.load()
     }
-  }
-  
-  private func fire() {
-    DispatchQueue.main.async { [weak self] in
-      guard let self else {
-        return
-      }
-      self.timer = Timer.scheduledTimer(timeInterval: self.timeInterval,
-                                        target: self,
-                                        selector: #selector(self.isReady),
-                                        userInfo: nil,
-                                        repeats: true)
-    }
-  }
-  
-  private func invalidate() {
-    self.timer?.invalidate()
-    self.timer = nil
-  }
-  
-  @objc private func isReady() {
-    self.time += timeInterval
-    
-    if let timeout = timeout, time < timeout {
-      return
-    }
-    print("[MediationAd] [AdManager] [Max] [SplashAd] Load fail (\(String(describing: adUnitID))) - timeout!")
-    LogEventManager.shared.log(event: .adLoadTimeout(.max, .reuse(.splash), adUnitID))
-    invalidate()
-    didLoadFail?()
   }
 }

@@ -15,9 +15,7 @@ class AdMobSplashAd: NSObject, ReuseAdProtocol {
   private var presentState = false
   private var isLoading = false
   private var timeout: Double?
-  private var time = 0.0
-  private var timer: Timer?
-  private var timeInterval = 0.1
+  private var didResponse = false
   private var didLoadFail: Handler?
   private var didLoadSuccess: Handler?
   private var didFail: Handler?
@@ -117,7 +115,22 @@ extension AdMobSplashAd {
       }
       
       self.isLoading = true
-      self.fire()
+      
+      if let timeout {
+        DispatchQueue.main.asyncAfter(deadline: .now() + timeout, execute: { [weak self] in
+          guard let self else {
+            return
+          }
+          guard !didResponse else {
+            return
+          }
+          self.didResponse = true
+          print("[MediationAd] [AdManager] [AdMob] [SplashAd] Load fail (\(String(describing: adUnitID))) - timeout!")
+          LogEventManager.shared.log(event: .adLoadTimeout(.admob, .reuse(.splash), adUnitID))
+          didLoadFail?()
+        })
+      }
+      
       print("[MediationAd] [AdManager] [AdMob] [SplashAd] Start load! (\(String(describing: adUnitID)))")
       LogEventManager.shared.log(event: .adLoadRequest(.admob, .reuse(.splash), adUnitID))
       
@@ -129,10 +142,10 @@ extension AdMobSplashAd {
         guard let self else {
           return
         }
-        guard let timeout, self.time < timeout else {
+        guard !didResponse else {
           return
         }
-        self.invalidate()
+        self.didResponse = true
         guard error == nil, let ad = ad else {
           print("[MediationAd] [AdManager] [AdMob] [SplashAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
           LogEventManager.shared.log(event: .adLoadFail(.admob, .reuse(.splash), adUnitID))
@@ -166,34 +179,5 @@ extension AdMobSplashAd {
         }
       }
     }
-  }
-  
-  private func fire() {
-    DispatchQueue.main.async { [weak self] in
-      guard let self else {
-        return
-      }
-      self.timer = Timer.scheduledTimer(timeInterval: self.timeInterval,
-                                        target: self,
-                                        selector: #selector(self.isReady),
-                                        userInfo: nil,
-                                        repeats: true)
-    }
-  }
-  
-  private func invalidate() {
-    self.timer?.invalidate()
-    self.timer = nil
-  }
-  
-  @objc private func isReady() {
-    self.time += timeInterval
-    
-    if let timeout = timeout, time < timeout {
-      return
-    }
-    LogEventManager.shared.log(event: .adLoadTimeout(.admob, .reuse(.splash), adUnitID))
-    invalidate()
-    didLoadFail?()
   }
 }
