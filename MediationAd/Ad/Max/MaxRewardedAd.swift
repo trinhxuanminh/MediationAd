@@ -70,6 +70,8 @@ extension MaxRewardedAd: MARewardedAdDelegate, MAAdRevenueDelegate {
   func didLoad(_ ad: MAAd) {
     self.isLoading = false
     print("[MediationAd] [AdManager] [Max] [RewardAd] Did load! (\(String(describing: adUnitID)))")
+    let time = TimeManager.shared.end(event: .adLoad(.max, .reuse(.rewarded), adUnitID, nil))
+    LogEventManager.shared.log(event: .adLoadSuccess(.max, .reuse(.rewarded), adUnitID, time))
     self.retryAttempt = 0
     self.didLoadSuccess?()
   }
@@ -174,6 +176,7 @@ extension MaxRewardedAd {
       self.isLoading = true
       print("[MediationAd] [AdManager] [Max] [RewardAd] Start load! (\(String(describing: adUnitID)))")
       LogEventManager.shared.log(event: .adLoadRequest(.max, .reuse(.rewarded), adUnitID))
+      TimeManager.shared.start(event: .adLoad(.max, .reuse(.rewarded), adUnitID, nil))
       
       self.rewardedAd = MARewardedAd.shared(withAdUnitIdentifier: adUnitID)
       rewardedAd?.delegate = self

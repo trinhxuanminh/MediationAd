@@ -56,6 +56,7 @@ public class AppManager {
       FirebaseApp.configure()
       FBAdSettings.setDataProcessingOptions([])
       LogEventManager.shared.log(event: .appManagerStartSession)
+      TimeManager.shared.start(event: .appManagerConfig)
     }
     
     DispatchQueue.main.asyncAfter(deadline: .now() + timeout, execute: timeoutConfig)
@@ -75,7 +76,8 @@ public class AppManager {
         }
         self.state = .success
         print("[MediationAd] [AppManager] Did setup!")
-        LogEventManager.shared.log(event: .appManagerSuccess)
+        let time = TimeManager.shared.end(event: .appManagerConfig)
+        LogEventManager.shared.log(event: .appManagerSuccess(time))
         
         RemoteManager.shared.remoteSubject
           .sink { state in

@@ -185,7 +185,8 @@ extension ReleaseManager {
     guard releaseState == .unknow else {
       return
     }
-    LogEventManager.shared.log(event: .releaseManagerChange(state))
+    let time = TimeManager.shared.end(event: .releaseManagerCheck)
+    LogEventManager.shared.log(event: .releaseManagerChange(state, state != .unknow ? time : nil))
     self.releaseState = state
     releaseSubject.send(state)
     

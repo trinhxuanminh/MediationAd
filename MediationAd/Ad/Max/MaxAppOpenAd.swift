@@ -69,7 +69,8 @@ class MaxAppOpenAd: NSObject, ReuseAdProtocol {
 extension MaxAppOpenAd: MAAdDelegate, MAAdRevenueDelegate {
   func didLoad(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [AppOpenAd] Did load! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adLoadSuccess(.max, .reuse(.appOpen), adUnitID))
+    let time = TimeManager.shared.end(event: .adLoad(.max, .reuse(.appOpen), adUnitID, nil))
+    LogEventManager.shared.log(event: .adLoadSuccess(.max, .reuse(.appOpen), adUnitID, time))
     self.isLoading = false
     self.retryAttempt = 0
     self.didLoadSuccess?()
@@ -163,6 +164,7 @@ extension MaxAppOpenAd {
       self.isLoading = true
       print("[MediationAd] [AdManager] [Max] [AppOpenAd] Start load! (\(String(describing: adUnitID)))")
       LogEventManager.shared.log(event: .adLoadRequest(.max, .reuse(.appOpen), adUnitID))
+      TimeManager.shared.start(event: .adLoad(.max, .reuse(.appOpen), adUnitID, nil))
       
       self.appOpenAd = MAAppOpenAd(adUnitIdentifier: adUnitID)
       appOpenAd?.delegate = self

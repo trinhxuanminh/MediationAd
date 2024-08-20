@@ -227,7 +227,8 @@ extension ConsentManager {
     ALPrivacySettings.setHasUserConsent(hasConsent)
     ALPrivacySettings.setDoNotSell(true)
     
-    LogEventManager.shared.log(event: .consentManagerChange(state))
+    let time = TimeManager.shared.end(event: .consentManagerCheck)
+    LogEventManager.shared.log(event: .consentManagerChange(state, state != .unknow ? time : nil))
     self.consentState = state
     switch state {
     case .allow, .error:

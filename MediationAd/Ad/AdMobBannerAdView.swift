@@ -30,6 +30,7 @@ open class AdMobBannerAdView: UIView {
   
   private weak var rootViewController: UIViewController?
   private var adUnitID: String?
+  private var adName: String?
   private var anchored: Anchored?
   private var state: State = .wait
   private var didReceive: Handler?
@@ -86,6 +87,7 @@ open class AdMobBannerAdView: UIView {
       return
     }
     self.adUnitID = ad.id
+    self.adName = ad.name
     if let anchored = ad.anchored {
       self.anchored = Anchored(rawValue: anchored)
     }
@@ -105,7 +107,8 @@ extension AdMobBannerAdView: GADBannerViewDelegate {
   
   public func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
     print("[MediationAd] [AdManager] [AdMob] [BannerAd] Did load! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adLoadSuccess(.admob, .onceUsed(.banner), adUnitID))
+    let time = TimeManager.shared.end(event: .adLoad(.admob, .onceUsed(.banner), adUnitID, adName))
+    LogEventManager.shared.log(event: .adLoadSuccess(.admob, .onceUsed(.banner), adUnitID, time))
     self.state = .receive
     self.bringSubviewToFront(self.bannerAdView)
     didReceive?()
@@ -183,6 +186,7 @@ extension AdMobBannerAdView {
       }
       
       LogEventManager.shared.log(event: .adLoadRequest(.admob, .onceUsed(.banner), adUnitID))
+      TimeManager.shared.start(event: .adLoad(.admob, .onceUsed(.banner), adUnitID, adName))
       self.bannerAdView?.load(request)
     }
   }

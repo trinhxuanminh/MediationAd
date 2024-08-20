@@ -124,6 +124,7 @@ extension AdMobInterstitialAd {
       self.isLoading = true
       print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Start load! (\(String(describing: adUnitID)))")
       LogEventManager.shared.log(event: .adLoadRequest(.admob, .reuse(.interstitial), adUnitID))
+      TimeManager.shared.start(event: .adLoad(.admob, .reuse(.interstitial), adUnitID, nil))
       
       let request = GADRequest()
       GADInterstitialAd.load(
@@ -148,7 +149,9 @@ extension AdMobInterstitialAd {
           return
         }
         print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Did load! (\(String(describing: adUnitID)))")
-        LogEventManager.shared.log(event: .adLoadSuccess(.admob, .reuse(.interstitial), adUnitID))
+        let time = TimeManager.shared.end(event: .adLoad(.admob, .reuse(.interstitial), adUnitID, nil))
+        LogEventManager.shared.log(event: .adLoadSuccess(.admob, .reuse(.interstitial), adUnitID, time))
+        
         self.retryAttempt = 0
         self.interstitialAd = ad
         self.interstitialAd?.fullScreenContentDelegate = self

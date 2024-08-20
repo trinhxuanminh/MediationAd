@@ -21,6 +21,7 @@ class AdMobNativeAd: NSObject, OnceUsedAdProtocol {
   private var adLoader: GADAdLoader?
   private weak var rootViewController: UIViewController?
   private var adUnitID: String?
+  private var adName: String?
   private var isFullScreen = false
   private var timeout: Double?
   private var state: State = .wait
@@ -36,6 +37,7 @@ class AdMobNativeAd: NSObject, OnceUsedAdProtocol {
       return
     }
     self.adUnitID = ad.id
+    self.adName = ad.name
     self.timeout = ad.timeout
     if let isFullScreen = ad.isFullScreen {
       self.isFullScreen = isFullScreen
@@ -74,7 +76,8 @@ extension AdMobNativeAd: GADNativeAdLoaderDelegate {
       return
     }
     print("[MediationAd] [AdManager] [AdMob] [NativeAd] Did load! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adLoadSuccess(.admob, .onceUsed(.native), adUnitID))
+    let time = TimeManager.shared.end(event: .adLoad(.admob, .onceUsed(.native), adUnitID, adName))
+    LogEventManager.shared.log(event: .adLoadSuccess(.admob, .onceUsed(.native), adUnitID, time))
     self.state = .receive
     self.nativeAd = nativeAd
     didReceive?()
@@ -128,6 +131,7 @@ extension AdMobNativeAd {
         options = [aspectRatioOption]
       }
       LogEventManager.shared.log(event: .adLoadRequest(.admob, .onceUsed(.native), adUnitID))
+      TimeManager.shared.start(event: .adLoad(.admob, .onceUsed(.native), adUnitID, adName))
       self.adLoader = GADAdLoader(
         adUnitID: adUnitID,
         rootViewController: rootViewController,

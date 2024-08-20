@@ -130,6 +130,7 @@ extension AdMobRewardedAd {
       self.isLoading = true
       print("[MediationAd] [AdManager] [AdMob] [RewardAd] Start load! (\(String(describing: adUnitID)))")
       LogEventManager.shared.log(event: .adLoadRequest(.admob, .reuse(.rewarded), adUnitID))
+      TimeManager.shared.start(event: .adLoad(.admob, .reuse(.rewarded), adUnitID, nil))
       
       let request = GADRequest()
       GADRewardedAd.load(
@@ -154,7 +155,8 @@ extension AdMobRewardedAd {
           return
         }
         print("[MediationAd] [AdManager] [AdMob] [RewardAd] Did load! (\(String(describing: adUnitID)))")
-        LogEventManager.shared.log(event: .adLoadSuccess(.admob, .reuse(.rewarded), adUnitID))
+        let time = TimeManager.shared.end(event: .adLoad(.admob, .reuse(.rewarded), adUnitID, nil))
+        LogEventManager.shared.log(event: .adLoadSuccess(.admob, .reuse(.rewarded), adUnitID, time))
         self.retryAttempt = 0
         self.rewardedAd = ad
         self.rewardedAd?.fullScreenContentDelegate = self

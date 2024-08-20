@@ -38,6 +38,7 @@ extension RemoteManager {
     }
     print("[MediationAd] [RemoteManager] Start load!")
     LogEventManager.shared.log(event: .remoteManagerStartLoad)
+    TimeManager.shared.start(event: .remoteManagerLoad)
     
     DispatchQueue.main.asyncAfter(deadline: .now() + remoteTimeout, execute: timeoutRemote)
     
@@ -56,8 +57,6 @@ extension RemoteManager {
       self.remoteConfig.activate()
       
       print("[MediationAd] [RemoteManager] Success!")
-      LogEventManager.shared.log(event: .remoteManagerSuccess)
-      
       change(state: .success)
     }
   }
@@ -67,8 +66,6 @@ extension RemoteManager {
       return
     }
     print("[MediationAd] [RemoteManager] First load error!")
-    LogEventManager.shared.log(event: .remoteManagerLoadFail)
-    
     change(state: .error)
   }
   
@@ -88,5 +85,7 @@ extension RemoteManager {
     }
     self.remoteState = state
     remoteSubject.send(state)
+    let time = TimeManager.shared.end(event: .remoteManagerLoad)
+    LogEventManager.shared.log(event: .remoteManagerChange(state, state == .success ? time : nil))
   }
 }

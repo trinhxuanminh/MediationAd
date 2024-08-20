@@ -10,6 +10,8 @@
 		32A392931564CC4F346EC4C9 /* Pods_MediationAdExamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC94DB317CEF72949DA1B54E /* Pods_MediationAdExamples.framework */; };
 		9600A4602C6B3D1F00D7D5EB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9600A45F2C6B3D1F00D7D5EB /* NetworkManager.swift */; };
 		9600A4672C744E7F00D7D5EB /* AppText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9600A4662C744E7F00D7D5EB /* AppText.swift */; };
+		9600A4692C74A13600D7D5EB /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9600A4682C74A13600D7D5EB /* TimeManager.swift */; };
+		9600A46B2C74A91B00D7D5EB /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9600A46A2C74A91B00D7D5EB /* DoubleExtension.swift */; };
 		963703012C5C9061005B52CA /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703002C5C9061005B52CA /* AppManager.swift */; };
 		963703032C5C9916005B52CA /* ConsentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703022C5C9916005B52CA /* ConsentManager.swift */; };
 		963703062C5C993E005B52CA /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703052C5C993E005B52CA /* APIError.swift */; };
@@ -163,6 +165,8 @@
 		9600A45F2C6B3D1F00D7D5EB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9600A4632C6DECAC00D7D5EB /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9600A4662C744E7F00D7D5EB /* AppText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppText.swift; sourceTree = "<group>"; };
+		9600A4682C74A13600D7D5EB /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
+		9600A46A2C74A91B00D7D5EB /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		963702DD2C5C8B38005B52CA /* MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		963703002C5C9061005B52CA /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		963703022C5C9916005B52CA /* ConsentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentManager.swift; sourceTree = "<group>"; };
@@ -376,6 +380,7 @@
 				9661724D2C5F75710007C760 /* UIColorExtension.swift */,
 				9661724E2C5F75720007C760 /* UITableViewExtension.swift */,
 				963703132C5C9A56005B52CA /* UIApplicationExtension.swift */,
+				9600A46A2C74A91B00D7D5EB /* DoubleExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				9661726E2C5F78B20007C760 /* FrequencyManager.swift */,
+				9600A4682C74A13600D7D5EB /* TimeManager.swift */,
 				963703262C5C9AF4005B52CA /* LogEventManager.swift */,
 				9600A45F2C6B3D1F00D7D5EB /* NetworkManager.swift */,
 				9661727A2C5F79AA0007C760 /* Ad */,
@@ -900,6 +906,7 @@
 				966172692C5F780F0007C760 /* Rewarded.swift in Sources */,
 				966172502C5F75720007C760 /* UIColorExtension.swift in Sources */,
 				963703222C5C9A94005B52CA /* ConsentConfig.swift in Sources */,
+				9600A46B2C74A91B00D7D5EB /* DoubleExtension.swift in Sources */,
 				963703012C5C9061005B52CA /* AppManager.swift in Sources */,
 				963703212C5C9A94005B52CA /* Version.swift in Sources */,
 				966172662C5F780F0007C760 /* Interstitial.swift in Sources */,
@@ -915,6 +922,7 @@
 				966172872C5F7A070007C760 /* AdMobRewardedAd.swift in Sources */,
 				966172892C5F7A070007C760 /* AdMobAppOpenAd.swift in Sources */,
 				966172552C5F775F0007C760 /* AdMobViewProtocol.swift in Sources */,
+				9600A4692C74A13600D7D5EB /* TimeManager.swift in Sources */,
 				966172682C5F780F0007C760 /* Splash.swift in Sources */,
 				966172852C5F7A070007C760 /* AdMobNativeAd.swift in Sources */,
 				9661728E2C5F7A2D0007C760 /* AdMobNativeAdView.swift in Sources */,

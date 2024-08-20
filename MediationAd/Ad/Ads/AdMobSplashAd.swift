@@ -133,6 +133,7 @@ extension AdMobSplashAd {
       
       print("[MediationAd] [AdManager] [AdMob] [SplashAd] Start load! (\(String(describing: adUnitID)))")
       LogEventManager.shared.log(event: .adLoadRequest(.admob, .reuse(.splash), adUnitID))
+      TimeManager.shared.start(event: .adLoad(.admob, .reuse(.splash), adUnitID, nil))
       
       let request = GADRequest()
       GADInterstitialAd.load(
@@ -153,7 +154,8 @@ extension AdMobSplashAd {
           return
         }
         print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did load! (\(String(describing: adUnitID)))")
-        LogEventManager.shared.log(event: .adLoadSuccess(.admob, .reuse(.splash), adUnitID))
+        let time = TimeManager.shared.end(event: .adLoad(.admob, .reuse(.splash), adUnitID, nil))
+        LogEventManager.shared.log(event: .adLoadSuccess(.admob, .reuse(.splash), adUnitID, time))
         self.splashAd = ad
         self.splashAd?.fullScreenContentDelegate = self
         self.didLoadSuccess?()

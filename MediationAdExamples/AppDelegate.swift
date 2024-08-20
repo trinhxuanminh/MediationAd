@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let maxSdkKey = "hyf3VVXFdwMCaKeA84k0ll1TfmnfTxZ9tEDNlmdNg-ZFJCQSH9T1uUUXEFCiBnt3_4Qlr26V1gmKtAn9KEACkf"
     let adConfigKey = "AdConfig_1_0"
     
+    AppManager.shared.activeDebugEvent()
 //    ConsentManager.shared.activeDebug(testDeviceIdentifiers: [],
 //                                      reset: true)
     if let url = Bundle.main.url(forResource: "AdDefaultValue", withExtension: "json"),

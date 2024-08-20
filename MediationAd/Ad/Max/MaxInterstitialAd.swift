@@ -69,7 +69,8 @@ class MaxInterstitialAd: NSObject, ReuseAdProtocol {
 extension MaxInterstitialAd: MAAdDelegate, MAAdRevenueDelegate {
   func didLoad(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [InterstitialAd] Did load! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adLoadSuccess(.max, .reuse(.interstitial), adUnitID))
+    let time = TimeManager.shared.end(event: .adLoad(.max, .reuse(.interstitial), adUnitID, nil))
+    LogEventManager.shared.log(event: .adLoadSuccess(.max, .reuse(.interstitial), adUnitID, time))
     self.isLoading = false
     self.retryAttempt = 0
     self.didLoadSuccess?()
@@ -169,6 +170,7 @@ extension MaxInterstitialAd {
       self.isLoading = true
       print("[MediationAd] [AdManager] [Max] [InterstitialAd] Start load! (\(String(describing: adUnitID)))")
       LogEventManager.shared.log(event: .adLoadRequest(.max, .reuse(.interstitial), adUnitID))
+      TimeManager.shared.start(event: .adLoad(.max, .reuse(.interstitial), adUnitID, nil))
       
       self.interstitialAd = MAInterstitialAd(adUnitIdentifier: adUnitID)
       interstitialAd?.delegate = self

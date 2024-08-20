@@ -124,6 +124,7 @@ extension AdMobAppOpenAd {
       self.isLoading = true
       print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Start load! (\(String(describing: adUnitID)))")
       LogEventManager.shared.log(event: .adLoadRequest(.admob, .reuse(.appOpen), adUnitID))
+      TimeManager.shared.start(event: .adLoad(.admob, .reuse(.appOpen), adUnitID, nil))
       
       let request = GADRequest()
       GADAppOpenAd.load(
@@ -142,7 +143,8 @@ extension AdMobAppOpenAd {
           return
         }
         print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Did load! (\(String(describing: adUnitID)))")
-        LogEventManager.shared.log(event: .adLoadSuccess(.admob, .reuse(.appOpen), adUnitID))
+        let time = TimeManager.shared.end(event: .adLoad(.admob, .reuse(.appOpen), adUnitID, nil))
+        LogEventManager.shared.log(event: .adLoadSuccess(.admob, .reuse(.appOpen), adUnitID, time))
         self.retryAttempt = 0
         self.appOpenAd = ad
         self.appOpenAd?.fullScreenContentDelegate = self

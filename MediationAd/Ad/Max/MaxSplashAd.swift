@@ -78,7 +78,8 @@ extension MaxSplashAd: MAAdDelegate, MAAdRevenueDelegate {
     }
     self.didResponse = true
     print("[MediationAd] [AdManager] [Max] [SplashAd] Did load! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adLoadSuccess(.max, .reuse(.splash), adUnitID))
+    let time = TimeManager.shared.end(event: .adLoad(.max, .reuse(.splash), adUnitID, nil))
+    LogEventManager.shared.log(event: .adLoadSuccess(.max, .reuse(.splash), adUnitID, time))
     self.didLoadSuccess?()
   }
   
@@ -176,6 +177,7 @@ extension MaxSplashAd {
       
       print("[MediationAd] [AdManager] [Max] [SplashAd] Start load! (\(String(describing: adUnitID)))")
       LogEventManager.shared.log(event: .adLoadRequest(.max, .reuse(.splash), adUnitID))
+      TimeManager.shared.start(event: .adLoad(.max, .reuse(.splash), adUnitID, nil))
       
       self.splashAd = MAInterstitialAd(adUnitIdentifier: adUnitID)
       splashAd?.delegate = self

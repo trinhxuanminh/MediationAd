@@ -22,6 +22,7 @@ class MaxNativeAd: NSObject, OnceUsedAdProtocol {
   private var adLoader: MANativeAdLoader?
   private weak var rootViewController: UIViewController?
   private var adUnitID: String?
+  private var adName: String?
   private var timeout: Double?
   private var state: State = .wait
   private var didReceive: Handler?
@@ -36,6 +37,7 @@ class MaxNativeAd: NSObject, OnceUsedAdProtocol {
       return
     }
     self.adUnitID = ad.id
+    self.adName = ad.name
     self.timeout = ad.timeout
     
     self.nativeAdView = nativeAdView as? MANativeAdView
@@ -75,7 +77,8 @@ extension MaxNativeAd: MANativeAdDelegate, MAAdRevenueDelegate {
       return
     }
     print("[MediationAd] [AdManager] [Max] [NativeAd] Did load! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adLoadSuccess(.max, .onceUsed(.native), adUnitID))
+    let time = TimeManager.shared.end(event: .adLoad(.max, .onceUsed(.native), adUnitID, adName))
+    LogEventManager.shared.log(event: .adLoadSuccess(.max, .onceUsed(.native), adUnitID, time))
     self.state = .receive
     
     if let currentNativeAd = nativeAd {
@@ -145,6 +148,7 @@ extension MaxNativeAd {
         return
       }
       LogEventManager.shared.log(event: .adLoadRequest(.max, .onceUsed(.native), adUnitID))
+      TimeManager.shared.start(event: .adLoad(.max, .onceUsed(.native), adUnitID, adName))
       self.adLoader = MANativeAdLoader(adUnitIdentifier: adUnitID)
       adLoader?.setLocalExtraParameterForKey("google_native_ad_view_tag", value: 99)
       adLoader?.nativeAdDelegate = self

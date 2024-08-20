@@ -21,6 +21,7 @@ open class MaxBannerAdView: UIView {
   private weak var rootViewController: UIViewController?
   private var bannerAdView: MAAdView?
   private var adUnitID: String?
+  private var adName: String?
   private var state: State = .wait
   private var didReceive: Handler?
   private var didError: Handler?
@@ -60,6 +61,7 @@ open class MaxBannerAdView: UIView {
       return
     }
     self.adUnitID = ad.id
+    self.adName = ad.name
     load()
   }
 }
@@ -75,7 +77,8 @@ extension MaxBannerAdView: MAAdViewAdDelegate, MAAdRevenueDelegate {
   
   public func didLoad(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [BannerAd] Did load! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adLoadSuccess(.max, .onceUsed(.banner), adUnitID))
+    let time = TimeManager.shared.end(event: .adLoad(.max, .onceUsed(.banner), adUnitID, adName))
+    LogEventManager.shared.log(event: .adLoadSuccess(.max, .onceUsed(.banner), adUnitID, time))
     self.state = .receive
     didReceive?()
   }
@@ -174,6 +177,7 @@ extension MaxBannerAdView {
       bannerAdView?.revenueDelegate = self
       bannerAdView?.stopAutoRefresh()
       LogEventManager.shared.log(event: .adLoadRequest(.max, .onceUsed(.banner), adUnitID))
+      TimeManager.shared.start(event: .adLoad(.max, .onceUsed(.banner), adUnitID, adName))
       bannerAdView?.loadAd()
     }
   }
