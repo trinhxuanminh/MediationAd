@@ -41,9 +41,9 @@ public class AdManager {
   public enum Reuse: String {
     case splash
     case appOpen
-    case interstitial
-    case rewarded
-    case rewardedInterstitial
+    case interstitial = "inter"
+    case rewarded = "reward"
+    case rewardedInterstitial = "re_inter"
   }
   
   public enum AdType {

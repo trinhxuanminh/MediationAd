@@ -23,11 +23,24 @@ class LogEventManager {
   func log(event: Event) {
     Analytics.logEvent(event.name, parameters: event.parameters)
     if AppManager.shared.debugLogEvent {
-      print("[MediationAd] [LogEventManager]", event.name, event.parameters ?? String())
+      print("[MediationAd] [LogEventManager]", "[\(isValid(event.name))]", event.name, event.parameters ?? String())
     }
   }
   
+  private func isValid(_ input: String) -> Bool {
+    guard input.count <= 40 else {
+      return false
+    }
+    let pattern = "^[a-zA-Z0-9_]*$"
+    let regex = try! NSRegularExpression(pattern: pattern)
+    let range = NSRange(location: 0, length: input.utf16.count)
+    return regex.firstMatch(in: input, options: [], range: range) != nil
+  }
+  
   enum Event {
+    static let unknow = "Unknow"
+    static let maxCharacter = 6
+    
     case appManagerStartSession
     case appManagerStartConfig
     case appManagerSuccess(Double)
@@ -183,31 +196,31 @@ class LogEventManager {
         return "AdManager_Error"
         
       case .adLoadRequest(let network, let adType, let adUnitID):
-        return "Ad_Load_Request_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+        return "Ad_Load_Request_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? LogEventManager.Event.unknow)"
       case .adLoadFail(let network, let adType, let adUnitID):
-        return "Ad_Load_Fail_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+        return "Ad_Load_Fail_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
       case .adLoadRetryFail(let network, let adType, let adUnitID):
-        return "Ad_Load_Retry_Fail_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+        return "Ad_Load_Retry_Fail_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
       case .adLoadTimeout(let network, let adType, let adUnitID):
-        return "Ad_Load_Timeout_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+        return "Ad_Load_Timeout_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
       case .adLoadSuccess(let network, let adType, let adUnitID, _):
-        return "Ad_Load_Success_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+        return "Ad_Load_Success_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
       case .adShowRequest(let network, let adType, let adUnitID):
-        return "Ad_Show_Request_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+        return "Ad_Show_Request_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
       case .adShowFail(let network, let adType, let adUnitID):
-        return "Ad_Show_Fail_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+        return "Ad_Show_Fail_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
       case .adShowSuccess(let network, let adType, let adUnitID):
-        return "Ad_Show_Success_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+        return "Ad_Show_Success_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
       case .adShowHide(let network, let adType, let adUnitID):
-        return "Ad_Show_Hide_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+        return "Ad_Show_Hide_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
       case .adClick(let network, let adType, let adUnitID):
-        return "Ad_Click_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+        return "Ad_Click_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
       case .adEarnReward(let network, let adType, let adUnitID):
-        return "Ad_Earn_Reward_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+        return "Ad_Earn_Reward_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
       case .adPayRevenue(let network, let adType, let adUnitID):
-        return "Ad_Pay_Revenue_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+        return "Ad_Pay_Revenue_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
       case .adHadRevenue(let network, let adType, let adUnitID):
-        return "Ad_Had_Revenue_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+        return "Ad_Had_Revenue_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
       }
     }
     
