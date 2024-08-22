@@ -19,6 +19,12 @@ public class AdManager {
     static let cache = "AD_CACHE"
   }
   
+  enum Resource: String {
+    case remote
+    case cache
+    case local
+  }
+  
   public enum State: String {
     case wait
     case success
@@ -96,7 +102,7 @@ public class AdManager {
     print("[MediationAd] [AdManager] Start register!")
     LogEventManager.shared.log(event: .adManagerStartRegister)
     
-    decoding(data: remoteData)
+    decoding(data: remoteData, resource: .remote)
     fetchCache()
     fetchDefault()
   }
@@ -359,15 +365,23 @@ extension AdManager {
     UserDefaults.standard.set(data, forKey: Keys.cache)
   }
   
-  private func decoding(data: Data) {
+  private func decoding(data: Data, resource: Resource) {
     guard registerState == .wait else {
       return
     }
     guard let adConfig = try? JSONDecoder().decode(AdConfig.self, from: data) else {
-      print("[MediationAd] [AdManager] Invalid (AdMobConfig) format!")
-      LogEventManager.shared.log(event: .adManagerInvaidFormat)
+      print("[MediationAd] [AdManager] Invalid (AdMobConfig) format - \(resource.rawValue.capitalized)!")
+      switch resource {
+      case .remote:
+        LogEventManager.shared.log(event: .adManagerRemoteInvaidFormat)
+      case .cache:
+        LogEventManager.shared.log(event: .adManagerLocalInvaidFormat)
+      case .local:
+        LogEventManager.shared.log(event: .adManagerCacheInvaidFormat)
+      }
       return
     }
+    
     self.adConfig = adConfig
     updateCache()
     
@@ -382,14 +396,14 @@ extension AdManager {
     guard let cacheData = UserDefaults.standard.data(forKey: Keys.cache) else {
       return
     }
-    decoding(data: cacheData)
+    decoding(data: cacheData, resource: .cache)
   }
   
   private func fetchDefault() {
     guard let defaultData else {
       return
     }
-    decoding(data: defaultData)
+    decoding(data: defaultData, resource: .local)
     change(state: .error)
   }
   
@@ -419,6 +433,18 @@ extension AdManager {
     }
     print("[MediationAd] [AdManager] register \(state)!")
     self.registerState = state
-    LogEventManager.shared.log(event: .adManagerChange(state))
+    
+    switch state {
+    case .success:
+      LogEventManager.shared.log(event: .adManagerSuccess)
+    case .premium:
+      LogEventManager.shared.log(event: .adManagerPremium)
+    case .reject:
+      LogEventManager.shared.log(event: .adManagerReject)
+    case .error:
+      LogEventManager.shared.log(event: .adManagerError)
+    default:
+      break
+    }
   }
 }

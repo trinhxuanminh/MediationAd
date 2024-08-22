@@ -176,6 +176,7 @@ extension MaxBannerAdView {
       bannerAdView?.delegate = self
       bannerAdView?.revenueDelegate = self
       bannerAdView?.stopAutoRefresh()
+      bannerAdView?.setExtraParameterForKey("adaptive_banner", value: "true")
       LogEventManager.shared.log(event: .adLoadRequest(.max, .onceUsed(.banner), adUnitID))
       TimeManager.shared.start(event: .adLoad(.max, .onceUsed(.banner), adUnitID, adName))
       bannerAdView?.loadAd()

@@ -65,7 +65,7 @@ extension RemoteManager {
     guard remoteState == .wait else {
       return
     }
-    print("[MediationAd] [RemoteManager] First load error!")
+    print("[MediationAd] [RemoteManager] Error!")
     change(state: .error)
   }
   
@@ -73,7 +73,7 @@ extension RemoteManager {
     guard remoteState == .wait else {
       return
     }
-    print("[MediationAd] [RemoteManager] First load timeout!")
+    print("[MediationAd] [RemoteManager] Timeout!")
     LogEventManager.shared.log(event: .remoteManagerTimeout)
     
     change(state: .timeout)
@@ -85,7 +85,17 @@ extension RemoteManager {
     }
     self.remoteState = state
     remoteSubject.send(state)
+    
     let time = TimeManager.shared.end(event: .remoteManagerLoad)
-    LogEventManager.shared.log(event: .remoteManagerChange(state, state == .success ? time : nil))
+    switch state {
+    case .success:
+      LogEventManager.shared.log(event: .remoteManagerSuccess(time))
+    case .error:
+      LogEventManager.shared.log(event: .remoteManagerError(time))
+    case .timeout:
+      LogEventManager.shared.log(event: .remoteManagerTimeout)
+    default:
+      break
+    }
   }
 }

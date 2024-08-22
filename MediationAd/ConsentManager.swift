@@ -47,7 +47,7 @@ public class ConsentManager {
       }
       if let formError {
         print("[MediationAd] [ConsentManager] Form error - \(formError.localizedDescription)!")
-        LogEventManager.shared.log(event: .consentManagerFormError)
+        LogEventManager.shared.log(event: .consentManagerUpdateError)
         completed(.error)
         return
       }
@@ -59,7 +59,12 @@ public class ConsentManager {
       let state: State = canShowAds ? .allow : .reject
       ALPrivacySettings.setHasUserConsent(canShowAds)
       self.consentState = state
-      LogEventManager.shared.log(event: .consentManagerUpdateChange(state))
+      
+      if canShowAds {
+        LogEventManager.shared.log(event: .consentManagerUpdateAgree)
+      } else {
+        LogEventManager.shared.log(event: .consentManagerUpdateReject)
+      }
       
       switch state {
       case .allow:
@@ -199,10 +204,8 @@ extension ConsentManager {
         let canShowAds = canShowAds()
         if canShowAds {
           print("[MediationAd] [ConsentManager] Agree consent!")
-          LogEventManager.shared.log(event: .consentManagerAgree)
         } else {
           print("[MediationAd] [ConsentManager] Reject consent!")
-          LogEventManager.shared.log(event: .consentManagerReject)
         }
         change(state: canShowAds ? .allow : .reject)
       }
@@ -228,7 +231,17 @@ extension ConsentManager {
     ALPrivacySettings.setDoNotSell(true)
     
     let time = TimeManager.shared.end(event: .consentManagerCheck)
-    LogEventManager.shared.log(event: .consentManagerChange(state, state != .unknow ? time : nil))
+    switch state {
+    case .allow:
+      LogEventManager.shared.log(event: .consentManagerAgree(time))
+    case .reject:
+      LogEventManager.shared.log(event: .consentManagerReject(time))
+    case .error:
+      LogEventManager.shared.log(event: .consentManagerError(time))
+    default:
+      break
+    }
+    
     self.consentState = state
     switch state {
     case .allow, .error:

@@ -34,11 +34,14 @@ class LogEventManager {
     case appManagerTimeout
     
     case remoteManagerStartLoad
-    case remoteManagerChange(RemoteManager.State, Double?)
+    case remoteManagerSuccess(Double)
+    case remoteManagerError(Double)
     case remoteManagerTimeout
     
     case releaseManagerStartCheck
-    case releaseManagerChange(ReleaseManager.State, Double?)
+    case releaseManagerWaitReview(Double)
+    case releaseManagerLive(Double)
+    case releaseManagerError(Double)
     case releaseManagerTimeout
     
     case consentManagerUseCache
@@ -49,23 +52,29 @@ class LogEventManager {
     case consentManagerTimeout
     case consentManagerInfoError
     case consentManagerFormError
-    case consentManagerAgree
-    case consentManagerReject
+    case consentManagerAgree(Double)
+    case consentManagerReject(Double)
+    case consentManagerError(Double)
     case consentManagerAutoAgree
     case consentManagerAutoAgreeGDPR
-    case consentManagerChange(ConsentManager.State, Double?)
     case consentManagerUpdateRequest
-    case consentManagerUpdateFormError
-    case consentManagerUpdateChange(ConsentManager.State)
+    case consentManagerUpdateAgree
+    case consentManagerUpdateReject
+    case consentManagerUpdateError
     
     case trackingManagerConnected
     case trackingManagerNoConnect
     case trackingManagerAgree
     case trackingManagerReject
     
-    case adManagerChange(AdManager.State)
     case adManagerStartRegister
-    case adManagerInvaidFormat
+    case adManagerRemoteInvaidFormat
+    case adManagerCacheInvaidFormat
+    case adManagerLocalInvaidFormat
+    case adManagerSuccess
+    case adManagerPremium
+    case adManagerReject
+    case adManagerError
     
     case adLoadRequest(MonetizationNetwork, AdManager.AdType, String?)
     case adLoadFail(MonetizationNetwork, AdManager.AdType, String?)
@@ -91,18 +100,27 @@ class LogEventManager {
         return "AppManager_Success"
       case .appManagerTimeout:
         return "AppManager_Timeout"
+        
       case .remoteManagerStartLoad:
         return "RemoteManager_Start_Load"
       case .remoteManagerTimeout:
         return "RemoteManager_Timeout"
-      case .remoteManagerChange:
-        return "RemoteManager_Change"
+      case .remoteManagerSuccess:
+        return "RemoteManager_Success"
+      case .remoteManagerError:
+        return "RemoteManager_Error"
+        
       case .releaseManagerStartCheck:
         return "ReleaseManager_Start_Check"
-      case .releaseManagerChange:
-        return "ReleaseManager_Change"
+      case .releaseManagerWaitReview:
+        return "ReleaseManager_WaitReview"
+      case .releaseManagerLive:
+        return "ReleaseManager_Live"
+      case .releaseManagerError:
+        return "ReleaseManager_Error"
       case .releaseManagerTimeout:
         return "ReleaseManager_Timeout"
+        
       case .consentManagerUseCache:
         return "ConsentManager_Use_Cache"
       case .consentManagerInvalidFormat:
@@ -123,18 +141,21 @@ class LogEventManager {
         return "ConsentManager_Agree"
       case .consentManagerReject:
         return "ConsentManager_Reject"
+      case .consentManagerError:
+        return "ConsentManager_Error"
       case .consentManagerAutoAgree:
         return "ConsentManager_Auto_Agree"
       case .consentManagerAutoAgreeGDPR:
         return "ConsentManager_Auto_Agree_GDPR"
-      case .consentManagerChange:
-        return "ConsentManager_Change"
       case .consentManagerUpdateRequest:
         return "ConsentManager_Update_Request"
-      case .consentManagerUpdateFormError:
-        return "ConsentManager_Update_Form_Error"
-      case .consentManagerUpdateChange:
-        return "ConsentManager_Update_Change"
+      case .consentManagerUpdateAgree:
+        return "ConsentManager_Update_Agree"
+      case .consentManagerUpdateReject:
+        return "ConsentManager_Update_Reject"
+      case .consentManagerUpdateError:
+        return "ConsentManager_Update_Error"
+        
       case .trackingManagerConnected:
         return "TrackingManager_Connected"
       case .trackingManagerNoConnect:
@@ -143,38 +164,50 @@ class LogEventManager {
         return "TrackingManager_Agree"
       case .trackingManagerReject:
         return "TrackingManager_Reject"
-      case .adManagerChange:
-        return "AdManager_Change"
+        
       case .adManagerStartRegister:
         return "AdManager_Start_Register"
-      case .adManagerInvaidFormat:
-        return "AdManager_Invaid_Format"
-      case .adLoadRequest(let monetizationNetwork, _, _):
-        return "Ad_Load_Request_\(monetizationNetwork.rawValue.capitalized)"
-      case .adLoadFail(let monetizationNetwork, _, _):
-        return "Ad_Load_Fail_\(monetizationNetwork.rawValue.capitalized)"
-      case .adLoadRetryFail(let monetizationNetwork, _, _):
-        return "Ad_Load_Retry_Fail_\(monetizationNetwork.rawValue.capitalized)"
-      case .adLoadTimeout(let monetizationNetwork, _, _):
-        return "Ad_Load_Timeout_\(monetizationNetwork.rawValue.capitalized)"
-      case .adLoadSuccess(let monetizationNetwork, _, _, _):
-        return "Ad_Load_Success_\(monetizationNetwork.rawValue.capitalized)"
-      case .adShowRequest(let monetizationNetwork, _, _):
-        return "Ad_Show_Request_\(monetizationNetwork.rawValue.capitalized)"
-      case .adShowFail(let monetizationNetwork, _, _):
-        return "Ad_Show_Fail_\(monetizationNetwork.rawValue.capitalized)"
-      case .adShowSuccess(let monetizationNetwork, _, _):
-        return "Ad_Show_Success_\(monetizationNetwork.rawValue.capitalized)"
-      case .adShowHide(let monetizationNetwork, _, _):
-        return "Ad_Show_Hide_\(monetizationNetwork.rawValue.capitalized)"
-      case .adClick(let monetizationNetwork, _, _):
-        return "Ad_Click_\(monetizationNetwork.rawValue.capitalized)"
-      case .adEarnReward(let monetizationNetwork, _, _):
-        return "Ad_Earn_Reward_\(monetizationNetwork.rawValue.capitalized)"
-      case .adPayRevenue(let monetizationNetwork, _, _):
-        return "Ad_Pay_Revenue_\(monetizationNetwork.rawValue.capitalized)"
-      case .adHadRevenue(let monetizationNetwork, _, _):
-        return "Ad_Had_Revenue_\(monetizationNetwork.rawValue.capitalized)"
+      case .adManagerRemoteInvaidFormat:
+        return "AdManager_Remote_Invaid_Format"
+      case .adManagerCacheInvaidFormat:
+        return "AdManager_Cache_Invaid_Format"
+      case .adManagerLocalInvaidFormat:
+        return "AdManager_Local_Invaid_Format"
+      case .adManagerSuccess:
+        return "AdManager_Success"
+      case .adManagerPremium:
+        return "AdManager_Premium"
+      case .adManagerReject:
+        return "AdManager_Reject"
+      case .adManagerError:
+        return "AdManager_Error"
+        
+      case .adLoadRequest(let network, let adType, let adUnitID):
+        return "Ad_Load_Request_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+      case .adLoadFail(let network, let adType, let adUnitID):
+        return "Ad_Load_Fail_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+      case .adLoadRetryFail(let network, let adType, let adUnitID):
+        return "Ad_Load_Retry_Fail_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+      case .adLoadTimeout(let network, let adType, let adUnitID):
+        return "Ad_Load_Timeout_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+      case .adLoadSuccess(let network, let adType, let adUnitID, _):
+        return "Ad_Load_Success_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+      case .adShowRequest(let network, let adType, let adUnitID):
+        return "Ad_Show_Request_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+      case .adShowFail(let network, let adType, let adUnitID):
+        return "Ad_Show_Fail_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+      case .adShowSuccess(let network, let adType, let adUnitID):
+        return "Ad_Show_Success_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+      case .adShowHide(let network, let adType, let adUnitID):
+        return "Ad_Show_Hide_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+      case .adClick(let network, let adType, let adUnitID):
+        return "Ad_Click_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+      case .adEarnReward(let network, let adType, let adUnitID):
+        return "Ad_Earn_Reward_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+      case .adPayRevenue(let network, let adType, let adUnitID):
+        return "Ad_Pay_Revenue_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
+      case .adHadRevenue(let network, let adType, let adUnitID):
+        return "Ad_Had_Revenue_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(7) ?? "UnknowID")"
       }
     }
     
@@ -182,57 +215,28 @@ class LogEventManager {
       switch self {
       case .appManagerSuccess(let time):
         return ["time": time]
-      case .releaseManagerChange(let state, let time):
-        var param = ["state": state.rawValue]
-        if let time {
-          param["time"] = String(time)
-        }
-        return param
-      case .remoteManagerChange(let state, let time):
-        var param = ["state": state.rawValue]
-        if let time {
-          param["time"] = String(time)
-        }
-        return param
-      case .consentManagerChange(let state, let time):
-        var param = ["state": state.rawValue]
-        if let time {
-          param["time"] = String(time)
-        }
-        return param
-      case .consentManagerUpdateChange(let state):
-        return ["state": state.rawValue]
-      case .adManagerChange(let state):
-        return ["state": state.rawValue]
-      case .adLoadRequest(_, let adType, let adUnitID):
-        return [LogEventManager.adType(adType): adUnitID ?? String()]
-      case .adLoadFail(_, let adType, let adUnitID):
-        return [LogEventManager.adType(adType): adUnitID ?? String()]
-      case .adLoadRetryFail(_, let adType, let adUnitID):
-        return [LogEventManager.adType(adType): adUnitID ?? String()]
-      case .adLoadTimeout(_, let adType, let adUnitID):
-        return [LogEventManager.adType(adType): adUnitID ?? String()]
-      case .adLoadSuccess(_, let adType, let adUnitID, let time):
-        return [
-          LogEventManager.adType(adType): adUnitID ?? String(),
-          "time": time
-        ]
-      case .adShowRequest(_, let adType, let adUnitID):
-        return [LogEventManager.adType(adType): adUnitID ?? String()]
-      case .adShowFail(_, let adType, let adUnitID):
-        return [LogEventManager.adType(adType): adUnitID ?? String()]
-      case .adShowSuccess(_, let adType, let adUnitID):
-        return [LogEventManager.adType(adType): adUnitID ?? String()]
-      case .adShowHide(_, let adType, let adUnitID):
-        return [LogEventManager.adType(adType): adUnitID ?? String()]
-      case .adClick(_, let adType, let adUnitID):
-        return [LogEventManager.adType(adType): adUnitID ?? String()]
-      case .adEarnReward(_, let adType, let adUnitID):
-        return [LogEventManager.adType(adType): adUnitID ?? String()]
-      case .adPayRevenue(_, let adType, let adUnitID):
-        return [LogEventManager.adType(adType): adUnitID ?? String()]
-      case .adHadRevenue(_, let adType, let adUnitID):
-        return [LogEventManager.adType(adType): adUnitID ?? String()]
+        
+      case .remoteManagerSuccess(let time):
+        return ["time": time]
+      case .remoteManagerError(let time):
+        return ["time": time]
+        
+      case .releaseManagerWaitReview(let time):
+        return ["time": time]
+      case .releaseManagerLive(let time):
+        return ["time": time]
+      case .releaseManagerError(let time):
+        return ["time": time]
+        
+      case .consentManagerAgree(let time):
+        return ["time": time]
+      case .consentManagerReject(let time):
+        return ["time": time]
+      case .consentManagerError(let time):
+        return ["time": time]
+        
+      case .adLoadSuccess(_, _, _, let time):
+        return ["time": time]
       default:
         return nil
       }

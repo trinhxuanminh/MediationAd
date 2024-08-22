@@ -185,12 +185,21 @@ extension ReleaseManager {
     guard releaseState == .unknow else {
       return
     }
-    let time = TimeManager.shared.end(event: .releaseManagerCheck)
-    LogEventManager.shared.log(event: .releaseManagerChange(state, state != .unknow ? time : nil))
+    print("[MediationAd] [ReleaseManager] state: \(state)")
     self.releaseState = state
     releaseSubject.send(state)
     
-    print("[MediationAd] [ReleaseManager] state: \(state)")
+    let time = TimeManager.shared.end(event: .releaseManagerCheck)
+    switch state {
+    case .waitReview:
+      LogEventManager.shared.log(event: .releaseManagerWaitReview(time))
+    case .live:
+      LogEventManager.shared.log(event: .releaseManagerLive(time))
+    case .error:
+      LogEventManager.shared.log(event: .releaseManagerError(time))
+    default:
+      break
+    }
   }
   
   private func fetch() {
