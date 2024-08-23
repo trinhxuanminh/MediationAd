@@ -14,7 +14,7 @@ struct AppText {
     static let appOpen = "App_Open_3"
     static let rewarded = "Rewarded_3"
     static let rewardedInterstitial = "Rewarded_Interstitial"
-    static let banner = "Banner_1"
+    static let banner = "Banner_3"
     static let native = "Native_3"
   }
 }

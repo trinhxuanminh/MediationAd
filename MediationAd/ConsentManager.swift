@@ -10,6 +10,8 @@ import UserMessagingPlatform
 import GoogleMobileAds
 import Combine
 import AppLovinSDK
+//import MTGSDK
+import FBAudienceNetwork
 
 public class ConsentManager {
   public static let shared = ConsentManager()
@@ -58,6 +60,8 @@ public class ConsentManager {
       let canShowAds = canShowAds()
       let state: State = canShowAds ? .allow : .reject
       ALPrivacySettings.setHasUserConsent(canShowAds)
+//      MTGSDK.sharedInstance().consentStatus = canShowAds
+      FBAdSettings.setAdvertiserTrackingEnabled(true)
       self.consentState = state
       
       if canShowAds {
@@ -229,6 +233,9 @@ extension ConsentManager {
     
     ALPrivacySettings.setHasUserConsent(hasConsent)
     ALPrivacySettings.setDoNotSell(true)
+//    MTGSDK.sharedInstance().consentStatus = hasConsent
+//    MTGSDK.sharedInstance().doNotTrackStatus = false
+    FBAdSettings.setAdvertiserTrackingEnabled(true)
     
     let time = TimeManager.shared.end(event: .consentManagerCheck)
     switch state {

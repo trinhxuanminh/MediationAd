@@ -1,6 +1,12 @@
 PODS:
+  - Ads-Global (6.1.0.6):
+    - Ads-Global/BUAdSDK (= 6.1.0.6)
+  - Ads-Global/BUAdSDK (6.1.0.6):
+    - Ads-Global/Dep_Accurate
   - Ads-Global/BUAdSDK_Compatible (6.1.0.6):
     - Ads-Global/Dep_Compatible
+  - Ads-Global/Dep_Accurate (6.1.0.6):
+    - BURelyFoundation_Global/Pangle (= 1.0.0.0)
   - Ads-Global/Dep_Compatible (6.1.0.6):
     - BURelyFoundation_Global/Pangle (~> 1.0.0.0)
   - AppLovinMediationByteDanceAdapter (6.1.0.6.0):
@@ -146,6 +152,15 @@ PODS:
   - GoogleMobileAdsMediationAppLovin (12.6.0.0):
     - AppLovinSDK (= 12.6.0)
     - Google-Mobile-Ads-SDK (~> 11.0)
+  - GoogleMobileAdsMediationFacebook (6.15.0.0):
+    - FBAudienceNetwork (= 6.15.0)
+    - Google-Mobile-Ads-SDK (~> 11.0)
+  - GoogleMobileAdsMediationMintegral (7.6.9.0):
+    - Google-Mobile-Ads-SDK (~> 11.0)
+    - MintegralAdSDK/All (= 7.6.9)
+  - GoogleMobileAdsMediationPangle (6.1.0.6.0):
+    - Ads-Global (= 6.1.0.6)
+    - Google-Mobile-Ads-SDK (~> 11.0)
   - GoogleUserMessagingPlatform (2.5.0)
   - GoogleUtilities/AppDelegateSwizzler (7.13.3):
     - GoogleUtilities/Environment
@@ -193,6 +208,15 @@ PODS:
     - MintegralAdSDK/NativeAd (= 7.6.9)
     - MintegralAdSDK/NewInterstitialAd (= 7.6.9)
     - MintegralAdSDK/RewardVideoAd (= 7.6.9)
+  - MintegralAdSDK/All (7.6.9):
+    - MintegralAdSDK/BannerAd
+    - MintegralAdSDK/BidNativeAd
+    - MintegralAdSDK/InterstitialVideoAd
+    - MintegralAdSDK/NativeAd
+    - MintegralAdSDK/NativeAdvancedAd
+    - MintegralAdSDK/NewInterstitialAd
+    - MintegralAdSDK/RewardVideoAd
+    - MintegralAdSDK/SplashAd
   - MintegralAdSDK/BannerAd (7.6.9):
     - MintegralAdSDK/NativeAd
   - MintegralAdSDK/BidBannerAd (7.6.9):
@@ -215,6 +239,8 @@ PODS:
   - MintegralAdSDK/InterstitialVideoAd (7.6.9):
     - MintegralAdSDK/NativeAd
   - MintegralAdSDK/NativeAd (7.6.9)
+  - MintegralAdSDK/NativeAdvancedAd (7.6.9):
+    - MintegralAdSDK/NativeAd
   - MintegralAdSDK/NewInterstitialAd (7.6.9):
     - MintegralAdSDK/InterstitialVideoAd
     - MintegralAdSDK/NativeAd
@@ -263,6 +289,9 @@ DEPENDENCIES:
   - FirebaseRemoteConfig (= 10.25.0)
   - Google-Mobile-Ads-SDK (= 11.5.0)
   - GoogleMobileAdsMediationAppLovin
+  - GoogleMobileAdsMediationFacebook
+  - GoogleMobileAdsMediationMintegral
+  - GoogleMobileAdsMediationPangle
   - NVActivityIndicatorView (= 5.1.1)
   - PurchaseConnector (= 6.14.3)
   - SnapKit (= 5.6.0)
@@ -302,6 +331,9 @@ SPEC REPOS:
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleMobileAdsMediationAppLovin
+    - GoogleMobileAdsMediationFacebook
+    - GoogleMobileAdsMediationMintegral
+    - GoogleMobileAdsMediationPangle
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - InMobiSDK
@@ -352,6 +384,9 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: 7db2098033ad3bfcd72a11e7503b49700a93029e
   GoogleAppMeasurement: 9abf64b682732fed36da827aa2a68f0221fd2356
   GoogleMobileAdsMediationAppLovin: bdd093b9b0469da3206aa7fc049ce92f2b672822
+  GoogleMobileAdsMediationFacebook: 26dec5611c04af55eba3dd16c564bafa8ebd7131
+  GoogleMobileAdsMediationMintegral: 444dee59227cf96c910fcd3e6adcbdb165abeb5a
+  GoogleMobileAdsMediationPangle: 98fbe935f7c0863493af1a6833c49b4b421d92fb
   GoogleUserMessagingPlatform: 6b4f48a370e77ce121d034c908cc6ee4fdafaf13
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
   InMobiSDK: 728c861e41cd738eaf0a26b87f0e3f945e8c5602
@@ -369,6 +404,6 @@ SPEC CHECKSUMS:
   UnityAds: f89ac1e717f5d566a58479a5b7cb9ed3a744cae3
   VungleAds: 4823f53e691ba140ff21e3a3a6897af789832a36
 
-PODFILE CHECKSUM: 0c2aa35234012bc32e64a43e4f5c7a7fa1de6ea2
+PODFILE CHECKSUM: b9d65b9ec165a0f75f86348082c3d6a4d4a30b61
 
 COCOAPODS: 1.15.2

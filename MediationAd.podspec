@@ -31,6 +31,9 @@ This CocoaPods library helps you do ad handling.
     
   spec.dependency 'Google-Mobile-Ads-SDK', '11.5.0' # AdMob
   spec.dependency 'GoogleMobileAdsMediationAppLovin' # AppLovin
+  spec.dependency 'GoogleMobileAdsMediationMintegral' # Mintegral
+  spec.dependency 'GoogleMobileAdsMediationPangle' # Pangle
+  spec.dependency 'GoogleMobileAdsMediationFacebook' # Meta Audience Network
   
   spec.dependency 'AppLovinSDK', '12.6.0' # AppLovin
   spec.dependency 'AppLovinMediationGoogleAdManagerAdapter', '11.5.0.0' # Google Ad Manager
