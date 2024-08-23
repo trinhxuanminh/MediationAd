@@ -265,18 +265,16 @@ extension ConsentManager {
         NSLog("[MediationAd] [AdapterName] %@, Description: %@, Latency: %f", adapter.key,
               adapterStatus.description, adapterStatus.latency)
       }
-      // Start loading ads here...
-    }
-    
-    if let maxSdkKey {
-      let maxInitConfig = ALSdkInitializationConfiguration(sdkKey: maxSdkKey) { builder in
-        builder.mediationProvider = ALMediationProviderMAX
-      }
-      ALSdk.shared().initialize(with: maxInitConfig) { sdkConfig in
+      if let maxSdkKey = self.maxSdkKey {
+        let maxInitConfig = ALSdkInitializationConfiguration(sdkKey: maxSdkKey) { builder in
+          builder.mediationProvider = ALMediationProviderMAX
+        }
+        ALSdk.shared().initialize(with: maxInitConfig) { sdkConfig in
+          completed()
+        }
+      } else {
         completed()
       }
-    } else {
-      completed()
     }
   }
   
