@@ -116,6 +116,8 @@
 		966313E02C5CD5E300D69BBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 966313DF2C5CD5E300D69BBA /* Assets.xcassets */; };
 		966313E32C5CD5E300D69BBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966313E12C5CD5E300D69BBA /* LaunchScreen.storyboard */; };
 		96942B0E2C7872990076CD79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9600A46E2C783FAE00D7D5EB /* GoogleService-Info.plist */; };
+		96942B102C7887E90076CD79 /* MTGSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96942B0F2C7887E90076CD79 /* MTGSDK.xcframework */; };
+		96942B112C7887E90076CD79 /* MTGSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96942B0F2C7887E90076CD79 /* MTGSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E470D43A7C603F7EB512D6C4 /* Pods_MediationAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1AC247DFA8DD5E326E9334 /* Pods_MediationAd.framework */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +141,7 @@
 				9661731C2C63C8F50007C760 /* FBAudienceNetwork.xcframework in Embed Frameworks */,
 				966173142C638FF00007C760 /* InMobiSDK.xcframework in Embed Frameworks */,
 				966172972C60776B0007C760 /* AppsFlyerLib.xcframework in Embed Frameworks */,
+				96942B112C7887E90076CD79 /* MTGSDK.xcframework in Embed Frameworks */,
 				966172D82C620B860007C760 /* AppLovinSDK.xcframework in Embed Frameworks */,
 				9661729A2C6077950007C760 /* AppsFlyerAdRevenue.xcframework in Embed Frameworks */,
 				9661729D2C60779C0007C760 /* PurchaseConnector.xcframework in Embed Frameworks */,
@@ -269,6 +272,7 @@
 		966313DF2C5CD5E300D69BBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		966313E22C5CD5E300D69BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		966313E42C5CD5E300D69BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96942B0F2C7887E90076CD79 /* MTGSDK.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:DJRJZKDWWH:Mobvista (guangzhou) Technology Co., Ltd."; lastKnownFileType = wrapper.xcframework; name = MTGSDK.xcframework; path = Pods/MintegralAdSDK/Fmk/MTGSDK.xcframework; sourceTree = "<group>"; };
 		BC1AC247DFA8DD5E326E9334 /* Pods_MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C53D6A249CD0132BE52619C4 /* Pods-MediationAd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.debug.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.debug.xcconfig"; sourceTree = "<group>"; };
 		CBB5D8E7E17923239AA744D0 /* Pods-MediationAd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.release.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.release.xcconfig"; sourceTree = "<group>"; };
@@ -282,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E470D43A7C603F7EB512D6C4 /* Pods_MediationAd.framework in Frameworks */,
+				96942B102C7887E90076CD79 /* MTGSDK.xcframework in Frameworks */,
 				966172CF2C61C9130007C760 /* GoogleMobileAds.xcframework in Frameworks */,
 				966172962C60776B0007C760 /* AppsFlyerLib.xcframework in Frameworks */,
 				966173132C638FF00007C760 /* InMobiSDK.xcframework in Frameworks */,
@@ -684,6 +689,7 @@
 		DA690AA92AD1B955EE21AD02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				96942B0F2C7887E90076CD79 /* MTGSDK.xcframework */,
 				9600A4632C6DECAC00D7D5EB /* SnapKit.framework */,
 				966173452C64E3060007C760 /* AppTrackingTransparency.framework */,
 				9661731A2C63C8F50007C760 /* FBAudienceNetwork.xcframework */,
@@ -1076,6 +1082,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+				WARNING_CFLAGS = "";
 			};
 			name = Debug;
 		};
@@ -1137,6 +1144,7 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+				WARNING_CFLAGS = "";
 			};
 			name = Release;
 		};
@@ -1237,6 +1245,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = "$(inherited)";
+				WARNING_CFLAGS = "";
 			};
 			name = Debug;
 		};
@@ -1336,6 +1345,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = "$(inherited)";
+				WARNING_CFLAGS = "";
 			};
 			name = Release;
 		};
@@ -1374,6 +1384,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				WARNING_CFLAGS = "";
 			};
 			name = Debug;
 		};
@@ -1412,6 +1423,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				WARNING_CFLAGS = "";
 			};
 			name = Release;
 		};
