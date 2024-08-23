@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "MediationAd"
-  spec.version      = "0.0.17"
+  spec.version      = "0.0.18"
   spec.summary      = "MediationAd of ProxGlobal"
 
   spec.description  = <<-DESC
@@ -30,6 +30,7 @@ This CocoaPods library helps you do ad handling.
   spec.dependency 'NVActivityIndicatorView', '5.1.1'
     
   spec.dependency 'Google-Mobile-Ads-SDK', '11.5.0' # AdMob
+  spec.dependency 'GoogleMobileAdsMediationAppLovin' # AppLovin
   
   spec.dependency 'AppLovinSDK', '12.6.0' # AppLovin
   spec.dependency 'AppLovinMediationGoogleAdManagerAdapter', '11.5.0.0' # Google Ad Manager

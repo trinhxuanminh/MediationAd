@@ -16,6 +16,7 @@ target 'MediationAd' do
   pod 'PurchaseConnector', '6.14.3'
   pod 'SwiftJWT', '3.6.200'
   pod 'Google-Mobile-Ads-SDK', '11.5.0' # AdMob
+  pod 'GoogleMobileAdsMediationAppLovin' # AppLovin
   
   pod 'AppLovinSDK', '12.6.0' # AppLovin
   pod 'AppLovinMediationGoogleAdManagerAdapter', '11.5.0.0' # Google Ad Manager

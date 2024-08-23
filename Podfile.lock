@@ -143,6 +143,9 @@ PODS:
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
     - nanopb (< 2.30911.0, >= 2.30908.0)
+  - GoogleMobileAdsMediationAppLovin (12.6.0.0):
+    - AppLovinSDK (= 12.6.0)
+    - Google-Mobile-Ads-SDK (~> 11.0)
   - GoogleUserMessagingPlatform (2.5.0)
   - GoogleUtilities/AppDelegateSwizzler (7.13.3):
     - GoogleUtilities/Environment
@@ -259,6 +262,7 @@ DEPENDENCIES:
   - Firebase (= 10.25.0)
   - FirebaseRemoteConfig (= 10.25.0)
   - Google-Mobile-Ads-SDK (= 11.5.0)
+  - GoogleMobileAdsMediationAppLovin
   - NVActivityIndicatorView (= 5.1.1)
   - PurchaseConnector (= 6.14.3)
   - SnapKit (= 5.6.0)
@@ -297,6 +301,7 @@ SPEC REPOS:
     - Fyber_Marketplace_SDK
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
+    - GoogleMobileAdsMediationAppLovin
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - InMobiSDK
@@ -346,6 +351,7 @@ SPEC CHECKSUMS:
   Fyber_Marketplace_SDK: 23285d363d7a56d77e97a9699685885069deb3f7
   Google-Mobile-Ads-SDK: 7db2098033ad3bfcd72a11e7503b49700a93029e
   GoogleAppMeasurement: 9abf64b682732fed36da827aa2a68f0221fd2356
+  GoogleMobileAdsMediationAppLovin: bdd093b9b0469da3206aa7fc049ce92f2b672822
   GoogleUserMessagingPlatform: 6b4f48a370e77ce121d034c908cc6ee4fdafaf13
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
   InMobiSDK: 728c861e41cd738eaf0a26b87f0e3f945e8c5602
@@ -363,6 +369,6 @@ SPEC CHECKSUMS:
   UnityAds: f89ac1e717f5d566a58479a5b7cb9ed3a744cae3
   VungleAds: 4823f53e691ba140ff21e3a3a6897af789832a36
 
-PODFILE CHECKSUM: f8a60b834254c4667f321f480180cff303a2f706
+PODFILE CHECKSUM: 0c2aa35234012bc32e64a43e4f5c7a7fa1de6ea2
 
 COCOAPODS: 1.15.2
