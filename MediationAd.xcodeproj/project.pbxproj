@@ -115,7 +115,7 @@
 		966313DE2C5CD5E200D69BBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966313DC2C5CD5E200D69BBA /* Main.storyboard */; };
 		966313E02C5CD5E300D69BBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 966313DF2C5CD5E300D69BBA /* Assets.xcassets */; };
 		966313E32C5CD5E300D69BBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966313E12C5CD5E300D69BBA /* LaunchScreen.storyboard */; };
-		966313E92C5CD66700D69BBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 966313E82C5CD66600D69BBA /* GoogleService-Info.plist */; };
+		96942B0E2C7872990076CD79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9600A46E2C783FAE00D7D5EB /* GoogleService-Info.plist */; };
 		E470D43A7C603F7EB512D6C4 /* Pods_MediationAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1AC247DFA8DD5E326E9334 /* Pods_MediationAd.framework */; };
 /* End PBXBuildFile section */
 
@@ -169,6 +169,7 @@
 		9600A4682C74A13600D7D5EB /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		9600A46A2C74A91B00D7D5EB /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		9600A46C2C7733C800D7D5EB /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		9600A46E2C783FAE00D7D5EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		963702DD2C5C8B38005B52CA /* MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		963703002C5C9061005B52CA /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		963703022C5C9916005B52CA /* ConsentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentManager.swift; sourceTree = "<group>"; };
@@ -268,7 +269,6 @@
 		966313DF2C5CD5E300D69BBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		966313E22C5CD5E300D69BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		966313E42C5CD5E300D69BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		966313E82C5CD66600D69BBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BC1AC247DFA8DD5E326E9334 /* Pods_MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C53D6A249CD0132BE52619C4 /* Pods-MediationAd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.debug.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.debug.xcconfig"; sourceTree = "<group>"; };
 		CBB5D8E7E17923239AA744D0 /* Pods-MediationAd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationAd.release.xcconfig"; path = "Target Support Files/Pods-MediationAd/Pods-MediationAd.release.xcconfig"; sourceTree = "<group>"; };
@@ -656,8 +656,8 @@
 		966313D52C5CD5E200D69BBA /* MediationAdExamples */ = {
 			isa = PBXGroup;
 			children = (
+				9600A46E2C783FAE00D7D5EB /* GoogleService-Info.plist */,
 				966172A02C6086060007C760 /* AdDefaultValue.json */,
-				966313E82C5CD66600D69BBA /* GoogleService-Info.plist */,
 				966313E42C5CD5E300D69BBA /* Info.plist */,
 				966313D62C5CD5E200D69BBA /* AppDelegate.swift */,
 				966313D82C5CD5E200D69BBA /* SceneDelegate.swift */,
@@ -808,6 +808,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96942B0E2C7872990076CD79 /* GoogleService-Info.plist in Resources */,
 				966313E32C5CD5E300D69BBA /* LaunchScreen.storyboard in Resources */,
 				966172C92C60BBF70007C760 /* BannerViewController.xib in Resources */,
 				966172C12C60BAA50007C760 /* HomeViewController.xib in Resources */,
@@ -815,7 +816,6 @@
 				966172BA2C60B8810007C760 /* CustomAdMobNativeAdView.xib in Resources */,
 				966172A12C6086060007C760 /* AdDefaultValue.json in Resources */,
 				966172FD2C6367E90007C760 /* MediationBannerAdView.xib in Resources */,
-				966313E92C5CD66700D69BBA /* GoogleService-Info.plist in Resources */,
 				966313E02C5CD5E300D69BBA /* Assets.xcassets in Resources */,
 				966173062C6373A90007C760 /* MediationNativeAdView.xib in Resources */,
 				9661730A2C6389510007C760 /* CustomMaxNativeAdView.xib in Resources */,
@@ -1354,6 +1354,7 @@
 				INFOPLIST_FILE = MediationAdExamples/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MediationAdExamples;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This will help us optimize the content and improve the app experience for you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1365,7 +1366,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.proxglobal.MediationAdExamples;
+				PRODUCT_BUNDLE_IDENTIFIER = com.airhorn.fartsounds.pranksounds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1391,6 +1392,7 @@
 				INFOPLIST_FILE = MediationAdExamples/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MediationAdExamples;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This will help us optimize the content and improve the app experience for you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1402,7 +1404,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.proxglobal.MediationAdExamples;
+				PRODUCT_BUNDLE_IDENTIFIER = com.airhorn.fartsounds.pranksounds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

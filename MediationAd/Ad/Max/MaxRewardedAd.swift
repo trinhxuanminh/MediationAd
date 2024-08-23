@@ -74,6 +74,9 @@ extension MaxRewardedAd: MARewardedAdDelegate, MAAdRevenueDelegate {
     LogEventManager.shared.log(event: .adLoadSuccess(.max, .reuse(.rewarded), adUnitID, time))
     self.retryAttempt = 0
     self.didLoadSuccess?()
+    
+    let network = ad.networkName
+    print("[MediationAd] [AdManager] [Max] [RewardAd] Adapter(\(String(describing: network)))!")
   }
   
   func didFailToLoadAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {

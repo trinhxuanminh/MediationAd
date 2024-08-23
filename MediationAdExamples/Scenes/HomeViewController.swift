@@ -14,7 +14,7 @@ class HomeViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Active sau khi register ads success
-    AdManager.shared.activeDebug()
+//    AdManager.shared.activeDebug()
   }
   
   override func viewDidAppear(_ animated: Bool) {

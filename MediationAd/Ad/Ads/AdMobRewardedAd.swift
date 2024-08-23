@@ -162,6 +162,9 @@ extension AdMobRewardedAd {
         self.rewardedAd?.fullScreenContentDelegate = self
         self.didLoadSuccess?()
         
+        let network = ad.responseInfo.adNetworkInfoArray.first
+        print("[MediationAd] [AdManager] [AdMob] [RewardAd] Adapter(\(String(describing: network)))!")
+        
         ad.paidEventHandler = { adValue in
           print("[MediationAd] [AdManager] [AdMob] [RewardAd] Did pay revenue(\(adValue.value))!")
           LogEventManager.shared.log(event: .adPayRevenue(.admob, .reuse(.rewarded), adUnitID))

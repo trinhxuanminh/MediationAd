@@ -113,6 +113,9 @@ extension AdMobBannerAdView: GADBannerViewDelegate {
     self.bringSubviewToFront(self.bannerAdView)
     didReceive?()
     
+    let network = bannerAdView.responseInfo?.adNetworkInfoArray.first
+    print("[MediationAd] [AdManager] [AdMob] [BannerAd] Adapter(\(String(describing: network)))!")
+    
     bannerView.paidEventHandler = { [weak self] adValue in
       guard let self else {
         return

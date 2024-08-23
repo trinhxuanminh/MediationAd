@@ -24,7 +24,7 @@ class SplashViewController: BaseViewController {
           AdManager.shared.load(type: .appOpen, name: AppText.AdName.appOpen)
           AdManager.shared.load(type: .rewarded, name: AppText.AdName.rewarded)
           AdManager.shared.load(type: .rewardedInterstitial, name: AppText.AdName.rewardedInterstitial)
-          AdManager.shared.preloadNative(name: AppText.AdName.native, into: CustomMaxNativeAdView().nativeAdView)
+//          AdManager.shared.preloadNative(name: AppText.AdName.native, into: CustomMaxNativeAdView().nativeAdView)
         case .reject, .premium:
           self.toHome()
         case .wait:

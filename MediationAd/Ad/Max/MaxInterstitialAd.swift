@@ -74,6 +74,9 @@ extension MaxInterstitialAd: MAAdDelegate, MAAdRevenueDelegate {
     self.isLoading = false
     self.retryAttempt = 0
     self.didLoadSuccess?()
+    
+    let network = ad.networkName
+    print("[MediationAd] [AdManager] [Max] [InterstitialAd] Adapter(\(String(describing: network)))!")
   }
   
   func didFailToLoadAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {

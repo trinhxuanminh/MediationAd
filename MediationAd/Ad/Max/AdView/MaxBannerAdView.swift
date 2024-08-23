@@ -81,6 +81,9 @@ extension MaxBannerAdView: MAAdViewAdDelegate, MAAdRevenueDelegate {
     LogEventManager.shared.log(event: .adLoadSuccess(.max, .onceUsed(.banner), adUnitID, time))
     self.state = .receive
     didReceive?()
+    
+    let network = ad.networkName
+    print("[MediationAd] [AdManager] [Max] [BannerAd] Adapter(\(String(describing: network)))!")
   }
   
   public func didFailToLoadAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {

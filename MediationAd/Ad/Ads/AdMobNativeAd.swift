@@ -82,6 +82,9 @@ extension AdMobNativeAd: GADNativeAdLoaderDelegate {
     self.nativeAd = nativeAd
     didReceive?()
     
+    let network = nativeAd.responseInfo.adNetworkInfoArray.first
+    print("[MediationAd] [AdManager] [AdMob] [NativeAd] Adapter(\(String(describing: network)))!")
+    
     nativeAd.paidEventHandler = { [weak self] adValue in
       guard let self else {
         return

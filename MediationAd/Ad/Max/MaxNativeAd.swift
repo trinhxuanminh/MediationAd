@@ -92,6 +92,10 @@ extension MaxNativeAd: MANativeAdDelegate, MAAdRevenueDelegate {
     self.nativeAdView = nativeAdView
     
     didReceive?()
+    
+    
+    let network = ad.networkName
+    print("[MediationAd] [AdManager] [Max] [NativeAd] Adapter(\(String(describing: network)))!")
   }
   
   func didFailToLoadNativeAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {

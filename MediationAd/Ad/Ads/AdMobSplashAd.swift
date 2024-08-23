@@ -160,6 +160,9 @@ extension AdMobSplashAd {
         self.splashAd?.fullScreenContentDelegate = self
         self.didLoadSuccess?()
         
+        let network = ad.responseInfo.adNetworkInfoArray.first
+        print("[MediationAd] [AdManager] [AdMob] [SplashAd] Adapter(\(String(describing: network)))!")
+        
         ad.paidEventHandler = { adValue in
           print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did pay revenue(\(adValue.value))!")
           LogEventManager.shared.log(event: .adPayRevenue(.admob, .reuse(.splash), adUnitID))

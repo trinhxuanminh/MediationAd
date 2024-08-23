@@ -81,6 +81,9 @@ extension MaxSplashAd: MAAdDelegate, MAAdRevenueDelegate {
     let time = TimeManager.shared.end(event: .adLoad(.max, .reuse(.splash), adUnitID, nil))
     LogEventManager.shared.log(event: .adLoadSuccess(.max, .reuse(.splash), adUnitID, time))
     self.didLoadSuccess?()
+    
+    let network = ad.networkName
+    print("[MediationAd] [AdManager] [Max] [SplashAd] Adapter(\(String(describing: network)))!")
   }
   
   func didFailToLoadAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {

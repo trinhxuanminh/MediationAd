@@ -74,6 +74,9 @@ extension MaxAppOpenAd: MAAdDelegate, MAAdRevenueDelegate {
     self.isLoading = false
     self.retryAttempt = 0
     self.didLoadSuccess?()
+    
+    let network = ad.networkName
+    print("[MediationAd] [AdManager] [Max] [AppOpenAd] Adapter(\(String(describing: network)))!")
   }
   
   func didFailToLoadAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {
