@@ -80,17 +80,11 @@ extension MaxInterstitialAd: MAAdDelegate, MAAdRevenueDelegate {
   }
   
   func didFailToLoadAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {
+    print("[MediationAd] [AdManager] [Max] [InterstitialAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
     self.isLoading = false
     self.retryAttempt += 1
-    guard self.retryAttempt == 1 else {
-      LogEventManager.shared.log(event: .adLoadRetryFail(.max, .reuse(.interstitial), adUnitID))
-      self.didLoadFail?()
-      return
-    }
-    LogEventManager.shared.log(event: .adLoadFail(.max, .reuse(.interstitial), adUnitID))
-    let delaySec = 5.0
-    print("[MediationAd] [AdManager] [Max] [InterstitialAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
-    DispatchQueue.global().asyncAfter(deadline: .now() + delaySec, execute: self.load)
+    LogEventManager.shared.log(event: .adLoadRetryFail(.max, .reuse(.interstitial), adUnitID))
+    self.didLoadFail?()
   }
   
   func didDisplay(_ ad: MAAd) {
@@ -145,7 +139,7 @@ extension MaxInterstitialAd: MAAdDelegate, MAAdRevenueDelegate {
 
 extension MaxInterstitialAd {
   private func isReady() -> Bool {
-    if !isExist(), retryAttempt >= 2 {
+    if !isExist(), retryAttempt >= 1 {
       load()
     }
     return isExist()

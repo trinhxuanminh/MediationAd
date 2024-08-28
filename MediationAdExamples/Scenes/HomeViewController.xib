@@ -110,16 +110,33 @@
                         <action selector="touchSettingPrivacy:" destination="-1" eventType="touchUpInside" id="eyz-HP-Vwd"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahg-Ec-UPC">
+                    <rect key="frame" x="0.0" y="762" width="414" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="kW4-hf-I3n"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Show debug">
+                        <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="showDebug:" destination="-1" eventType="touchUpInside" id="Dpd-Wq-3VP"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="6aS-J7-CFt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0Qj-TF-Y9W"/>
+                <constraint firstItem="ahg-Ec-UPC" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="2d6-Tx-1SW"/>
                 <constraint firstItem="b3p-5B-jGN" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="3G5-r9-hs0"/>
                 <constraint firstItem="he4-Gq-28U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4YA-kx-nMM"/>
                 <constraint firstItem="hqy-ZG-RsW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8C3-Vk-tIs"/>
+                <constraint firstItem="ahg-Ec-UPC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Est-Zd-gq6"/>
                 <constraint firstAttribute="trailing" secondItem="GNb-Zm-BrO" secondAttribute="trailing" id="FDZ-2x-KsN"/>
                 <constraint firstItem="6aS-J7-CFt" firstAttribute="top" secondItem="RUq-88-qch" secondAttribute="bottom" constant="30" id="FOJ-Li-n2S"/>
+                <constraint firstItem="he4-Gq-28U" firstAttribute="top" secondItem="ahg-Ec-UPC" secondAttribute="bottom" constant="30" id="GuE-pL-HbJ"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rGy-0y-ZMi" secondAttribute="trailing" id="KSY-zn-pru"/>
                 <constraint firstItem="GNb-Zm-BrO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pey-9o-yF8"/>
                 <constraint firstItem="b3p-5B-jGN" firstAttribute="top" secondItem="GNb-Zm-BrO" secondAttribute="bottom" constant="30" id="Rc3-Pk-Sul"/>

@@ -102,7 +102,7 @@ extension AdMobRewardedInterstitialAd: GADFullScreenContentDelegate {
 
 extension AdMobRewardedInterstitialAd {
   private func isReady() -> Bool {
-    if !isExist(), retryAttempt >= 2 {
+    if !isExist(), retryAttempt >= 1 {
       load()
     }
     return isExist()
@@ -142,16 +142,10 @@ extension AdMobRewardedInterstitialAd {
         }
         self.isLoading = false
         guard error == nil, let ad = ad else {
+          print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
           self.retryAttempt += 1
-          guard self.retryAttempt == 1 else {
-            LogEventManager.shared.log(event: .adLoadRetryFail(.admob, .reuse(.rewardedInterstitial), adUnitID))
-            self.didLoadFail?()
-            return
-          }
-          LogEventManager.shared.log(event: .adLoadFail(.admob, .reuse(.rewardedInterstitial), adUnitID))
-          let delaySec = 5.0
-          print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did fail to load. Reload after \(delaySec)s! (\(String(describing: adUnitID))) - (\(String(describing: error)))")
-          DispatchQueue.global().asyncAfter(deadline: .now() + delaySec, execute: self.load)
+          LogEventManager.shared.log(event: .adLoadRetryFail(.admob, .reuse(.rewardedInterstitial), adUnitID))
+          self.didLoadFail?()
           return
         }
         print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did load! (\(String(describing: adUnitID)))")

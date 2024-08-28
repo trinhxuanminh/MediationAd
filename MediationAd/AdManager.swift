@@ -77,8 +77,19 @@ public class AdManager {
     self.registerState = .success
   }
   
-  public func activeDebug() {
-    ALSdk.shared().showMediationDebugger()
+  public func activeDebug(network: MonetizationNetwork, testDeviceIdentifiers: [String]?) {
+    switch network {
+    case .admob:
+      guard let topVC = UIApplication.topViewController() else {
+        return
+      }
+      GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = testDeviceIdentifiers
+      GADMobileAds.sharedInstance().presentAdInspector(from: topVC) { error in
+        print("[MediationAd] [AdManager] Present adInspector! (\(String(describing: error)))")
+      }
+    case .max:
+      ALSdk.shared().showMediationDebugger()
+    }
   }
   
   public func register(isRelease: Bool,

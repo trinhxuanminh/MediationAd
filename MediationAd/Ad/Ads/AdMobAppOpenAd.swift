@@ -136,9 +136,9 @@ extension AdMobAppOpenAd {
         }
         self.isLoading = false
         guard error == nil, let ad = ad else {
+          print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
           self.retryAttempt += 1
           self.didLoadFail?()
-          print("[MediationAd] [AdManager] [AdMob] [AppOpenAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
           LogEventManager.shared.log(event: .adLoadFail(.admob, .reuse(.appOpen), adUnitID))
           return
         }

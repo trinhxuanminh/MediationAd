@@ -11,12 +11,6 @@ import MediationAd
 class HomeViewController: BaseViewController {
   @IBOutlet weak var updateConsentButton: UIButton!
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Active sau khi register ads success
-//    AdManager.shared.activeDebug()
-  }
-  
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     removeInteractivePopGestureRecognizer()
@@ -70,6 +64,11 @@ class HomeViewController: BaseViewController {
   
   @IBAction func touchBanner(_ sender: Any) {
     push(to: BannerViewController(), animated: true)
+  }
+  
+  @IBAction func showDebug(_ sender: Any) {
+    AdManager.shared.activeDebug(network: .admob,
+                                 testDeviceIdentifiers: ["1a79ae877f6848e451d7c85cc63f19fa"])
   }
   
   @IBAction func touchSettingPrivacy(_ sender: Any) {
