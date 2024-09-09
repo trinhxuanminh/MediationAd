@@ -2,22 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CLIENT_ID</key>
-	<string>971055895502-bcuglmk6gn0oihv067mb1eqi2h326kq0.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.971055895502-bcuglmk6gn0oihv067mb1eqi2h326kq0</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDaCAXpK7J03PTWO-mXBMlvpCtiMIAkZsY</string>
+	<string>AIzaSyBpp-4hqSkijx2PYeuNBJaB76zPHuAYcw4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>971055895502</string>
+	<string>300046196219</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.airhorn.fartsounds.pranksounds</string>
+	<string>com.proxglobal.MediationAdExamples</string>
 	<key>PROJECT_ID</key>
-	<string>pranksound-ebfb1</string>
+	<string>mediationadexamples</string>
 	<key>STORAGE_BUCKET</key>
-	<string>pranksound-ebfb1.appspot.com</string>
+	<string>mediationadexamples.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:971055895502:ios:084f58fcc10e6a8c83d19f</string>
+	<string>1:300046196219:ios:5fc612fd70854daaddbf5e</string>
 </dict>
 </plist>
