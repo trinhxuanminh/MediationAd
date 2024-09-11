@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let adConfigKey = "AdConfig_1_0"
     
     AppManager.shared.activeDebugEvent()
-//    ConsentManager.shared.activeDebug(testDeviceIdentifiers: [],
+//    ConsentManager.shared.activeDebug(testDeviceIdentifiers: ["2F44CD4D-1E75-4923-8721-CA9E7D3FB101"],
 //                                      reset: true)
     if let url = Bundle.main.url(forResource: "AdDefaultValue", withExtension: "json"),
        let defaultData = try? Data(contentsOf: url) {

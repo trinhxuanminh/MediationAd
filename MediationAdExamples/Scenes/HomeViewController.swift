@@ -68,7 +68,7 @@ class HomeViewController: BaseViewController {
   
   @IBAction func showDebug(_ sender: Any) {
     AdManager.shared.activeDebug(network: .admob,
-                                 testDeviceIdentifiers: ["1144e5b1eb31ff927623b3ca29cb6e4c"])
+                                 testDeviceIdentifiers: ["43a3db01a3d0807d5107dda3c7b8bea3"])
   }
   
   @IBAction func touchSettingPrivacy(_ sender: Any) {
