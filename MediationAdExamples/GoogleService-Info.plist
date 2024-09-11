@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyBpp-4hqSkijx2PYeuNBJaB76zPHuAYcw4</string>
+	<string>AIzaSyDoXyYzSXIQODN8pkED_PG0FuuSvHNrNnQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>300046196219</string>
+	<string>20784939635</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.proxglobal.MediationAdExamples</string>
+	<string>com.my2024prediction.emojiprediction.forecastfuture</string>
 	<key>PROJECT_ID</key>
-	<string>mediationadexamples</string>
+	<string>ios-prediction-2024</string>
 	<key>STORAGE_BUCKET</key>
-	<string>mediationadexamples.appspot.com</string>
+	<string>ios-prediction-2024.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:300046196219:ios:5fc612fd70854daaddbf5e</string>
+	<string>1:20784939635:ios:ec82facdd9dc3f43cba006</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-3548016532531500~9936159215</string>
 </dict>
 </plist>
