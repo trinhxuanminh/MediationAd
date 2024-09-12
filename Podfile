@@ -20,9 +20,9 @@ target 'MediationAd' do
   pod 'GoogleMobileAdsMediationMintegral' # Mintegral
   pod 'GoogleMobileAdsMediationPangle' # Pangle
   pod 'GoogleMobileAdsMediationFacebook' # Meta Audience Network
+  pod 'GoogleMobileAdsMediationVungle' # Liftoff Monetize
   
   pod 'AppLovinSDK', '12.6.0' # AppLovin
-  pod 'AppLovinMediationGoogleAdManagerAdapter', '11.5.0.0' # Google Ad Manager
   pod 'AppLovinMediationGoogleAdapter', '11.5.0.0' # Google Bidding and Google AdMob
   pod 'AppLovinMediationUnityAdsAdapter', '4.12.1.0' # Unity Ads
   pod 'AppLovinMediationByteDanceAdapter', '6.1.0.6.0' # Pangle

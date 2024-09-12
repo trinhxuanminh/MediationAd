@@ -12,6 +12,7 @@ import Combine
 import AppLovinSDK
 import MTGSDK
 import FBAudienceNetwork
+import VungleAdsSDK
 
 public class ConsentManager {
   public static let shared = ConsentManager()
@@ -236,6 +237,10 @@ extension ConsentManager {
     MTGSDK.sharedInstance().consentStatus = hasConsent
     MTGSDK.sharedInstance().doNotTrackStatus = false
     FBAdSettings.setAdvertiserTrackingEnabled(true)
+    VunglePrivacySettings.setGDPRStatus(hasConsent)
+    if let nowVersionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+      VunglePrivacySettings.setGDPRMessageVersion(nowVersionString)
+    }
     
     let time = TimeManager.shared.end(event: .consentManagerCheck)
     switch state {

@@ -21,9 +21,6 @@ PODS:
   - AppLovinMediationGoogleAdapter (11.5.0.0):
     - AppLovinSDK
     - Google-Mobile-Ads-SDK (= 11.5.0)
-  - AppLovinMediationGoogleAdManagerAdapter (11.5.0.0):
-    - AppLovinSDK
-    - Google-Mobile-Ads-SDK (= 11.5.0)
   - AppLovinMediationInMobiAdapter (10.7.5.0):
     - AppLovinSDK
     - InMobiSDK (= 10.7.5)
@@ -161,6 +158,9 @@ PODS:
   - GoogleMobileAdsMediationPangle (6.1.0.6.0):
     - Ads-Global (= 6.1.0.6)
     - Google-Mobile-Ads-SDK (~> 11.0)
+  - GoogleMobileAdsMediationVungle (7.4.0.1):
+    - Google-Mobile-Ads-SDK (~> 11.0)
+    - VungleAds (= 7.4.0)
   - GoogleUserMessagingPlatform (2.5.0)
   - GoogleUtilities/AppDelegateSwizzler (7.13.3):
     - GoogleUtilities/Environment
@@ -276,7 +276,6 @@ DEPENDENCIES:
   - AppLovinMediationFacebookAdapter (= 6.15.0.0)
   - AppLovinMediationFyberAdapter (= 8.3.1.0)
   - AppLovinMediationGoogleAdapter (= 11.5.0.0)
-  - AppLovinMediationGoogleAdManagerAdapter (= 11.5.0.0)
   - AppLovinMediationInMobiAdapter (= 10.7.5.0)
   - AppLovinMediationIronSourceAdapter (= 8.1.0.0.1)
   - AppLovinMediationMintegralAdapter (= 7.6.9.0.0)
@@ -292,6 +291,7 @@ DEPENDENCIES:
   - GoogleMobileAdsMediationFacebook
   - GoogleMobileAdsMediationMintegral
   - GoogleMobileAdsMediationPangle
+  - GoogleMobileAdsMediationVungle
   - NVActivityIndicatorView (= 5.1.1)
   - PurchaseConnector (= 6.14.3)
   - SnapKit (= 5.6.0)
@@ -304,7 +304,6 @@ SPEC REPOS:
     - AppLovinMediationFacebookAdapter
     - AppLovinMediationFyberAdapter
     - AppLovinMediationGoogleAdapter
-    - AppLovinMediationGoogleAdManagerAdapter
     - AppLovinMediationInMobiAdapter
     - AppLovinMediationIronSourceAdapter
     - AppLovinMediationMintegralAdapter
@@ -334,6 +333,7 @@ SPEC REPOS:
     - GoogleMobileAdsMediationFacebook
     - GoogleMobileAdsMediationMintegral
     - GoogleMobileAdsMediationPangle
+    - GoogleMobileAdsMediationVungle
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - InMobiSDK
@@ -357,7 +357,6 @@ SPEC CHECKSUMS:
   AppLovinMediationFacebookAdapter: 30ddfcb09c1c9ff6778ba974f58e8f3204e6eebc
   AppLovinMediationFyberAdapter: 2e4e734c6dbcd37f4454d73c2313d98fc8a6c085
   AppLovinMediationGoogleAdapter: d6edc1d9176be45cac0811c76e8fd3eea470bd71
-  AppLovinMediationGoogleAdManagerAdapter: 8902d8bd20ba7fca78526c86d091497a1b563f93
   AppLovinMediationInMobiAdapter: 243dfe62770bda5925167f100fb81c4a3414c035
   AppLovinMediationIronSourceAdapter: 1bde6ead7f3099e4c6da8142ef05d25eb8d7d0b8
   AppLovinMediationMintegralAdapter: f90ef46a2846f5424085801e34835dbe5364fa8a
@@ -387,6 +386,7 @@ SPEC CHECKSUMS:
   GoogleMobileAdsMediationFacebook: 26dec5611c04af55eba3dd16c564bafa8ebd7131
   GoogleMobileAdsMediationMintegral: 444dee59227cf96c910fcd3e6adcbdb165abeb5a
   GoogleMobileAdsMediationPangle: 98fbe935f7c0863493af1a6833c49b4b421d92fb
+  GoogleMobileAdsMediationVungle: bc69ab2ef591459ab7a4d371f69a2dffb41133a8
   GoogleUserMessagingPlatform: 6b4f48a370e77ce121d034c908cc6ee4fdafaf13
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
   InMobiSDK: 728c861e41cd738eaf0a26b87f0e3f945e8c5602
@@ -404,6 +404,6 @@ SPEC CHECKSUMS:
   UnityAds: f89ac1e717f5d566a58479a5b7cb9ed3a744cae3
   VungleAds: 4823f53e691ba140ff21e3a3a6897af789832a36
 
-PODFILE CHECKSUM: b9d65b9ec165a0f75f86348082c3d6a4d4a30b61
+PODFILE CHECKSUM: aa3675f6d14031bde4516aec021b7f1dcaa4e9ce
 
 COCOAPODS: 1.15.2

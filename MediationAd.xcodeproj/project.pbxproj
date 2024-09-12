@@ -13,7 +13,11 @@
 		9600A4692C74A13600D7D5EB /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9600A4682C74A13600D7D5EB /* TimeManager.swift */; };
 		9600A46B2C74A91B00D7D5EB /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9600A46A2C74A91B00D7D5EB /* DoubleExtension.swift */; };
 		9600A46D2C7733C800D7D5EB /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9600A46C2C7733C800D7D5EB /* StringExtension.swift */; };
-		9622EB9E2C91518900B81D9A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9622EB9D2C91518900B81D9A /* GoogleService-Info.plist */; };
+		9622EBA22C92C7CE00B81D9A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9622EBA12C92C7CE00B81D9A /* GoogleService-Info.plist */; };
+		9622EBA42C92CBD100B81D9A /* VungleAdsSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9622EBA32C92CBD100B81D9A /* VungleAdsSDK.xcframework */; };
+		9622EBA52C92CBD100B81D9A /* VungleAdsSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9622EBA32C92CBD100B81D9A /* VungleAdsSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9622EBA72C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9622EBA62C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework */; };
+		9622EBA82C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9622EBA62C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		963703012C5C9061005B52CA /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703002C5C9061005B52CA /* AppManager.swift */; };
 		963703032C5C9916005B52CA /* ConsentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703022C5C9916005B52CA /* ConsentManager.swift */; };
 		963703062C5C993E005B52CA /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703052C5C993E005B52CA /* APIError.swift */; };
@@ -140,8 +144,10 @@
 			files = (
 				9661731C2C63C8F50007C760 /* FBAudienceNetwork.xcframework in Embed Frameworks */,
 				966173142C638FF00007C760 /* InMobiSDK.xcframework in Embed Frameworks */,
+				9622EBA52C92CBD100B81D9A /* VungleAdsSDK.xcframework in Embed Frameworks */,
 				966172972C60776B0007C760 /* AppsFlyerLib.xcframework in Embed Frameworks */,
 				96942B112C7887E90076CD79 /* MTGSDK.xcframework in Embed Frameworks */,
+				9622EBA82C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework in Embed Frameworks */,
 				966172D82C620B860007C760 /* AppLovinSDK.xcframework in Embed Frameworks */,
 				9661729A2C6077950007C760 /* AppsFlyerAdRevenue.xcframework in Embed Frameworks */,
 				9661729D2C60779C0007C760 /* PurchaseConnector.xcframework in Embed Frameworks */,
@@ -172,7 +178,9 @@
 		9600A4682C74A13600D7D5EB /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		9600A46A2C74A91B00D7D5EB /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		9600A46C2C7733C800D7D5EB /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		9622EB9D2C91518900B81D9A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9622EBA12C92C7CE00B81D9A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9622EBA32C92CBD100B81D9A /* VungleAdsSDK.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:GTA9LK7P23:Vungle, Inc."; lastKnownFileType = wrapper.xcframework; name = VungleAdsSDK.xcframework; path = Pods/VungleAds/static/VungleAdsSDK.xcframework; sourceTree = "<group>"; };
+		9622EBA62C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LiftoffMonetizeAdapter.xcframework; path = "Pods/GoogleMobileAdsMediationVungle/LiftoffMonetizeAdapter-7.4.0.1/LiftoffMonetizeAdapter.xcframework"; sourceTree = "<group>"; };
 		963702DD2C5C8B38005B52CA /* MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		963703002C5C9061005B52CA /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		963703022C5C9916005B52CA /* ConsentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentManager.swift; sourceTree = "<group>"; };
@@ -285,9 +293,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9622EBA42C92CBD100B81D9A /* VungleAdsSDK.xcframework in Frameworks */,
 				E470D43A7C603F7EB512D6C4 /* Pods_MediationAd.framework in Frameworks */,
 				96942B102C7887E90076CD79 /* MTGSDK.xcframework in Frameworks */,
 				966172CF2C61C9130007C760 /* GoogleMobileAds.xcframework in Frameworks */,
+				9622EBA72C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework in Frameworks */,
 				966172962C60776B0007C760 /* AppsFlyerLib.xcframework in Frameworks */,
 				966173132C638FF00007C760 /* InMobiSDK.xcframework in Frameworks */,
 				9661731B2C63C8F50007C760 /* FBAudienceNetwork.xcframework in Frameworks */,
@@ -661,7 +671,7 @@
 		966313D52C5CD5E200D69BBA /* MediationAdExamples */ = {
 			isa = PBXGroup;
 			children = (
-				9622EB9D2C91518900B81D9A /* GoogleService-Info.plist */,
+				9622EBA12C92C7CE00B81D9A /* GoogleService-Info.plist */,
 				966172A02C6086060007C760 /* AdDefaultValue.json */,
 				966313E42C5CD5E300D69BBA /* Info.plist */,
 				966313D62C5CD5E200D69BBA /* AppDelegate.swift */,
@@ -689,6 +699,8 @@
 		DA690AA92AD1B955EE21AD02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9622EBA62C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework */,
+				9622EBA32C92CBD100B81D9A /* VungleAdsSDK.xcframework */,
 				96942B0F2C7887E90076CD79 /* MTGSDK.xcframework */,
 				9600A4632C6DECAC00D7D5EB /* SnapKit.framework */,
 				966173452C64E3060007C760 /* AppTrackingTransparency.framework */,
@@ -819,7 +831,7 @@
 				966172C12C60BAA50007C760 /* HomeViewController.xib in Resources */,
 				966172C42C60BB800007C760 /* NativeViewController.xib in Resources */,
 				966172BA2C60B8810007C760 /* CustomAdMobNativeAdView.xib in Resources */,
-				9622EB9E2C91518900B81D9A /* GoogleService-Info.plist in Resources */,
+				9622EBA22C92C7CE00B81D9A /* GoogleService-Info.plist in Resources */,
 				966172A12C6086060007C760 /* AdDefaultValue.json in Resources */,
 				966172FD2C6367E90007C760 /* MediationBannerAdView.xib in Resources */,
 				966313E02C5CD5E300D69BBA /* Assets.xcassets in Resources */,
