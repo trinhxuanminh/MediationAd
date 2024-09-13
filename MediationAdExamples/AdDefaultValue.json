@@ -18,6 +18,15 @@
       "isAuto": false,
       "description": "",
       "timeout": 30
+    },
+    {
+      "name": "Splash_3",
+      "status": true,
+      "network": "admob",
+      "id": "ca-app-pub-3548016532531500/4413481599",
+      "isAuto": false,
+      "description": "",
+      "timeout": 30
     }
   ],
   "appOpens": [
@@ -33,7 +42,15 @@
       "name": "App_Open_2",
       "status": true,
       "network": "max",
-      "id": "91eba1be89f67cce",
+      "id": "c4b4468b257779df",
+      "isAuto": false,
+      "description": ""
+    },
+    {
+      "name": "App_Open_3",
+      "status": true,
+      "network": "admob",
+      "id": "ca-app-pub-3548016532531500/4712848581",
       "isAuto": false,
       "description": ""
     }
@@ -49,7 +66,13 @@
       "name": "Rewarded_2",
       "status": true,
       "network": "max",
-      "id": "4d61820168b71fd0"
+      "id": "b0d2b53a93f73894"
+    },
+    {
+      "name": "Rewarded_3",
+      "status": true,
+      "network": "admob",
+      "id": "ca-app-pub-3548016532531500/6572725165"
     }
   ],
   "rewardedInterstitials": [
@@ -74,8 +97,16 @@
       "name": "Interstitial_2",
       "status": true,
       "network": "max",
-      "id": "24bb562e46b0a487",
+      "id": "0eed4ffe2ccd1745",
       "isAuto": false
+    },
+    {
+      "name": "Interstitial_3",
+      "status": true,
+      "network": "admob",
+      "id": "ca-app-pub-3548016532531500/4413481599",
+      "isAuto": true,
+      "description": ""
     }
   ],
   "banners": [
@@ -90,7 +121,14 @@
       "name": "Banner_2",
       "status": true,
       "network": "max",
-      "id": "9dffb485e0cc329f",
+      "id": "ecb3954e974c20b3",
+      "description": ""
+    },
+    {
+      "name": "Banner_3",
+      "status": true,
+      "network": "admob",
+      "id": "ca-app-pub-3548016532531500/1406785391",
       "description": ""
     }
   ],
@@ -107,7 +145,15 @@
       "name": "Native_2",
       "status": true,
       "network": "max",
-      "id": "2bfbce06e6b87171",
+      "id": "5b1c446a190fc9a1",
+      "description": "",
+      "isPreload": true
+    },
+    {
+      "name": "Native_3",
+      "status": true,
+      "network": "admob",
+      "id": "ca-app-pub-3548016532531500/4249814151",
       "description": "",
       "isPreload": true
     }

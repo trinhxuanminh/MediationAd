@@ -181,6 +181,7 @@
 		9622EBA12C92C7CE00B81D9A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9622EBA32C92CBD100B81D9A /* VungleAdsSDK.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:GTA9LK7P23:Vungle, Inc."; lastKnownFileType = wrapper.xcframework; name = VungleAdsSDK.xcframework; path = Pods/VungleAds/static/VungleAdsSDK.xcframework; sourceTree = "<group>"; };
 		9622EBA62C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LiftoffMonetizeAdapter.xcframework; path = "Pods/GoogleMobileAdsMediationVungle/LiftoffMonetizeAdapter-7.4.0.1/LiftoffMonetizeAdapter.xcframework"; sourceTree = "<group>"; };
+		9622EBA92C92F68A00B81D9A /* MetaAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MetaAdapter.xcframework; path = "Pods/GoogleMobileAdsMediationFacebook/MetaAdapter-6.15.0.0/MetaAdapter.xcframework"; sourceTree = "<group>"; };
 		963702DD2C5C8B38005B52CA /* MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		963703002C5C9061005B52CA /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		963703022C5C9916005B52CA /* ConsentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentManager.swift; sourceTree = "<group>"; };
@@ -699,6 +700,7 @@
 		DA690AA92AD1B955EE21AD02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9622EBA92C92F68A00B81D9A /* MetaAdapter.xcframework */,
 				9622EBA62C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework */,
 				9622EBA32C92CBD100B81D9A /* VungleAdsSDK.xcframework */,
 				96942B0F2C7887E90076CD79 /* MTGSDK.xcframework */,
