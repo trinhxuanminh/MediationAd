@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "MediationAd"
-  spec.version      = "0.0.19"
+  spec.version      = "0.0.20"
   spec.summary      = "MediationAd of ProxGlobal"
 
   spec.description  = <<-DESC
@@ -35,6 +35,7 @@ This CocoaPods library helps you do ad handling.
   spec.dependency 'GoogleMobileAdsMediationPangle' # Pangle
   spec.dependency 'GoogleMobileAdsMediationFacebook' # Meta Audience Network
   spec.dependency 'GoogleMobileAdsMediationVungle' # Liftoff Monetize
+  spec.dependency 'GoogleMobileAdsMediationFyber' # DT Exchange
   
   spec.dependency 'AppLovinSDK', '12.6.0' # AppLovin
   spec.dependency 'AppLovinMediationGoogleAdapter', '11.5.0.0' # Google Bidding and Google AdMob
