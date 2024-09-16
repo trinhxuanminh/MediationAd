@@ -18,6 +18,8 @@
 		9622EBA52C92CBD100B81D9A /* VungleAdsSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9622EBA32C92CBD100B81D9A /* VungleAdsSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9622EBA72C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9622EBA62C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework */; };
 		9622EBA82C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9622EBA62C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9622EBFF2C97D2E600B81D9A /* IASDKCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9622EBFE2C97D2E600B81D9A /* IASDKCore.xcframework */; };
+		9622EC002C97D2E600B81D9A /* IASDKCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9622EBFE2C97D2E600B81D9A /* IASDKCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		963703012C5C9061005B52CA /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703002C5C9061005B52CA /* AppManager.swift */; };
 		963703032C5C9916005B52CA /* ConsentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703022C5C9916005B52CA /* ConsentManager.swift */; };
 		963703062C5C993E005B52CA /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963703052C5C993E005B52CA /* APIError.swift */; };
@@ -143,6 +145,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9661731C2C63C8F50007C760 /* FBAudienceNetwork.xcframework in Embed Frameworks */,
+				9622EC002C97D2E600B81D9A /* IASDKCore.xcframework in Embed Frameworks */,
 				966173142C638FF00007C760 /* InMobiSDK.xcframework in Embed Frameworks */,
 				9622EBA52C92CBD100B81D9A /* VungleAdsSDK.xcframework in Embed Frameworks */,
 				966172972C60776B0007C760 /* AppsFlyerLib.xcframework in Embed Frameworks */,
@@ -182,6 +185,7 @@
 		9622EBA32C92CBD100B81D9A /* VungleAdsSDK.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:GTA9LK7P23:Vungle, Inc."; lastKnownFileType = wrapper.xcframework; name = VungleAdsSDK.xcframework; path = Pods/VungleAds/static/VungleAdsSDK.xcframework; sourceTree = "<group>"; };
 		9622EBA62C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LiftoffMonetizeAdapter.xcframework; path = "Pods/GoogleMobileAdsMediationVungle/LiftoffMonetizeAdapter-7.4.0.1/LiftoffMonetizeAdapter.xcframework"; sourceTree = "<group>"; };
 		9622EBA92C92F68A00B81D9A /* MetaAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MetaAdapter.xcframework; path = "Pods/GoogleMobileAdsMediationFacebook/MetaAdapter-6.15.0.0/MetaAdapter.xcframework"; sourceTree = "<group>"; };
+		9622EBFE2C97D2E600B81D9A /* IASDKCore.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:9G2AGGBJ52:Inneractive LTD"; lastKnownFileType = wrapper.xcframework; name = IASDKCore.xcframework; path = Pods/Fyber_Marketplace_SDK/IASDKCore/IASDKCore.xcframework; sourceTree = "<group>"; };
 		963702DD2C5C8B38005B52CA /* MediationAd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediationAd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		963703002C5C9061005B52CA /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		963703022C5C9916005B52CA /* ConsentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentManager.swift; sourceTree = "<group>"; };
@@ -295,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9622EBA42C92CBD100B81D9A /* VungleAdsSDK.xcframework in Frameworks */,
+				9622EBFF2C97D2E600B81D9A /* IASDKCore.xcframework in Frameworks */,
 				E470D43A7C603F7EB512D6C4 /* Pods_MediationAd.framework in Frameworks */,
 				96942B102C7887E90076CD79 /* MTGSDK.xcframework in Frameworks */,
 				966172CF2C61C9130007C760 /* GoogleMobileAds.xcframework in Frameworks */,
@@ -700,6 +705,7 @@
 		DA690AA92AD1B955EE21AD02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9622EBFE2C97D2E600B81D9A /* IASDKCore.xcframework */,
 				9622EBA92C92F68A00B81D9A /* MetaAdapter.xcframework */,
 				9622EBA62C92CBDD00B81D9A /* LiftoffMonetizeAdapter.xcframework */,
 				9622EBA32C92CBD100B81D9A /* VungleAdsSDK.xcframework */,

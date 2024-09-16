@@ -13,6 +13,7 @@ import AppLovinSDK
 import MTGSDK
 import FBAudienceNetwork
 import VungleAdsSDK
+import IASDKCore
 
 public class ConsentManager {
   public static let shared = ConsentManager()
@@ -62,7 +63,9 @@ public class ConsentManager {
       let state: State = canShowAds ? .allow : .reject
       ALPrivacySettings.setHasUserConsent(canShowAds)
       MTGSDK.sharedInstance().consentStatus = canShowAds
-      FBAdSettings.setAdvertiserTrackingEnabled(true)
+      VunglePrivacySettings.setGDPRStatus(canShowAds)
+      IASDKCore.sharedInstance().gdprConsent = canShowAds ? IAGDPRConsentType.given : IAGDPRConsentType.denied
+      
       self.consentState = state
       
       if canShowAds {
@@ -236,11 +239,12 @@ extension ConsentManager {
     ALPrivacySettings.setDoNotSell(true)
     MTGSDK.sharedInstance().consentStatus = hasConsent
     MTGSDK.sharedInstance().doNotTrackStatus = false
-    FBAdSettings.setAdvertiserTrackingEnabled(true)
     VunglePrivacySettings.setGDPRStatus(hasConsent)
     if let nowVersionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
       VunglePrivacySettings.setGDPRMessageVersion(nowVersionString)
     }
+    IASDKCore.sharedInstance().gdprConsent = hasConsent ? IAGDPRConsentType.given : IAGDPRConsentType.denied
+    IASDKCore.sharedInstance().gdprConsentString = "myGdprConsentString"
     
     let time = TimeManager.shared.end(event: .consentManagerCheck)
     switch state {

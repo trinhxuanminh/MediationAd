@@ -13,6 +13,7 @@ import AdSupport
 import PurchaseConnector
 import StoreKit
 import AppsFlyerAdRevenue
+import FBAudienceNetwork
 
 public class TrackingManager: NSObject {
   public static let shared = TrackingManager()
@@ -55,6 +56,7 @@ public class TrackingManager: NSObject {
         Analytics.setAnalyticsCollectionEnabled(false)
         LogEventManager.shared.log(event: .trackingManagerReject)
       }
+      FBAdSettings.setAdvertiserTrackingEnabled(status == .authorized)
       completed?()
     }
   }

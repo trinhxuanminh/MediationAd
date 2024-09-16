@@ -152,6 +152,9 @@ PODS:
   - GoogleMobileAdsMediationFacebook (6.15.0.0):
     - FBAudienceNetwork (= 6.15.0)
     - Google-Mobile-Ads-SDK (~> 11.0)
+  - GoogleMobileAdsMediationFyber (8.3.1.0):
+    - Fyber_Marketplace_SDK (= 8.3.1)
+    - Google-Mobile-Ads-SDK (~> 11.0)
   - GoogleMobileAdsMediationMintegral (7.6.9.0):
     - Google-Mobile-Ads-SDK (~> 11.0)
     - MintegralAdSDK/All (= 7.6.9)
@@ -289,6 +292,7 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK (= 11.5.0)
   - GoogleMobileAdsMediationAppLovin
   - GoogleMobileAdsMediationFacebook
+  - GoogleMobileAdsMediationFyber
   - GoogleMobileAdsMediationMintegral
   - GoogleMobileAdsMediationPangle
   - GoogleMobileAdsMediationVungle
@@ -331,6 +335,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleMobileAdsMediationAppLovin
     - GoogleMobileAdsMediationFacebook
+    - GoogleMobileAdsMediationFyber
     - GoogleMobileAdsMediationMintegral
     - GoogleMobileAdsMediationPangle
     - GoogleMobileAdsMediationVungle
@@ -384,6 +389,7 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 9abf64b682732fed36da827aa2a68f0221fd2356
   GoogleMobileAdsMediationAppLovin: bdd093b9b0469da3206aa7fc049ce92f2b672822
   GoogleMobileAdsMediationFacebook: 26dec5611c04af55eba3dd16c564bafa8ebd7131
+  GoogleMobileAdsMediationFyber: c43fcb9b16a069e6aab29d492b8e2a4513653414
   GoogleMobileAdsMediationMintegral: 444dee59227cf96c910fcd3e6adcbdb165abeb5a
   GoogleMobileAdsMediationPangle: 98fbe935f7c0863493af1a6833c49b4b421d92fb
   GoogleMobileAdsMediationVungle: bc69ab2ef591459ab7a4d371f69a2dffb41133a8
@@ -404,6 +410,6 @@ SPEC CHECKSUMS:
   UnityAds: f89ac1e717f5d566a58479a5b7cb9ed3a744cae3
   VungleAds: 4823f53e691ba140ff21e3a3a6897af789832a36
 
-PODFILE CHECKSUM: aa3675f6d14031bde4516aec021b7f1dcaa4e9ce
+PODFILE CHECKSUM: 6deff6ed00a56ff687ca56af5192b92d70a79e10
 
 COCOAPODS: 1.15.2

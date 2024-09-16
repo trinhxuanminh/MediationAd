@@ -22,6 +22,7 @@ target 'MediationAd' do
   pod 'GoogleMobileAdsMediationPangle' # Pangle
   pod 'GoogleMobileAdsMediationFacebook' # Meta Audience Network
   pod 'GoogleMobileAdsMediationVungle' # Liftoff Monetize
+  pod 'GoogleMobileAdsMediationFyber' # DT Exchange
   
   pod 'AppLovinSDK', '12.6.0' # AppLovin
   pod 'AppLovinMediationGoogleAdapter', '11.5.0.0' # Google Bidding and Google AdMob
