@@ -29,7 +29,7 @@ This CocoaPods library helps you do ad handling.
   spec.dependency 'SnapKit', '5.6.0'
   spec.dependency 'NVActivityIndicatorView', '5.1.1'
     
-  spec.dependency 'Google-Mobile-Ads-SDK', '11.5.0' # AdMob
+  spec.dependency 'Google-Mobile-Ads-SDK', '11.9.0' # AdMob
   spec.dependency 'GoogleMobileAdsMediationAppLovin' # AppLovin
   spec.dependency 'GoogleMobileAdsMediationMintegral' # Mintegral
   spec.dependency 'GoogleMobileAdsMediationPangle' # Pangle
@@ -37,14 +37,15 @@ This CocoaPods library helps you do ad handling.
   spec.dependency 'GoogleMobileAdsMediationVungle' # Liftoff Monetize
   spec.dependency 'GoogleMobileAdsMediationFyber' # DT Exchange
   
-  spec.dependency 'AppLovinSDK', '12.6.0' # AppLovin
-  spec.dependency 'AppLovinMediationGoogleAdapter', '11.5.0.0' # Google Bidding and Google AdMob
-  spec.dependency 'AppLovinMediationUnityAdsAdapter', '4.12.1.0' # Unity Ads
-  spec.dependency 'AppLovinMediationByteDanceAdapter', '6.1.0.6.0' # Pangle
-  spec.dependency 'AppLovinMediationFyberAdapter', '8.3.1.0' # DT Exchange
-  spec.dependency 'AppLovinMediationInMobiAdapter', '10.7.5.0' # InMobi
-  spec.dependency 'AppLovinMediationIronSourceAdapter', '8.1.0.0.1' # ironSource
-  spec.dependency 'AppLovinMediationVungleAdapter', '7.4.0.0' # Liftoff Monetize
-  spec.dependency 'AppLovinMediationMintegralAdapter', '7.6.9.0.0' # Mintegral
-  spec.dependency 'AppLovinMediationFacebookAdapter', '6.15.0.0' # Meta Audience Network
+  spec.dependency 'AppLovinSDK', '12.6.1' # AppLovin
+  spec.dependency 'AppLovinMediationGoogleAdapter' # Google Bidding and Google AdMob
+  spec.dependency 'AppLovinMediationUnityAdsAdapter' # Unity Ads
+  spec.dependency 'AppLovinMediationByteDanceAdapter' # Pangle
+  spec.dependency 'AppLovinMediationFyberAdapter' # DT Exchange
+  spec.dependency 'AppLovinMediationInMobiAdapter' # InMobi
+  spec.dependency 'AppLovinMediationIronSourceAdapter' # ironSource
+  spec.dependency 'AppLovinMediationVungleAdapter' # Liftoff Monetize
+  spec.dependency 'AppLovinMediationMintegralAdapter' # Mintegral
+  spec.dependency 'AppLovinMediationFacebookAdapter' # Meta Audience Network
+  spec.dependency 'AppLovinMediationYandexAdapter' # Yandex
 end
