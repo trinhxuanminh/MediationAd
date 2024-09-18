@@ -112,13 +112,13 @@
 		966173142C638FF00007C760 /* InMobiSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966173122C638FF00007C760 /* InMobiSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9661731B2C63C8F50007C760 /* FBAudienceNetwork.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9661731A2C63C8F50007C760 /* FBAudienceNetwork.xcframework */; };
 		9661731C2C63C8F50007C760 /* FBAudienceNetwork.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9661731A2C63C8F50007C760 /* FBAudienceNetwork.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		966173472C64E4070007C760 /* AppLovinSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966172D62C620B860007C760 /* AppLovinSDK.xcframework */; };
-		966173482C64E4070007C760 /* AppLovinSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966172D62C620B860007C760 /* AppLovinSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		966313D72C5CD5E200D69BBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313D62C5CD5E200D69BBA /* AppDelegate.swift */; };
 		966313D92C5CD5E200D69BBA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966313D82C5CD5E200D69BBA /* SceneDelegate.swift */; };
 		966313DE2C5CD5E200D69BBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966313DC2C5CD5E200D69BBA /* Main.storyboard */; };
 		966313E02C5CD5E300D69BBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 966313DF2C5CD5E300D69BBA /* Assets.xcassets */; };
 		966313E32C5CD5E300D69BBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966313E12C5CD5E300D69BBA /* LaunchScreen.storyboard */; };
+		966715452C9ABDF90076CF07 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 966715432C9ABDF90076CF07 /* PrivacyInfo.xcprivacy */; };
+		966715462C9ABE400076CF07 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 966715432C9ABDF90076CF07 /* PrivacyInfo.xcprivacy */; };
 		9668CFB22C9AB211003D0D55 /* AppLovinSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9668CFB12C9AB211003D0D55 /* AppLovinSDK.xcframework */; };
 		9668CFB32C9AB211003D0D55 /* AppLovinSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9668CFB12C9AB211003D0D55 /* AppLovinSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9668CFB92C9AB4FA003D0D55 /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966172912C60771F0007C760 /* GoogleMobileAds.xcframework */; };
@@ -166,7 +166,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				966172DA2C6217DB0007C760 /* MediationAd.framework in Embed Frameworks */,
-				966173482C64E4070007C760 /* AppLovinSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +286,7 @@
 		966313DF2C5CD5E300D69BBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		966313E22C5CD5E300D69BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		966313E42C5CD5E300D69BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		966715432C9ABDF90076CF07 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		9668CFB12C9AB211003D0D55 /* AppLovinSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppLovinSDK.xcframework; path = "Pods/AppLovinSDK/applovin-ios-sdk-12.6.1/AppLovinSDK.xcframework"; sourceTree = "<group>"; };
 		9668CFB42C9AB4A4003D0D55 /* CoreAudioTypes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioTypes.framework; path = System/Library/Frameworks/CoreAudioTypes.framework; sourceTree = SDKROOT; };
 		9668CFB62C9AB4DF003D0D55 /* Google_Mobile_Ads_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Google_Mobile_Ads_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -320,7 +320,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				966173472C64E4070007C760 /* AppLovinSDK.xcframework in Frameworks */,
 				966172D92C6217DB0007C760 /* MediationAd.framework in Frameworks */,
 				307CA57EDFBDD44F5E8F211F /* Pods_MediationAdExamples.framework in Frameworks */,
 			);
@@ -680,6 +679,7 @@
 		966313D52C5CD5E200D69BBA /* MediationAdExamples */ = {
 			isa = PBXGroup;
 			children = (
+				966715432C9ABDF90076CF07 /* PrivacyInfo.xcprivacy */,
 				9622EC012C97E5F400B81D9A /* GoogleService-Info.plist */,
 				966172A02C6086060007C760 /* AdDefaultValue.json */,
 				966313E42C5CD5E300D69BBA /* Info.plist */,
@@ -832,6 +832,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966715462C9ABE400076CF07 /* PrivacyInfo.xcprivacy in Resources */,
 				966172732C5F790A0007C760 /* Icon.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -843,6 +844,7 @@
 				966313E32C5CD5E300D69BBA /* LaunchScreen.storyboard in Resources */,
 				966172C92C60BBF70007C760 /* BannerViewController.xib in Resources */,
 				966172C12C60BAA50007C760 /* HomeViewController.xib in Resources */,
+				966715452C9ABDF90076CF07 /* PrivacyInfo.xcprivacy in Resources */,
 				966172C42C60BB800007C760 /* NativeViewController.xib in Resources */,
 				966172BA2C60B8810007C760 /* CustomAdMobNativeAdView.xib in Resources */,
 				9622EC022C97E5F400B81D9A /* GoogleService-Info.plist in Resources */,

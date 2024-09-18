@@ -25,15 +25,15 @@ target 'MediationAd' do
   pod 'GoogleMobileAdsMediationFyber' # DT Exchange
   
   pod 'AppLovinSDK', '12.6.1' # AppLovin
-  pod 'AppLovinMediationGoogleAdapter', '11.9.0.0' # Google Bidding and Google AdMob
-  pod 'AppLovinMediationUnityAdsAdapter', '4.12.1.0' # Unity Ads
-  pod 'AppLovinMediationByteDanceAdapter', '6.1.0.6.0' # Pangle
-  pod 'AppLovinMediationFyberAdapter', '8.3.1.0' # DT Exchange
-  pod 'AppLovinMediationInMobiAdapter', '10.7.5.0' # InMobi
-  pod 'AppLovinMediationIronSourceAdapter', '8.1.0.0.1' # ironSource
-  pod 'AppLovinMediationVungleAdapter', '7.4.0.0' # Liftoff Monetize
-  pod 'AppLovinMediationMintegralAdapter', '7.6.9.0.0' # Mintegral
-  pod 'AppLovinMediationFacebookAdapter', '6.15.0.0' # Meta Audience Network
+  pod 'AppLovinMediationGoogleAdapter' # Google Bidding and Google AdMob
+  pod 'AppLovinMediationUnityAdsAdapter' # Unity Ads
+  pod 'AppLovinMediationByteDanceAdapter' # Pangle
+  pod 'AppLovinMediationFyberAdapter' # DT Exchange
+  pod 'AppLovinMediationInMobiAdapter' # InMobi
+  pod 'AppLovinMediationIronSourceAdapter' # ironSource
+  pod 'AppLovinMediationVungleAdapter' # Liftoff Monetize
+  pod 'AppLovinMediationMintegralAdapter' # Mintegral
+  pod 'AppLovinMediationFacebookAdapter' # Meta Audience Network
 end
 
 target 'MediationAdExamples' do
