@@ -13,8 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    let appID = "6599836028"
-    let devKey = ""
+    let appID = "6473620562"
+    let devKey = "PdFSXQuoCZKy2mQvtsMXsW"
     let issuerID = "90feb1ef-b49e-466f-bdf0-6c854e6042e2"
     let keyID = "6U7525RU8W"
     let privateKey = """
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     -----END PRIVATE KEY-----
     """
     let maxSdkKey = "hyf3VVXFdwMCaKeA84k0ll1TfmnfTxZ9tEDNlmdNg-ZFJCQSH9T1uUUXEFCiBnt3_4Qlr26V1gmKtAn9KEACkf"
-    let adConfigKey = "AdConfig_Test"
+    let adConfigKey = "AdConfig_Test_0_0_22"
     
     AppManager.shared.activeDebugEvent()
 //    ConsentManager.shared.activeDebug(testDeviceIdentifiers: ["2F44CD4D-1E75-4923-8721-CA9E7D3FB101"],

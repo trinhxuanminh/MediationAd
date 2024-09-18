@@ -67,7 +67,7 @@ class HomeViewController: BaseViewController {
   }
   
   @IBAction func showDebug(_ sender: Any) {
-    AdManager.shared.activeDebug(network: .admob,
+    AdManager.shared.activeDebug(network: .max,
                                  testDeviceIdentifiers: ["e0baeafaca4adc381ec370de26ee97a3"])
   }
   

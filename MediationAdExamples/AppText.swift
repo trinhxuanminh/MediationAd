@@ -9,12 +9,12 @@ import Foundation
 
 struct AppText {
   enum AdName {
-    static let splash = "ID_Intern_Splash"
-    static let interstitial = "ID_Inter_Home_Trending"
-    static let appOpen = "ID_Open_app"
-    static let rewarded = "ID_Rewards_Camera"
+    static let splash = "Splash_2"
+    static let interstitial = "Interstitial_2"
+    static let appOpen = "App_Open_2"
+    static let rewarded = "Rewarded_2"
+    static let banner = "Banner_2"
+    static let native = "Native_2"
     static let rewardedInterstitial = "Rewarded_Interstitial"
-    static let banner = "ID_Collapsible_Default"
-    static let native = "ID_Native_Onboard0"
   }
 }
