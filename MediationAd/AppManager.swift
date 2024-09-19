@@ -9,6 +9,8 @@ import Foundation
 import Combine
 import FirebaseCore
 import FirebaseRemoteConfig
+import GoogleMobileAds
+import AppLovinSDK
 import FBAudienceNetwork
 
 public class AppManager {
@@ -21,6 +23,12 @@ public class AppManager {
     case timeout
   }
   
+  public enum DebugType {
+    case event
+    case consent(Bool)
+    case ad(MonetizationNetwork, FBAdTestAdType)
+  }
+  
   enum Keys {
     static let consentKey = "CMP"
   }
@@ -30,7 +38,9 @@ public class AppManager {
   private var subscriptions = Set<AnyCancellable>()
   private var didError: Handler?
   private var didConfigure = false
+  private(set) var testDeviceIdentifiers = [String]()
   private(set) var debugLogEvent = false
+  private(set) var testModeMax = false
   
   public func initialize(appID: String,
                          issuerID: String,
@@ -54,7 +64,6 @@ public class AppManager {
       print("[MediationAd] [AppManager] Start session!")
       self.didConfigure = true
       FirebaseApp.configure()
-      FBAdSettings.setDataProcessingOptions([])
       LogEventManager.shared.log(event: .appManagerStartSession)
       TimeManager.shared.start(event: .appManagerConfig)
     }
@@ -120,8 +129,34 @@ public class AppManager {
       }.store(in: &subscriptions)
   }
   
-  public func activeDebugEvent() {
-    self.debugLogEvent = true
+  public func setTest(_ testDeviceIdentifiers: [String], testModeMax: Bool = false) {
+    self.testDeviceIdentifiers = testDeviceIdentifiers
+    self.testModeMax = testModeMax
+  }
+  
+  public func activeDebug(_ type: DebugType) {
+    switch type {
+    case .event:
+      self.debugLogEvent = true
+    case .ad(let monetizationNetwork, let testAdType):
+      GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = testDeviceIdentifiers
+      FBAdSettings.addTestDevice(FBAdSettings.testDeviceHash())
+      FBAdSettings.testAdType = testAdType
+      
+      switch monetizationNetwork {
+      case .admob:
+        guard let topVC = UIApplication.topViewController() else {
+          return
+        }
+        GADMobileAds.sharedInstance().presentAdInspector(from: topVC) { error in
+          print("[MediationAd] [AdManager] Present adInspector! (\(String(describing: error)))")
+        }
+      case .max:
+        ALSdk.shared().showMediationDebugger()
+      }
+    case .consent(let reset):
+      ConsentManager.shared.activeDebug(reset: reset)
+    }
   }
 }
 

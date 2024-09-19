@@ -6,11 +6,6 @@
 //
 
 import UIKit
-import FirebaseRemoteConfig
-import GoogleMobileAds
-import Combine
-import UserMessagingPlatform
-import AppLovinSDK
 
 public class AdManager {
   public static var shared = AdManager()
@@ -75,21 +70,6 @@ public class AdManager {
     print("[MediationAd] [AdManager] Upgrade consent!")
     self.isConsent = true
     self.registerState = .success
-  }
-  
-  public func activeDebug(network: MonetizationNetwork, testDeviceIdentifiers: [String]?) {
-    switch network {
-    case .admob:
-      guard let topVC = UIApplication.topViewController() else {
-        return
-      }
-      GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = testDeviceIdentifiers
-      GADMobileAds.sharedInstance().presentAdInspector(from: topVC) { error in
-        print("[MediationAd] [AdManager] Present adInspector! (\(String(describing: error)))")
-      }
-    case .max:
-      ALSdk.shared().showMediationDebugger()
-    }
   }
   
   public func register(isRelease: Bool,

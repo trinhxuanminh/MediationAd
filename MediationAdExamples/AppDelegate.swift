@@ -27,10 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     """
     let maxSdkKey = "hyf3VVXFdwMCaKeA84k0ll1TfmnfTxZ9tEDNlmdNg-ZFJCQSH9T1uUUXEFCiBnt3_4Qlr26V1gmKtAn9KEACkf"
     let adConfigKey = "AdConfig_Test_0_0_22"
+    let idfa = "35513F2E-AA97-4D67-AA04-CC99C59B50A8"
+    let umpTestDeviceID = "8FA153B2-FFD6-4FD5-8164-79EDD9BC614A"
+    let gadTestDeviceID = "f29f29ae25fb7f9f56c3b6f0fd803a84"
     
-    AppManager.shared.activeDebugEvent()
-//    ConsentManager.shared.activeDebug(testDeviceIdentifiers: ["2F44CD4D-1E75-4923-8721-CA9E7D3FB101"],
-//                                      reset: true)
+    AppManager.shared.setTest([idfa, umpTestDeviceID, gadTestDeviceID], testModeMax: true)
+//    AppManager.shared.activeDebug(.event)
+//    AppManager.shared.activeDebug(.consent(true))
+    
     if let url = Bundle.main.url(forResource: "AdDefaultValue", withExtension: "json"),
        let defaultData = try? Data(contentsOf: url) {
       AppManager.shared.initialize(appID: appID,

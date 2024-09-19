@@ -35,7 +35,6 @@ public class ConsentManager {
   private let timeout = 30.0
   private var isDebug = false
   private var maxSdkKey: String?
-  private var testDeviceIdentifiers = [String]()
   private var consentConfig: ConsentConfig?
   
   public func requestConsentUpdate(completed: @escaping ConsentHandler) {
@@ -84,14 +83,6 @@ public class ConsentManager {
       }
     }
   }
-  
-  public func activeDebug(testDeviceIdentifiers: [String], reset: Bool) {
-    self.isDebug = true
-    self.testDeviceIdentifiers = testDeviceIdentifiers
-    if reset {
-      UMPConsentInformation.sharedInstance.reset()
-    }
-  }
 }
 
 extension ConsentManager {
@@ -109,6 +100,13 @@ extension ConsentManager {
       // Quá thời gian timeout chưa trả về.
       LogEventManager.shared.log(event: .consentManagerTimeout)
       change(state: .error)
+    }
+  }
+  
+  func activeDebug(reset: Bool) {
+    self.isDebug = true
+    if reset {
+      UMPConsentInformation.sharedInstance.reset()
     }
   }
   
@@ -161,7 +159,7 @@ extension ConsentManager {
     
     if isDebug {
       let debugSettings = UMPDebugSettings()
-      debugSettings.testDeviceIdentifiers = testDeviceIdentifiers
+      debugSettings.testDeviceIdentifiers = AppManager.shared.testDeviceIdentifiers
       debugSettings.geography = .EEA
       parameters.debugSettings = debugSettings
     } else {
@@ -245,6 +243,9 @@ extension ConsentManager {
     }
     IASDKCore.sharedInstance().gdprConsent = hasConsent ? IAGDPRConsentType.given : IAGDPRConsentType.denied
     IASDKCore.sharedInstance().gdprConsentString = "myGdprConsentString"
+    FBAdSettings.isMixedAudience = false
+    FBAdSettings.setDataProcessingOptions([])
+    ALPrivacySettings.setIsAgeRestrictedUser(false)
     
     let time = TimeManager.shared.end(event: .consentManagerCheck)
     switch state {
@@ -284,6 +285,9 @@ extension ConsentManager {
       if let maxSdkKey = self.maxSdkKey {
         let maxInitConfig = ALSdkInitializationConfiguration(sdkKey: maxSdkKey) { builder in
           builder.mediationProvider = ALMediationProviderMAX
+          if AppManager.shared.testModeMax {
+            builder.testDeviceAdvertisingIdentifiers = AppManager.shared.testDeviceIdentifiers
+          }
         }
         ALSdk.shared().initialize(with: maxInitConfig) { sdkConfig in
           completed()
