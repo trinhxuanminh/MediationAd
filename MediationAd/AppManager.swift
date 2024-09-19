@@ -26,7 +26,7 @@ public class AppManager {
   public enum DebugType {
     case event
     case consent(Bool)
-    case ad(MonetizationNetwork, FBAdTestAdType)
+    case ad(MonetizationNetwork)
   }
   
   enum Keys {
@@ -138,10 +138,8 @@ public class AppManager {
     switch type {
     case .event:
       self.debugLogEvent = true
-    case .ad(let monetizationNetwork, let testAdType):
+    case .ad(let monetizationNetwork):
       GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = testDeviceIdentifiers
-      FBAdSettings.addTestDevice(FBAdSettings.testDeviceHash())
-      FBAdSettings.testAdType = testAdType
       
       switch monetizationNetwork {
       case .admob:
@@ -149,7 +147,7 @@ public class AppManager {
           return
         }
         GADMobileAds.sharedInstance().presentAdInspector(from: topVC) { error in
-          print("[MediationAd] [AdManager] Present adInspector! (\(String(describing: error)))")
+          print("[MediationAd] [AppManager] Present adInspector! (\(String(describing: error)))")
         }
       case .max:
         ALSdk.shared().showMediationDebugger()

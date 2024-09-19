@@ -27,9 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     """
     let maxSdkKey = "hyf3VVXFdwMCaKeA84k0ll1TfmnfTxZ9tEDNlmdNg-ZFJCQSH9T1uUUXEFCiBnt3_4Qlr26V1gmKtAn9KEACkf"
     let adConfigKey = "AdConfig_Test_0_0_22"
+    
     let idfa = "35513F2E-AA97-4D67-AA04-CC99C59B50A8"
     let umpTestDeviceID = "8FA153B2-FFD6-4FD5-8164-79EDD9BC614A"
-    let gadTestDeviceID = "f29f29ae25fb7f9f56c3b6f0fd803a84"
+    let gadTestDeviceID = "694fdccffc699faa0abb88712897a995"
     
     AppManager.shared.setTest([idfa, umpTestDeviceID, gadTestDeviceID], testModeMax: true)
 //    AppManager.shared.activeDebug(.event)

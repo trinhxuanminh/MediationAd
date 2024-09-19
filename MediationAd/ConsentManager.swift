@@ -243,8 +243,8 @@ extension ConsentManager {
     }
     IASDKCore.sharedInstance().gdprConsent = hasConsent ? IAGDPRConsentType.given : IAGDPRConsentType.denied
     IASDKCore.sharedInstance().gdprConsentString = "myGdprConsentString"
-    FBAdSettings.isMixedAudience = false
     FBAdSettings.setDataProcessingOptions([])
+    FBAdSettings.setAdvertiserTrackingEnabled(true)
     ALPrivacySettings.setIsAgeRestrictedUser(false)
     
     let time = TimeManager.shared.end(event: .consentManagerCheck)

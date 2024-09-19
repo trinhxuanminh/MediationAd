@@ -67,7 +67,7 @@ class HomeViewController: BaseViewController {
   }
   
   @IBAction func showDebug(_ sender: Any) {
-    AppManager.shared.activeDebug(.ad(.admob, .carousel_Img_Square_App_Install))
+    AppManager.shared.activeDebug(.ad(.admob))
   }
   
   @IBAction func touchSettingPrivacy(_ sender: Any) {
