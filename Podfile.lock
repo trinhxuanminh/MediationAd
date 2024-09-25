@@ -18,9 +18,9 @@ PODS:
   - AppLovinMediationFyberAdapter (8.3.2.0):
     - AppLovinSDK
     - Fyber_Marketplace_SDK (= 8.3.2)
-  - AppLovinMediationGoogleAdapter (11.9.0.0):
+  - AppLovinMediationGoogleAdapter (11.8.0.0):
     - AppLovinSDK
-    - Google-Mobile-Ads-SDK (= 11.9.0)
+    - Google-Mobile-Ads-SDK (= 11.8.0)
   - AppLovinMediationInMobiAdapter (10.7.5.0):
     - AppLovinSDK
     - InMobiSDK (= 10.7.5)
@@ -189,7 +189,7 @@ PODS:
   - FirebaseRemoteConfigInterop (10.29.0)
   - FirebaseSharedSwift (10.29.0)
   - Fyber_Marketplace_SDK (8.3.2)
-  - Google-Mobile-Ads-SDK (11.9.0):
+  - Google-Mobile-Ads-SDK (11.8.0):
     - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleAppMeasurement (10.25.0):
     - GoogleAppMeasurement/AdIdSupport (= 10.25.0)
@@ -372,9 +372,10 @@ DEPENDENCIES:
   - AppLovinSDK (= 12.6.1)
   - AppsFlyer-AdRevenue (= 6.14.3)
   - AppsFlyerFramework (= 6.14.3)
+  - FBAudienceNetwork
   - Firebase (= 10.25.0)
   - FirebaseRemoteConfig (= 10.25.0)
-  - Google-Mobile-Ads-SDK (= 11.9.0)
+  - Google-Mobile-Ads-SDK (= 11.8.0)
   - GoogleMobileAdsMediationAppLovin
   - GoogleMobileAdsMediationFacebook
   - GoogleMobileAdsMediationFyber
@@ -471,7 +472,7 @@ SPEC CHECKSUMS:
   AppLovinMediationByteDanceAdapter: db16a553d3511cd583d75552adb3a8bd91802b70
   AppLovinMediationFacebookAdapter: 0bebbe6e56573474c0e77b981b31c88424d67a18
   AppLovinMediationFyberAdapter: ae404422b2d182770678bb66ce9eee6dbca2dae1
-  AppLovinMediationGoogleAdapter: cb0185c8a5308dd477f24bb99aab4a4de3757069
+  AppLovinMediationGoogleAdapter: 573c0ae4e9eed3e0c92575269ad55fcabca328c0
   AppLovinMediationInMobiAdapter: 243dfe62770bda5925167f100fb81c4a3414c035
   AppLovinMediationIronSourceAdapter: c6e08a8ab04757f55bfc375c190661fce4d20840
   AppLovinMediationMintegralAdapter: 1fe155e8384dc0ad383eb4f8f70810bf639777d6
@@ -514,7 +515,7 @@ SPEC CHECKSUMS:
   FirebaseRemoteConfigInterop: 6efda51fb5e2f15b16585197e26eaa09574e8a4d
   FirebaseSharedSwift: 20530f495084b8d840f78a100d8c5ee613375f6e
   Fyber_Marketplace_SDK: 215c2020efd507c0e97f40871e96a26918f8986e
-  Google-Mobile-Ads-SDK: 6a3cdd892fd87c8b2a388c1cc74d2b7df2570f0b
+  Google-Mobile-Ads-SDK: c1c53687b572122c5b0bdaf354335bbf40fd81ef
   GoogleAppMeasurement: 9abf64b682732fed36da827aa2a68f0221fd2356
   GoogleMobileAdsMediationAppLovin: 767903aa18db97cc810148bbc3f017a09059e9d1
   GoogleMobileAdsMediationFacebook: 9308a6fea5d2a41a935119378a56b1b2e9624415
@@ -545,6 +546,6 @@ SPEC CHECKSUMS:
   VungleAds: 4823f53e691ba140ff21e3a3a6897af789832a36
   YandexMobileAds: dc490631c2c511c52c27a191bdd28be383ae320c
 
-PODFILE CHECKSUM: 67c4c08c110ea09c4e00f40d4df2a2f915947fbb
+PODFILE CHECKSUM: 6a862f30a802f35e62c8b8651c244b0fb5a8d15b
 
 COCOAPODS: 1.15.2

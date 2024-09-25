@@ -67,7 +67,7 @@ class HomeViewController: BaseViewController {
   }
   
   @IBAction func showDebug(_ sender: Any) {
-    AppManager.shared.activeDebug(.ad(.admob))
+    AppManager.shared.activeDebug(.ad(.max))
   }
   
   @IBAction func touchSettingPrivacy(_ sender: Any) {

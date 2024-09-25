@@ -235,6 +235,7 @@ extension ConsentManager {
     
     ALPrivacySettings.setHasUserConsent(hasConsent)
     ALPrivacySettings.setDoNotSell(true)
+    ALPrivacySettings.setIsAgeRestrictedUser(false)
     MTGSDK.sharedInstance().consentStatus = hasConsent
     MTGSDK.sharedInstance().doNotTrackStatus = false
     VunglePrivacySettings.setGDPRStatus(hasConsent)
@@ -243,9 +244,10 @@ extension ConsentManager {
     }
     IASDKCore.sharedInstance().gdprConsent = hasConsent ? IAGDPRConsentType.given : IAGDPRConsentType.denied
     IASDKCore.sharedInstance().gdprConsentString = "myGdprConsentString"
+    
+    FBAudienceNetworkAds.initialize(with: nil, completionHandler: nil)
     FBAdSettings.setDataProcessingOptions([])
     FBAdSettings.setAdvertiserTrackingEnabled(true)
-    ALPrivacySettings.setIsAgeRestrictedUser(false)
     
     let time = TimeManager.shared.end(event: .consentManagerCheck)
     switch state {

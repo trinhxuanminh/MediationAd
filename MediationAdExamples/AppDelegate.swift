@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let adConfigKey = "AdConfig_Test_0_0_22"
     
     let idfa = "35513F2E-AA97-4D67-AA04-CC99C59B50A8"
-    let umpTestDeviceID = "8FA153B2-FFD6-4FD5-8164-79EDD9BC614A"
-    let gadTestDeviceID = "694fdccffc699faa0abb88712897a995"
+    let umpTestDeviceID = "132919C6-7708-44DA-8365-5FB2824F4D60"
+    let gadTestDeviceID = "b27306cfc9cfaa08588524ca26534e42"
     
     AppManager.shared.setTest([idfa, umpTestDeviceID, gadTestDeviceID], testModeMax: true)
 //    AppManager.shared.activeDebug(.event)
