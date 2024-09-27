@@ -22,7 +22,7 @@ public class RemoteManager {
   @Published public private(set) var remoteState: State = .wait
   let remoteSubject = PassthroughSubject<State, Never>()
   let remoteConfig = RemoteConfig.remoteConfig()
-  private let remoteTimeout = 10.0
+  private let remoteTimeout = 15.0
 }
 
 extension RemoteManager {

@@ -38,9 +38,6 @@ class LogEventManager {
   }
   
   enum Event {
-    static let unknow = "Unknow"
-    static let maxCharacter = 6
-    
     case appManagerStartSession
     case appManagerStartConfig
     case appManagerSuccess(Double)
@@ -89,19 +86,22 @@ class LogEventManager {
     case adManagerReject
     case adManagerError
     
-    case adLoadRequest(MonetizationNetwork, AdManager.AdType, String?)
-    case adLoadFail(MonetizationNetwork, AdManager.AdType, String?)
-    case adLoadRetryFail(MonetizationNetwork, AdManager.AdType, String?)
-    case adLoadTimeout(MonetizationNetwork, AdManager.AdType, String?)
-    case adLoadSuccess(MonetizationNetwork, AdManager.AdType, String?, Double)
-    case adShowRequest(MonetizationNetwork, AdManager.AdType, String?)
-    case adShowFail(MonetizationNetwork, AdManager.AdType, String?)
-    case adShowSuccess(MonetizationNetwork, AdManager.AdType, String?)
-    case adShowHide(MonetizationNetwork, AdManager.AdType, String?)
-    case adClick(MonetizationNetwork, AdManager.AdType, String?)
-    case adEarnReward(MonetizationNetwork, AdManager.AdType, String?)
-    case adPayRevenue(MonetizationNetwork, AdManager.AdType, String?)
-    case adHadRevenue(MonetizationNetwork, AdManager.AdType, String?)
+    case adLoadRequest(MonetizationNetwork, String)
+    case adLoadSuccess(MonetizationNetwork, String, Double)
+    case adLoadFail(MonetizationNetwork, String, Error?)
+    case adLoadTryFail(MonetizationNetwork, String, Error?)
+    case adLoadTimeout(MonetizationNetwork, String)
+    case adShowCheck(MonetizationNetwork, String, UIViewController? = nil)
+    case adShowRequest(MonetizationNetwork, String, UIViewController? = nil)
+    case adShowReady(MonetizationNetwork, String, UIViewController? = nil)
+    case adShowNoReady(MonetizationNetwork, String, UIViewController? = nil)
+    case adShowSuccess(MonetizationNetwork, String, UIViewController? = nil)
+    case adShowFail(MonetizationNetwork, String, Error?, UIViewController? = nil)
+    case adShowHide(MonetizationNetwork, String, UIViewController? = nil)
+    case adShowClick(MonetizationNetwork, String, UIViewController? = nil)
+    case adEarnReward(MonetizationNetwork, String, UIViewController? = nil)
+    case adPayRevenue(MonetizationNetwork, String, UIViewController? = nil)
+    case adNoRevenue(MonetizationNetwork, String, UIViewController? = nil)
     
     var name: String {
       switch self {
@@ -195,65 +195,108 @@ class LogEventManager {
       case .adManagerError:
         return "AdManager_Error"
         
-      case .adLoadRequest(let network, let adType, let adUnitID):
-        return "Ad_Load_Request_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? LogEventManager.Event.unknow)"
-      case .adLoadFail(let network, let adType, let adUnitID):
-        return "Ad_Load_Fail_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
-      case .adLoadRetryFail(let network, let adType, let adUnitID):
-        return "Ad_Load_Retry_Fail_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
-      case .adLoadTimeout(let network, let adType, let adUnitID):
-        return "Ad_Load_Timeout_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
-      case .adLoadSuccess(let network, let adType, let adUnitID, _):
-        return "Ad_Load_Success_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
-      case .adShowRequest(let network, let adType, let adUnitID):
-        return "Ad_Show_Request_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
-      case .adShowFail(let network, let adType, let adUnitID):
-        return "Ad_Show_Fail_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
-      case .adShowSuccess(let network, let adType, let adUnitID):
-        return "Ad_Show_Success_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
-      case .adShowHide(let network, let adType, let adUnitID):
-        return "Ad_Show_Hide_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
-      case .adClick(let network, let adType, let adUnitID):
-        return "Ad_Click_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
-      case .adEarnReward(let network, let adType, let adUnitID):
-        return "Ad_Earn_Reward_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
-      case .adPayRevenue(let network, let adType, let adUnitID):
-        return "Ad_Pay_Revenue_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
-      case .adHadRevenue(let network, let adType, let adUnitID):
-        return "Ad_Had_Revenue_\(network.rawValue.capitalized)_\(LogEventManager.adType(adType).capitalized)_\(adUnitID?.lastCharacters(LogEventManager.Event.maxCharacter) ?? "Unknow")"
+      case .adLoadRequest(let network, let id):
+        return "\(network.name)_\(id)_Load_Request"
+      case .adLoadSuccess(let network, let id, _):
+        return "\(network.name)_\(id)_Load_Success"
+      case .adLoadFail(let network, let id, _):
+        return "\(network.name)_\(id)_Load_Fail"
+      case .adLoadTryFail(let network, let id, _):
+        return "\(network.name)_\(id)_Load_TryFail"
+      case .adLoadTimeout(let network, let id):
+        return "\(network.name)_\(id)_Load_Timeout"
+      case .adShowCheck(let network, let id, _):
+        return "\(network.name)_\(id)_Show_Check"
+      case .adShowRequest(let network, let id, _):
+        return "\(network.name)_\(id)_Show_Request"
+      case .adShowReady(let network, let id, _):
+        return "\(network.name)_\(id)_Show_Ready"
+      case .adShowNoReady(let network, let id, _):
+        return "\(network.name)_\(id)_Show_NoReady"
+      case .adShowSuccess(let network, let id, _):
+        return "\(network.name)_\(id)_Show_Success"
+      case .adShowFail(let network, let id, _, _):
+        return "\(network.name)_\(id)_Show_Fail"
+      case .adShowHide(let network, let id, _):
+        return "\(network.name)_\(id)_Show_Hide"
+      case .adShowClick(let network, let id, _):
+        return "\(network.name)_\(id)_Show_Click"
+      case .adEarnReward(let network, let id, _):
+        return "\(network.name)_\(id)_Earn_Reward"
+      case .adPayRevenue(let network, let id, _):
+        return "\(network.name)_\(id)_Pay_Revenue"
+      case .adNoRevenue(let network, let id, _):
+        return "\(network.name)_\(id)_No_Revenue"
       }
     }
     
     var parameters: [String: Any]? {
       switch self {
-      case .appManagerSuccess(let time):
+      case .adLoadSuccess(_, _, let time):
         return ["time": time]
-        
-      case .remoteManagerSuccess(let time):
-        return ["time": time]
-      case .remoteManagerError(let time):
-        return ["time": time]
-        
-      case .releaseManagerWaitReview(let time):
-        return ["time": time]
-      case .releaseManagerLive(let time):
-        return ["time": time]
-      case .releaseManagerError(let time):
-        return ["time": time]
-        
-      case .consentManagerAgree(let time):
-        return ["time": time]
-      case .consentManagerReject(let time):
-        return ["time": time]
-      case .consentManagerError(let time):
-        return ["time": time]
-        
-      case .adLoadSuccess(_, _, _, let time):
-        return ["time": time]
+      case .adLoadFail(_, _, let error), .adLoadTryFail(_, _, let error):
+        return ["error_code": (error as? NSError)?.code ?? "?"]
+      case .adShowCheck(_, _, let viewController):
+        guard let topVC = UIApplication.topViewController() else {
+          return nil
+        }
+        return ["screen": (viewController ?? AdManager.shared.rootViewController ?? topVC).getScreen()]
+      case .adShowRequest(_, _, let viewController):
+        guard let topVC = UIApplication.topViewController() else {
+          return nil
+        }
+        return ["screen": (viewController ?? AdManager.shared.rootViewController ?? topVC).getScreen()]
+      case .adShowReady(_, _, let viewController):
+        guard let topVC = UIApplication.topViewController() else {
+          return nil
+        }
+        return ["screen": (viewController ?? AdManager.shared.rootViewController ?? topVC).getScreen()]
+      case .adShowNoReady(_, _, let viewController):
+        guard let topVC = UIApplication.topViewController() else {
+          return nil
+        }
+        return ["screen": (viewController ?? AdManager.shared.rootViewController ?? topVC).getScreen()]
+      case .adShowSuccess(_, _, let viewController):
+        guard let topVC = UIApplication.topViewController() else {
+          return nil
+        }
+        return ["screen": (viewController ?? AdManager.shared.rootViewController ?? topVC).getScreen()]
+      case .adShowHide(_, _, let viewController):
+        guard let topVC = UIApplication.topViewController() else {
+          return nil
+        }
+        return ["screen": (viewController ?? AdManager.shared.rootViewController ?? topVC).getScreen()]
+      case .adShowClick(_, _, let viewController):
+        guard let topVC = UIApplication.topViewController() else {
+          return nil
+        }
+        return ["screen": (viewController ?? AdManager.shared.rootViewController ?? topVC).getScreen()]
+      case .adEarnReward(_, _, let viewController):
+        guard let topVC = UIApplication.topViewController() else {
+          return nil
+        }
+        return ["screen": (viewController ?? AdManager.shared.rootViewController ?? topVC).getScreen()]
+      case .adPayRevenue(_, _, let viewController):
+        guard let topVC = UIApplication.topViewController() else {
+          return nil
+        }
+        return ["screen": (viewController ?? AdManager.shared.rootViewController ?? topVC).getScreen()]
+      case .adNoRevenue(_, _, let viewController):
+        guard let topVC = UIApplication.topViewController() else {
+          return nil
+        }
+        return ["screen": (viewController ?? AdManager.shared.rootViewController ?? topVC).getScreen()]
+      case .adShowFail(_, _, let error, let viewController):
+        guard let topVC = UIApplication.topViewController() else {
+          return nil
+        }
+        return [
+          "screen": (viewController ?? AdManager.shared.rootViewController ?? topVC).getScreen(),
+          "error_code": (error as? NSError)?.code ?? "?"
+        ]
       default:
         return nil
       }
     }
   }
-
 }

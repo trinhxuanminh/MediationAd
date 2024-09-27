@@ -12,6 +12,8 @@ import AppsFlyerAdRevenue
 class MaxRewardedAd: NSObject, ReuseAdProtocol {
   private var rewardedAd: MARewardedAd?
   private var adUnitID: String?
+  private var placement: String?
+  private var name: String?
   private var presentState = false
   private var isLoading = false
   private var retryAttempt = 0
@@ -27,8 +29,9 @@ class MaxRewardedAd: NSObject, ReuseAdProtocol {
     self.didLoadSuccess = didSuccess
   }
   
-  func config(id: String) {
+  func config(id: String, name: String) {
     self.adUnitID = id
+    self.name = name
     load()
   }
   
@@ -40,23 +43,25 @@ class MaxRewardedAd: NSObject, ReuseAdProtocol {
     return rewardedAd != nil
   }
   
-  func show(rootViewController: UIViewController,
+  func show(placement: String,
+            rootViewController: UIViewController,
             didFail: Handler?,
             willPresent: Handler?,
             didEarnReward: Handler?,
             didHide: Handler?
   ) {
-    guard isReady() else {
-      print("[MediationAd] [AdManager] [Max] [RewardAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
-      didFail?()
-      return
-    }
     guard !presentState else {
       print("[MediationAd] [AdManager] [Max] [RewardAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
+    guard isReady() else {
+      print("[MediationAd] [AdManager] [Max] [RewardAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      didFail?()
+      return
+    }
     print("[MediationAd] [AdManager] [Max] [RewardAd] Requested to show! (\(String(describing: adUnitID)))")
+    self.placement = placement
     self.didShowFail = didFail
     self.willPresent = willPresent
     self.didHide = didHide
@@ -70,8 +75,10 @@ extension MaxRewardedAd: MARewardedAdDelegate, MAAdRevenueDelegate {
   func didLoad(_ ad: MAAd) {
     self.isLoading = false
     print("[MediationAd] [AdManager] [Max] [RewardAd] Did load! (\(String(describing: adUnitID)))")
-    let time = TimeManager.shared.end(event: .adLoad(.max, .reuse(.rewarded), adUnitID, nil))
-    LogEventManager.shared.log(event: .adLoadSuccess(.max, .reuse(.rewarded), adUnitID, time))
+    if let name {
+      let time = TimeManager.shared.end(event: .adLoad(name))
+      LogEventManager.shared.log(event: .adLoadSuccess(.max, name, time))
+    }
     self.retryAttempt = 0
     self.didLoadSuccess?()
     
@@ -172,8 +179,10 @@ extension MaxRewardedAd {
       
       self.isLoading = true
       print("[MediationAd] [AdManager] [Max] [RewardAd] Start load! (\(String(describing: adUnitID)))")
-      LogEventManager.shared.log(event: .adLoadRequest(.max, .reuse(.rewarded), adUnitID))
-      TimeManager.shared.start(event: .adLoad(.max, .reuse(.rewarded), adUnitID, nil))
+      if let name {
+        LogEventManager.shared.log(event: .adLoadRequest(.max, name))
+        TimeManager.shared.start(event: .adLoad(name))
+      }
       
       self.rewardedAd = MARewardedAd.shared(withAdUnitIdentifier: adUnitID)
       rewardedAd?.delegate = self

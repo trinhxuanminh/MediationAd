@@ -12,6 +12,8 @@ import AppsFlyerAdRevenue
 class AdMobSplashAd: NSObject, ReuseAdProtocol {
   private var splashAd: GADInterstitialAd?
   private var adUnitID: String?
+  private var placement: String?
+  private var name: String?
   private var presentState = false
   private var isLoading = false
   private var timeout: Double?
@@ -28,8 +30,9 @@ class AdMobSplashAd: NSObject, ReuseAdProtocol {
     self.didLoadSuccess = didSuccess
   }
   
-  func config(id: String) {
+  func config(id: String, name: String) {
     self.adUnitID = id
+    self.name = name
     load()
   }
   
@@ -45,23 +48,25 @@ class AdMobSplashAd: NSObject, ReuseAdProtocol {
     return splashAd != nil
   }
   
-  func show(rootViewController: UIViewController,
+  func show(placement: String,
+            rootViewController: UIViewController,
             didFail: Handler?,
             willPresent: Handler?,
             didEarnReward: Handler?,
             didHide: Handler?
   ) {
-    guard isExist() else {
-      print("[MediationAd] [AdManager] [AdMob] [SplashAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
-      didFail?()
-      return
-    }
     guard !presentState else {
       print("[MediationAd] [AdManager] [AdMob] [SplashAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
+    guard isExist() else {
+      print("[MediationAd] [AdManager] [AdMob] [SplashAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      didFail?()
+      return
+    }
     print("[MediationAd] [AdManager] [AdMob] [SplashAd] Requested to show! (\(String(describing: adUnitID)))")
+    self.placement = placement
     self.didFail = didFail
     self.willPresent = willPresent
     self.didHide = didHide
@@ -132,8 +137,10 @@ extension AdMobSplashAd {
       }
       
       print("[MediationAd] [AdManager] [AdMob] [SplashAd] Start load! (\(String(describing: adUnitID)))")
-      LogEventManager.shared.log(event: .adLoadRequest(.admob, .reuse(.splash), adUnitID))
-      TimeManager.shared.start(event: .adLoad(.admob, .reuse(.splash), adUnitID, nil))
+      if let name {
+        LogEventManager.shared.log(event: .adLoadRequest(.admob, name))
+        TimeManager.shared.start(event: .adLoad(name))
+      }
       
       let request = GADRequest()
       GADInterstitialAd.load(
@@ -154,8 +161,10 @@ extension AdMobSplashAd {
           return
         }
         print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did load! (\(String(describing: adUnitID)))")
-        let time = TimeManager.shared.end(event: .adLoad(.admob, .reuse(.splash), adUnitID, nil))
-        LogEventManager.shared.log(event: .adLoadSuccess(.admob, .reuse(.splash), adUnitID, time))
+        if let name {
+          let time = TimeManager.shared.end(event: .adLoad(name))
+          LogEventManager.shared.log(event: .adLoadSuccess(.admob, name, time))
+        }
         self.splashAd = ad
         self.splashAd?.fullScreenContentDelegate = self
         self.didLoadSuccess?()

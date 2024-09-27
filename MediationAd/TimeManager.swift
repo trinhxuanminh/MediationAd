@@ -31,12 +31,12 @@ class TimeManager {
     case remoteManagerLoad
     case releaseManagerCheck
     case consentManagerCheck
-    case adLoad(MonetizationNetwork, AdManager.AdType, String?, String?)
+    case adLoad(String)
     
     var key: String {
       switch self {
-      case .adLoad(let monetizationNetwork, let adType, let adUnitID, let adName):
-        return "\(self)_\(monetizationNetwork)_\(adType)_\(adUnitID ?? String())_\(adName ?? String())"
+      case .adLoad(let id):
+        return "\(self)_\(id)"
       default:
         return "\(self)"
       }

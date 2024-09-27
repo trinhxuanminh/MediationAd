@@ -12,6 +12,8 @@ import AppsFlyerAdRevenue
 class AdMobRewardedInterstitialAd: NSObject, ReuseAdProtocol {
   private var rewardedInterstitialAd: GADRewardedInterstitialAd?
   private var adUnitID: String?
+  private var placement: String?
+  private var name: String?
   private var presentState = false
   private var isLoading = false
   private var retryAttempt = 0
@@ -27,8 +29,9 @@ class AdMobRewardedInterstitialAd: NSObject, ReuseAdProtocol {
     self.didLoadSuccess = didSuccess
   }
   
-  func config(id: String) {
+  func config(id: String, name: String) {
     self.adUnitID = id
+    self.name = name
     load()
   }
   
@@ -40,23 +43,25 @@ class AdMobRewardedInterstitialAd: NSObject, ReuseAdProtocol {
     return rewardedInterstitialAd != nil
   }
   
-  func show(rootViewController: UIViewController,
+  func show(placement: String,
+            rootViewController: UIViewController,
             didFail: Handler?,
             willPresent: Handler?,
             didEarnReward: Handler?,
             didHide: Handler?
   ) {
-    guard isReady() else {
-      print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
-      didFail?()
-      return
-    }
     guard !presentState else {
       print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
       didFail?()
       return
     }
+    guard isReady() else {
+      print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      didFail?()
+      return
+    }
     print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Requested to show! (\(String(describing: adUnitID)))")
+    self.placement = placement
     self.didShowFail = didFail
     self.willPresent = willPresent
     self.didHide = didHide
@@ -129,8 +134,10 @@ extension AdMobRewardedInterstitialAd {
       
       self.isLoading = true
       print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Start load! (\(String(describing: adUnitID)))")
-      LogEventManager.shared.log(event: .adLoadRequest(.admob, .reuse(.rewardedInterstitial), adUnitID))
-      TimeManager.shared.start(event: .adLoad(.admob, .reuse(.rewardedInterstitial), adUnitID, nil))
+      if let name {
+        LogEventManager.shared.log(event: .adLoadRequest(.admob, name))
+        TimeManager.shared.start(event: .adLoad(name))
+      }
       
       let request = GADRequest()
       GADRewardedInterstitialAd.load(
@@ -149,8 +156,10 @@ extension AdMobRewardedInterstitialAd {
           return
         }
         print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did load! (\(String(describing: adUnitID)))")
-        let time = TimeManager.shared.end(event: .adLoad(.admob, .reuse(.rewardedInterstitial), adUnitID, nil))
-        LogEventManager.shared.log(event: .adLoadSuccess(.admob, .reuse(.rewardedInterstitial), adUnitID, time))
+        if let name {
+          let time = TimeManager.shared.end(event: .adLoad(name))
+          LogEventManager.shared.log(event: .adLoadSuccess(.admob, name, time))
+        }
         self.retryAttempt = 0
         self.rewardedInterstitialAd = ad
         self.rewardedInterstitialAd?.fullScreenContentDelegate = self

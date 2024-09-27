@@ -9,10 +9,11 @@ import UIKit
 
 @objc protocol ReuseAdProtocol {
   func config(didFail: Handler?, didSuccess: Handler?)
-  func config(id: String)
+  func config(id: String, name: String)
   func isPresent() -> Bool
-  @objc optional func isExist() -> Bool
-  func show(rootViewController: UIViewController,
+  func isExist() -> Bool
+  func show(placement: String,
+            rootViewController: UIViewController,
             didFail: Handler?,
             willPresent: Handler?,
             didEarnReward: Handler?,

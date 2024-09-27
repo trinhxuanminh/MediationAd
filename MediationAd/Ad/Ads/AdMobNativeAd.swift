@@ -21,7 +21,7 @@ class AdMobNativeAd: NSObject, OnceUsedAdProtocol {
   private var adLoader: GADAdLoader?
   private weak var rootViewController: UIViewController?
   private var adUnitID: String?
-  private var adName: String?
+  private var placement: String?
   private var isFullScreen = false
   private var timeout: Double?
   private var state: State = .wait
@@ -37,7 +37,7 @@ class AdMobNativeAd: NSObject, OnceUsedAdProtocol {
       return
     }
     self.adUnitID = ad.id
-    self.adName = ad.name
+    self.placement = ad.placement
     self.timeout = ad.timeout
     if let isFullScreen = ad.isFullScreen {
       self.isFullScreen = isFullScreen
@@ -133,8 +133,10 @@ extension AdMobNativeAd {
         aspectRatioOption.mediaAspectRatio = .portrait
         options = [aspectRatioOption]
       }
-      LogEventManager.shared.log(event: .adLoadRequest(.admob, .onceUsed(.native), adUnitID))
-      TimeManager.shared.start(event: .adLoad(.admob, .onceUsed(.native), adUnitID, adName))
+      if let placement {
+        LogEventManager.shared.log(event: .adLoadRequest(.admob, placement))
+        TimeManager.shared.start(event: .adLoad(placement))
+      }
       self.adLoader = GADAdLoader(
         adUnitID: adUnitID,
         rootViewController: rootViewController,

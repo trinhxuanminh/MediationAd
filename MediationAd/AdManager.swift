@@ -28,17 +28,17 @@ public class AdManager {
     case error
   }
   
-  public enum OnceUsed: String {
+  public enum OnceUsed {
     case native
     case banner
   }
   
-  public enum Reuse: String {
+  public enum Reuse {
     case splash
     case appOpen
-    case interstitial = "inter"
-    case rewarded = "reward"
-    case rewardedInterstitial = "re_inter"
+    case interstitial
+    case rewarded
+    case rewardedInterstitial
   }
   
   public enum AdType {
@@ -52,6 +52,7 @@ public class AdManager {
   private var isConsent = true
   private var defaultData: Data?
   private var adConfig: AdConfig?
+  private(set) weak var rootViewController: UIViewController?
   private var listReuseAd: [String: ReuseAdProtocol] = [:]
   private var listNativeAd: [String: OnceUsedAdProtocol] = [:]
   
@@ -98,7 +99,7 @@ public class AdManager {
     fetchDefault()
   }
   
-  public func status(type: AdType, name: String) -> Bool? {
+  public func status(type: AdType, placement: String) -> Bool? {
     guard !isPremium else {
       print("[MediationAd] [AdManager] Premium!")
       return nil
@@ -114,8 +115,8 @@ public class AdManager {
       print("[MediationAd] [AdManager] Can't Request Ads!")
       return nil
     }
-    guard let adConfig = getAd(type: type, name: name) as? AdConfigProtocol else {
-      print("[MediationAd] [AdManager] Ads don't exist! (\(name))")
+    guard let adConfig = getAd(type: type, placement: placement) as? AdConfigProtocol else {
+      print("[MediationAd] [AdManager] Ads don't exist! (\(placement))")
       return nil
     }
     if !isRelease, adConfig.isAuto == true {
@@ -124,22 +125,22 @@ public class AdManager {
     return adConfig.status
   }
   
-  public func network(type: AdType, name: String) -> MonetizationNetwork? {
-    guard let adConfig = getAd(type: type, name: name) as? AdConfigProtocol else {
-      print("[MediationAd] [AdManager] Ads don't exist! (\(name))")
+  public func network(type: AdType, placement: String) -> MonetizationNetwork? {
+    guard let adConfig = getAd(type: type, placement: placement) as? AdConfigProtocol else {
+      print("[MediationAd] [AdManager] Ads don't exist! (\(placement))")
       return nil
     }
     return adConfig.network
   }
   
   public func load(type: Reuse,
-                   name: String,
+                   placement: String,
                    success: Handler? = nil,
                    fail: Handler? = nil
   ) {
-    switch status(type: .reuse(type), name: name) {
+    switch status(type: .reuse(type), placement: placement) {
     case false:
-      print("[MediationAd] [AdManager] Ads are not allowed to show! (\(name))")
+      print("[MediationAd] [AdManager] Ads are not allowed to show! (\(placement))")
       fail?()
       return
     case true:
@@ -148,12 +149,12 @@ public class AdManager {
       fail?()
       return
     }
-    guard let adConfig = getAd(type: .reuse(type), name: name) as? AdConfigProtocol else {
-      print("[MediationAd] [AdManager] Ads don't exist! (\(name))")
+    guard let adConfig = getAd(type: .reuse(type), placement: placement) as? AdConfigProtocol else {
+      print("[MediationAd] [AdManager] Ads don't exist! (\(placement))")
       fail?()
       return
     }
-    guard listReuseAd[type.rawValue + adConfig.id] == nil else {
+    guard listReuseAd[adConfig.name] == nil else {
       fail?()
       return
     }
@@ -165,7 +166,7 @@ public class AdManager {
       switch type {
       case .splash:
         guard let splash = adConfig as? Splash else {
-          print("[MediationAd] [AdManager] Format conversion error! (\(name))")
+          print("[MediationAd] [AdManager] Format conversion error! (\(placement))")
           fail?()
           return
         }
@@ -185,7 +186,7 @@ public class AdManager {
       switch type {
       case .splash:
         guard let splash = adConfig as? Splash else {
-          print("[MediationAd] [AdManager] Format conversion error! (\(name))")
+          print("[MediationAd] [AdManager] Format conversion error! (\(placement))")
           fail?()
           return
         }
@@ -199,25 +200,54 @@ public class AdManager {
       case .rewarded:
         adProtocol = MaxRewardedAd()
       case .rewardedInterstitial:
-        print("[MediationAd] [AdManager] This type of ads is not supported! (\(name))")
+        print("[MediationAd] [AdManager] This type of ads is not supported! (\(placement))")
         fail?()
         return
       }
     }
     
     adProtocol.config(didFail: fail, didSuccess: success)
-    adProtocol.config(id: adConfig.id)
-    self.listReuseAd[type.rawValue + adConfig.id] = adProtocol
+    adProtocol.config(id: adConfig.id, name: adConfig.name)
+    self.listReuseAd[adConfig.name] = adProtocol
   }
   
-  public func preloadNative(name: String,
+  public func isReady(type: Reuse, placement: String) -> Bool {
+    switch status(type: .reuse(type), placement: placement) {
+    case false:
+      print("[AdMobManager] Ads are not allowed to show! (\(placement))")
+      return false
+    case true:
+      break
+    default:
+      return false
+    }
+    guard let adConfig = getAd(type: .reuse(type), placement: placement) as? AdConfigProtocol else {
+      print("[AdMobManager] Ads don't exist! (\(placement))")
+      return false
+    }
+    guard let ad = listReuseAd[adConfig.name] else {
+      print("[AdMobManager] Ads do not exist! (\(placement))")
+      return false
+    }
+    guard !checkIsPresent() else {
+      print("[AdMobManager] Ads display failure - other ads is showing! (\(placement))")
+      return false
+    }
+    guard checkFrequency(adConfig: adConfig, ad: ad) else {
+      print("[AdMobManager] Ads hasn't been displayed yet! (\(placement))")
+      return false
+    }
+    return true
+  }
+  
+  public func preloadNative(placement: String,
                             into nativeAdView: UIView? = nil,
                             success: Handler? = nil,
                             fail: Handler? = nil
   ) {
-    switch status(type: .onceUsed(.native), name: name) {
+    switch status(type: .onceUsed(.native), placement: placement) {
     case false:
-      print("[MediationAd] [AdManager] Ads are not allowed to show! (\(name))")
+      print("[MediationAd] [AdManager] Ads are not allowed to show! (\(placement))")
       fail?()
       return
     case true:
@@ -226,17 +256,17 @@ public class AdManager {
       fail?()
       return
     }
-    guard let native = getAd(type: .onceUsed(.native), name: name) as? Native else {
-      print("[MediationAd] [AdManager] Ads don't exist! (\(name))")
+    guard let native = getAd(type: .onceUsed(.native), placement: placement) as? Native else {
+      print("[MediationAd] [AdManager] Ads don't exist! (\(placement))")
       fail?()
       return
     }
     guard native.isPreload == true else {
-      print("[MediationAd] [AdManager] Ads are not preloaded! (\(name))")
+      print("[MediationAd] [AdManager] Ads are not preloaded! (\(placement))")
       fail?()
       return
     }
-    guard listNativeAd[name] == nil else {
+    guard listNativeAd[placement] == nil else {
       fail?()
       return
     }
@@ -254,20 +284,21 @@ public class AdManager {
                     rootViewController: nil,
                     into: nativeAdView)
     
-    self.listNativeAd[name] = nativeAd
+    self.listNativeAd[placement] = nativeAd
   }
   
   public func show(type: Reuse,
-                   name: String,
+                   placement: String,
                    rootViewController: UIViewController,
                    didFail: Handler?,
                    willPresent: Handler? = nil,
                    didEarnReward: Handler? = nil,
                    didHide: Handler?
   ) {
-    switch status(type: .reuse(type), name: name) {
+    self.rootViewController = rootViewController
+    switch status(type: .reuse(type), placement: placement) {
     case false:
-      print("[MediationAd] [AdManager] Ads are not allowed to show! (\(name))")
+      print("[MediationAd] [AdManager] Ads are not allowed to show! (\(placement))")
       didFail?()
       return
     case true:
@@ -276,27 +307,28 @@ public class AdManager {
       didFail?()
       return
     }
-    guard let adConfig = getAd(type: .reuse(type), name: name) as? AdConfigProtocol else {
-      print("[MediationAd] [AdManager] Ads don't exist! (\(name))")
+    guard let adConfig = getAd(type: .reuse(type), placement: placement) as? AdConfigProtocol else {
+      print("[MediationAd] [AdManager] Ads don't exist! (\(placement))")
       didFail?()
       return
     }
-    guard let ad = listReuseAd[type.rawValue + adConfig.id] else {
-      print("[MediationAd] [AdManager] Ads do not exist! (\(name))")
+    guard let ad = listReuseAd[adConfig.name] else {
+      print("[MediationAd] [AdManager] Ads do not exist! (\(placement))")
       didFail?()
       return
     }
     guard !checkIsPresent() else {
-      print("[MediationAd] [AdManager] Ads display failure - other ads is showing! (\(name))")
+      print("[MediationAd] [AdManager] Ads display failure - other ads is showing! (\(placement))")
       didFail?()
       return
     }
     guard checkFrequency(adConfig: adConfig, ad: ad) else {
-      print("[MediationAd] [AdManager] Ads hasn't been displayed yet! (\(name))")
+      print("[MediationAd] [AdManager] Ads hasn't been displayed yet! (\(placement))")
       didFail?()
       return
     }
-    ad.show(rootViewController: rootViewController,
+    ad.show(placement: adConfig.placement,
+            rootViewController: rootViewController,
             didFail: didFail,
             willPresent: willPresent,
             didEarnReward: didEarnReward,
@@ -305,7 +337,7 @@ public class AdManager {
 }
 
 extension AdManager {
-  func getAd(type: AdType, name: String) -> Any? {
+  func getAd(type: AdType, placement: String) -> Any? {
     guard let adConfig else {
       return nil
     }
@@ -313,28 +345,28 @@ extension AdManager {
     case .onceUsed(let type):
       switch type {
       case .banner:
-        return adConfig.banners?.first(where: { $0.name == name })
+        return adConfig.banners?.first(where: { $0.placement == placement })
       case .native:
-        return adConfig.natives?.first(where: { $0.name == name })
+        return adConfig.natives?.first(where: { $0.placement == placement })
       }
     case .reuse(let type):
       switch type {
       case .splash:
-        return adConfig.splashs?.first(where: { $0.name == name })
+        return adConfig.splashs?.first(where: { $0.placement == placement })
       case .appOpen:
-        return adConfig.appOpens?.first(where: { $0.name == name })
+        return adConfig.appOpens?.first(where: { $0.placement == placement })
       case .interstitial:
-        return adConfig.interstitials?.first(where: { $0.name == name })
+        return adConfig.interstitials?.first(where: { $0.placement == placement })
       case .rewarded:
-        return adConfig.rewardeds?.first(where: { $0.name == name })
+        return adConfig.rewardeds?.first(where: { $0.placement == placement })
       case .rewardedInterstitial:
-        return adConfig.rewardedInterstitials?.first(where: { $0.name == name })
+        return adConfig.rewardedInterstitials?.first(where: { $0.placement == placement })
       }
     }
   }
   
-  func getNativePreload(name: String) -> OnceUsedAdProtocol? {
-    return listNativeAd[name]
+  func getNativePreload(placement: String) -> OnceUsedAdProtocol? {
+    return listNativeAd[placement]
   }
 }
 
@@ -406,14 +438,14 @@ extension AdManager {
     else {
       return true
     }
-    let countClick = FrequencyManager.shared.getCount(name: adConfig.name) + 1
+    let countClick = FrequencyManager.shared.getCount(placement: adConfig.placement) + 1
     guard countClick >= start else {
-      FrequencyManager.shared.increaseCount(name: adConfig.name)
+      FrequencyManager.shared.increaseCount(placement: adConfig.placement)
       return false
     }
     let isShow = (countClick - start) % frequency == 0
-    if !isShow || ad.isExist!() {
-      FrequencyManager.shared.increaseCount(name: adConfig.name)
+    if !isShow || ad.isExist() {
+      FrequencyManager.shared.increaseCount(placement: adConfig.placement)
     }
     return isShow
   }
