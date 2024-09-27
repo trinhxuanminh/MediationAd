@@ -15,7 +15,7 @@ class BannerViewController: BaseViewController {
   
   override func setProperties() {
     bannerAdView.isHidden = false
-    bannerAdView.load(name: AppText.AdName.banner, didError: { [weak self] in
+    bannerAdView.load(placement: AppText.AdName.banner, didError: { [weak self] in
       guard let self else {
         return
       }

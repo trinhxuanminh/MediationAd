@@ -312,6 +312,7 @@ public class AdManager {
       didFail?()
       return
     }
+    LogEventManager.shared.log(event: .adShowCheck(adConfig.network, adConfig.placement))
     guard let ad = listReuseAd[adConfig.name] else {
       print("[MediationAd] [AdManager] Ads do not exist! (\(placement))")
       didFail?()

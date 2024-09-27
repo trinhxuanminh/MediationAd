@@ -25,11 +25,11 @@ class CustomMaxNativeAdView: MaxNativeAdView {
 }
 
 extension CustomMaxNativeAdView {
-  func load(name: String, didReceive: Handler? = nil, didError: Handler? = nil) {
+  func load(placement: String, didReceive: Handler? = nil, didError: Handler? = nil) {
     guard let topVC = UIApplication.topViewController() else {
       return
     }
-    load(name: name,
+    load(placement: placement,
          nativeAdView: nativeAdView,
          rootViewController: topVC,
          didReceive: didReceive,

@@ -66,7 +66,9 @@ extension AdMobNativeAd: GADNativeAdLoaderDelegate {
       return
     }
     print("[MediationAd] [AdManager] [AdMob] [NativeAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
-    LogEventManager.shared.log(event: .adLoadFail(.admob, .onceUsed(.native), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adLoadFail(.admob, placement, error))
+    }
     self.state = .error
     didError?()
   }
@@ -76,8 +78,10 @@ extension AdMobNativeAd: GADNativeAdLoaderDelegate {
       return
     }
     print("[MediationAd] [AdManager] [AdMob] [NativeAd] Did load! (\(String(describing: adUnitID)))")
-    let time = TimeManager.shared.end(event: .adLoad(.admob, .onceUsed(.native), adUnitID, adName))
-    LogEventManager.shared.log(event: .adLoadSuccess(.admob, .onceUsed(.native), adUnitID, time))
+    if let placement {
+      let time = TimeManager.shared.end(event: .adLoad(placement))
+      LogEventManager.shared.log(event: .adLoadSuccess(.admob, placement, time))
+    }
     self.state = .receive
     self.nativeAd = nativeAd
     didReceive?()
@@ -90,9 +94,11 @@ extension AdMobNativeAd: GADNativeAdLoaderDelegate {
         return
       }
       print("[MediationAd] [AdManager] [AdMob] [NativeAd] Did pay revenue(\(adValue.value))!")
-      LogEventManager.shared.log(event: .adPayRevenue(.admob, .onceUsed(.native), adUnitID))
-      if adValue.value != 0 {
-        LogEventManager.shared.log(event: .adHadRevenue(.admob, .onceUsed(.native), adUnitID))
+      if let placement = self.placement {
+        LogEventManager.shared.log(event: .adPayRevenue(.admob, placement))
+        if adValue.value == 0 {
+          LogEventManager.shared.log(event: .adNoRevenue(.admob, placement))
+        }
       }
       let adRevenueParams: [AnyHashable: Any] = [
         kAppsFlyerAdRevenueCountry: "US",
@@ -155,7 +161,9 @@ extension AdMobNativeAd {
           return
         }
         print("[MediationAd] [AdManager] [AdMob] [NativeAd] Load fail (\(String(describing: adUnitID))) - time out!")
-        LogEventManager.shared.log(event: .adLoadTimeout(.admob, .onceUsed(.native), adUnitID))
+        if let placement {
+          LogEventManager.shared.log(event: .adLoadTimeout(.admob, placement))
+        }
         self.state = .error
         didError?()
       }

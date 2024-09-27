@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       return
     }
     AdManager.shared.show(type: .appOpen,
-                          name: AppText.AdName.appOpen,
+                          placement: AppText.AdName.appOpen,
                           rootViewController: topVC,
                           didFail: nil,
                           didHide: nil)

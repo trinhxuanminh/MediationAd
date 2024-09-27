@@ -21,7 +21,7 @@ open class MaxBannerAdView: UIView {
   private weak var rootViewController: UIViewController?
   private var bannerAdView: MAAdView?
   private var adUnitID: String?
-  private var adName: String?
+  private var placement: String?
   private var state: State = .wait
   private var didReceive: Handler?
   private var didError: Handler?
@@ -31,7 +31,7 @@ open class MaxBannerAdView: UIView {
     super.removeFromSuperview()
   }
   
-  public func load(name: String,
+  public func load(placement: String,
                    rootViewController: UIViewController,
                    didReceive: Handler?,
                    didError: Handler?
@@ -43,7 +43,7 @@ open class MaxBannerAdView: UIView {
     guard adUnitID == nil else {
       return
     }
-    switch AdManager.shared.status(type: .onceUsed(.banner), name: name) {
+    switch AdManager.shared.status(type: .onceUsed(.banner), placement: placement) {
     case false:
       print("[MediationAd] [AdManager] [Max] [BannerAd] Ads are not allowed to show! (\(String(describing: adUnitID)))")
       errored()
@@ -54,14 +54,14 @@ open class MaxBannerAdView: UIView {
       errored()
       return
     }
-    guard let ad = AdManager.shared.getAd(type: .onceUsed(.banner), name: name) as? Banner else {
+    guard let ad = AdManager.shared.getAd(type: .onceUsed(.banner), placement: placement) as? Banner else {
       return
     }
     guard ad.status else {
       return
     }
     self.adUnitID = ad.id
-    self.adName = ad.name
+    self.placement = ad.placement
     load()
   }
 }
@@ -77,8 +77,10 @@ extension MaxBannerAdView: MAAdViewAdDelegate, MAAdRevenueDelegate {
   
   public func didLoad(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [BannerAd] Did load! (\(String(describing: adUnitID)))")
-    let time = TimeManager.shared.end(event: .adLoad(.max, .onceUsed(.banner), adUnitID, adName))
-    LogEventManager.shared.log(event: .adLoadSuccess(.max, .onceUsed(.banner), adUnitID, time))
+    if let placement {
+      let time = TimeManager.shared.end(event: .adLoad(placement))
+      LogEventManager.shared.log(event: .adLoadSuccess(.admob, placement, time))
+    }
     self.state = .receive
     didReceive?()
     
@@ -88,36 +90,48 @@ extension MaxBannerAdView: MAAdViewAdDelegate, MAAdRevenueDelegate {
   
   public func didFailToLoadAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {
     print("[MediationAd] [AdManager] [Max] [BannerAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
-    LogEventManager.shared.log(event: .adLoadFail(.max, .onceUsed(.banner), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adLoadFail(.max, placement, error as? Error))
+    }
     self.state = .error
     errored()
   }
   
   public func didDisplay(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [BannerAd] Did display! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adShowSuccess(.max, .onceUsed(.banner), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowSuccess(.max, placement))
+    }
   }
   
   public func didHide(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [BannerAd] Did hide! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adShowHide(.max, .onceUsed(.banner), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowHide(.max, placement))
+    }
   }
   
   public func didClick(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [BannerAd] Did click! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adClick(.max, .onceUsed(.banner), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowClick(.max, placement))
+    }
   }
   
   public func didFail(toDisplay ad: MAAd, withError error: MAError) {
     print("[MediationAd] [AdManager] [Max] [BannerAd] Did fail to show content! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adShowFail(.max, .onceUsed(.banner), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowFail(.max, placement, error as? Error))
+    }
   }
   
   public func didPayRevenue(for ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [BannerAd] Did pay revenue(\(ad.revenue))!")
-    LogEventManager.shared.log(event: .adPayRevenue(.max, .onceUsed(.banner), adUnitID))
-    if ad.revenue != 0 {
-      LogEventManager.shared.log(event: .adHadRevenue(.max, .onceUsed(.banner), adUnitID))
+    if let placement = self.placement {
+      LogEventManager.shared.log(event: .adPayRevenue(.max, placement))
+      if ad.revenue == 0 {
+        LogEventManager.shared.log(event: .adNoRevenue(.max, placement))
+      }
     }
     let adRevenueParams: [AnyHashable: Any] = [
       kAppsFlyerAdRevenueCountry: "US",
@@ -180,8 +194,10 @@ extension MaxBannerAdView {
       bannerAdView?.revenueDelegate = self
       bannerAdView?.stopAutoRefresh()
       bannerAdView?.setExtraParameterForKey("adaptive_banner", value: "true")
-      LogEventManager.shared.log(event: .adLoadRequest(.max, .onceUsed(.banner), adUnitID))
-      TimeManager.shared.start(event: .adLoad(.max, .onceUsed(.banner), adUnitID, adName))
+      if let placement {
+        LogEventManager.shared.log(event: .adLoadRequest(.max, placement))
+        TimeManager.shared.start(event: .adLoad(placement))
+      }
       bannerAdView?.loadAd()
     }
   }

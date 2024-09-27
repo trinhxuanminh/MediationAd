@@ -55,23 +55,25 @@ class AdMobRewardedAd: NSObject, ReuseAdProtocol {
       didFail?()
       return
     }
+    LogEventManager.shared.log(event: .adShowRequest(.admob, placement))
     guard isReady() else {
       print("[MediationAd] [AdManager] [AdMob] [RewardAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      LogEventManager.shared.log(event: .adShowNoReady(.admob, placement))
       didFail?()
       return
     }
+    LogEventManager.shared.log(event: .adShowReady(.admob, placement))
     print("[MediationAd] [AdManager] [AdMob] [RewardAd] Requested to show! (\(String(describing: adUnitID)))")
     self.placement = placement
     self.didShowFail = didFail
     self.willPresent = willPresent
     self.didHide = didHide
     self.didEarnReward = didEarnReward
-    LogEventManager.shared.log(event: .adShowRequest(.admob, .reuse(.rewarded), adUnitID))
     rewardedAd?.present(fromRootViewController: rootViewController, userDidEarnRewardHandler: { [weak self] in
       guard let self else {
         return
       }
-      LogEventManager.shared.log(event: .adEarnReward(.admob, .reuse(.rewarded), adUnitID))
+      LogEventManager.shared.log(event: .adEarnReward(.admob, placement))
       self.didEarnReward?()
     })
   }
@@ -82,7 +84,9 @@ extension AdMobRewardedAd: GADFullScreenContentDelegate {
           didFailToPresentFullScreenContentWithError error: Error
   ) {
     print("[MediationAd] [AdManager] [AdMob] [RewardAd] Did fail to show content! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adShowFail(.admob, .reuse(.rewarded), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowFail(.admob, placement, error))
+    }
     didShowFail?()
     self.rewardedAd = nil
     load()
@@ -90,14 +94,18 @@ extension AdMobRewardedAd: GADFullScreenContentDelegate {
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [RewardAd] Will display! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adShowSuccess(.admob, .reuse(.rewarded), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowSuccess(.admob, placement))
+    }
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [RewardAd] Did hide! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adShowHide(.admob, .reuse(.rewarded), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowHide(.admob, placement))
+    }
     didHide?()
     self.rewardedAd = nil
     self.presentState = false
@@ -151,7 +159,9 @@ extension AdMobRewardedAd {
         guard error == nil, let ad = ad else {
           print("[MediationAd] [AdManager] [AdMob] [RewardAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
           self.retryAttempt += 1
-          LogEventManager.shared.log(event: .adLoadRetryFail(.admob, .reuse(.rewarded), adUnitID))
+          if let name {
+            LogEventManager.shared.log(event: .adLoadFail(.admob, name, error))
+          }
           self.didLoadFail?()
           return
         }
@@ -170,9 +180,11 @@ extension AdMobRewardedAd {
         
         ad.paidEventHandler = { adValue in
           print("[MediationAd] [AdManager] [AdMob] [RewardAd] Did pay revenue(\(adValue.value))!")
-          LogEventManager.shared.log(event: .adPayRevenue(.admob, .reuse(.rewarded), adUnitID))
-          if adValue.value != 0 {
-            LogEventManager.shared.log(event: .adHadRevenue(.admob, .reuse(.rewarded), adUnitID))
+          if let placement = self.placement {
+            LogEventManager.shared.log(event: .adPayRevenue(.admob, placement))
+            if adValue.value == 0 {
+              LogEventManager.shared.log(event: .adNoRevenue(.admob, placement))
+            }
           }
           let adRevenueParams: [AnyHashable: Any] = [
             kAppsFlyerAdRevenueCountry: "US",

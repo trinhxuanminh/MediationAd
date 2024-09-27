@@ -60,18 +60,20 @@ class MaxSplashAd: NSObject, ReuseAdProtocol {
       didFail?()
       return
     }
+    LogEventManager.shared.log(event: .adShowRequest(.max, placement))
     guard isExist() else {
       print("[MediationAd] [AdManager] [Max] [SplashAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      LogEventManager.shared.log(event: .adShowNoReady(.max, placement))
       didFail?()
       return
     }
+    LogEventManager.shared.log(event: .adShowReady(.max, placement))
     print("[MediationAd] [AdManager] [Max] [SplashAd] Requested to show! (\(String(describing: adUnitID)))")
     self.placement = placement
     self.didFail = didFail
     self.willPresent = willPresent
     self.didHide = didHide
     self.didEarnReward = didEarnReward
-    LogEventManager.shared.log(event: .adShowRequest(.max, .reuse(.splash), adUnitID))
     splashAd?.show()
   }
 }
@@ -99,32 +101,42 @@ extension MaxSplashAd: MAAdDelegate, MAAdRevenueDelegate {
     }
     self.didResponse = true
     print("[MediationAd] [AdManager] [Max] [SplashAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
-    LogEventManager.shared.log(event: .adLoadFail(.max, .reuse(.splash), adUnitID))
+    if let name {
+      LogEventManager.shared.log(event: .adLoadFail(.max, name, error as? Error))
+    }
     self.didLoadFail?()
   }
   
   func didDisplay(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [SplashAd] Will display! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adShowSuccess(.max, .reuse(.splash), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowSuccess(.max, placement))
+    }
     willPresent?()
     self.presentState = true
   }
   
   func didClick(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [SplashAd] Did click! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adClick(.max, .reuse(.splash), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowClick(.max, placement))
+    }
   }
   
   func didFail(toDisplay ad: MAAd, withError error: MAError) {
     print("[MediationAd] [AdManager] [Max] [SplashAd] Did fail to show content! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adShowFail(.max, .reuse(.splash), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowFail(.max, placement, error as? Error))
+    }
     didFail?()
     self.splashAd = nil
   }
   
   func didHide(_ ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [SplashAd] Did hide! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adShowHide(.max, .reuse(.splash), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowHide(.max, placement))
+    }
     didHide?()
     self.presentState = false
     self.splashAd = nil
@@ -132,9 +144,11 @@ extension MaxSplashAd: MAAdDelegate, MAAdRevenueDelegate {
   
   func didPayRevenue(for ad: MAAd) {
     print("[MediationAd] [AdManager] [Max] [SplashAd] Did pay revenue(\(ad.revenue))!")
-    LogEventManager.shared.log(event: .adPayRevenue(.max, .reuse(.splash), adUnitID))
-    if ad.revenue != 0 {
-      LogEventManager.shared.log(event: .adHadRevenue(.max, .reuse(.splash), adUnitID))
+    if let placement = self.placement {
+      LogEventManager.shared.log(event: .adPayRevenue(.max, placement))
+      if ad.revenue == 0 {
+        LogEventManager.shared.log(event: .adNoRevenue(.max, placement))
+      }
     }
     let adRevenueParams: [AnyHashable: Any] = [
       kAppsFlyerAdRevenueCountry: "US",
@@ -180,7 +194,9 @@ extension MaxSplashAd {
           }
           self.didResponse = true
           print("[MediationAd] [AdManager] [Max] [SplashAd] Load fail (\(String(describing: adUnitID))) - timeout!")
-          LogEventManager.shared.log(event: .adLoadTimeout(.max, .reuse(.splash), adUnitID))
+          if let name {
+            LogEventManager.shared.log(event: .adLoadTimeout(.max, name))
+          }
           didLoadFail?()
         })
       }

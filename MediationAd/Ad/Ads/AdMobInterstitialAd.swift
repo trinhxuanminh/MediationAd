@@ -55,18 +55,20 @@ class AdMobInterstitialAd: NSObject, ReuseAdProtocol {
       didFail?()
       return
     }
+    LogEventManager.shared.log(event: .adShowRequest(.admob, placement))
     guard isReady() else {
       print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      LogEventManager.shared.log(event: .adShowNoReady(.admob, placement))
       didFail?()
       return
     }
+    LogEventManager.shared.log(event: .adShowReady(.admob, placement))
     print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Requested to show! (\(String(describing: adUnitID)))")
     self.placement = placement
     self.didShowFail = didFail
     self.willPresent = willPresent
     self.didHide = didHide
     self.didEarnReward = didEarnReward
-    LogEventManager.shared.log(event: .adShowRequest(.admob, .reuse(.interstitial), adUnitID))
     interstitialAd?.present(fromRootViewController: rootViewController)
   }
 }
@@ -76,7 +78,9 @@ extension AdMobInterstitialAd: GADFullScreenContentDelegate {
           didFailToPresentFullScreenContentWithError error: Error
   ) {
     print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Did fail to show content! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adShowFail(.admob, .reuse(.interstitial), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowFail(.admob, placement, error))
+    }
     didShowFail?()
     self.interstitialAd = nil
     load()
@@ -84,14 +88,18 @@ extension AdMobInterstitialAd: GADFullScreenContentDelegate {
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Will display! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adShowSuccess(.admob, .reuse(.interstitial), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowSuccess(.admob, placement))
+    }
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Did hide! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adShowHide(.admob, .reuse(.interstitial), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowHide(.admob, placement))
+    }
     didHide?()
     self.interstitialAd = nil
     self.presentState = false
@@ -145,7 +153,9 @@ extension AdMobInterstitialAd {
         guard error == nil, let ad = ad else {
           print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
           self.retryAttempt += 1
-          LogEventManager.shared.log(event: .adLoadRetryFail(.admob, .reuse(.interstitial), adUnitID))
+          if let name {
+            LogEventManager.shared.log(event: .adLoadFail(.admob, name, error))
+          }
           self.didLoadFail?()
           return
         }
@@ -164,9 +174,11 @@ extension AdMobInterstitialAd {
         
         ad.paidEventHandler = { adValue in
           print("[MediationAd] [AdManager] [AdMob] [InterstitialAd] Did pay revenue(\(adValue.value))!")
-          LogEventManager.shared.log(event: .adPayRevenue(.admob, .reuse(.interstitial), adUnitID))
-          if adValue.value != 0 {
-            LogEventManager.shared.log(event: .adHadRevenue(.admob, .reuse(.interstitial), adUnitID))
+          if let placement = self.placement {
+            LogEventManager.shared.log(event: .adPayRevenue(.admob, placement))
+            if adValue.value == 0 {
+              LogEventManager.shared.log(event: .adNoRevenue(.admob, placement))
+            }
           }
           let adRevenueParams: [AnyHashable: Any] = [
             kAppsFlyerAdRevenueCountry: "US",

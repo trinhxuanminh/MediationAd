@@ -44,15 +44,15 @@ class MediationNativeAdView: BaseView {
 }
 
 extension MediationNativeAdView {
-  func load(name: String, didError: Handler? = nil) {
-    switch AdManager.shared.network(type: .onceUsed(.native), name: name) {
+  func load(placement: String, didError: Handler? = nil) {
+    switch AdManager.shared.network(type: .onceUsed(.native), placement: placement) {
     case .admob:
       let nativeAdView = CustomAdMobNativeAdView()
       containerView.addSubview(nativeAdView)
       nativeAdView.snp.makeConstraints { make in
         make.edges.equalToSuperview()
       }
-      nativeAdView.load(name: name, didReceive: { [weak self] in
+      nativeAdView.load(placement: placement, didReceive: { [weak self] in
         guard let self else {
           return
         }
@@ -64,7 +64,7 @@ extension MediationNativeAdView {
       nativeAdView.snp.makeConstraints { make in
         make.edges.equalToSuperview()
       }
-      nativeAdView.load(name: name, didReceive: { [weak self] in
+      nativeAdView.load(placement: placement, didReceive: { [weak self] in
         guard let self else {
           return
         }

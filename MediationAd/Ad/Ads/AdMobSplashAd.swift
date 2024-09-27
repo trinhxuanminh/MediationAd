@@ -60,18 +60,20 @@ class AdMobSplashAd: NSObject, ReuseAdProtocol {
       didFail?()
       return
     }
+    LogEventManager.shared.log(event: .adShowRequest(.admob, placement))
     guard isExist() else {
       print("[MediationAd] [AdManager] [AdMob] [SplashAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      LogEventManager.shared.log(event: .adShowNoReady(.admob, placement))
       didFail?()
       return
     }
+    LogEventManager.shared.log(event: .adShowReady(.admob, placement))
     print("[MediationAd] [AdManager] [AdMob] [SplashAd] Requested to show! (\(String(describing: adUnitID)))")
     self.placement = placement
     self.didFail = didFail
     self.willPresent = willPresent
     self.didHide = didHide
     self.didEarnReward = didEarnReward
-    LogEventManager.shared.log(event: .adShowRequest(.admob, .reuse(.splash), adUnitID))
     splashAd?.present(fromRootViewController: rootViewController)
   }
 }
@@ -81,21 +83,27 @@ extension AdMobSplashAd: GADFullScreenContentDelegate {
           didFailToPresentFullScreenContentWithError error: Error
   ) {
     print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did fail to show content! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adShowFail(.admob, .reuse(.splash), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowFail(.admob, placement, error))
+    }
     didFail?()
     self.splashAd = nil
   }
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [SplashAd] Will display! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adShowSuccess(.admob, .reuse(.splash), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowSuccess(.admob, placement))
+    }
     willPresent?()
     self.presentState = true
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did hide! (\(String(describing: adUnitID)))")
-    LogEventManager.shared.log(event: .adShowHide(.admob, .reuse(.splash), adUnitID))
+    if let placement {
+      LogEventManager.shared.log(event: .adShowHide(.admob, placement))
+    }
     didHide?()
     self.presentState = false
     self.splashAd = nil
@@ -131,7 +139,9 @@ extension AdMobSplashAd {
           }
           self.didResponse = true
           print("[MediationAd] [AdManager] [AdMob] [SplashAd] Load fail (\(String(describing: adUnitID))) - timeout!")
-          LogEventManager.shared.log(event: .adLoadTimeout(.admob, .reuse(.splash), adUnitID))
+          if let name {
+            LogEventManager.shared.log(event: .adLoadTimeout(.admob, name))
+          }
           didLoadFail?()
         })
       }
@@ -156,7 +166,9 @@ extension AdMobSplashAd {
         self.didResponse = true
         guard error == nil, let ad = ad else {
           print("[MediationAd] [AdManager] [AdMob] [SplashAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
-          LogEventManager.shared.log(event: .adLoadFail(.admob, .reuse(.splash), adUnitID))
+          if let name {
+            LogEventManager.shared.log(event: .adLoadFail(.admob, name, error))
+          }
           self.didLoadFail?()
           return
         }
@@ -174,9 +186,11 @@ extension AdMobSplashAd {
         
         ad.paidEventHandler = { adValue in
           print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did pay revenue(\(adValue.value))!")
-          LogEventManager.shared.log(event: .adPayRevenue(.admob, .reuse(.splash), adUnitID))
-          if adValue.value != 0 {
-            LogEventManager.shared.log(event: .adHadRevenue(.admob, .reuse(.splash), adUnitID))
+          if let placement = self.placement {
+            LogEventManager.shared.log(event: .adPayRevenue(.admob, placement))
+            if adValue.value == 0 {
+              LogEventManager.shared.log(event: .adNoRevenue(.admob, placement))
+            }
           }
           let adRevenueParams: [AnyHashable: Any] = [
             kAppsFlyerAdRevenueCountry: "US",

@@ -11,6 +11,8 @@ import GoogleMobileAds
 open class AdMobNativeAdView: UIView, AdViewProtocol {
   private var nativeAdView: GADNativeAdView?
   private var nativeAd: AdMobNativeAd?
+  private weak var rootViewController: UIViewController?
+  private var placement: String?
   private var didReceive: Handler?
   private var didError: Handler?
   
@@ -50,19 +52,21 @@ open class AdMobNativeAdView: UIView, AdViewProtocol {
   
   open func setColor() {}
   
-  public func load(name: String,
+  public func load(placement: String,
                    nativeAdView: GADNativeAdView,
                    rootViewController: UIViewController,
                    didReceive: Handler?,
                    didError: Handler?
   ) {
+    self.rootViewController = rootViewController
+    self.placement = placement
     self.nativeAdView = nativeAdView
     self.didReceive = didReceive
     self.didError = didError
     
-    switch AdManager.shared.status(type: .onceUsed(.native), name: name) {
+    switch AdManager.shared.status(type: .onceUsed(.native), placement: placement) {
     case false:
-      print("[MediationAd] [AdManager] [AdMob] [NativeAd] Ads are not allowed to show! (\(name))")
+      print("[MediationAd] [AdManager] [AdMob] [NativeAd] Ads are not allowed to show! (\(placement))")
       errored()
       return
     case true:
@@ -72,15 +76,17 @@ open class AdMobNativeAdView: UIView, AdViewProtocol {
       return
     }
     
+    guard let native = AdManager.shared.getAd(type: .onceUsed(.native), placement: placement) as? Native else {
+      return
+    }
+    LogEventManager.shared.log(event: .adShowCheck(.admob, placement, rootViewController))
+    
     if nativeAd == nil {
-      guard let native = AdManager.shared.getAd(type: .onceUsed(.native), name: name) as? Native else {
-        return
-      }
       guard native.status else {
         return
       }
       
-      if let nativeAd = AdManager.shared.getNativePreload(name: name) {
+      if let nativeAd = AdManager.shared.getNativePreload(placement: placement) {
         self.nativeAd = nativeAd as? AdMobNativeAd
       } else {
         self.nativeAd = AdMobNativeAd()
@@ -91,6 +97,8 @@ open class AdMobNativeAdView: UIView, AdViewProtocol {
     guard let nativeAd else {
       return
     }
+    
+    LogEventManager.shared.log(event: .adShowRequest(.admob, placement, rootViewController))
     switch nativeAd.getState() {
     case .receive:
       config(ad: nativeAd.getAd())
@@ -165,6 +173,10 @@ extension AdMobNativeAdView {
     nativeAdView.advertiserView?.isHidden = nativeAd.advertiser == nil
     
     nativeAdView.nativeAd = nativeAd
+    
+    if let placement {
+      LogEventManager.shared.log(event: .adShowSuccess(.admob, placement, rootViewController))
+    }
     
     didReceive?()
   }

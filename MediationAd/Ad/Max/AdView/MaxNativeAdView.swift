@@ -12,6 +12,8 @@ import AppLovinSDK
 open class MaxNativeAdView: UIView, AdViewProtocol {
   private var nativeAdView: MANativeAdView?
   private var nativeAd: MaxNativeAd?
+  private weak var rootViewController: UIViewController?
+  private var placement: String?
   private var didReceive: Handler?
   private var didError: Handler?
   
@@ -51,19 +53,21 @@ open class MaxNativeAdView: UIView, AdViewProtocol {
   
   open func setColor() {}
   
-  public func load(name: String,
+  public func load(placement: String,
                    nativeAdView: MANativeAdView,
                    rootViewController: UIViewController,
                    didReceive: Handler?,
                    didError: Handler?
   ) {
+    self.rootViewController = rootViewController
+    self.placement = placement
     self.nativeAdView = nativeAdView
     self.didReceive = didReceive
     self.didError = didError
     
-    switch AdManager.shared.status(type: .onceUsed(.native), name: name) {
+    switch AdManager.shared.status(type: .onceUsed(.native), placement: placement) {
     case false:
-      print("[MediationAd] [AdManager] [AdMob] [NativeAd] Ads are not allowed to show! (\(name))")
+      print("[MediationAd] [AdManager] [AdMob] [NativeAd] Ads are not allowed to show! (\(placement))")
       errored()
       return
     case true:
@@ -73,15 +77,17 @@ open class MaxNativeAdView: UIView, AdViewProtocol {
       return
     }
     
+    guard let native = AdManager.shared.getAd(type: .onceUsed(.native), placement: placement) as? Native else {
+      return
+    }
+    LogEventManager.shared.log(event: .adShowCheck(.max, placement, rootViewController))
+    
     if nativeAd == nil {
-      guard let native = AdManager.shared.getAd(type: .onceUsed(.native), name: name) as? Native else {
-        return
-      }
       guard native.status else {
         return
       }
       
-      if let nativeAd = AdManager.shared.getNativePreload(name: name) {
+      if let nativeAd = AdManager.shared.getNativePreload(placement: placement) {
         self.nativeAd = nativeAd as? MaxNativeAd
       } else {
         self.nativeAd = MaxNativeAd()
@@ -92,6 +98,7 @@ open class MaxNativeAdView: UIView, AdViewProtocol {
     guard let nativeAd else {
       return
     }
+    LogEventManager.shared.log(event: .adShowRequest(.max, placement, rootViewController))
     switch nativeAd.getState() {
     case .receive:
       config(nativeAd: nativeAd.getAd(), nativeAdView: nativeAd.getAdView())
@@ -150,6 +157,10 @@ extension MaxNativeAdView {
         multiplier: CGFloat(1.0 / nativeAd.mediaContentAspectRatio),
         constant: 0)
       heightConstraint.isActive = true
+    }
+    
+    if let placement {
+      LogEventManager.shared.log(event: .adShowSuccess(.max, placement, rootViewController))
     }
     
     self.nativeAdView = nativeAdView

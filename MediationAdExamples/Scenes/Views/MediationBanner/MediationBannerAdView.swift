@@ -44,18 +44,18 @@ class MediationBannerAdView: BaseView {
 }
 
 extension MediationBannerAdView {
-  func load(name: String, didError: Handler? = nil) {
+  func load(placement: String, didError: Handler? = nil) {
     guard let topVC = UIApplication.topViewController() else {
       return
     }
-    switch AdManager.shared.network(type: .onceUsed(.banner), name: name) {
+    switch AdManager.shared.network(type: .onceUsed(.banner), placement: placement) {
     case .admob:
       let bannerAdView = AdMobBannerAdView()
       containerView.addSubview(bannerAdView)
       bannerAdView.snp.makeConstraints { make in
         make.edges.equalToSuperview()
       }
-      bannerAdView.load(name: name, rootViewController: topVC, didReceive: { [weak self] in
+      bannerAdView.load(placement: placement, rootViewController: topVC, didReceive: { [weak self] in
         guard let self else {
           return
         }
@@ -67,7 +67,7 @@ extension MediationBannerAdView {
       bannerAdView.snp.makeConstraints { make in
         make.edges.equalToSuperview()
       }
-      bannerAdView.load(name: name, rootViewController: topVC, didReceive: { [weak self] in
+      bannerAdView.load(placement: placement, rootViewController: topVC, didReceive: { [weak self] in
         guard let self else {
           return
         }

@@ -19,11 +19,11 @@ class SplashViewController: BaseViewController {
         }
         switch state {
         case .success, .error:
-          AdManager.shared.load(type: .splash, name: AppText.AdName.splash, success: showAds, fail: toHome)
-          AdManager.shared.load(type: .interstitial, name: AppText.AdName.interstitial)
-          AdManager.shared.load(type: .appOpen, name: AppText.AdName.appOpen)
-          AdManager.shared.load(type: .rewarded, name: AppText.AdName.rewarded)
-          AdManager.shared.load(type: .rewardedInterstitial, name: AppText.AdName.rewardedInterstitial)
+          AdManager.shared.load(type: .splash, placement: AppText.AdName.splash, success: showAds, fail: toHome)
+          AdManager.shared.load(type: .interstitial, placement: AppText.AdName.interstitial)
+          AdManager.shared.load(type: .appOpen, placement: AppText.AdName.appOpen)
+          AdManager.shared.load(type: .rewarded, placement: AppText.AdName.rewarded)
+          AdManager.shared.load(type: .rewardedInterstitial, placement: AppText.AdName.rewardedInterstitial)
 //          AdManager.shared.preloadNative(name: AppText.AdName.native, into: CustomMaxNativeAdView().nativeAdView)
         case .reject, .premium:
           self.toHome()
@@ -35,7 +35,7 @@ class SplashViewController: BaseViewController {
   
   func showAds() {
     AdManager.shared.show(type: .splash,
-                          name: AppText.AdName.splash,
+                          placement: AppText.AdName.splash,
                           rootViewController: self,
                           didFail: toHome,
                           didHide: toHome)
