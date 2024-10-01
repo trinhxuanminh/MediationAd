@@ -45,7 +45,7 @@ open class MaxBannerAdView: UIView {
     }
     switch AdManager.shared.status(type: .onceUsed(.banner), placement: placement) {
     case false:
-      print("[MediationAd] [AdManager] [Max] [BannerAd] Ads are not allowed to show! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [Max] [BannerAd] Ads are not allowed to show! (\(String(describing: placement)))")
       errored()
       return
     case true:
@@ -68,15 +68,15 @@ open class MaxBannerAdView: UIView {
 
 extension MaxBannerAdView: MAAdViewAdDelegate, MAAdRevenueDelegate {
   public func didExpand(_ ad: MAAd) {
-    print("[MediationAd] [AdManager] [Max] [BannerAd] Did expand! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [BannerAd] Did expand! (\(String(describing: placement)))")
   }
   
   public func didCollapse(_ ad: MAAd) {
-    print("[MediationAd] [AdManager] [Max] [BannerAd] Did collapse! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [BannerAd] Did collapse! (\(String(describing: placement)))")
   }
   
   public func didLoad(_ ad: MAAd) {
-    print("[MediationAd] [AdManager] [Max] [BannerAd] Did load! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [BannerAd] Did load! (\(String(describing: placement)))")
     if let placement {
       let time = TimeManager.shared.end(event: .adLoad(placement))
       LogEventManager.shared.log(event: .adLoadSuccess(.admob, placement, time))
@@ -89,7 +89,7 @@ extension MaxBannerAdView: MAAdViewAdDelegate, MAAdRevenueDelegate {
   }
   
   public func didFailToLoadAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {
-    print("[MediationAd] [AdManager] [Max] [BannerAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+    print("[MediationAd] [AdManager] [Max] [BannerAd] Load fail (\(String(describing: placement))) - \(String(describing: error))!")
     if let placement {
       LogEventManager.shared.log(event: .adLoadFail(.max, placement, error as? Error))
     }
@@ -98,28 +98,28 @@ extension MaxBannerAdView: MAAdViewAdDelegate, MAAdRevenueDelegate {
   }
   
   public func didDisplay(_ ad: MAAd) {
-    print("[MediationAd] [AdManager] [Max] [BannerAd] Did display! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [BannerAd] Did display! (\(String(describing: placement)))")
     if let placement {
       LogEventManager.shared.log(event: .adShowSuccess(.max, placement))
     }
   }
   
   public func didHide(_ ad: MAAd) {
-    print("[MediationAd] [AdManager] [Max] [BannerAd] Did hide! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [BannerAd] Did hide! (\(String(describing: placement)))")
     if let placement {
       LogEventManager.shared.log(event: .adShowHide(.max, placement))
     }
   }
   
   public func didClick(_ ad: MAAd) {
-    print("[MediationAd] [AdManager] [Max] [BannerAd] Did click! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [BannerAd] Did click! (\(String(describing: placement)))")
     if let placement {
       LogEventManager.shared.log(event: .adShowClick(.max, placement))
     }
   }
   
   public func didFail(toDisplay ad: MAAd, withError error: MAError) {
-    print("[MediationAd] [AdManager] [Max] [BannerAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [BannerAd] Did fail to show content! (\(String(describing: placement)))")
     if let placement {
       LogEventManager.shared.log(event: .adShowFail(.max, placement, error as? Error))
     }
@@ -177,12 +177,12 @@ extension MaxBannerAdView {
       return
     }
     
-    guard let adUnitID else {
+    guard adUnitID != nil else {
       print("[MediationAd] [AdManager] [Max] [BannerAd] Failed to load - not initialized yet! Please install ID.")
       return
     }
     
-    print("[MediationAd] [AdManager] [Max] [BannerAd] Start load! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [BannerAd] Start load! (\(String(describing: placement)))")
     self.state = .loading
     DispatchQueue.main.async { [weak self] in
       guard let self else {

@@ -56,19 +56,19 @@ class MaxSplashAd: NSObject, ReuseAdProtocol {
             didHide: Handler?
   ) {
     guard !presentState else {
-      print("[MediationAd] [AdManager] [Max] [SplashAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [Max] [SplashAd] Display failure - ads are being displayed! (\(placement))")
       didFail?()
       return
     }
     LogEventManager.shared.log(event: .adShowRequest(.max, placement))
     guard isExist() else {
-      print("[MediationAd] [AdManager] [Max] [SplashAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [Max] [SplashAd] Display failure - not ready to show! (\(placement))")
       LogEventManager.shared.log(event: .adShowNoReady(.max, placement))
       didFail?()
       return
     }
     LogEventManager.shared.log(event: .adShowReady(.max, placement))
-    print("[MediationAd] [AdManager] [Max] [SplashAd] Requested to show! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [SplashAd] Requested to show! (\(placement))")
     self.placement = placement
     self.didFail = didFail
     self.willPresent = willPresent
@@ -84,7 +84,7 @@ extension MaxSplashAd: MAAdDelegate, MAAdRevenueDelegate {
       return
     }
     self.didResponse = true
-    print("[MediationAd] [AdManager] [Max] [SplashAd] Did load! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [SplashAd] Did load! (\(String(describing: name)))")
     if let name {
       let time = TimeManager.shared.end(event: .adLoad(name))
       LogEventManager.shared.log(event: .adLoadSuccess(.max, name, time))
@@ -100,7 +100,7 @@ extension MaxSplashAd: MAAdDelegate, MAAdRevenueDelegate {
       return
     }
     self.didResponse = true
-    print("[MediationAd] [AdManager] [Max] [SplashAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+    print("[MediationAd] [AdManager] [Max] [SplashAd] Load fail (\(String(describing: name))) - \(String(describing: error))!")
     if let name {
       LogEventManager.shared.log(event: .adLoadFail(.max, name, error as? Error))
     }
@@ -108,7 +108,7 @@ extension MaxSplashAd: MAAdDelegate, MAAdRevenueDelegate {
   }
   
   func didDisplay(_ ad: MAAd) {
-    print("[MediationAd] [AdManager] [Max] [SplashAd] Will display! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [SplashAd] Will display! (\(String(describing: name)))")
     if let placement {
       LogEventManager.shared.log(event: .adShowSuccess(.max, placement))
     }
@@ -117,14 +117,14 @@ extension MaxSplashAd: MAAdDelegate, MAAdRevenueDelegate {
   }
   
   func didClick(_ ad: MAAd) {
-    print("[MediationAd] [AdManager] [Max] [SplashAd] Did click! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [SplashAd] Did click! (\(String(describing: name)))")
     if let placement {
       LogEventManager.shared.log(event: .adShowClick(.max, placement))
     }
   }
   
   func didFail(toDisplay ad: MAAd, withError error: MAError) {
-    print("[MediationAd] [AdManager] [Max] [SplashAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [SplashAd] Did fail to show content! (\(String(describing: name)))")
     if let placement {
       LogEventManager.shared.log(event: .adShowFail(.max, placement, error as? Error))
     }
@@ -133,7 +133,7 @@ extension MaxSplashAd: MAAdDelegate, MAAdRevenueDelegate {
   }
   
   func didHide(_ ad: MAAd) {
-    print("[MediationAd] [AdManager] [Max] [SplashAd] Did hide! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [SplashAd] Did hide! (\(String(describing: name)))")
     if let placement {
       LogEventManager.shared.log(event: .adShowHide(.max, placement))
     }
@@ -193,7 +193,7 @@ extension MaxSplashAd {
             return
           }
           self.didResponse = true
-          print("[MediationAd] [AdManager] [Max] [SplashAd] Load fail (\(String(describing: adUnitID))) - timeout!")
+          print("[MediationAd] [AdManager] [Max] [SplashAd] Load fail (\(String(describing: name))) - timeout!")
           if let name {
             LogEventManager.shared.log(event: .adLoadTimeout(.max, name))
           }
@@ -201,7 +201,7 @@ extension MaxSplashAd {
         })
       }
       
-      print("[MediationAd] [AdManager] [Max] [SplashAd] Start load! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [Max] [SplashAd] Start load! (\(String(describing: name)))")
       if let name {
         LogEventManager.shared.log(event: .adLoadRequest(.max, name))
         TimeManager.shared.start(event: .adLoad(name))

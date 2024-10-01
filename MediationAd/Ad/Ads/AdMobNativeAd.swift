@@ -65,7 +65,7 @@ extension AdMobNativeAd: GADNativeAdLoaderDelegate {
     guard state == .loading else {
       return
     }
-    print("[MediationAd] [AdManager] [AdMob] [NativeAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+    print("[MediationAd] [AdManager] [AdMob] [NativeAd] Load fail (\(String(describing: placement))) - \(String(describing: error))!")
     if let placement {
       LogEventManager.shared.log(event: .adLoadFail(.admob, placement, error))
     }
@@ -77,7 +77,7 @@ extension AdMobNativeAd: GADNativeAdLoaderDelegate {
     guard state == .loading else {
       return
     }
-    print("[MediationAd] [AdManager] [AdMob] [NativeAd] Did load! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [NativeAd] Did load! (\(String(describing: placement)))")
     if let placement {
       let time = TimeManager.shared.end(event: .adLoad(placement))
       LogEventManager.shared.log(event: .adLoadSuccess(.admob, placement, time))
@@ -127,7 +127,7 @@ extension AdMobNativeAd {
       return
     }
     
-    print("[MediationAd] [AdManager] [AdMob] [NativeAd] Start load! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [NativeAd] Start load! (\(String(describing: placement)))")
     self.state = .loading
     DispatchQueue.main.async { [weak self] in
       guard let self else {
@@ -160,7 +160,7 @@ extension AdMobNativeAd {
         guard state == .loading else {
           return
         }
-        print("[MediationAd] [AdManager] [AdMob] [NativeAd] Load fail (\(String(describing: adUnitID))) - time out!")
+        print("[MediationAd] [AdManager] [AdMob] [NativeAd] Load fail (\(String(describing: placement))) - time out!")
         if let placement {
           LogEventManager.shared.log(event: .adLoadTimeout(.admob, placement))
         }

@@ -51,19 +51,19 @@ class AdMobRewardedInterstitialAd: NSObject, ReuseAdProtocol {
             didHide: Handler?
   ) {
     guard !presentState else {
-      print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Display failure - ads are being displayed! (\(placement))")
       didFail?()
       return
     }
     LogEventManager.shared.log(event: .adShowRequest(.admob, placement))
     guard isReady() else {
-      print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Display failure - not ready to show! (\(placement))")
       LogEventManager.shared.log(event: .adShowNoReady(.admob, placement))
       didFail?()
       return
     }
     LogEventManager.shared.log(event: .adShowReady(.admob, placement))
-    print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Requested to show! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Requested to show! (\(placement))")
     self.placement = placement
     self.didShowFail = didFail
     self.willPresent = willPresent
@@ -83,7 +83,7 @@ extension AdMobRewardedInterstitialAd: GADFullScreenContentDelegate {
   func ad(_ ad: GADFullScreenPresentingAd,
           didFailToPresentFullScreenContentWithError error: Error
   ) {
-    print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did fail to show content! (\(String(describing: name)))")
     if let placement {
       LogEventManager.shared.log(event: .adShowFail(.admob, placement, error))
     }
@@ -93,7 +93,7 @@ extension AdMobRewardedInterstitialAd: GADFullScreenContentDelegate {
   }
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Will display! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Will display! (\(String(describing: name)))")
     if let placement {
       LogEventManager.shared.log(event: .adShowSuccess(.admob, placement))
     }
@@ -102,7 +102,7 @@ extension AdMobRewardedInterstitialAd: GADFullScreenContentDelegate {
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did hide! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did hide! (\(String(describing: name)))")
     if let placement {
       LogEventManager.shared.log(event: .adShowHide(.admob, placement))
     }
@@ -141,7 +141,7 @@ extension AdMobRewardedInterstitialAd {
       }
       
       self.isLoading = true
-      print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Start load! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Start load! (\(String(describing: name)))")
       if let name {
         LogEventManager.shared.log(event: .adLoadRequest(.admob, name))
         TimeManager.shared.start(event: .adLoad(name))
@@ -157,7 +157,7 @@ extension AdMobRewardedInterstitialAd {
         }
         self.isLoading = false
         guard error == nil, let ad = ad else {
-          print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+          print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Load fail (\(String(describing: name))) - \(String(describing: error))!")
           self.retryAttempt += 1
           if let name {
             LogEventManager.shared.log(event: .adLoadFail(.admob, name, error))
@@ -165,7 +165,7 @@ extension AdMobRewardedInterstitialAd {
           self.didLoadFail?()
           return
         }
-        print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did load! (\(String(describing: adUnitID)))")
+        print("[MediationAd] [AdManager] [AdMob] [RewardedInterstitialAd] Did load! (\(String(describing: name)))")
         if let name {
           let time = TimeManager.shared.end(event: .adLoad(name))
           LogEventManager.shared.log(event: .adLoadSuccess(.admob, name, time))

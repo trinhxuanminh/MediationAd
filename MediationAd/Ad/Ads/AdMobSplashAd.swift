@@ -56,19 +56,19 @@ class AdMobSplashAd: NSObject, ReuseAdProtocol {
             didHide: Handler?
   ) {
     guard !presentState else {
-      print("[MediationAd] [AdManager] [AdMob] [SplashAd] Display failure - ads are being displayed! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [SplashAd] Display failure - ads are being displayed! (\(placement))")
       didFail?()
       return
     }
     LogEventManager.shared.log(event: .adShowRequest(.admob, placement))
     guard isExist() else {
-      print("[MediationAd] [AdManager] [AdMob] [SplashAd] Display failure - not ready to show! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [SplashAd] Display failure - not ready to show! (\(placement))")
       LogEventManager.shared.log(event: .adShowNoReady(.admob, placement))
       didFail?()
       return
     }
     LogEventManager.shared.log(event: .adShowReady(.admob, placement))
-    print("[MediationAd] [AdManager] [AdMob] [SplashAd] Requested to show! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [SplashAd] Requested to show! (\(placement))")
     self.placement = placement
     self.didFail = didFail
     self.willPresent = willPresent
@@ -82,7 +82,7 @@ extension AdMobSplashAd: GADFullScreenContentDelegate {
   func ad(_ ad: GADFullScreenPresentingAd,
           didFailToPresentFullScreenContentWithError error: Error
   ) {
-    print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did fail to show content! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did fail to show content! (\(String(describing: name)))")
     if let placement {
       LogEventManager.shared.log(event: .adShowFail(.admob, placement, error))
     }
@@ -91,7 +91,7 @@ extension AdMobSplashAd: GADFullScreenContentDelegate {
   }
   
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[MediationAd] [AdManager] [AdMob] [SplashAd] Will display! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [SplashAd] Will display! (\(String(describing: name)))")
     if let placement {
       LogEventManager.shared.log(event: .adShowSuccess(.admob, placement))
     }
@@ -100,7 +100,7 @@ extension AdMobSplashAd: GADFullScreenContentDelegate {
   }
   
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did hide! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did hide! (\(String(describing: name)))")
     if let placement {
       LogEventManager.shared.log(event: .adShowHide(.admob, placement))
     }
@@ -138,7 +138,7 @@ extension AdMobSplashAd {
             return
           }
           self.didResponse = true
-          print("[MediationAd] [AdManager] [AdMob] [SplashAd] Load fail (\(String(describing: adUnitID))) - timeout!")
+          print("[MediationAd] [AdManager] [AdMob] [SplashAd] Load fail (\(String(describing: name))) - timeout!")
           if let name {
             LogEventManager.shared.log(event: .adLoadTimeout(.admob, name))
           }
@@ -146,7 +146,7 @@ extension AdMobSplashAd {
         })
       }
       
-      print("[MediationAd] [AdManager] [AdMob] [SplashAd] Start load! (\(String(describing: adUnitID)))")
+      print("[MediationAd] [AdManager] [AdMob] [SplashAd] Start load! (\(String(describing: name)))")
       if let name {
         LogEventManager.shared.log(event: .adLoadRequest(.admob, name))
         TimeManager.shared.start(event: .adLoad(name))
@@ -165,14 +165,14 @@ extension AdMobSplashAd {
         }
         self.didResponse = true
         guard error == nil, let ad = ad else {
-          print("[MediationAd] [AdManager] [AdMob] [SplashAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+          print("[MediationAd] [AdManager] [AdMob] [SplashAd] Load fail (\(String(describing: name))) - \(String(describing: error))!")
           if let name {
             LogEventManager.shared.log(event: .adLoadFail(.admob, name, error))
           }
           self.didLoadFail?()
           return
         }
-        print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did load! (\(String(describing: adUnitID)))")
+        print("[MediationAd] [AdManager] [AdMob] [SplashAd] Did load! (\(String(describing: name)))")
         if let name {
           let time = TimeManager.shared.end(event: .adLoad(name))
           LogEventManager.shared.log(event: .adLoadSuccess(.admob, name, time))

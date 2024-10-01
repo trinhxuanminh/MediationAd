@@ -76,7 +76,7 @@ extension MaxNativeAd: MANativeAdDelegate, MAAdRevenueDelegate {
     guard state == .loading else {
       return
     }
-    print("[MediationAd] [AdManager] [Max] [NativeAd] Did load! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [NativeAd] Did load! (\(String(describing: placement)))")
     if let placement {
       let time = TimeManager.shared.end(event: .adLoad(placement))
       LogEventManager.shared.log(event: .adLoadSuccess(.max, placement, time))
@@ -104,7 +104,7 @@ extension MaxNativeAd: MANativeAdDelegate, MAAdRevenueDelegate {
     guard state == .loading else {
       return
     }
-    print("[MediationAd] [AdManager] [Max] [NativeAd] Load fail (\(String(describing: adUnitID))) - \(String(describing: error))!")
+    print("[MediationAd] [AdManager] [Max] [NativeAd] Load fail (\(String(describing: placement))) - \(String(describing: error))!")
     if let placement {
       LogEventManager.shared.log(event: .adLoadFail(.max, placement, error as? Error))
     }
@@ -113,7 +113,7 @@ extension MaxNativeAd: MANativeAdDelegate, MAAdRevenueDelegate {
   }
   
   func didClickNativeAd(_ ad: MAAd) {
-    print("[MediationAd] [AdManager] [Max] [NativeAd] Did click! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [NativeAd] Did click! (\(String(describing: placement)))")
     if let placement {
       LogEventManager.shared.log(event: .adShowClick(.max, placement))
     }
@@ -153,7 +153,7 @@ extension MaxNativeAd {
       return
     }
     
-    print("[MediationAd] [AdManager] [Max] [NativeAd] Start load! (\(String(describing: adUnitID)))")
+    print("[MediationAd] [AdManager] [Max] [NativeAd] Start load! (\(String(describing: placement)))")
     self.state = .loading
     DispatchQueue.main.async { [weak self] in
       guard let self else {
@@ -178,7 +178,7 @@ extension MaxNativeAd {
         guard state == .loading else {
           return
         }
-        print("[MediationAd] [AdManager] [Max] [NativeAd] Load fail (\(String(describing: adUnitID))) - time out!")
+        print("[MediationAd] [AdManager] [Max] [NativeAd] Load fail (\(String(describing: placement))) - time out!")
         if let placement {
           LogEventManager.shared.log(event: .adLoadTimeout(.max, placement))
         }
