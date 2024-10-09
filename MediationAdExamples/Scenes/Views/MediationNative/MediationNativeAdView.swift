@@ -59,17 +59,7 @@ extension MediationNativeAdView {
         loadingView.stopAnimating()
       }, didError: didError)
     case .max:
-      let nativeAdView = CustomMaxNativeAdView()
-      containerView.addSubview(nativeAdView)
-      nativeAdView.snp.makeConstraints { make in
-        make.edges.equalToSuperview()
-      }
-      nativeAdView.load(placement: placement, didReceive: { [weak self] in
-        guard let self else {
-          return
-        }
-        loadingView.stopAnimating()
-      }, didError: didError)
+      return
     default:
       didError?()
     }

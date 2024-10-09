@@ -25,18 +25,6 @@ target 'MediationAd' do
   pod 'GoogleMobileAdsMediationFacebook' # Meta Audience Network
   pod 'GoogleMobileAdsMediationVungle' # Liftoff Monetize
   pod 'GoogleMobileAdsMediationFyber' # DT Exchange
-  
-  pod 'AppLovinSDK', '12.6.1' # AppLovin
-  pod 'AppLovinMediationGoogleAdapter' # Google Bidding and Google AdMob
-  pod 'AppLovinMediationUnityAdsAdapter' # Unity Ads
-  pod 'AppLovinMediationByteDanceAdapter' # Pangle
-  pod 'AppLovinMediationFyberAdapter' # DT Exchange
-  pod 'AppLovinMediationInMobiAdapter' # InMobi
-  pod 'AppLovinMediationIronSourceAdapter' # ironSource
-  pod 'AppLovinMediationVungleAdapter' # Liftoff Monetize
-  pod 'AppLovinMediationMintegralAdapter' # Mintegral
-  pod 'AppLovinMediationFacebookAdapter' # Meta Audience Network
-  pod 'AppLovinMediationYandexAdapter' # Yandex
 end
 
 target 'MediationAdExamples' do

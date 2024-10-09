@@ -183,27 +183,7 @@ public class AdManager {
         adProtocol = AdMobRewardedInterstitialAd()
       }
     case .max:
-      switch type {
-      case .splash:
-        guard let splash = adConfig as? Splash else {
-          print("[MediationAd] [AdManager] Format conversion error! (\(placement))")
-          fail?()
-          return
-        }
-        let splashAd = MaxSplashAd()
-        splashAd.config(timeout: splash.timeout)
-        adProtocol = splashAd
-      case .appOpen:
-        adProtocol = MaxAppOpenAd()
-      case .interstitial:
-        adProtocol = MaxInterstitialAd()
-      case .rewarded:
-        adProtocol = MaxRewardedAd()
-      case .rewardedInterstitial:
-        print("[MediationAd] [AdManager] This type of ads is not supported! (\(placement))")
-        fail?()
-        return
-      }
+      return
     }
     
     adProtocol.config(didFail: fail, didSuccess: success)
@@ -276,7 +256,7 @@ public class AdManager {
     case .admob:
       nativeAd = AdMobNativeAd()
     case .max:
-      nativeAd = MaxNativeAd()
+      return
     }
     
     nativeAd.bind(didReceive: success, didError: fail)

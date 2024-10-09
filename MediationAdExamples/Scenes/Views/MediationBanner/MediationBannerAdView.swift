@@ -62,17 +62,7 @@ extension MediationBannerAdView {
         loadingView.stopAnimating()
       }, didError: didError)
     case .max:
-      let bannerAdView = MaxBannerAdView()
-      containerView.addSubview(bannerAdView)
-      bannerAdView.snp.makeConstraints { make in
-        make.edges.equalToSuperview()
-      }
-      bannerAdView.load(placement: placement, rootViewController: topVC, didReceive: { [weak self] in
-        guard let self else {
-          return
-        }
-        loadingView.stopAnimating()
-      }, didError: didError)
+      return
     default:
       didError?()
     }
